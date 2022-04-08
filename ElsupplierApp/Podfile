@@ -1,0 +1,19 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'ElsupplierApp' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for ElsupplierApp
+  pod 'ESNetworkManager'
+  pod 'ESNetworkManager/Rx'
+  pod 'ESNetworkManager/ObjectMapper'
+  pod 'RxCocoa'
+  pod 'SDWebImage', '~> 5.11'
+  pod 'IQKeyboardManagerSwift'
+  pod 'SwiftDate', '~> 5.0'
+  pod 'R.swift'
+  pod 'SnapKit'
+
+end

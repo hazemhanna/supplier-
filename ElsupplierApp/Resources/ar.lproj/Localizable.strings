@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  ElsupplierApp
+
+  Created by Ahmed Madeh on 08/04/2022.
+  
+*/
+
+"_welcome" = "اهلا بك";
+"_login_to_account" = "قم بتسجيل الدخول لحسابك";
+"_mobile_no" = "رقم الموبايل";
+"_login" = "تسجيل الدخول";
+"_register_new_account" = "انشاء حساب جديد";
+"_supplier?_download_app" = "مورد ؟ قم بتحميل تطبيق المورد";
