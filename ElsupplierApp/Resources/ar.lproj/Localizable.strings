@@ -5,10 +5,59 @@
   Created by Ahmed Madeh on 08/04/2022.
   
 */
-
+// MARK: - Login
 "_welcome" = "اهلا بك";
 "_login_to_account" = "قم بتسجيل الدخول لحسابك";
 "_mobile_no" = "رقم الموبايل";
 "_login" = "تسجيل الدخول";
 "_register_new_account" = "انشاء حساب جديد";
 "_supplier?_download_app" = "مورد ؟ قم بتحميل تطبيق المورد";
+
+// MARK: - Register
+"_new_account" = "حساب جديد";
+"_create_new_account" = "قم بعمل حساب جديد";
+"_name*" = "الاسم*";
+"_mobile_no*" = "الموبيل*";
+"_email*" = "البريد الاليكتروني*";
+"_activity_type" = "نوع النشاط";
+"_company_name*" = "اسم الشركة*";
+"_by_creating_you_accept" = "بإنشاء حساب, فإنك توافق على شروط الاستخدام";
+"_have_account?Login" = "لديك حساب ؟ تسجيل دخول";
+"Please enter your name" = "من فضلك ادخل الاسم";
+"Please enter valid mobile no" = "من فضلك ادخل رقم موبيل صحيح";
+"Please enter valid email" = "من فضلك ادخل بريد اليكتروني صحيح";
+"Please enter company name" = "من فضلك ادخل اسم الشركة";
+"Cancel" = "إلغاء";
+"Select Activity" = "اختر النشاط";
+
+// MARK: - More
+"_notifications" = "الاشعارات";
+"_new_message" = "رسالة جديدة";
+"_my_posts" = "منشوراتي";
+"_my_orders" = "طلباتي";
+"_payment_ways" = "طرق الدفع";
+"_fav_products" = "المنتجات المفضلة";
+"_messages" = "رسائل";
+"_my_addresses" = "عناويني";
+"_my_tenders" = "مناقصاتي";
+"_fav_suppliers" = "الموردين المفضلين";
+"_profile" = "الحساب";
+"_save_changes" = "حفظ التغييرات";
+"_change_password" = "تغيير كلمة المرور";
+"_city" = "المدينة";
+"_personal_info" = "البيانات الشخصية";
+"_confirm" = "تأكيد";
+"_current_pass" = "رمز المرور الحالي*";
+"_new_pass" = "رمز المرور الجديد*";
+"_password_changed" = "تم تغيير رمز المرور";
+"_best_offers" = "افضل العروض";
+"_depts" = "الاقسام";
+"Home" = "الرئيسية";
+"Cart" = "عربة التسوق";
+"Favorites" = "المفضلين";
+"Posts" = "مشنورات";
+"Tender" = "مناقصة";
+"Search" = "بحث";
+"Logout" = "خروج";
+"_home" = "الرئيسية";
+"Add" = "اضف";

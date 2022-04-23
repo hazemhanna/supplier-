@@ -20,10 +20,11 @@ class NavigationController: UINavigationController {
         super.viewDidLoad()
         navigationBar.barTintColor = .black
         navigationBar.isTranslucent = true
-        view.backgroundColor = .clear
+        view.backgroundColor = .clear // R.color.iceBlue()
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
         navigationBar.tintColor = R.color.darkBlue()
+        navigationBar.backgroundColor = .clear //R.color.iceBlue()
         if Language.isArabic {
             view.semanticContentAttribute = .forceRightToLeft
             navigationBar.semanticContentAttribute = .forceRightToLeft

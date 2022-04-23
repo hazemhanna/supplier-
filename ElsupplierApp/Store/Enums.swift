@@ -5,7 +5,7 @@
 //
 
 enum ServerType: String {
-    case staging = "http://64.227.117.9/backend/public/api/"
+    case staging = "http://64.227.117.9/backend/public/api"
     case live = ""
 }
 

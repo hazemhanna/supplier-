@@ -13,7 +13,7 @@ class PickerModel: BaseObject {
     
     override func mapping(map: Map) {
         super.mapping(map: map)
-        name <- map["name"]
+        name <- map[Language.isArabic ? "name_ar" : "name_en"]
     }
     
 }

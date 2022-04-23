@@ -11,7 +11,7 @@ let APPLE_LANGUAGE_KEY = "AppleLanguages"
 class Language: NSObject {
     
     static var currentLanguage : AppLanguage {
-        var langStr = "en"
+        var langStr = "ar"
         if let lang = Cache.object(key: "currentLang") as? String {
             langStr = lang
         }

@@ -12,7 +12,6 @@ import ObjectMapper
 
 protocol AuthAPIsProtocol: AnyObject {
     func login(phone: String) -> Single<UserModel>
-    func logout() -> Single<Any>
     func register(name: String,
                   phone: String,
                   companyName: String,
@@ -25,11 +24,6 @@ final class AuthAPIs: AuthAPIsProtocol {
         let request = ESNetworkRequest("login")
         request.method = .post
         request.parameters = ["phone": phone]
-        return NetworkManager.execute(request: request)
-    }
-    
-    func logout() -> Single<Any> {
-        let request = ESNetworkRequest("logout")
         return NetworkManager.execute(request: request)
     }
     
