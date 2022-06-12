@@ -45,13 +45,6 @@ final class ProfileAPIs {
         return NetworkManager.execute(request: request)
     }
     
-    func changePassword(password: String, newPassword: String) -> Single<Any> {
-        let request = ESNetworkRequest("profile/update")
-        request.method = .post
-        request.parameters = ["": password, "": newPassword]
-        return NetworkManager.execute(request: request)
-    }
-    
     func selectUserAddress(addressId: Int) -> Single<Any> {
         let request = ESNetworkRequest("profile/select/address")
         request.method = .post
@@ -76,6 +69,87 @@ final class ProfileAPIs {
         let request = ESNetworkRequest("products/favourite")
         request.method = .post
         request.parameters = ["productId": productId]
+        return NetworkManager.execute(request: request)
+    }
+    
+    func listFavoriteSuppliers() -> Single<[SupplierModel]> {
+        let request = ESNetworkRequest("suppliers/get/favourite")
+        request.selections = [.key("data"), .key("favourite_suppliers")]
+        return NetworkManager.execute(request: request)
+    }
+    
+    func toggleFavoriteSupplier(supplierId: Int) -> Single<Any> {
+        let request = ESNetworkRequest("suppliers/favourite")
+        request.method = .post
+        request.parameters = ["supplierId": supplierId]
+        return NetworkManager.execute(request: request)
+    }
+    
+    func listAddresses() -> Single<[AddressModel]> {
+        let request = ESNetworkRequest("addresses/get")
+        request.selections = [.key("data"), .key("addresses")]
+        return NetworkManager.execute(request: request)
+    }
+    
+    func deleteAddress(addressId: Int) -> Single<Any> {
+        let request = ESNetworkRequest("addresses/delete")
+        request.method = .post
+        request.parameters = ["addressId": addressId]
+        return NetworkManager.execute(request: request)
+    }
+    
+    func addAddress(areaId: Int, street: String, floor: String,
+                    apartment: String, landmark: String, cityId: Int,
+                    provinceId: Int) -> Single<Any> {
+        let request = ESNetworkRequest("addresses/store")
+        request.method = .post
+        request.parameters = ["areaId": areaId,
+                              "street": street,
+                              "floor": floor,
+                              "apartment": apartment,
+                              "landmark": landmark,
+                              "cityId": cityId,
+                              "provinceId": provinceId]
+        return NetworkManager.execute(request: request)
+    }
+    
+    func updateAddress(addressId: Int, areaId: Int, street: String, floor: String,
+                       apartment: String, landmark: String, cityId: Int,
+                       provinceId: Int) -> Single<Any> {
+        let request = ESNetworkRequest("addresses/update")
+        request.method = .post
+        request.parameters = ["addressId": addressId,
+                              "areaId": areaId,
+                              "street": street,
+                              "floor": floor,
+                              "apartment": apartment,
+                              "landmark": landmark,
+                              "cityId": cityId,
+                              "provinceId": provinceId]
+        return NetworkManager.execute(request: request)
+    }
+    
+    func selectAddress(addressId: Int) -> Single<Any> {
+        let request = ESNetworkRequest("profile/select/address")
+        request.method = .post
+        request.parameters = ["userAddressId": addressId]
+        return NetworkManager.execute(request: request)
+    }
+    
+    func listOrders(page: Int) -> Single<PagedObject<OrderModel>> {
+        let request = ESNetworkRequest("orders?page=\(page)")
+        return NetworkManager.execute(request: request)
+    }
+    
+    func listTenders() -> Single<[TenderModel]> {
+        let request = ESNetworkRequest("tenders/get")
+        request.selections = [.key("data"), .key("my_tenders")]
+        return NetworkManager.execute(request: request)
+    }
+    
+    func storeTender(categoryId: Int, productId: Int, message: String) -> Single<[TenderModel]> {
+        let request = ESNetworkRequest("tenders/get")
+        request.selections = [.key("data"), .key("my_tenders")]
         return NetworkManager.execute(request: request)
     }
     

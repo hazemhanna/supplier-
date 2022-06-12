@@ -31,6 +31,14 @@ class FavProductTableViewCell: UITableViewCell {
         }
     }
     
+    var supplierProduct: ProductModel! {
+        didSet {
+            productImageView.setImageWith(stringUrl: supplierProduct.mainImage)
+            productTitle.text = supplierProduct.name
+            piecesNo.text = "-"
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none

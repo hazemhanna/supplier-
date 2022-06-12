@@ -17,3 +17,16 @@ class PickerModel: BaseObject {
     }
     
 }
+
+
+class PaymentTypeModel: BaseObject {
+    
+    var name = ""
+    var isSelected = false
+    
+    override func mapping(map: Map) {
+        super.mapping(map: map)
+        name <- map["name"]
+    }
+    
+}

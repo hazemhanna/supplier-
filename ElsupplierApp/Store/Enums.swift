@@ -14,3 +14,13 @@ enum UserType: Int {
     case user = 2
     case agent = 3
 }
+
+enum SearchType: String {
+    case supplier = "Supplier"
+    case product = "Product"
+}
+
+enum FilterType {
+    case areas
+    case departments
+}

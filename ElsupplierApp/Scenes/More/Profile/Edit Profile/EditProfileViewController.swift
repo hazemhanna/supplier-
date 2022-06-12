@@ -102,10 +102,6 @@ class EditProfileViewController: BaseViewController {
     }
     
     // MARK: - Actions
-    @IBAction func changePasswordClicked(_ sender: UIButton) {
-        push(controller: ChangePasswordViewController())
-    }
-    
     @IBAction func saveChangesClicked(_ sender: UIButton) {
         viewModel.updateProfile()
     }

@@ -64,18 +64,22 @@ class ProfileViewController: BaseViewController {
     }
     
     @IBAction func messagesClicked(_ sender: UIButton) {
+        push(controller: MessagesViewController())
     }
 
     @IBAction func myOrdersClicked(_ sender: UIButton) {
+        push(controller: MyOrdersViewController())
     }
 
     @IBAction func myAddressesClicked(_ sender: UIButton) {
+        push(controller: AddressesListViewController())
     }
 
     @IBAction func paymentWaysClicked(_ sender: UIButton) {
     }
 
     @IBAction func myTendersClicked(_ sender: UIButton) {
+        push(controller: TendersViewController())
     }
 
     @IBAction func favProductsClicked(_ sender: UIButton) {
@@ -83,6 +87,7 @@ class ProfileViewController: BaseViewController {
     }
 
     @IBAction func favSuppliersClicked(_ sender: UIButton) {
+        push(controller: FavoriteSuppliersViewController())
     }
     
     @IBAction func logoutClicked(_ sender: UIButton) {

@@ -52,7 +52,11 @@ class BaseViewController: UIViewController {
         let font = R.font.cairoBold(size: 20) ?? UIFont.boldSystemFont(ofSize: 20)
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: color, .font: font]
         tabBarController?.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: color, .font: font]
-        tabBarController?.navigationController?.title = title
+        if shouldShowNavigation() {
+            tabBarController?.navigationController?.title = title
+        } else {
+            tabBarController?.navigationController?.title = ""
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

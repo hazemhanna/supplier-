@@ -13,6 +13,7 @@ final class HomeModel: BaseObject {
     var posts: [PostModel] = []
     var promotionsList: [PromotionModel] = []
     var trendingProducts: [TrendingProductModel] = []
+    var categories: [CategoryModel] = []
 
     override func mapping(map: Map) {
         super.mapping(map: map)
@@ -20,6 +21,7 @@ final class HomeModel: BaseObject {
         posts <- map["posts"]
         promotionsList <- map["promotions_list"]
         trendingProducts <- map["trending_products"]
+        categories <- map["categories"]
     }
     
 }

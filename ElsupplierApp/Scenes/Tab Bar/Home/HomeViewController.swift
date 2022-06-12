@@ -31,6 +31,8 @@ class HomeViewController: BaseTabBarViewController {
         deptCollectionView.registerCell(ofType: HomeDeptCollectionViewCell.self)
         userView.delegate = self
         deptCollectionViewHeight.constant = ((10.0 / 3.0).rounded(.up) * 180.0)
+        navigationController?.navigationBar.isHidden = true
+        tabBarController?.navigationController?.navigationBar.isHidden = true
         viewModel.loadHome()
         if let user = UserModel.current {
             userView.userPic.setImageWith(stringUrl: user.image, placeholder: R.image.screenShot20220412At95108PM())
@@ -73,7 +75,7 @@ class HomeViewController: BaseTabBarViewController {
                 self.homeModel = $0
                 self.offersCollectionView.reloadData()
                 self.deptCollectionView.reloadData()
-//                self.deptCollectionViewHeight.constant = $0.
+                self.deptCollectionViewHeight.constant = CGFloat(($0.categories.count / 3) * 180)
             })
             .disposed(by: disposeBag)
     }
@@ -92,7 +94,7 @@ extension HomeViewController: UserSectionViewDelegate {
     }
     
     func didTapSearch() {
-        #warning("implement search")
+        push(controller: SearchFilterViewController())
     }
 }
 
@@ -101,7 +103,7 @@ extension HomeViewController: UICollectionViewDelegate,
                               UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionView == offersCollectionView ? homeModel.sliders.count : homeModel.trendingProducts.count
+        return collectionView == offersCollectionView ? homeModel.sliders.count : homeModel.categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -112,6 +114,8 @@ extension HomeViewController: UICollectionViewDelegate,
             return cell
         default:
             let cell: HomeDeptCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)!
+            cell.deptImageView.setImageWith(stringUrl: homeModel.categories[indexPath.row].image)
+            cell.deptName.text = homeModel.categories[indexPath.row].name
             return cell
         }
     }
@@ -121,7 +125,7 @@ extension HomeViewController: UICollectionViewDelegate,
         case offersCollectionView:
             break
         default:
-            break
+            push(controller: CategoriesViewController(categoryModel: homeModel.categories[indexPath.row]))
         }
     }
     

@@ -257,20 +257,6 @@
                                 </view>
                             </subviews>
                         </stackView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97F-xl-rCb">
-                            <rect key="frame" x="21" y="439" width="126" height="28"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="_change_password">
-                                <color key="titleColor" name="DarkBlue"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="underlined" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="changePasswordClicked:" destination="-1" eventType="touchUpInside" id="Ao2-a5-J3R"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="wUz-HH-ihH" secondAttribute="trailing" id="42N-Lz-TEq"/>
@@ -278,9 +264,7 @@
                         <constraint firstItem="wUz-HH-ihH" firstAttribute="leading" secondItem="agb-bs-SkU" secondAttribute="leading" id="VTO-qn-vT1"/>
                         <constraint firstItem="wUz-HH-ihH" firstAttribute="top" secondItem="agb-bs-SkU" secondAttribute="top" id="cf4-DG-AUH"/>
                         <constraint firstItem="hva-3w-J9M" firstAttribute="leading" secondItem="agb-bs-SkU" secondAttribute="leading" constant="16" id="sZ2-kx-w98"/>
-                        <constraint firstItem="97F-xl-rCb" firstAttribute="top" secondItem="hva-3w-J9M" secondAttribute="bottom" constant="65" id="vXq-he-zbu"/>
-                        <constraint firstAttribute="bottom" secondItem="97F-xl-rCb" secondAttribute="bottom" constant="20" id="yeR-yD-u8e"/>
-                        <constraint firstItem="97F-xl-rCb" firstAttribute="leading" secondItem="agb-bs-SkU" secondAttribute="leading" constant="21" id="ylG-pK-kXF"/>
+                        <constraint firstAttribute="bottom" secondItem="hva-3w-J9M" secondAttribute="bottom" constant="20" id="tbN-8x-w0j"/>
                         <constraint firstItem="hva-3w-J9M" firstAttribute="top" secondItem="wUz-HH-ihH" secondAttribute="bottom" constant="8" id="zFB-pK-4PO"/>
                     </constraints>
                 </scrollView>

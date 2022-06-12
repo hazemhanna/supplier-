@@ -72,7 +72,7 @@ extension FavProductsViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+//        push(controller: ProductDetailsViewController(product: favorites[indexPath.row]))
     }
     
 }

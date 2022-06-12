@@ -9,7 +9,7 @@ import RxCocoa
 import RxSwift
 import Foundation
 
-final class ProfileViewModel: BaseViewModel {
+class ProfileViewModel: BaseViewModel {
 
     var selectedUserAddress = BehaviorRelay<Int>(value: -1)
     var selectedPaymentMethod = BehaviorRelay<Int>(value: -1)
@@ -31,14 +31,20 @@ final class ProfileViewModel: BaseViewModel {
     var activities = PublishRelay<[UserTypeModel]>()
     var updatedSuccessfully = PublishRelay<Bool>()
 
-    // MARK: - Change Password
-    var oldPassword = BehaviorRelay<String>(value: "")
-    var newPassword = BehaviorRelay<String>(value: "")
-    var passwordChanged = PublishRelay<Bool>()
-
     // MARK: - Favorites
     var favorites = PublishRelay<[TrendingProductModel]>()
+    var favoriteSuppliers = PublishRelay<[SupplierModel]>()
     var favoriteToggledSucceeded = PublishRelay<Bool>()
+    
+    // MARK: - Orders
+    var orders = PublishRelay<PagedObject<OrderModel>>()
+   
+    // MARK: - Tenders
+    var tenders = PublishRelay<[TenderModel]>()
+    var tenderAdded = PublishRelay<Bool>()
+    var selectedCategory = BehaviorRelay<Int?>(value: nil)
+    var selectedProduct = BehaviorRelay<Int?>(value: nil)
+    var tenderDetails = BehaviorRelay<String>(value: "")
     
     // MARK: - Variables
     let profileApis = ProfileAPIs()
@@ -146,7 +152,7 @@ final class ProfileViewModel: BaseViewModel {
     func loadActivityTypes() {
         let mockupApi = MockupsAPIs()
         isLoading.accept(true)
-        mockupApi.loadUserTypes().subscribe {[weak self] types in
+        mockupApi.loadUserTypes().subscribe { [weak self] types in
             guard let self = self else { return }
             self.isLoading.accept(false)
             self.activities.accept(types)
@@ -159,7 +165,7 @@ final class ProfileViewModel: BaseViewModel {
     
     func listFavorites() {
         isLoading.accept(true)
-        profileApis.listFavorites().subscribe {[weak self] favs in
+        profileApis.listFavorites().subscribe { [weak self] favs in
             guard let self = self else { return }
             self.isLoading.accept(false)
             self.favorites.accept(favs)
@@ -181,6 +187,84 @@ final class ProfileViewModel: BaseViewModel {
             self.isLoading.accept(false)
             self.error.accept(error)
         }.disposed(by: disposeBag)
+    }
+    
+    func listFavoriteSuppliers() {
+        isLoading.accept(true)
+        profileApis.listFavoriteSuppliers().subscribe { [weak self] favs in
+            guard let self = self else { return }
+            self.isLoading.accept(false)
+            self.favoriteSuppliers.accept(favs)
+        } onError: {[weak self] error in
+            guard let self = self else { return }
+            self.isLoading.accept(false)
+            self.error.accept(error)
+        }.disposed(by: disposeBag)
+    }
+    
+    func favToggle(supplierId: Int) {
+        isLoading.accept(true)
+        profileApis.toggleFavoriteSupplier(supplierId: supplierId).subscribe { [weak self] _ in
+            guard let self = self else { return }
+            self.isLoading.accept(false)
+            self.favoriteToggledSucceeded.accept(true)
+        } onError: { [weak self] error in
+            guard let self = self else { return }
+            self.isLoading.accept(false)
+            self.error.accept(error)
+        }.disposed(by: disposeBag)
+    }
+    
+    func listOrders(page: Int) {
+        isLoading.accept(true)
+        profileApis.listOrders(page: page).subscribe { [weak self] in
+            self?.isLoading.accept(false)
+            self?.orders.accept($0)
+        } onError: { [weak self] in
+            self?.isLoading.accept(false)
+            self?.error.accept($0)
+        }.disposed(by: disposeBag)
+    }
+    
+    func listTenders() {
+        isLoading.accept(true)
+        profileApis.listTenders().subscribe { [weak self] in
+            self?.isLoading.accept(false)
+            self?.tenders.accept($0)
+        } onError: { [weak self] in
+            self?.isLoading.accept(false)
+            self?.error.accept($0)
+        }.disposed(by: disposeBag)
+    }
+    
+    func storeTender() {
+        if !validateTender() { return }
+        isLoading.accept(true)
+        profileApis.storeTender(categoryId: selectedCategory.value ?? 0,
+                                productId: selectedProduct.value ?? 0,
+                                message: tenderDetails.value).subscribe { [weak self] _ in
+            self?.isLoading.accept(false)
+            self?.tenderAdded.accept(true)
+        } onError: { [weak self] in
+            self?.isLoading.accept(false)
+            self?.error.accept($0)
+        }.disposed(by: disposeBag)
+    }
+    
+    func validateTender() -> Bool {
+        if selectedCategory.value == nil {
+            error.accept(NSError.init(error: "_select_category", code: -1))
+            return false
+        }
+        if selectedProduct.value == nil {
+            error.accept(NSError.init(error: "_select_product", code: -1))
+            return false
+        }
+        if tenderDetails.value.isEmpty {
+            error.accept(NSError.init(error: "_enter_details", code: -1))
+            return false
+        }
+        return true
     }
     
 }

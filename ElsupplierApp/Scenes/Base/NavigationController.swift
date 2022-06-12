@@ -18,7 +18,7 @@ class NavigationController: UINavigationController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.barTintColor = .black
+        navigationBar.barTintColor = R.color.lightBlue()
         navigationBar.isTranslucent = true
         view.backgroundColor = .clear // R.color.iceBlue()
         navigationBar.setBackgroundImage(UIImage(), for: .default)
