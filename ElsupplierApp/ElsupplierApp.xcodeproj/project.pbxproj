@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		047FA0C82858F428009EFFBB /* OffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FA0C62858F428009EFFBB /* OffersViewController.swift */; };
+		047FA0C92858F428009EFFBB /* OffersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047FA0C72858F428009EFFBB /* OffersViewController.xib */; };
+		047FA0CD2858F56D009EFFBB /* OfferCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FA0CB2858F56D009EFFBB /* OfferCollectionViewCell.swift */; };
+		047FA0CE2858F56D009EFFBB /* OfferCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047FA0CC2858F56D009EFFBB /* OfferCollectionViewCell.xib */; };
 		055AF33888E3281697E5F2A9 /* Pods_ElsupplierApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5023ACE50E7883637337AF3 /* Pods_ElsupplierApp.framework */; };
 		0609A807280AA65000806081 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609A805280AA65000806081 /* HomeViewController.swift */; };
 		0609A808280AA65000806081 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0609A806280AA65000806081 /* HomeViewController.xib */; };
@@ -237,6 +241,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		047FA0C62858F428009EFFBB /* OffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewController.swift; sourceTree = "<group>"; };
+		047FA0C72858F428009EFFBB /* OffersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OffersViewController.xib; sourceTree = "<group>"; };
+		047FA0CB2858F56D009EFFBB /* OfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCollectionViewCell.swift; sourceTree = "<group>"; };
+		047FA0CC2858F56D009EFFBB /* OfferCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferCollectionViewCell.xib; sourceTree = "<group>"; };
 		0609A805280AA65000806081 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0609A806280AA65000806081 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		0609A809280AB28300806081 /* HomeOfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOfferCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -484,6 +492,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		047FA0C52858F409009EFFBB /* Offers */ = {
+			isa = PBXGroup;
+			children = (
+				047FA0CA2858F544009EFFBB /* Cell */,
+				047FA0C62858F428009EFFBB /* OffersViewController.swift */,
+				047FA0C72858F428009EFFBB /* OffersViewController.xib */,
+			);
+			path = Offers;
+			sourceTree = "<group>";
+		};
+		047FA0CA2858F544009EFFBB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				047FA0CB2858F56D009EFFBB /* OfferCollectionViewCell.swift */,
+				047FA0CC2858F56D009EFFBB /* OfferCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		0609A811280AD57000806081 /* Posts */ = {
 			isa = PBXGroup;
 			children = (
@@ -762,6 +789,7 @@
 		067F46A028008145004C403F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				047FA0C52858F409009EFFBB /* Offers */,
 				062456EC28541C8F00521B1C /* Supplier */,
 				06FD070128095E540032C297 /* More */,
 				067F46A128008157004C403F /* Base */,
@@ -1092,6 +1120,7 @@
 				06D08831284BB674008F9F3F /* CategoriesViewController.xib in Resources */,
 				067F469D2800812F004C403F /* SegmentViewCell.xib in Resources */,
 				067F46BD28008157004C403F /* LoginAlertViewController.xib in Resources */,
+				047FA0C92858F428009EFFBB /* OffersViewController.xib in Resources */,
 				06B9B5372842B46F00A2C7CC /* ChooseAddressViewController.xib in Resources */,
 				067269C8285513AA00906BA5 /* SupplierProductsViewController.xib in Resources */,
 				0609A820280AD71D00806081 /* PostsViewController.xib in Resources */,
@@ -1107,6 +1136,7 @@
 				06C2CD48284B6C9600C73828 /* OrderSummaryViewController.xib in Resources */,
 				06D0882D284BACFE008F9F3F /* OrderDetailsViewController.xib in Resources */,
 				06282A2A28501A1100BE199E /* MessageTableViewCell.xib in Resources */,
+				047FA0CE2858F56D009EFFBB /* OfferCollectionViewCell.xib in Resources */,
 				068F9A80282B13780093BD41 /* AddressTableViewCell.xib in Resources */,
 				06ED3EA32800855B00AA6D55 /* Cairo-SemiBold.ttf in Resources */,
 				06DECF2C283310AB00BE5959 /* SupplierSearchResultsViewController.xib in Resources */,
@@ -1314,6 +1344,7 @@
 				067F463F280080C5004C403F /* StringExtensions.swift in Sources */,
 				06D08822284B93F0008F9F3F /* MyOrdersViewController.swift in Sources */,
 				067F46B228008157004C403F /* BaseTabBarController.swift in Sources */,
+				047FA0C82858F428009EFFBB /* OffersViewController.swift in Sources */,
 				06D0882C284BACFE008F9F3F /* OrderDetailsViewController.swift in Sources */,
 				06282A1D2850052500BE199E /* TenderModel.swift in Sources */,
 				062CA8C628302D5200EFAC19 /* SearchFilterViewController.swift in Sources */,
@@ -1371,6 +1402,7 @@
 				068F9A84282B1C2E0093BD41 /* AddressesViewModel.swift in Sources */,
 				067F46B828008157004C403F /* BaseViewModel.swift in Sources */,
 				067F4640280080C5004C403F /* UIViewControllerExtension.swift in Sources */,
+				047FA0CD2858F56D009EFFBB /* OfferCollectionViewCell.swift in Sources */,
 				067F4665280080D0004C403F /* LocationManager.swift in Sources */,
 				067F4684280080D9004C403F /* PickerObject.swift in Sources */,
 				067F4685280080D9004C403F /* BaseObject.swift in Sources */,

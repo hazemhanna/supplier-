@@ -57,7 +57,8 @@ class ProfileViewController: BaseViewController {
     
     // MARK: - Actions
     @IBAction func editClicked(_ sender: UIButton) {
-        push(controller: EditProfileViewController())
+       // push(controller: EditProfileViewController())
+         push(controller: OffersViewController())
     }
     
     @IBAction func myPostsClicked(_ sender: UIButton) {
