@@ -1972,6 +1972,7 @@ struct _R: Rswift.Validatable {
       try _HomeOfferCollectionViewCell.validate()
       try _LoginAlertViewController.validate()
       try _LoginViewController.validate()
+      try _MessagesReceverTableViewCell.validate()
       try _MyOrdersViewController.validate()
       try _OffersViewController.validate()
       try _OrderCompletedViewController.validate()
@@ -2448,12 +2449,18 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    struct _MessagesReceverTableViewCell: Rswift.NibResourceType {
+    struct _MessagesReceverTableViewCell: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "MessagesReceverTableViewCell"
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MessagesReceverTableViewCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MessagesReceverTableViewCell
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "Screen Shot 2022-04-12 at 9.51.08 PM", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Screen Shot 2022-04-12 at 9.51.08 PM' is used in nib 'MessagesReceverTableViewCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
       }
 
       fileprivate init() {}

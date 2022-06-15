@@ -27,9 +27,8 @@ class MessagesDetailsViewController: BaseViewController {
     // MARK: - Functions
     override func setupView() {
         super.setupView()
-        
         self.message.append(Message(date: "منذ يومين", message: "هذا الكلام سخيف جدااا", receiverFlag: false))
-        self.message.append(Message(date: "منذ يومين", message: "هذا الكلام سخيف جدااا", receiverFlag: true))
+        self.message.append(Message(date: "منذ يومين", message: " هذا الكلام سخيف جدااا الكلامالكلامالكلام الكلامالكلام الكلام الكلام الكلام الكلام الكلام الكلام الكلام الكلامالكلام الكلام الكلام الكلام الكلام الكلام الكلامالكلام الكلام الكلام الكلام الكلام الكلام الكلام الكلام الكلام الكلام الكلام الكلامالكلام الكلام الكلام الكلام الكلام الكلام الكلام", receiverFlag: true))
         self.message.append(Message(date: "منذ يومين", message: "هذا الكلام سخيف جدااا", receiverFlag: false))
         self.message.append(Message(date: "منذ يومين", message: "هذا الكلام سخيف جدااا", receiverFlag: true))
 
