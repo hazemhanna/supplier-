@@ -19,6 +19,8 @@
 		047FA0CE2858F56D009EFFBB /* OfferCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047FA0CC2858F56D009EFFBB /* OfferCollectionViewCell.xib */; };
 		048F460D285A1A3D00E0EE6F /* MyPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F460B285A1A3D00E0EE6F /* MyPostsViewController.swift */; };
 		048F460E285A1A3D00E0EE6F /* MyPostsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F460C285A1A3D00E0EE6F /* MyPostsViewController.xib */; };
+		048F4613285A239C00E0EE6F /* MyPostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F4611285A239C00E0EE6F /* MyPostsTableViewCell.swift */; };
+		048F4614285A239C00E0EE6F /* MyPostsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F4612285A239C00E0EE6F /* MyPostsTableViewCell.xib */; };
 		055AF33888E3281697E5F2A9 /* Pods_ElsupplierApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5023ACE50E7883637337AF3 /* Pods_ElsupplierApp.framework */; };
 		0609A807280AA65000806081 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609A805280AA65000806081 /* HomeViewController.swift */; };
 		0609A808280AA65000806081 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0609A806280AA65000806081 /* HomeViewController.xib */; };
@@ -261,6 +263,8 @@
 		047FA0CC2858F56D009EFFBB /* OfferCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferCollectionViewCell.xib; sourceTree = "<group>"; };
 		048F460B285A1A3D00E0EE6F /* MyPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsViewController.swift; sourceTree = "<group>"; };
 		048F460C285A1A3D00E0EE6F /* MyPostsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPostsViewController.xib; sourceTree = "<group>"; };
+		048F4611285A239C00E0EE6F /* MyPostsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsTableViewCell.swift; sourceTree = "<group>"; };
+		048F4612285A239C00E0EE6F /* MyPostsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPostsTableViewCell.xib; sourceTree = "<group>"; };
 		0609A805280AA65000806081 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0609A806280AA65000806081 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		0609A809280AB28300806081 /* HomeOfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOfferCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -558,6 +562,7 @@
 		048F460A285A1A0F00E0EE6F /* My Posts */ = {
 			isa = PBXGroup;
 			children = (
+				048F4610285A237D00E0EE6F /* Cell */,
 				048F460B285A1A3D00E0EE6F /* MyPostsViewController.swift */,
 				048F460C285A1A3D00E0EE6F /* MyPostsViewController.xib */,
 			);
@@ -571,6 +576,15 @@
 				0438A54E2859554300502F73 /* AddPostsViewController.xib */,
 			);
 			path = "Add Post";
+			sourceTree = "<group>";
+		};
+		048F4610285A237D00E0EE6F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				048F4611285A239C00E0EE6F /* MyPostsTableViewCell.swift */,
+				048F4612285A239C00E0EE6F /* MyPostsTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		0609A811280AD57000806081 /* Posts */ = {
@@ -1198,6 +1212,7 @@
 				067269D028552DAB00906BA5 /* SupplierPostsViewController.xib in Resources */,
 				06ECB375280A297D0056B8FF /* FavProductsViewController.xib in Resources */,
 				068C805F28403B4A00951E95 /* ProductDetailsViewController.xib in Resources */,
+				048F4614285A239C00E0EE6F /* MyPostsTableViewCell.xib in Resources */,
 				06C2CD48284B6C9600C73828 /* OrderSummaryViewController.xib in Resources */,
 				06D0882D284BACFE008F9F3F /* OrderDetailsViewController.xib in Resources */,
 				06282A2A28501A1100BE199E /* MessageTableViewCell.xib in Resources */,
@@ -1436,6 +1451,7 @@
 				067F46B328008157004C403F /* BaseViewController.swift in Sources */,
 				069083B528060EB500819D1C /* UserSectionView.swift in Sources */,
 				06DECF2728330CC400BE5959 /* SupplierProductSearchCollectionCell.swift in Sources */,
+				048F4613285A239C00E0EE6F /* MyPostsTableViewCell.swift in Sources */,
 				067F4663280080D0004C403F /* Cache.swift in Sources */,
 				067F4644280080C5004C403F /* FloatingTextField.swift in Sources */,
 				067F4659280080D0004C403F /* Language.swift in Sources */,
