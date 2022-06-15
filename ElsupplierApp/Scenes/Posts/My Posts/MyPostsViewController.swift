@@ -24,7 +24,7 @@ class MyPostsViewController: BaseViewController {
     // MARK: - Functions
     override func setupView() {
         super.setupView()
-        tableView.registerCell(ofType: MessagesReceverTableViewCell.self)
+        tableView.registerCell(ofType: MyPostsTableViewCell.self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
         userView.delegate = self
@@ -44,12 +44,10 @@ class MyPostsViewController: BaseViewController {
         false
     }
     
-    
     // MARK: - Actions
     @IBAction func addPostClicked(_ sender: UIButton) {
         push(controller: AddPostsViewController())
     }
-    
 }
 
 extension MyPostsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -59,7 +57,7 @@ extension MyPostsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: MessagesReceverTableViewCell = tableView.dequeueReusableCell()!
+        let cell: MyPostsTableViewCell = tableView.dequeueReusableCell()!
         return cell
     }
 }

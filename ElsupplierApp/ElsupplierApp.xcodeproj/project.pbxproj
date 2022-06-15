@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0414907E285A3F940088E68A /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414907C285A3F940088E68A /* ImageCollectionViewCell.swift */; };
+		0414907F285A3F940088E68A /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0414907D285A3F940088E68A /* ImageCollectionViewCell.xib */; };
 		0438A54F2859554300502F73 /* AddPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438A54D2859554300502F73 /* AddPostsViewController.swift */; };
 		0438A5502859554300502F73 /* AddPostsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0438A54E2859554300502F73 /* AddPostsViewController.xib */; };
 		0438A55428596BCC00502F73 /* MessagesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438A55228596BCC00502F73 /* MessagesDetailsViewController.swift */; };
@@ -251,6 +253,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0414907C285A3F940088E68A /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		0414907D285A3F940088E68A /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		0438A54D2859554300502F73 /* AddPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostsViewController.swift; sourceTree = "<group>"; };
 		0438A54E2859554300502F73 /* AddPostsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPostsViewController.xib; sourceTree = "<group>"; };
 		0438A55228596BCC00502F73 /* MessagesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesDetailsViewController.swift; sourceTree = "<group>"; };
@@ -583,6 +587,8 @@
 			children = (
 				048F4611285A239C00E0EE6F /* MyPostsTableViewCell.swift */,
 				048F4612285A239C00E0EE6F /* MyPostsTableViewCell.xib */,
+				0414907C285A3F940088E68A /* ImageCollectionViewCell.swift */,
+				0414907D285A3F940088E68A /* ImageCollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1237,6 +1243,7 @@
 				067269D428552ECC00906BA5 /* PostTableViewCell.xib in Resources */,
 				06ED3EA42800855B00AA6D55 /* Cairo-Medium.ttf in Resources */,
 				06C2CD52284B90BF00C73828 /* EmptyCartView.xib in Resources */,
+				0414907F285A3F940088E68A /* ImageCollectionViewCell.xib in Resources */,
 				06B9B53F2842BDB600A2C7CC /* PaymentTypeTableCell.xib in Resources */,
 				062456F028541CBC00521B1C /* SupplierDetailsViewController.xib in Resources */,
 				068F9A7C282B130A0093BD41 /* AddressesListViewController.xib in Resources */,
@@ -1393,6 +1400,7 @@
 				067F46992800812F004C403F /* DateTextField.swift in Sources */,
 				067F4648280080C5004C403F /* UILabelExtensions.swift in Sources */,
 				06DECF242833001300BE5959 /* ProductModel.swift in Sources */,
+				0414907E285A3F940088E68A /* ImageCollectionViewCell.swift in Sources */,
 				067F4637280080C5004C403F /* DataExtentions.swift in Sources */,
 				06840B222813395700738B2B /* PromotionModel.swift in Sources */,
 				0664E00528099B0E0095AC42 /* ProfileViewModel.swift in Sources */,
