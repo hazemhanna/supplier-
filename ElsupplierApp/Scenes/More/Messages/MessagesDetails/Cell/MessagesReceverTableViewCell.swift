@@ -31,14 +31,14 @@ class MessagesReceverTableViewCell: UITableViewCell {
     func config(date: String, Message: String, ReceiverFlag: Bool) {
         if ReceiverFlag {
             self.MessageContentView.semanticContentAttribute = .forceLeftToRight
-            self.UserContentView.alignment = .leading
+            self.UserContentView.alignment = .trailing
             MessageContentTV.textAlignment = .left
             self.dateLabel.semanticContentAttribute = .forceLeftToRight
             dateLabel.textAlignment = .left
             self.MessageContentTV.backgroundColor = #colorLiteral(red: 0.7058823529, green: 0.9176470588, blue: 0.9960784314, alpha: 0.3)
         } else {
             self.MessageContentView.semanticContentAttribute = .forceRightToLeft
-            self.UserContentView.alignment = .trailing
+            self.UserContentView.alignment = .leading
             MessageContentTV.textAlignment = .right
             self.dateLabel.semanticContentAttribute = .forceRightToLeft
             dateLabel.textAlignment = .right
