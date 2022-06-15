@@ -33,7 +33,6 @@ class MessagesDetailsViewController: BaseViewController {
         self.message.append(Message(date: "منذ يومين", message: "هذا الكلام سخيف جدااا", receiverFlag: true))
         self.message.append(Message(date: "منذ دقيقة", message: "اجل", receiverFlag: false))
         self.message.append(Message(date: "الان", message: "اجل", receiverFlag: true))
-
         
         title = "_messages".localized
         tableView.registerCell(ofType: MessagesReceverTableViewCell.self)

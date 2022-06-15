@@ -1014,7 +1014,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 65 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 66 nibs.
   struct nib {
     /// Nib `AddAddressViewController`.
     static let addAddressViewController = _R.nib._AddAddressViewController()
@@ -1082,6 +1082,8 @@ struct R: Rswift.Validatable {
     static let messagesViewController = _R.nib._MessagesViewController()
     /// Nib `MyOrdersViewController`.
     static let myOrdersViewController = _R.nib._MyOrdersViewController()
+    /// Nib `MyPostsViewController`.
+    static let myPostsViewController = _R.nib._MyPostsViewController()
     /// Nib `NotificationTableViewCell`.
     static let notificationTableViewCell = _R.nib._NotificationTableViewCell()
     /// Nib `NotificationsViewController`.
@@ -1408,6 +1410,14 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.myOrdersViewController) instead")
     static func myOrdersViewController(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.myOrdersViewController)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "MyPostsViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.myPostsViewController) instead")
+    static func myPostsViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.myPostsViewController)
     }
     #endif
 
@@ -1799,6 +1809,10 @@ struct R: Rswift.Validatable {
       return R.nib.myOrdersViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
+    static func myPostsViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.myPostsViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
     static func notificationTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NotificationTableViewCell? {
       return R.nib.notificationTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? NotificationTableViewCell
     }
@@ -1974,6 +1988,7 @@ struct _R: Rswift.Validatable {
       try _LoginViewController.validate()
       try _MessagesReceverTableViewCell.validate()
       try _MyOrdersViewController.validate()
+      try _MyPostsViewController.validate()
       try _OffersViewController.validate()
       try _OrderCompletedViewController.validate()
       try _PasswordChangedViewController.validate()
@@ -2489,6 +2504,29 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "drop arrow", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'drop arrow' is used in nib 'MyOrdersViewController', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "LightBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'LightBlue' is used in nib 'MyOrdersViewController', but couldn't be loaded.") }
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _MyPostsViewController: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "MyPostsViewController"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "drop arrow", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'drop arrow' is used in nib 'MyPostsViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "picture", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'picture' is used in nib 'MyPostsViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "video", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'video' is used in nib 'MyPostsViewController', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "DarkBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'DarkBlue' is used in nib 'MyPostsViewController', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "IceBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'IceBlue' is used in nib 'MyPostsViewController', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "LightBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'LightBlue' is used in nib 'MyPostsViewController', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "SteelGrey", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'SteelGrey' is used in nib 'MyPostsViewController', but couldn't be loaded.") }
         }
       }
 

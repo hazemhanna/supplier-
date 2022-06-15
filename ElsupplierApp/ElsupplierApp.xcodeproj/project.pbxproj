@@ -17,6 +17,8 @@
 		047FA0C92858F428009EFFBB /* OffersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047FA0C72858F428009EFFBB /* OffersViewController.xib */; };
 		047FA0CD2858F56D009EFFBB /* OfferCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FA0CB2858F56D009EFFBB /* OfferCollectionViewCell.swift */; };
 		047FA0CE2858F56D009EFFBB /* OfferCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047FA0CC2858F56D009EFFBB /* OfferCollectionViewCell.xib */; };
+		048F460D285A1A3D00E0EE6F /* MyPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F460B285A1A3D00E0EE6F /* MyPostsViewController.swift */; };
+		048F460E285A1A3D00E0EE6F /* MyPostsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F460C285A1A3D00E0EE6F /* MyPostsViewController.xib */; };
 		055AF33888E3281697E5F2A9 /* Pods_ElsupplierApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5023ACE50E7883637337AF3 /* Pods_ElsupplierApp.framework */; };
 		0609A807280AA65000806081 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609A805280AA65000806081 /* HomeViewController.swift */; };
 		0609A808280AA65000806081 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0609A806280AA65000806081 /* HomeViewController.xib */; };
@@ -257,6 +259,8 @@
 		047FA0C72858F428009EFFBB /* OffersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OffersViewController.xib; sourceTree = "<group>"; };
 		047FA0CB2858F56D009EFFBB /* OfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCollectionViewCell.swift; sourceTree = "<group>"; };
 		047FA0CC2858F56D009EFFBB /* OfferCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferCollectionViewCell.xib; sourceTree = "<group>"; };
+		048F460B285A1A3D00E0EE6F /* MyPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsViewController.swift; sourceTree = "<group>"; };
+		048F460C285A1A3D00E0EE6F /* MyPostsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPostsViewController.xib; sourceTree = "<group>"; };
 		0609A805280AA65000806081 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0609A806280AA65000806081 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		0609A809280AB28300806081 /* HomeOfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOfferCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -507,8 +511,8 @@
 		0438A54C2859551F00502F73 /* Posts */ = {
 			isa = PBXGroup;
 			children = (
-				0438A54D2859554300502F73 /* AddPostsViewController.swift */,
-				0438A54E2859554300502F73 /* AddPostsViewController.xib */,
+				048F460A285A1A0F00E0EE6F /* My Posts */,
+				048F460F285A1E3D00E0EE6F /* Add Post */,
 			);
 			path = Posts;
 			sourceTree = "<group>";
@@ -549,6 +553,24 @@
 				047FA0CC2858F56D009EFFBB /* OfferCollectionViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		048F460A285A1A0F00E0EE6F /* My Posts */ = {
+			isa = PBXGroup;
+			children = (
+				048F460B285A1A3D00E0EE6F /* MyPostsViewController.swift */,
+				048F460C285A1A3D00E0EE6F /* MyPostsViewController.xib */,
+			);
+			path = "My Posts";
+			sourceTree = "<group>";
+		};
+		048F460F285A1E3D00E0EE6F /* Add Post */ = {
+			isa = PBXGroup;
+			children = (
+				0438A54D2859554300502F73 /* AddPostsViewController.swift */,
+				0438A54E2859554300502F73 /* AddPostsViewController.xib */,
+			);
+			path = "Add Post";
 			sourceTree = "<group>";
 		};
 		0609A811280AD57000806081 /* Posts */ = {
@@ -1188,6 +1210,7 @@
 				068F9A88282B2A6A0093BD41 /* AddAddressViewController.xib in Resources */,
 				06ED3E9F2800855B00AA6D55 /* Cairo-Regular.ttf in Resources */,
 				067F460928007FDE004C403F /* LaunchScreen.storyboard in Resources */,
+				048F460E285A1A3D00E0EE6F /* MyPostsViewController.xib in Resources */,
 				06B9B52D2842575300A2C7CC /* CartTableCell.xib in Resources */,
 				0609A810280AB2F700806081 /* HomeDeptCollectionViewCell.xib in Resources */,
 				06DECF202832FA2200BE5959 /* SupplierSearchResultTableCell.xib in Resources */,
@@ -1453,6 +1476,7 @@
 				047FA0CD2858F56D009EFFBB /* OfferCollectionViewCell.swift in Sources */,
 				067F4665280080D0004C403F /* LocationManager.swift in Sources */,
 				067F4684280080D9004C403F /* PickerObject.swift in Sources */,
+				048F460D285A1A3D00E0EE6F /* MyPostsViewController.swift in Sources */,
 				067F4685280080D9004C403F /* BaseObject.swift in Sources */,
 				067F4631280080C5004C403F /* UITableViewExtensions.swift in Sources */,
 				06A53FDC2813A4C10052D713 /* HomeViewModel.swift in Sources */,
