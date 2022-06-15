@@ -2444,7 +2444,7 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
-        if UIKit.UIImage(named: "Screen Shot 2022-04-16 at 10.18.14 AM", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Screen Shot 2022-04-16 at 10.18.14 AM' is used in nib 'ImageCollectionViewCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Screen Shot 2022-04-16 at 12.39.35 AM", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Screen Shot 2022-04-16 at 12.39.35 AM' is used in nib 'ImageCollectionViewCell', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "SteelGrey", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'SteelGrey' is used in nib 'ImageCollectionViewCell', but couldn't be loaded.") }
         }

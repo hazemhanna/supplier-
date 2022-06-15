@@ -54,6 +54,12 @@ extension MyPostsTableViewCell: UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)!
+        if indexPath.row == 2 {
+            cell.blackView.isHidden = false
+        }else{
+            cell.blackView.isHidden = true
+
+        }
         return cell
     }
     
