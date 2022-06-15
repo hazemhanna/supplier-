@@ -1014,10 +1014,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 62 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 65 nibs.
   struct nib {
     /// Nib `AddAddressViewController`.
     static let addAddressViewController = _R.nib._AddAddressViewController()
+    /// Nib `AddPostsViewController`.
+    static let addPostsViewController = _R.nib._AddPostsViewController()
     /// Nib `AddTenderViewController`.
     static let addTenderViewController = _R.nib._AddTenderViewController()
     /// Nib `AddressTableViewCell`.
@@ -1072,6 +1074,10 @@ struct R: Rswift.Validatable {
     static let loginViewController = _R.nib._LoginViewController()
     /// Nib `MessageTableViewCell`.
     static let messageTableViewCell = _R.nib._MessageTableViewCell()
+    /// Nib `MessagesDetailsViewController`.
+    static let messagesDetailsViewController = _R.nib._MessagesDetailsViewController()
+    /// Nib `MessagesReceverTableViewCell`.
+    static let messagesReceverTableViewCell = _R.nib._MessagesReceverTableViewCell()
     /// Nib `MessagesViewController`.
     static let messagesViewController = _R.nib._MessagesViewController()
     /// Nib `MyOrdersViewController`.
@@ -1146,6 +1152,14 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.addAddressViewController) instead")
     static func addAddressViewController(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.addAddressViewController)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "AddPostsViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.addPostsViewController) instead")
+    static func addPostsViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.addPostsViewController)
     }
     #endif
 
@@ -1362,6 +1376,22 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.messageTableViewCell) instead")
     static func messageTableViewCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.messageTableViewCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "MessagesDetailsViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.messagesDetailsViewController) instead")
+    static func messagesDetailsViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.messagesDetailsViewController)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "MessagesReceverTableViewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.messagesReceverTableViewCell) instead")
+    static func messagesReceverTableViewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.messagesReceverTableViewCell)
     }
     #endif
 
@@ -1641,6 +1671,10 @@ struct R: Rswift.Validatable {
       return R.nib.addAddressViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
+    static func addPostsViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.addPostsViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
     static func addTenderViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.addTenderViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
@@ -1747,6 +1781,14 @@ struct R: Rswift.Validatable {
 
     static func messageTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MessageTableViewCell? {
       return R.nib.messageTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MessageTableViewCell
+    }
+
+    static func messagesDetailsViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.messagesDetailsViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
+    static func messagesReceverTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MessagesReceverTableViewCell? {
+      return R.nib.messagesReceverTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MessagesReceverTableViewCell
     }
 
     static func messagesViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
@@ -1915,6 +1957,7 @@ struct _R: Rswift.Validatable {
   struct nib: Rswift.Validatable {
     static func validate() throws {
       try _AddAddressViewController.validate()
+      try _AddPostsViewController.validate()
       try _AddTenderViewController.validate()
       try _AddressTableViewCell.validate()
       try _CartTableCell.validate()
@@ -1961,6 +2004,27 @@ struct _R: Rswift.Validatable {
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "DarkBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'DarkBlue' is used in nib 'AddAddressViewController', but couldn't be loaded.") }
           if UIKit.UIColor(named: "LightBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'LightBlue' is used in nib 'AddAddressViewController', but couldn't be loaded.") }
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _AddPostsViewController: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "AddPostsViewController"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "picture", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'picture' is used in nib 'AddPostsViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "video", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'video' is used in nib 'AddPostsViewController', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "DarkBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'DarkBlue' is used in nib 'AddPostsViewController', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "LightBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'LightBlue' is used in nib 'AddPostsViewController', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "SteelGrey", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'SteelGrey' is used in nib 'AddPostsViewController', but couldn't be loaded.") }
         }
       }
 
@@ -2368,6 +2432,28 @@ struct _R: Rswift.Validatable {
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MessageTableViewCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MessageTableViewCell
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _MessagesDetailsViewController: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "MessagesDetailsViewController"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _MessagesReceverTableViewCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "MessagesReceverTableViewCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MessagesReceverTableViewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MessagesReceverTableViewCell
       }
 
       fileprivate init() {}

@@ -57,7 +57,9 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        #warning("push chat controller")
+        
+        push(controller: MessagesDetailsViewController())
+
     }
     
 }

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0438A54F2859554300502F73 /* AddPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438A54D2859554300502F73 /* AddPostsViewController.swift */; };
+		0438A5502859554300502F73 /* AddPostsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0438A54E2859554300502F73 /* AddPostsViewController.xib */; };
+		0438A55428596BCC00502F73 /* MessagesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438A55228596BCC00502F73 /* MessagesDetailsViewController.swift */; };
+		0438A55528596BCC00502F73 /* MessagesDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0438A55328596BCC00502F73 /* MessagesDetailsViewController.xib */; };
+		0438A55928596D7200502F73 /* MessagesReceverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438A55728596D7200502F73 /* MessagesReceverTableViewCell.swift */; };
+		0438A55A28596D7200502F73 /* MessagesReceverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0438A55828596D7200502F73 /* MessagesReceverTableViewCell.xib */; };
 		047FA0C82858F428009EFFBB /* OffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FA0C62858F428009EFFBB /* OffersViewController.swift */; };
 		047FA0C92858F428009EFFBB /* OffersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047FA0C72858F428009EFFBB /* OffersViewController.xib */; };
 		047FA0CD2858F56D009EFFBB /* OfferCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FA0CB2858F56D009EFFBB /* OfferCollectionViewCell.swift */; };
@@ -241,6 +247,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0438A54D2859554300502F73 /* AddPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostsViewController.swift; sourceTree = "<group>"; };
+		0438A54E2859554300502F73 /* AddPostsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPostsViewController.xib; sourceTree = "<group>"; };
+		0438A55228596BCC00502F73 /* MessagesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesDetailsViewController.swift; sourceTree = "<group>"; };
+		0438A55328596BCC00502F73 /* MessagesDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessagesDetailsViewController.xib; sourceTree = "<group>"; };
+		0438A55728596D7200502F73 /* MessagesReceverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesReceverTableViewCell.swift; sourceTree = "<group>"; };
+		0438A55828596D7200502F73 /* MessagesReceverTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessagesReceverTableViewCell.xib; sourceTree = "<group>"; };
 		047FA0C62858F428009EFFBB /* OffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewController.swift; sourceTree = "<group>"; };
 		047FA0C72858F428009EFFBB /* OffersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OffersViewController.xib; sourceTree = "<group>"; };
 		047FA0CB2858F56D009EFFBB /* OfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -492,6 +504,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0438A54C2859551F00502F73 /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				0438A54D2859554300502F73 /* AddPostsViewController.swift */,
+				0438A54E2859554300502F73 /* AddPostsViewController.xib */,
+			);
+			path = Posts;
+			sourceTree = "<group>";
+		};
+		0438A55128596B8900502F73 /* MessagesDetails */ = {
+			isa = PBXGroup;
+			children = (
+				0438A55628596CF500502F73 /* Cell */,
+				0438A55228596BCC00502F73 /* MessagesDetailsViewController.swift */,
+				0438A55328596BCC00502F73 /* MessagesDetailsViewController.xib */,
+			);
+			path = MessagesDetails;
+			sourceTree = "<group>";
+		};
+		0438A55628596CF500502F73 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0438A55728596D7200502F73 /* MessagesReceverTableViewCell.swift */,
+				0438A55828596D7200502F73 /* MessagesReceverTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		047FA0C52858F409009EFFBB /* Offers */ = {
 			isa = PBXGroup;
 			children = (
@@ -586,6 +626,7 @@
 		06282A222850195700BE199E /* Messages */ = {
 			isa = PBXGroup;
 			children = (
+				0438A55128596B8900502F73 /* MessagesDetails */,
 				06282A232850196D00BE199E /* MessagesViewController.swift */,
 				06282A242850196D00BE199E /* MessagesViewController.xib */,
 				06282A2728501A1100BE199E /* MessageTableViewCell.swift */,
@@ -789,6 +830,7 @@
 		067F46A028008145004C403F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				0438A54C2859551F00502F73 /* Posts */,
 				047FA0C52858F409009EFFBB /* Offers */,
 				062456EC28541C8F00521B1C /* Supplier */,
 				06FD070128095E540032C297 /* More */,
@@ -1125,6 +1167,7 @@
 				067269C8285513AA00906BA5 /* SupplierProductsViewController.xib in Resources */,
 				0609A820280AD71D00806081 /* PostsViewController.xib in Resources */,
 				06F3831B283926850073438C /* FilterSelectionTableCell.xib in Resources */,
+				0438A55528596BCC00502F73 /* MessagesDetailsViewController.xib in Resources */,
 				06DECF2828330CC400BE5959 /* SupplierProductSearchCollectionCell.xib in Resources */,
 				06ECB36D280A246B0056B8FF /* PasswordChangedViewController.xib in Resources */,
 				06ED3EA12800855B00AA6D55 /* Cairo-ExtraBold.ttf in Resources */,
@@ -1171,8 +1214,10 @@
 				06FD0712280966BB0032C297 /* ProfileViewController.xib in Resources */,
 				06FD070B28095F510032C297 /* NotificationTableViewCell.xib in Resources */,
 				06282A262850196D00BE199E /* MessagesViewController.xib in Resources */,
+				0438A5502859554300502F73 /* AddPostsViewController.xib in Resources */,
 				067F46B928008157004C403F /* PickerViewController.xib in Resources */,
 				0609A808280AA65000806081 /* HomeViewController.xib in Resources */,
+				0438A55A28596D7200502F73 /* MessagesReceverTableViewCell.xib in Resources */,
 				06ED3EAD28008A5900AA6D55 /* Localizable.strings in Resources */,
 				06ED3EA62800855B00AA6D55 /* Cairo-ExtraLight.ttf in Resources */,
 				067F46B628008157004C403F /* AlertViewController.xib in Resources */,
@@ -1273,6 +1318,7 @@
 				067F4639280080C5004C403F /* UICollectionViewExtensions.swift in Sources */,
 				06ED3EA92800866700AA6D55 /* R.generated.swift in Sources */,
 				06ECB36C280A246B0056B8FF /* PasswordChangedViewController.swift in Sources */,
+				0438A54F2859554300502F73 /* AddPostsViewController.swift in Sources */,
 				06D08830284BB674008F9F3F /* CategoriesViewController.swift in Sources */,
 				06658E86282EEAD300F039EE /* EditAddressViewController.swift in Sources */,
 				06282A252850196D00BE199E /* MessagesViewController.swift in Sources */,
@@ -1352,6 +1398,7 @@
 				06840B1E281338E100738B2B /* CommentModel.swift in Sources */,
 				067F465E280080D0004C403F /* LocationDataFetcher.swift in Sources */,
 				067F465F280080D0004C403F /* ImagePicker.swift in Sources */,
+				0438A55428596BCC00502F73 /* MessagesDetailsViewController.swift in Sources */,
 				06FD070728095E850032C297 /* NotificationsViewModel.swift in Sources */,
 				067F465B280080D0004C403F /* Swizzler.swift in Sources */,
 				0609A823280AD76A00806081 /* TendersViewController.swift in Sources */,
@@ -1373,6 +1420,7 @@
 				065C89D9283319840096AE54 /* SupplierSearchResultViewModel.swift in Sources */,
 				06B9B5362842B46F00A2C7CC /* ChooseAddressViewController.swift in Sources */,
 				067269C7285513AA00906BA5 /* SupplierProductsViewController.swift in Sources */,
+				0438A55928596D7200502F73 /* MessagesReceverTableViewCell.swift in Sources */,
 				06C2CD4B284B71FD00C73828 /* OrderSummaryTableCell.swift in Sources */,
 				067F4686280080D9004C403F /* PagedObject.swift in Sources */,
 				065A4BF328414180004B0188 /* ProductViewModel.swift in Sources */,
