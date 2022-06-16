@@ -28,6 +28,7 @@ final class PostAPIs {
         let request = ESNetworkRequest("posts/like")
         request.method = .post
         request.parameters = ["postId": postId]
+        request.selections = [.key("message")]
         return NetworkManager.execute(request: request)
     }
     
@@ -36,6 +37,7 @@ final class PostAPIs {
         request.method = .post
         request.parameters = ["postId": postId,
                               "comment" : comment]
+        request.selections = [.key("message")]
         return NetworkManager.execute(request: request)
     }
     
@@ -44,6 +46,7 @@ final class PostAPIs {
         request.method = .post
         request.parameters = ["title": title,
                               "body" : body]
+        request.selections = [.key("message")]
         return NetworkManager.execute(request: request)
     }
 }

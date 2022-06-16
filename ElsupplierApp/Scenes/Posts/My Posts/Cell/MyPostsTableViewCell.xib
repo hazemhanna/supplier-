@@ -337,6 +337,7 @@
                 <outlet property="collectionView" destination="pXB-df-Igu" id="U6c-ND-IbU"/>
                 <outlet property="collectionViewHeight" destination="aBk-Ur-wTI" id="r9F-iF-Sdg"/>
                 <outlet property="dateLbl" destination="HqX-EU-TkA" id="Qo3-vp-E9a"/>
+                <outlet property="likeBtn" destination="EyW-7I-adb" id="FEA-m2-oGZ"/>
                 <outlet property="userImage" destination="aWL-mZ-k0Y" id="ZU5-WI-6s5"/>
                 <outlet property="userName" destination="5Jh-3M-peW" id="enC-49-3O9"/>
                 <outlet property="userType" destination="Une-0h-HDr" id="TEK-Ew-vwV"/>

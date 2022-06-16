@@ -26,7 +26,8 @@ class MyPostsTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLbl  : UILabel!
     @IBOutlet weak var userType : UILabel!
     @IBOutlet weak var addCommentTF  : UITextField!
-    
+    @IBOutlet weak var likeBtn  : UIButton!
+
     weak var delegate: MyPostsTableViewCellDelegate?
     
     var posts : PostModel!{
@@ -42,6 +43,7 @@ class MyPostsTableViewCell: UITableViewCell {
             }else {
                 collectionViewHeight.constant = 0
             }
+            posts.isLiked == 0 ? likeBtn.setImage(UIImage(named: "like"), for: .normal) :  likeBtn.setImage(UIImage(named: "liked"), for: .normal)
         }
     }
     

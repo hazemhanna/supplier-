@@ -31,7 +31,6 @@ class MyPostsViewController: BaseViewController {
     override func setupView() {
         super.setupView()
         viewModel.loadAllPosts()
-        
         tableView.registerCell(ofType: MyPostsTableViewCell.self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
