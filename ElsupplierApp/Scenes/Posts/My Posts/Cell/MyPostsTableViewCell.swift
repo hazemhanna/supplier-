@@ -8,13 +8,13 @@
 import UIKit
 
 protocol MyPostsTableViewCellDelegate: AnyObject {
+
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didLike item: PostModel)
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didAddComent item: PostModel,comment : String)
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, sendMessage item: PostModel)
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, makeCall item: PostModel)
 
 }
-
 
 class MyPostsTableViewCell: UITableViewCell {
     
@@ -62,6 +62,8 @@ class MyPostsTableViewCell: UITableViewCell {
     
     @IBAction func addCommentClicked(_ sender: UIButton) {
         delegate?.myPostsTableViewCell(self, didAddComent: posts,comment : addCommentTF.text ?? "")
+        addCommentTF.text = ""
+        
     }
     
     @IBAction func sendMessageClicked(_ sender: UIButton) {

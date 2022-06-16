@@ -41,12 +41,20 @@ final class PostAPIs {
         return NetworkManager.execute(request: request)
     }
     
-    func addPost(title: String,body : String) -> Single<String> {
+    func addPost(title: String,body : String,attachments : [UIImage]?) -> Single<String> {
         let request = ESNetworkRequest("posts/store")
         request.method = .post
         request.parameters = ["title": title,
                               "body" : body]
+        var files = [MPFile]()
+        attachments?.forEach { photo  in
+            if let data = photo.jpegData(compressionQuality: 0.5){
+                files.append(.init(data: data, key: "media[]", name: "media", memType: "Jpeg"))
+            }
+        }
         request.selections = [.key("message")]
-        return NetworkManager.execute(request: request)
+       return NetworkManager.upload(data: .multipart(files), request: request) { progress in
+       }
     }
+    
 }
