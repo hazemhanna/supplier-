@@ -14,7 +14,13 @@ class MyPostsViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Variables
+    let viewModel = PostsViewModel()
     
+    var posts = [PostModel](){
+        didSet{
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +49,34 @@ class MyPostsViewController: BaseViewController {
     override func shouldShowTopView() -> Bool {
         false
     }
+    override func bindViewModelToViews() {
+        viewModel.isLoading.bind {
+            if $0 {
+                Hud.show()
+            } else {
+                Hud.hide()
+            }
+        }.disposed(by: disposeBag)
+    }
+    
+    
+    override func setupCallbacks() {
+        viewModel.posts.bind { post in
+
+
+        }.disposed(by: disposeBag)
+        
+        viewModel.succeeded.bind {  message in
+            Alert.show(message: message)
+
+        }.disposed(by: disposeBag)
+        
+        
+        viewModel.error.bind {
+            Alert.show(message: $0.localizedDescription)
+        }.disposed(by: disposeBag)
+    }
+
     
     // MARK: - Actions
     @IBAction func addPostClicked(_ sender: UIButton) {
@@ -53,11 +87,14 @@ class MyPostsViewController: BaseViewController {
 extension MyPostsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       3
+        posts.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MyPostsTableViewCell = tableView.dequeueReusableCell()!
+        cell.posts = posts[indexPath.row]
+        cell.delegate = self
         return cell
     }
 }
@@ -76,4 +113,8 @@ extension MyPostsViewController: UserSectionViewDelegate {
     func didTapSearch() {
         push(controller: SearchFilterViewController())
     }
+}
+extension MyPostsViewController: MyPostsTableViewCellDelegate {
+    
+    
 }

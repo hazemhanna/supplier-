@@ -23,6 +23,8 @@
 		048F460E285A1A3D00E0EE6F /* MyPostsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F460C285A1A3D00E0EE6F /* MyPostsViewController.xib */; };
 		048F4613285A239C00E0EE6F /* MyPostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F4611285A239C00E0EE6F /* MyPostsTableViewCell.swift */; };
 		048F4614285A239C00E0EE6F /* MyPostsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F4612285A239C00E0EE6F /* MyPostsTableViewCell.xib */; };
+		049AE8CB285B76E50006BFE9 /* PostAPIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049AE8CA285B76E50006BFE9 /* PostAPIs.swift */; };
+		049AE8CD285B83360006BFE9 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049AE8CC285B83360006BFE9 /* PostsViewModel.swift */; };
 		055AF33888E3281697E5F2A9 /* Pods_ElsupplierApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5023ACE50E7883637337AF3 /* Pods_ElsupplierApp.framework */; };
 		0609A807280AA65000806081 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609A805280AA65000806081 /* HomeViewController.swift */; };
 		0609A808280AA65000806081 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0609A806280AA65000806081 /* HomeViewController.xib */; };
@@ -269,6 +271,8 @@
 		048F460C285A1A3D00E0EE6F /* MyPostsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPostsViewController.xib; sourceTree = "<group>"; };
 		048F4611285A239C00E0EE6F /* MyPostsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsTableViewCell.swift; sourceTree = "<group>"; };
 		048F4612285A239C00E0EE6F /* MyPostsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPostsTableViewCell.xib; sourceTree = "<group>"; };
+		049AE8CA285B76E50006BFE9 /* PostAPIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAPIs.swift; sourceTree = "<group>"; };
+		049AE8CC285B83360006BFE9 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
 		0609A805280AA65000806081 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0609A806280AA65000806081 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		0609A809280AB28300806081 /* HomeOfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOfferCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -521,6 +525,7 @@
 			children = (
 				048F460A285A1A0F00E0EE6F /* My Posts */,
 				048F460F285A1E3D00E0EE6F /* Add Post */,
+				049AE8CC285B83360006BFE9 /* PostsViewModel.swift */,
 			);
 			path = Posts;
 			sourceTree = "<group>";
@@ -796,6 +801,7 @@
 				06840B192813357B00738B2B /* HomeAPIs.swift */,
 				06A53FDD2813AFA60052D713 /* ProfileAPIs.swift */,
 				06B9B53228426D0C00A2C7CC /* CartAPIs.swift */,
+				049AE8CA285B76E50006BFE9 /* PostAPIs.swift */,
 			);
 			path = APIS;
 			sourceTree = "<group>";
@@ -1437,6 +1443,7 @@
 				06D08822284B93F0008F9F3F /* MyOrdersViewController.swift in Sources */,
 				067F46B228008157004C403F /* BaseTabBarController.swift in Sources */,
 				047FA0C82858F428009EFFBB /* OffersViewController.swift in Sources */,
+				049AE8CB285B76E50006BFE9 /* PostAPIs.swift in Sources */,
 				06D0882C284BACFE008F9F3F /* OrderDetailsViewController.swift in Sources */,
 				06282A1D2850052500BE199E /* TenderModel.swift in Sources */,
 				062CA8C628302D5200EFAC19 /* SearchFilterViewController.swift in Sources */,
@@ -1509,6 +1516,7 @@
 				06B9B53E2842BDB600A2C7CC /* PaymentTypeTableCell.swift in Sources */,
 				067F4635280080C5004C403F /* UIScrollViewExtensions.swift in Sources */,
 				06B9B53128426C4400A2C7CC /* CartViewModel.swift in Sources */,
+				049AE8CD285B83360006BFE9 /* PostsViewModel.swift in Sources */,
 				067F4647280080C5004C403F /* DateExtensions.swift in Sources */,
 				067F46BB28008157004C403F /* AlertViewController.swift in Sources */,
 				067269CB2855286600906BA5 /* SupplierProductCategoryCell.swift in Sources */,

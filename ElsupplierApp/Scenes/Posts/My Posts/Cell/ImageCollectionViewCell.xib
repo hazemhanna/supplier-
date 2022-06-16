@@ -87,6 +87,8 @@
             <size key="customSize" width="99" height="102"/>
             <connections>
                 <outlet property="blackView" destination="bh7-Og-GqV" id="Y9p-4x-zta"/>
+                <outlet property="imageNumber" destination="kyN-h5-2qw" id="VID-GC-t6M"/>
+                <outlet property="itemImage" destination="fuW-VJ-Tgs" id="0vH-dI-Ju6"/>
             </connections>
             <point key="canvasLocation" x="173.18840579710147" y="84.375"/>
         </collectionViewCell>

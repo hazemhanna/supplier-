@@ -7,41 +7,59 @@
 
 import UIKit
 
+protocol MyPostsTableViewCellDelegate: AnyObject {
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didLike item: PostModel)
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didAddComent item: PostModel)
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, sendMessage item: PostModel)
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, makeCall item: PostModel)
+
+}
+
+
 class MyPostsTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tableViewHeight : NSLayoutConstraint!
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
-
+    @IBOutlet weak var userImage : UIImageView!
+    @IBOutlet weak var userName : UILabel!
+    @IBOutlet weak var bostBody : UILabel!
+    @IBOutlet weak var dateLbl  : UILabel!
+    @IBOutlet weak var userType : UILabel!
+    @IBOutlet weak var addCommentTF  : UITextField!
+    
+    weak var delegate: MyPostsTableViewCellDelegate?
+    
+    var posts : PostModel!{
+        didSet{
+            
+            
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        tableView.registerCell(ofType: MessageTableViewCell.self)
         collectionView.registerCell(ofType: ImageCollectionViewCell.self)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         collectionView.delegate = self
         collectionView.dataSource = self
         selectionStyle = .none
-        tableViewHeight.constant = 2 * 80
-        
-    }
-
-}
-extension MyPostsTableViewCell: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: MessageTableViewCell = tableView.dequeueReusableCell()!
-        return cell
+    @IBAction func likeClicked(_ sender: UIButton) {
+        delegate?.myPostsTableViewCell(self, didLike: posts)
     }
     
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+    @IBAction func addCommentClicked(_ sender: UIButton) {
+        delegate?.myPostsTableViewCell(self, didAddComent: posts)
     }
+    
+    @IBAction func sendMessageClicked(_ sender: UIButton) {
+        delegate?.myPostsTableViewCell(self, sendMessage: posts)
+    }
+    
+    @IBAction func makeCallClicked(_ sender: UIButton) {
+        delegate?.myPostsTableViewCell(self, makeCall: posts)
+    }
+    
 }
 
 extension MyPostsTableViewCell: UICollectionViewDelegate,
@@ -49,20 +67,22 @@ extension MyPostsTableViewCell: UICollectionViewDelegate,
                                         UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return posts.media.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)!
+        if posts.media.count > 3 {
         if indexPath.row == 2 {
             cell.blackView.isHidden = false
         }else{
             cell.blackView.isHidden = true
-
         }
+        cell.imageNumber.text = "\(posts.media.count)"
+        cell.itemImage.setImageWith(stringUrl: posts.media[indexPath.row].media)
+     }
         return cell
     }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (collectionView.frame.width / 3.5) , height: 100)
     }
