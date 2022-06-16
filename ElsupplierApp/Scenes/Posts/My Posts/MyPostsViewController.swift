@@ -30,11 +30,12 @@ class MyPostsViewController: BaseViewController {
     // MARK: - Functions
     override func setupView() {
         super.setupView()
+        viewModel.loadAllPosts()
+        
         tableView.registerCell(ofType: MyPostsTableViewCell.self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
         userView.delegate = self
-        
         navigationController?.navigationBar.isHidden = true
         tabBarController?.navigationController?.navigationBar.isHidden = true
         if let user = UserModel.current {
@@ -62,21 +63,17 @@ class MyPostsViewController: BaseViewController {
     
     override func setupCallbacks() {
         viewModel.posts.bind { post in
-
-
+            self.posts = post
         }.disposed(by: disposeBag)
         
         viewModel.succeeded.bind {  message in
             Alert.show(message: message)
-
         }.disposed(by: disposeBag)
-        
         
         viewModel.error.bind {
             Alert.show(message: $0.localizedDescription)
         }.disposed(by: disposeBag)
     }
-
     
     // MARK: - Actions
     @IBAction func addPostClicked(_ sender: UIButton) {
@@ -115,6 +112,20 @@ extension MyPostsViewController: UserSectionViewDelegate {
     }
 }
 extension MyPostsViewController: MyPostsTableViewCellDelegate {
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didLike item: PostModel) {
+        viewModel.likePost(postId: item.id)
+    }
     
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didAddComent item: PostModel,comment : String) {
+        viewModel.addComment(postId: item.id, comment: comment)
+    }
+    
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, sendMessage item: PostModel) {
+        
+    }
+    
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, makeCall item: PostModel) {
+        
+    }
     
 }

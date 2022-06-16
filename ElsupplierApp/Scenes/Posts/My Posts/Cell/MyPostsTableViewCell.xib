@@ -335,6 +335,7 @@
                 <outlet property="addCommentTF" destination="74Q-rm-650" id="Nhy-lh-hJd"/>
                 <outlet property="bostBody" destination="v6g-89-kha" id="2Rd-dn-lgJ"/>
                 <outlet property="collectionView" destination="pXB-df-Igu" id="U6c-ND-IbU"/>
+                <outlet property="collectionViewHeight" destination="aBk-Ur-wTI" id="r9F-iF-Sdg"/>
                 <outlet property="dateLbl" destination="HqX-EU-TkA" id="Qo3-vp-E9a"/>
                 <outlet property="userImage" destination="aWL-mZ-k0Y" id="ZU5-WI-6s5"/>
                 <outlet property="userName" destination="5Jh-3M-peW" id="enC-49-3O9"/>

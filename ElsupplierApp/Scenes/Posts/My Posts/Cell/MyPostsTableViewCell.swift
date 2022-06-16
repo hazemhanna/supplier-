@@ -9,7 +9,7 @@ import UIKit
 
 protocol MyPostsTableViewCellDelegate: AnyObject {
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didLike item: PostModel)
-    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didAddComent item: PostModel)
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didAddComent item: PostModel,comment : String)
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, sendMessage item: PostModel)
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, makeCall item: PostModel)
 
@@ -19,6 +19,7 @@ protocol MyPostsTableViewCellDelegate: AnyObject {
 class MyPostsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionViewHeight : NSLayoutConstraint!
     @IBOutlet weak var userImage : UIImageView!
     @IBOutlet weak var userName : UILabel!
     @IBOutlet weak var bostBody : UILabel!
@@ -30,8 +31,17 @@ class MyPostsTableViewCell: UITableViewCell {
     
     var posts : PostModel!{
         didSet{
-            
-            
+            userImage.setImageWith(stringUrl: posts.postOwnerImage)
+            userName.text = posts.postOwner
+            bostBody.text = posts.body
+            dateLbl.text = posts.postDate
+            userType.text = posts.postOwnerRole
+            collectionView.reloadData()
+            if posts.media.count > 0 {
+                collectionViewHeight.constant = 100
+            }else {
+                collectionViewHeight.constant = 0
+            }
         }
     }
     
@@ -49,7 +59,7 @@ class MyPostsTableViewCell: UITableViewCell {
     }
     
     @IBAction func addCommentClicked(_ sender: UIButton) {
-        delegate?.myPostsTableViewCell(self, didAddComent: posts)
+        delegate?.myPostsTableViewCell(self, didAddComent: posts,comment : addCommentTF.text ?? "")
     }
     
     @IBAction func sendMessageClicked(_ sender: UIButton) {
@@ -78,9 +88,12 @@ extension MyPostsTableViewCell: UICollectionViewDelegate,
         }else{
             cell.blackView.isHidden = true
         }
+     }else{
+         cell.blackView.isHidden = true
+     }
         cell.imageNumber.text = "\(posts.media.count)"
         cell.itemImage.setImageWith(stringUrl: posts.media[indexPath.row].media)
-     }
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
