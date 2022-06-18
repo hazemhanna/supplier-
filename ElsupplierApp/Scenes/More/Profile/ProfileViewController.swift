@@ -61,6 +61,7 @@ class ProfileViewController: BaseViewController {
     }
     
     @IBAction func myPostsClicked(_ sender: UIButton) {
+        push(controller: MyPostsViewController())
     }
     
     @IBAction func messagesClicked(_ sender: UIButton) {

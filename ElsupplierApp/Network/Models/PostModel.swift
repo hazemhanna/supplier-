@@ -8,7 +8,6 @@
 import ObjectMapper
 
 final class PostModel: BaseObject {
-    
     var route = ""
     var postOwner = ""
     var postOwnerRole = ""
@@ -24,7 +23,7 @@ final class PostModel: BaseObject {
     var impressionsCount = 0
     var commentCount = 0
     var comments: [CommentModel] = []
-    var media: [String] = []
+    var media: [MediaModel] = []
     
     override func mapping(map: Map) {
         super.mapping(map: map)
@@ -43,6 +42,19 @@ final class PostModel: BaseObject {
         impressionsCount <- map["impressionsCount"]
         commentCount <- map["commentCount"]
         comments <- map["comments"]
+        media <- map["media"]
+    }
+    
+}
+
+
+final class MediaModel: BaseObject {
+    var route = ""
+    var media = ""
+    
+    override func mapping(map: Map) {
+        super.mapping(map: map)
+        route <- map["route"]
         media <- map["media"]
     }
     

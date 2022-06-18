@@ -1,0 +1,6 @@
+framework module ESNetworkManager {
+  umbrella header "ESNetworkManager-umbrella.h"
+
+  export *
+  module * { export * }
+}
