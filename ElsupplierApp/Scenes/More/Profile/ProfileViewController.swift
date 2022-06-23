@@ -92,5 +92,8 @@ class ProfileViewController: BaseViewController {
     }
     
     @IBAction func logoutClicked(_ sender: UIButton) {
+        UserModel.current = nil
+        viewModel.logout()
+        push(controller: LoginViewController())
     }
 }

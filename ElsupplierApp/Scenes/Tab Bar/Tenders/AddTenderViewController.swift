@@ -47,6 +47,12 @@ class AddTenderViewController: BaseViewController {
         }.disposed(by: disposeBag)
     }
     
+    override func bindViewsToViewModel() {
+        tenderDetailsTV.rx.text
+            .orEmpty
+            .bind(to: viewModel.tenderDetails).disposed(by: disposeBag)
+    }
+    
     override func setupCallbacks() {
         viewModel.tenderAdded.bind { [weak self] _ in
             Alert.show(title: nil, message: "_tender_added", cancelTitle: "_ok", otherTitles: []) { _ in
