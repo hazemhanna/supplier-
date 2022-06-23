@@ -7,7 +7,7 @@
 
 import ObjectMapper
 
-class UserModel: BaseObject, Storable {
+final class UserModel: BaseObject, Storable {
 
     var token = ""
     var status = ""

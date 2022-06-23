@@ -7,7 +7,7 @@
 
 import ObjectMapper
 
-class UserTypeModel: BaseObject {
+final class UserTypeModel: BaseObject {
 
     var name = ""
     var route = ""

@@ -163,3 +163,5 @@
 "_allPosts" = "كل المنشورات" ;
 "_call" = "طلب اتصال" ;
 "_sendـmesaage" = "ارسال رسالة" ;
+"_send_supplier_message" = "ارسال رسالة للمورد";
+"_price_list_request" = "طلب قائمة اسعار";

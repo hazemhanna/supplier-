@@ -7,7 +7,7 @@
 
 import ObjectMapper
 
-class OrderModel: BaseObject {
+final class OrderModel: BaseObject {
 
     var userName = ""
     var userPhone = ""

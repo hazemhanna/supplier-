@@ -62,6 +62,7 @@ class BaseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = !shouldShowNavigation()
+        tabBarController?.tabBar.isHidden = !shouldShowTabBar()
     }
     
     func bindViewsToViewModel() { }
@@ -71,7 +72,7 @@ class BaseViewController: UIViewController {
     private func setupBackgroundView() {
         if !shouldShowTopView() { return }
         let _view = UIView()
-        _view.backgroundColor = R.color.iceBlue()
+//        _view.backgroundColor = R.color.iceBlue()
         view.addSubview(_view)
         _view.snp.makeConstraints { (maker) in
             maker.leading.trailing.top.equalToSuperview()
@@ -98,6 +99,10 @@ class BaseViewController: UIViewController {
     
     @objc func backClicked() {
         navigationController?.dismiss(animated: true)
+    }
+    
+    func shouldShowTabBar() -> Bool {
+        false
     }
     
     func checkLoggedInUser() -> Bool {

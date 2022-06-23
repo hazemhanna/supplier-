@@ -54,4 +54,9 @@ class HomeAPIs {
         request.selections = [.key("data")]
         return NetworkManager.execute(request: request)
     }
+    
+    func showSupplier(with supplierId: Int) -> Single<SupplierDetailsModel> {
+        let request = ESNetworkRequest("suppliers/show?supplierId=\(supplierId)")
+        return NetworkManager.execute(request: request)
+    }
 }

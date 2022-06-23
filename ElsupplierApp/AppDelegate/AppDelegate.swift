@@ -41,9 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIView.appearance().semanticContentAttribute = Language.isArabic ? .forceRightToLeft : .forceLeftToRight
 //        UIBarButtonItem.appearance().setTitleTextAttributes ([.foregroundColor: UIColor.clear], for: .highlighted)
 //        UIBarButtonItem.appearance().setTitleTextAttributes ([.foregroundColor: UIColor.clear], for: .normal)
-        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1000, vertical: 0), for: UIBarMetrics.default)
-        UINavigationBar.appearance().backIndicatorImage = R.image.arrowLeft()
-        UINavigationBar.appearance().backIndicatorTransitionMaskImage = R.image.arrowLeft()
+//        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1000, vertical: 0), for: UIBarMetrics.default)
+//        UINavigationBar.appearance().backIndicatorImage = R.image.arrowLeft()
+//        UINavigationBar.appearance().backIndicatorTransitionMaskImage = R.image.arrowLeft()
     }
     
     func registerForRemoteNotification() {

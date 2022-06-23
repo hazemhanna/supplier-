@@ -33,6 +33,9 @@ class PostsViewController: BaseTabBarViewController {
         R.image.postsActive()
     }
     
+    override func shouldShowTabBar() -> Bool {
+        true
+    }
     // MARK: - Actions
 
 }

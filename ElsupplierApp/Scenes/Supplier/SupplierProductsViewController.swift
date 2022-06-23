@@ -14,11 +14,11 @@ class SupplierProductsViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Variables
-    var categories: [CategoryModel] = []
-    let supplier: SupplierModel
+    let supplier: SupplierDetailsModel
+    var selectedIndex = 0
     
     // MARK: - Life Cycle
-    init(supplier: SupplierModel) {
+    init(supplier: SupplierDetailsModel) {
         self.supplier = supplier
         super.init()
     }
@@ -45,17 +45,17 @@ class SupplierProductsViewController: BaseViewController {
 extension SupplierProductsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count
+        return supplier.categoryProducts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: SupplierProductCategoryCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)!
-        cell.categoryName.text = categories[indexPath.row].name
+        cell.categoryName.text = supplier.categoryProducts[indexPath.row].name
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let textWidth = categories[indexPath.row].name.widthOfString(usingFont: .appFont(ofSize: 14, weight: .bold)!) + 40
+        let textWidth = supplier.categoryProducts[indexPath.row].name.widthOfString (usingFont: .appFont(ofSize: 14, weight: .bold)!) + 40
         return CGSize(width: textWidth, height: collectionView.frame.height)
     }
     
@@ -68,17 +68,17 @@ extension SupplierProductsViewController: UICollectionViewDelegate, UICollection
 extension SupplierProductsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return supplier.products.count
+        return supplier.categoryProducts[selectedIndex].products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: FavProductTableViewCell = tableView.dequeueReusableCell()!
-        cell.supplierProduct = supplier.products[indexPath.row]
+        cell.supplierProduct = supplier.categoryProducts[selectedIndex].products[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        push(controller: ProductDetailsViewController(product: supplier.products[indexPath.row]))
+        push(controller: ProductDetailsViewController(product: supplier.categoryProducts[selectedIndex].products[indexPath.row]))
     }
     
 }

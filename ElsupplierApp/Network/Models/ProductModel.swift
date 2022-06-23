@@ -7,7 +7,7 @@
 
 import ObjectMapper
 
-class ProductModel: BaseObject {
+final class ProductModel: BaseObject {
     
     var name = ""
     var supplierName = ""
@@ -30,6 +30,10 @@ class ProductModel: BaseObject {
     var pdfFile = ""
     var productImages: [ProductImage] = []
     var specs: [[String: Any]] = []
+    var addToCart = 0
+    var orderMinAmount = 0
+    var promotions: [ProductPromotionModel] = []
+    var rfqSend = false
     
     override func mapping(map: Map) {
         super.mapping(map: map)
@@ -54,11 +58,14 @@ class ProductModel: BaseObject {
         pdfFile <- map["pdfFile"]
         productImages <- map["product_images"]
         specs <- map["product_specs"]
+        addToCart <- map["addToCart"]
+        orderMinAmount <- map["order_minimum_amount"]
+        rfqSend <- map["rfq_send"]
     }
     
 }
 
-class ProductImage: BaseObject {
+final class ProductImage: BaseObject {
     var image = ""
     var productName = ""
     override func mapping(map: Map) {
@@ -66,4 +73,21 @@ class ProductImage: BaseObject {
         image <- map["image"]
         productName <- map["product"]
     }
+}
+
+final class ProductPromotionModel: BaseObject {
+    
+    var promotionId = ""
+    var promotionPrice = ""
+    var minimumQuantity = ""
+    var expirationDate = ""
+    
+    override func mapping(map: Map) {
+        super.mapping(map: map)
+        promotionId <- map["promotionId"]
+        promotionPrice <- map["promotion_price"]
+        minimumQuantity <- map["minimum_quantity"]
+        expirationDate <- map["expiration_date"]
+    }
+    
 }

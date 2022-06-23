@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyPostsViewController: BaseViewController {
+class MyPostsViewController: BaseTabBarViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var userView: UserSectionView!
@@ -24,7 +24,6 @@ class MyPostsViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     // MARK: - Functions
@@ -49,6 +48,23 @@ class MyPostsViewController: BaseViewController {
     override func shouldShowTopView() -> Bool {
         false
     }
+    
+    override func tabBarItemTitle() -> String? {
+        "Posts".localized
+    }
+    
+    override func tabBarItemImage() -> UIImage? {
+        R.image.posts()
+    }
+    
+    override func tabBarItemSelectedImage() -> UIImage? {
+        R.image.postsActive()
+    }
+    
+    override func shouldShowTabBar() -> Bool {
+        true
+    }
+    
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
             if $0 {
@@ -89,7 +105,7 @@ extension MyPostsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MyPostsTableViewCell = tableView.dequeueReusableCell()!
-        cell.posts = posts[indexPath.row]
+        cell.post = posts[indexPath.row]
         cell.delegate = self
         return cell
     }

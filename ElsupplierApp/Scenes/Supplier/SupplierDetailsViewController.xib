@@ -92,49 +92,27 @@
                         <action selector="segmentChanged:" destination="-1" eventType="valueChanged" id="SFq-0Z-UTL"/>
                     </connections>
                 </segmentedControl>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzZ-41-HEU">
-                    <rect key="frame" x="0.0" y="270" width="414" height="592"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5v7-lG-S3L">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstAttribute="height" id="jxy-0Q-Y1r"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="RCR-eV-b9S">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        </view>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="RCR-eV-b9S" firstAttribute="leading" secondItem="fzZ-41-HEU" secondAttribute="leading" id="0B8-Sv-z3Y"/>
-                        <constraint firstItem="5v7-lG-S3L" firstAttribute="top" secondItem="fzZ-41-HEU" secondAttribute="top" id="3Zv-cm-w8B"/>
-                        <constraint firstItem="5v7-lG-S3L" firstAttribute="leading" secondItem="fzZ-41-HEU" secondAttribute="leading" id="7Yc-LO-iGo"/>
-                        <constraint firstAttribute="trailing" secondItem="5v7-lG-S3L" secondAttribute="trailing" id="aRT-GU-2UF"/>
-                        <constraint firstAttribute="bottom" secondItem="RCR-eV-b9S" secondAttribute="bottom" id="b0w-wi-Tls"/>
-                        <constraint firstItem="RCR-eV-b9S" firstAttribute="top" secondItem="5v7-lG-S3L" secondAttribute="bottom" id="hkQ-aQ-DNC"/>
-                        <constraint firstAttribute="trailing" secondItem="RCR-eV-b9S" secondAttribute="trailing" id="tBg-oZ-6ja"/>
-                    </constraints>
-                </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCR-eV-b9S">
+                    <rect key="frame" x="0.0" y="290" width="414" height="572"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fzZ-41-HEU" firstAttribute="top" secondItem="tkJ-2W-n8Z" secondAttribute="bottom" id="4KF-Gp-AJY"/>
                 <constraint firstItem="6lt-Wc-jhL" firstAttribute="top" secondItem="l2c-lT-5c4" secondAttribute="bottom" constant="8" id="5Qg-dk-ZXA"/>
                 <constraint firstItem="6lt-Wc-jhL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7Vd-O2-DJz"/>
+                <constraint firstItem="RCR-eV-b9S" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="8Xm-cz-5nP"/>
                 <constraint firstItem="egZ-EG-nSS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="8jO-Te-DLV"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="fzZ-41-HEU" secondAttribute="bottom" id="94j-CA-sDf"/>
                 <constraint firstItem="l2c-lT-5c4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9im-Tr-plr"/>
                 <constraint firstItem="kOb-ia-Rfi" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="FRZ-vp-dFe"/>
+                <constraint firstItem="RCR-eV-b9S" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Oec-s9-OdG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tkJ-2W-n8Z" secondAttribute="trailing" constant="16" id="OtZ-oO-4hp"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fzZ-41-HEU" secondAttribute="trailing" id="TDc-fp-6b6"/>
                 <constraint firstItem="tkJ-2W-n8Z" firstAttribute="top" secondItem="egZ-EG-nSS" secondAttribute="bottom" constant="14" id="VHM-wM-wyP"/>
                 <constraint firstItem="l2c-lT-5c4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Wjf-ns-fci"/>
-                <constraint firstItem="5v7-lG-S3L" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="XNH-9I-5Qc"/>
-                <constraint firstItem="fzZ-41-HEU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="apk-Ni-xzK"/>
                 <constraint firstItem="kOb-ia-Rfi" firstAttribute="top" secondItem="6lt-Wc-jhL" secondAttribute="bottom" constant="10" id="cWw-Nn-3Tb"/>
+                <constraint firstItem="RCR-eV-b9S" firstAttribute="top" secondItem="tkJ-2W-n8Z" secondAttribute="bottom" constant="20" id="d4c-A5-aHF"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="RCR-eV-b9S" secondAttribute="bottom" id="oaH-mq-Ttr"/>
                 <constraint firstItem="tkJ-2W-n8Z" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="sDv-6B-fjI"/>
                 <constraint firstItem="egZ-EG-nSS" firstAttribute="top" secondItem="kOb-ia-Rfi" secondAttribute="bottom" constant="12" id="xMP-qm-ggS"/>
             </constraints>

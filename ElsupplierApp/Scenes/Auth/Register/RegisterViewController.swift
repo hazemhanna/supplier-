@@ -91,6 +91,10 @@ class RegisterViewController: BaseViewController {
         }.disposed(by: disposeBag)
     }
     
+    override func shouldShowNavigation() -> Bool {
+        false
+    }
+    
     // MARK: - Actions
     @IBAction func termsOfUseClicked(_ sender: UIButton) {
     }

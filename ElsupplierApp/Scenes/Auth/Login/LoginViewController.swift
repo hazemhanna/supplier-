@@ -56,7 +56,9 @@ class LoginViewController: BaseViewController {
             Alert.show(message: $0.localizedDescription)
         }.disposed(by: disposeBag)
     }
-    
+    override func shouldShowNavigation() -> Bool {
+        false
+    }
     // MARK: - Actions
     @IBAction func loginClicked(_ sender: UIButton) {
         viewModel.login()

@@ -18,13 +18,17 @@ class NavigationController: UINavigationController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.barTintColor = R.color.lightBlue()
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = R.color.iceBlue()
+        appearance.titleTextAttributes = [.font: UIFont.appFont(ofSize: 17, weight: .bold)!, .foregroundColor: UIColor.black]
+        appearance.setBackIndicatorImage(R.image.arrowLeft(), transitionMaskImage: R.image.arrowLeft())
+        let barAppearance = UIBarButtonItemAppearance(style: .plain)
+        barAppearance.normal.titleTextAttributes = [NSAttributedString.Key.font: UIFont.appFont(ofSize: 0.1, weight: .light)!, NSAttributedString.Key.foregroundColor: UIColor.clear]
+        appearance.backButtonAppearance = barAppearance
+        navigationBar.standardAppearance = appearance
+        navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
         navigationBar.isTranslucent = true
-        view.backgroundColor = .clear // R.color.iceBlue()
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationBar.shadowImage = UIImage()
-        navigationBar.tintColor = R.color.darkBlue()
-        navigationBar.backgroundColor = .clear //R.color.iceBlue()
         if Language.isArabic {
             view.semanticContentAttribute = .forceRightToLeft
             navigationBar.semanticContentAttribute = .forceRightToLeft

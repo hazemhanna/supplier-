@@ -7,7 +7,7 @@
 
 import ObjectMapper
 
-class PickerModel: BaseObject {
+final class PickerModel: BaseObject {
     
     var name = ""
     
@@ -19,7 +19,7 @@ class PickerModel: BaseObject {
 }
 
 
-class PaymentTypeModel: BaseObject {
+final class PaymentTypeModel: BaseObject {
     
     var name = ""
     var isSelected = false

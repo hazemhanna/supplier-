@@ -19,7 +19,7 @@ class BaseTabBarController: UITabBarController {
                                 NavigationController(rootViewController: TendersViewController()),
                                 NavigationController(rootViewController: HomeViewController()),
                                 FavoritesViewController(),
-                                PostsViewController()]
+                                MyPostsViewController()]
     }
     
     required init?(coder: NSCoder) {

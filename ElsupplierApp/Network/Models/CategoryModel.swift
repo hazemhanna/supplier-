@@ -7,7 +7,7 @@
 
 import ObjectMapper
 
-class CategoryModel: BaseObject {
+final class CategoryModel: BaseObject {
     
     var name = ""
     var rank = 0
@@ -17,7 +17,7 @@ class CategoryModel: BaseObject {
     var keywords = ""
     var image = ""
     var parent = ""
-    var childs = ""
+    var childs: [CategoryChildModel] = []
     var products: [ProductModel] = []
     
     override func mapping(map: Map) {
@@ -35,7 +35,7 @@ class CategoryModel: BaseObject {
     }
 }
 
-class CategoryChildModel: BaseObject {
+final class CategoryChildModel: BaseObject {
     
     var name = ""
     var image = ""

@@ -30,20 +30,20 @@ class MyPostsTableViewCell: UITableViewCell {
 
     weak var delegate: MyPostsTableViewCellDelegate?
     
-    var posts : PostModel!{
-        didSet{
-            userImage.setImageWith(stringUrl: posts.postOwnerImage)
-            userName.text = posts.postOwner
-            bostBody.text = posts.body
-            dateLbl.text = posts.postDate
-            userType.text = posts.postOwnerRole
+    var post: PostModel! {
+        didSet {
+            userImage.setImageWith(stringUrl: post.postOwnerImage)
+            userName.text = post.postOwner
+            bostBody.text = post.body
+            dateLbl.text = post.postDate
+            userType.text = post.postOwnerRole
             collectionView.reloadData()
-            if posts.media.count > 0 {
+            if post.media.count > 0 {
                 collectionViewHeight.constant = 100
-            }else {
+            } else {
                 collectionViewHeight.constant = 0
             }
-            posts.isLiked == 0 ? likeBtn.setImage(UIImage(named: "like"), for: .normal) :  likeBtn.setImage(UIImage(named: "liked"), for: .normal)
+            post.isLiked == 0 ? likeBtn.setImage(UIImage(named: "like"), for: .normal) : likeBtn.setImage(UIImage(named: "liked"), for: .normal)
         }
     }
     
@@ -57,50 +57,49 @@ class MyPostsTableViewCell: UITableViewCell {
     }
     
     @IBAction func likeClicked(_ sender: UIButton) {
-        delegate?.myPostsTableViewCell(self, didLike: posts)
+        delegate?.myPostsTableViewCell(self, didLike: post)
     }
     
     @IBAction func addCommentClicked(_ sender: UIButton) {
-        delegate?.myPostsTableViewCell(self, didAddComent: posts,comment : addCommentTF.text ?? "")
+        delegate?.myPostsTableViewCell(self, didAddComent: post, comment : addCommentTF.text ?? "")
         addCommentTF.text = ""
         
     }
     
     @IBAction func sendMessageClicked(_ sender: UIButton) {
-        delegate?.myPostsTableViewCell(self, sendMessage: posts)
+        delegate?.myPostsTableViewCell(self, sendMessage: post)
     }
     
     @IBAction func makeCallClicked(_ sender: UIButton) {
-        delegate?.myPostsTableViewCell(self, makeCall: posts)
+        delegate?.myPostsTableViewCell(self, makeCall: post)
     }
     
 }
 
 extension MyPostsTableViewCell: UICollectionViewDelegate,
-                                        UICollectionViewDataSource,
-                                        UICollectionViewDelegateFlowLayout {
+                                UICollectionViewDataSource,
+                                UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return posts.media.count
-    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { post.media.count }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)!
-        if posts.media.count > 3 {
-        if indexPath.row == 2 {
-            cell.blackView.isHidden = false
-        }else{
+        if post.media.count > 3 {
+            if indexPath.row == 2 {
+                cell.blackView.isHidden = false
+            } else {
+                cell.blackView.isHidden = true
+            }
+        } else {
             cell.blackView.isHidden = true
         }
-     }else{
-         cell.blackView.isHidden = true
-     }
-        cell.imageNumber.text = "\(posts.media.count)"
-        cell.itemImage.setImageWith(stringUrl: posts.media[indexPath.row].media)
+        cell.imageNumber.text = "\(post.media.count)"
+        cell.itemImage.setImageWith(stringUrl: post.media[indexPath.row].media)
         
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (collectionView.frame.width / 3.5) , height: 100)
+        CGSize(width: (collectionView.frame.width / 3.5) , height: 100)
     }
 }

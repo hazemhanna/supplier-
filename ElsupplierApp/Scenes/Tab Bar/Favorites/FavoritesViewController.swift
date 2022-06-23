@@ -36,6 +36,9 @@ class FavoritesViewController: BaseTabBarViewController {
         R.image.favActive()
     }
     
+    override func shouldShowTabBar() -> Bool {
+        true
+    }
     // MARK: - Actions
 
 }

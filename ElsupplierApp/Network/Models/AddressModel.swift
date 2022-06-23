@@ -7,7 +7,7 @@
 
 import ObjectMapper
 
-class AddressModel: BaseObject {
+final class AddressModel: BaseObject {
     
     var route = ""
     var areaId = 0

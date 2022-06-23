@@ -7,8 +7,7 @@
 
 import ObjectMapper
 
-
-class SupplierModel: BaseObject {
+final class SupplierModel: BaseObject {
     
     var logo = ""
     var name = ""

@@ -71,6 +71,10 @@ class TendersViewController: BaseTabBarViewController {
         }.disposed(by: disposeBag)
     }
     
+    override func shouldShowTabBar() -> Bool {
+        true
+    }
+    
     // MARK: - Actions
 
 }

@@ -369,7 +369,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 71 images.
+  /// This `R.image` struct is generated, and contains static references to 73 images.
   struct image {
     /// Image `Call`.
     static let call = Rswift.ImageResource(bundle: R.hostingBundle, name: "Call")
@@ -495,6 +495,10 @@ struct R: Rswift.Validatable {
     static let search = Rswift.ImageResource(bundle: R.hostingBundle, name: "search")
     /// Image `select`.
     static let select = Rswift.ImageResource(bundle: R.hostingBundle, name: "select")
+    /// Image `send msg active`.
+    static let sendMsgActive = Rswift.ImageResource(bundle: R.hostingBundle, name: "send msg active")
+    /// Image `send msg`.
+    static let sendMsg = Rswift.ImageResource(bundle: R.hostingBundle, name: "send msg")
     /// Image `shopping-cart`.
     static let shoppingCart = Rswift.ImageResource(bundle: R.hostingBundle, name: "shopping-cart")
     /// Image `star active`.
@@ -949,6 +953,20 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "send msg active", bundle: ..., traitCollection: ...)`
+    static func sendMsgActive(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sendMsgActive, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "send msg", bundle: ..., traitCollection: ...)`
+    static func sendMsg(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sendMsg, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "shopping-cart", bundle: ..., traitCollection: ...)`
     static func shoppingCart(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.shoppingCart, compatibleWith: traitCollection)
@@ -1014,7 +1032,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 68 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 69 nibs.
   struct nib {
     /// Nib `AddAddressViewController`.
     static let addAddressViewController = _R.nib._AddAddressViewController()
@@ -1134,6 +1152,8 @@ struct R: Rswift.Validatable {
     static let splashViewController = _R.nib._SplashViewController()
     /// Nib `SupplierDetailsViewController`.
     static let supplierDetailsViewController = _R.nib._SupplierDetailsViewController()
+    /// Nib `SupplierInfoViewController`.
+    static let supplierInfoViewController = _R.nib._SupplierInfoViewController()
     /// Nib `SupplierPostsViewController`.
     static let supplierPostsViewController = _R.nib._SupplierPostsViewController()
     /// Nib `SupplierProductCategoryCell`.
@@ -1626,6 +1646,14 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "SupplierInfoViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.supplierInfoViewController) instead")
+    static func supplierInfoViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.supplierInfoViewController)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "SupplierPostsViewController", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.supplierPostsViewController) instead")
     static func supplierPostsViewController(_: Void = ()) -> UIKit.UINib {
@@ -1933,6 +1961,10 @@ struct R: Rswift.Validatable {
       return R.nib.supplierDetailsViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
+    static func supplierInfoViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.supplierInfoViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
     static func supplierPostsViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.supplierPostsViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
@@ -2031,6 +2063,7 @@ struct _R: Rswift.Validatable {
       try _RegisterViewController.validate()
       try _SearchFilterViewController.validate()
       try _SplashViewController.validate()
+      try _SupplierInfoViewController.validate()
       try _SupplierProductSearchCollectionCell.validate()
       try _SupplierSearchResultTableCell.validate()
       try _SupplierSearchResultsViewController.validate()
@@ -2977,6 +3010,36 @@ struct _R: Rswift.Validatable {
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _SupplierInfoViewController: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "SupplierInfoViewController"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "Call", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Call' is used in nib 'SupplierInfoViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "fb", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'fb' is used in nib 'SupplierInfoViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "mail", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'mail' is used in nib 'SupplierInfoViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "phone", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'phone' is used in nib 'SupplierInfoViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "phone active", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'phone active' is used in nib 'SupplierInfoViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "rfq", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'rfq' is used in nib 'SupplierInfoViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "rqst call", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'rqst call' is used in nib 'SupplierInfoViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "rqst call active", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'rqst call active' is used in nib 'SupplierInfoViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "send msg", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'send msg' is used in nib 'SupplierInfoViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "send msg active", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'send msg active' is used in nib 'SupplierInfoViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "website", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'website' is used in nib 'SupplierInfoViewController', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "DarkBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'DarkBlue' is used in nib 'SupplierInfoViewController', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "LightBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'LightBlue' is used in nib 'SupplierInfoViewController', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "SteelGrey", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'SteelGrey' is used in nib 'SupplierInfoViewController', but couldn't be loaded.") }
+        }
       }
 
       fileprivate init() {}

@@ -67,6 +67,9 @@ class CartViewController: BaseTabBarViewController {
     override func tabBarItemSelectedImage() -> UIImage? {
         R.image.cartActive()
     }
+    override func shouldShowTabBar() -> Bool {
+        true
+    }
     
     // MARK: - Actions
     @IBAction func continueClicked(_ sender: UIButton) {

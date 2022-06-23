@@ -76,7 +76,7 @@ extension SupplierSearchResultsViewController: UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        #warning("push supplier details")
+        push(controller: SupplierDetailsViewController(supplier: model.items[indexPath.row]))
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
