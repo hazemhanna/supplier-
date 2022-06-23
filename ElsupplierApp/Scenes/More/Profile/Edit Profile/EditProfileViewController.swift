@@ -29,6 +29,8 @@ class EditProfileViewController: BaseViewController {
     override func setupView() {
         super.setupView()
         title = "_personal_info".localized
+        viewModel.showProfile()
+  
     }
     
     override func bindViewsToViewModel() {
@@ -51,6 +53,13 @@ class EditProfileViewController: BaseViewController {
             .orEmpty
             .bind(to: viewModel.companyName)
             .disposed(by: disposeBag)
+        
+        activityTypeTF.rx.text
+            .orEmpty
+            .bind(to: viewModel.companyType)
+            .disposed(by: disposeBag)
+        
+        
     }
     
     override func bindViewModelToViews() {
@@ -64,6 +73,12 @@ class EditProfileViewController: BaseViewController {
     }
     
     override func setupCallbacks() {
+        
+        viewModel.user.bind { data in
+            self.setupTextFields(data: data)
+        }.disposed(by: disposeBag)
+        
+        
         viewModel.updatedSuccessfully.bind { _ in
             Alert.show(message: "Updated successfully")
         }.disposed(by: disposeBag)
@@ -81,11 +96,24 @@ class EditProfileViewController: BaseViewController {
         }.disposed(by: disposeBag)
     }
     
+    
+    func setupTextFields(data : UserModel) {
+        nameTF.text = data.name
+        mobileNoTF.text = data.phone
+        emailTF.text = data.email
+        cityTF.text = data.area.name
+        activityTypeTF.text = data.companyType
+        companyNameTF.text = data.companyName
+        self.viewModel.areaId.accept(data.area.id)
+        bindViewsToViewModel()
+    }
+    
     func showActivities(activities: [UserTypeModel]) {
         ActionSheet.show(title: "Select Activity", cancelTitle: "Cancel", otherTitles: activities.map({ $0.name }), sender: activityTypeTF) {[weak self] index in
             guard let self = self else { return }
             if index != 0 {
                 self.activityTypeTF.text = activities[index - 1].name
+                self.viewModel.companyType.accept(activities[index - 1].name)
                 self.viewModel.activityTypeSelected.accept(activities[index - 1].id)
             }
         }

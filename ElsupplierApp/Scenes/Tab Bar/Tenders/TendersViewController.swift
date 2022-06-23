@@ -30,8 +30,13 @@ class TendersViewController: BaseTabBarViewController {
         newTenderButton.setTitleTextAttributes([NSAttributedString.Key.font: R.font.cairoBold(size: 13)!], for: .normal)
         navigationItem.rightBarButtonItem = newTenderButton
         tableView.registerCell(ofType: AddressTableViewCell.self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel.listTenders()
     }
+    
     
     override func tabBarItemTitle() -> String? {
         "Tender".localized

@@ -147,9 +147,11 @@ final class ProfileAPIs {
         return NetworkManager.execute(request: request)
     }
     
-    func storeTender(categoryId: Int, productId: Int, message: String) -> Single<[TenderModel]> {
-        let request = ESNetworkRequest("tenders/get")
-        request.selections = [.key("data"), .key("my_tenders")]
+    func storeTender(categoryId: Int, productId: Int, message: String) -> Single<String> {
+        let request = ESNetworkRequest("tenders/store")
+        request.method = .post
+        request.parameters = ["categoryId": categoryId,"productId":productId , "message":message]
+        request.selections = [.key("message")]
         return NetworkManager.execute(request: request)
     }
     
