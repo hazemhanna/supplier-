@@ -19,7 +19,8 @@ final class UserModel: BaseObject, Storable {
     var jobTitle = ""
     var image = ""
     var route = ""
-    
+    var area = PickerModel()
+
     override func mapping(map: Map) {
         super.mapping(map: map)
         id <- map["data.user.id", "id"]
@@ -31,6 +32,7 @@ final class UserModel: BaseObject, Storable {
         companyName <- map["data.user.company_name", "company_name"]
         companyType <- map["data.user.company_type", "company_type"]
         jobTitle <- map["data.user.job_title", "job_title"]
+        area <- map["data.user.area", "area"]
         token <- map["message"]
     }
     

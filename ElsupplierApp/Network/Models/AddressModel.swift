@@ -36,8 +36,8 @@ final class AddressModel: BaseObject {
         street <- map["street"]
         floor <- map["floor"]
         landmark <- map["landmark"]
-        
-        govName <- map[""]
-        cityName <- map[""]
+        cityName <- map[Language.isArabic ? "city_arabic_name" : "city_english_name"]
+        govName <- map[Language.isArabic ? "province_arabic_name" : "province_english_name"]
     }
+    
 }

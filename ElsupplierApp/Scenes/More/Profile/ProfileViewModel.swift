@@ -51,7 +51,9 @@ class ProfileViewModel: BaseViewModel {
 
     // MARK: - Functions
     func logout() {
-        profileApis.logout().subscribe { _ in } onError: { _ in }.disposed(by: disposeBag)
+        profileApis.logout().subscribe {_ in
+        } onError: {_ in
+        }.disposed(by: disposeBag)
     }
     
     func showProfile() {
