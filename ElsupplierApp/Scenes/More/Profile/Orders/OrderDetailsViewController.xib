@@ -53,6 +53,10 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="200" id="z8I-6l-fAg"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="f29-72-cHJ"/>
+                                        <outlet property="delegate" destination="-1" id="gWh-Kh-WB7"/>
+                                    </connections>
                                 </tableView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1m-ls-Fu8">
                                     <rect key="frame" x="20" y="272" width="60" height="16"/>

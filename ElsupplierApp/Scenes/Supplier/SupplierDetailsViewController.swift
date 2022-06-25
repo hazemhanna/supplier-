@@ -39,7 +39,13 @@ class SupplierDetailsViewController: BaseViewController {
     // MARK: - Functions
     override func setupView() {
         super.setupView()
+        supplierImageView.setImageWith(stringUrl: supplier.supplier.logo)
+        supplierName.text = supplier.supplier.name
+//        rateView.rating = supplier.supplier.
+        
         addToContrainer(SupplierProductsViewController(supplier: supplier))
+        let favButton = UIBarButtonItem(image: R.image.addToFav(), style: .plain, target: self, action: #selector(toggleFavorite))
+        navigationItem.rightBarButtonItem = favButton
     }
     
     func addToContrainer(_ controller: UIViewController) {
@@ -48,6 +54,11 @@ class SupplierDetailsViewController: BaseViewController {
         guard let _viewController = viewController else { return }
         addChild(_viewController)
         containerView.addSubIntrinsicView(_viewController.view, replace: true)
+    }
+    
+    @objc
+    func toggleFavorite() {
+        
     }
     
     // MARK: - Actions

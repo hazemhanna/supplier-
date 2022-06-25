@@ -10,6 +10,7 @@ import ObjectMapper
 final class PickerModel: BaseObject {
     
     var name = ""
+    var isSelected = false
     
     override func mapping(map: Map) {
         super.mapping(map: map)

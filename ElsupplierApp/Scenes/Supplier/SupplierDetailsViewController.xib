@@ -43,13 +43,16 @@
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6lt-Wc-jhL">
-                    <rect key="frame" x="189.5" y="152" width="35.5" height="16"/>
+                    <rect key="frame" x="189.5" y="152" width="35.5" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="5nh-d0-rOx"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kOb-ia-Rfi" customClass="CosmosView" customModule="Cosmos">
-                    <rect key="frame" x="141" y="178" width="132" height="20"/>
+                    <rect key="frame" x="141" y="183" width="132" height="20"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="fCH-Ni-fjQ"/>
@@ -76,13 +79,13 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rate 4/5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egZ-EG-nSS">
-                    <rect key="frame" x="183.5" y="210" width="47" height="15"/>
+                    <rect key="frame" x="183.5" y="215" width="47" height="15"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tkJ-2W-n8Z">
-                    <rect key="frame" x="16" y="239" width="382" height="32"/>
+                    <rect key="frame" x="16" y="244" width="382" height="32"/>
                     <segments>
                         <segment title="_products"/>
                         <segment title="_posts"/>
@@ -93,7 +96,7 @@
                     </connections>
                 </segmentedControl>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCR-eV-b9S">
-                    <rect key="frame" x="0.0" y="290" width="414" height="572"/>
+                    <rect key="frame" x="0.0" y="295" width="414" height="567"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
             </subviews>

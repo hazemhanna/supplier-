@@ -11,7 +11,7 @@ import RxCocoa
 class SearchFilterViewModel: BaseViewModel {
     
     var selectedCategory = BehaviorRelay<CategoryModel?>(value: nil)
-    var selectedProduct = BehaviorRelay<ProductModel?>(value: nil)
+    var selectedProduct = BehaviorRelay<CategoryChildModel?>(value: nil)
     var selectedFilterType = BehaviorRelay<SearchType>(value: .product)
     var selectedSearchType = BehaviorRelay<SearchType>(value: .product)
     var searchKey = BehaviorRelay<String>(value: "")
@@ -26,7 +26,7 @@ class SearchFilterViewModel: BaseViewModel {
     
     func listCategories() {
         isLoading.accept(true)
-        mockApis.listCategories().subscribe {[weak self] categories in
+        mockApis.listParentCategories().subscribe {[weak self] categories in
             guard let self = self else { return }
             self.isLoading.accept(false)
             self.categories.accept(categories)
@@ -37,56 +37,98 @@ class SearchFilterViewModel: BaseViewModel {
         }.disposed(by: disposeBag)
     }
     
-    private func Filter(page: Int) {
+    func filterSuppliers
+    (
+        isPromotion: Int,
+        page: Int,
+        keyword: String? = nil,
+        parentCategoryId: Int? = nil,
+        categoryId: Int? = nil,
+        areaId: Int?,
+        priceFrom: Int? = nil,
+        priceTo: Int? = nil
+    ) {
         isLoading.accept(true)
-        if selectedFilterType.value == .product {
-            homeApis.SearchProducts(by: selectedCategory.value?.id, productId: selectedProduct.value?.id, page: page).subscribe { [weak self] response in
-                self?.isLoading.accept(false)
-                self?.productsSearchModel.accept(response)
-            } onError: { [weak self] error in
-                self?.isLoading.accept(false)
-                self?.error.accept(error)
-            }.disposed(by: disposeBag)
-        } else {
-            homeApis.SearchSuppliers(by: selectedCategory.value?.id,productId: selectedProduct.value?.id, page: page).subscribe {[weak self] response in
-                self?.isLoading.accept(false)
-                self?.suppliersSearchModel.accept(response)
-            } onError: { [weak self] error in
-                self?.isLoading.accept(false)
-                self?.error.accept(error)
-            }.disposed(by: disposeBag)
-        }
+        homeApis.filterSuppliers(isPromotion: isPromotion, page: page, keyword: keyword, parentCategoryId: parentCategoryId, categoryId: categoryId, areaId: areaId, priceFrom: priceFrom, priceTo: priceTo).subscribe { [weak self] response in
+            self?.isLoading.accept(false)
+            self?.suppliersSearchModel.accept(response)
+        } onError: { [weak self] error in
+            self?.isLoading.accept(false)
+            self?.error.accept(error)
+        }.disposed(by: disposeBag)
     }
     
-    private func search(page: Int) {
+    func filterProducts
+    (
+        isPromotion: Int,
+        page: Int,
+        keyword: String? = nil,
+        parentCategoryId: Int? = nil,
+        categoryId: Int? = nil,
+        areaId: Int?,
+        priceFrom: Int? = nil,
+        priceTo: Int? = nil
+    ) {
         isLoading.accept(true)
-        if selectedSearchType.value == .product {
-            homeApis.SearchProducts(by: searchKey.value, page: page)
-                .subscribe { [weak self] response in
-                self?.isLoading.accept(false)
-                self?.productsSearchModel.accept(response)
-            } onError: { [weak self] error in
-                self?.isLoading.accept(false)
-                self?.error.accept(error)
-            }.disposed(by: disposeBag)
-        } else {
-            homeApis.SearchSuppliers(by: searchKey.value, page: page)
-                .subscribe { [weak self] response in
-                self?.isLoading.accept(false)
-                self?.suppliersSearchModel.accept(response)
-            } onError: { [weak self] error in
-                self?.isLoading.accept(false)
-                self?.error.accept(error)
-            }.disposed(by: disposeBag)
-        }
+        homeApis.filterProducts(isPromotion: isPromotion, page: page, keyword: keyword, parentCategoryId: parentCategoryId, categoryId: categoryId, areaId: areaId, priceFrom: priceFrom, priceTo: priceTo).subscribe { [weak self] response in
+            self?.isLoading.accept(false)
+            self?.productsSearchModel.accept(response)
+        } onError: { [weak self] error in
+            self?.isLoading.accept(false)
+            self?.error.accept(error)
+        }.disposed(by: disposeBag)
     }
     
-    func filterAndSearch(page: Int) {
-        if isFilter.value {
-            Filter(page: page)
-        } else {
-            search(page: page)
-        }
-    }
+//    private func Filter(page: Int) {
+//        isLoading.accept(true)
+//        if selectedFilterType.value == .product {
+//            homeApis.SearchProducts(by: selectedCategory.value?.id, productId: selectedProduct.value?.id, page: page).subscribe { [weak self] response in
+//                self?.isLoading.accept(false)
+//                self?.productsSearchModel.accept(response)
+//            } onError: { [weak self] error in
+//                self?.isLoading.accept(false)
+//                self?.error.accept(error)
+//            }.disposed(by: disposeBag)
+//        } else {
+//            homeApis.SearchSuppliers(by: selectedCategory.value?.id,productId: selectedProduct.value?.id, page: page).subscribe {[weak self] response in
+//                self?.isLoading.accept(false)
+//                self?.suppliersSearchModel.accept(response)
+//            } onError: { [weak self] error in
+//                self?.isLoading.accept(false)
+//                self?.error.accept(error)
+//            }.disposed(by: disposeBag)
+//        }
+//    }
+    
+//    private func search(page: Int) {
+//        isLoading.accept(true)
+//        if selectedSearchType.value == .product {
+//            homeApis.SearchProducts(by: searchKey.value, page: page)
+//                .subscribe { [weak self] response in
+//                self?.isLoading.accept(false)
+//                self?.productsSearchModel.accept(response)
+//            } onError: { [weak self] error in
+//                self?.isLoading.accept(false)
+//                self?.error.accept(error)
+//            }.disposed(by: disposeBag)
+//        } else {
+//            homeApis.SearchSuppliers(by: searchKey.value, page: page)
+//                .subscribe { [weak self] response in
+//                self?.isLoading.accept(false)
+//                self?.suppliersSearchModel.accept(response)
+//            } onError: { [weak self] error in
+//                self?.isLoading.accept(false)
+//                self?.error.accept(error)
+//            }.disposed(by: disposeBag)
+//        }
+//    }
+    
+//    func filterAndSearch(page: Int) {
+//        if isFilter.value {
+//            Filter(page: page)
+//        } else {
+//            search(page: page)
+//        }
+//    }
     
 }

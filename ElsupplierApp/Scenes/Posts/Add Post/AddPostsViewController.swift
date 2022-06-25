@@ -21,6 +21,16 @@ class AddPostsViewController: BaseViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.navigationController?.isNavigationBarHidden = false
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    override func shouldShowNavigation() -> Bool {
+        true
+    }
+    
     // MARK: - Functions
     override func setupView() {
         super.setupView()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddTenderViewController: BaseViewController {
+class AddTenderViewController: BaseTabBarViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var selectedCategoryLabel: UILabel!
@@ -18,16 +18,47 @@ class AddTenderViewController: BaseViewController {
     let viewModel = ProfileViewModel()
     let searchFilterViewModel = SearchFilterViewModel()
     var selectedCategory: CategoryModel? = nil
+    var isFromTabbar = false
 
     // MARK: - Life Cycle
+    convenience init(isFromTabbar: Bool) {
+        self.init()
+        self.isFromTabbar = isFromTabbar
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        tabBarController?.navigationController?.isNavigationBarHidden = false
+//    }
+    
+    override func shouldShowNavigation() -> Bool {
+        true
     }
     
     // MARK: - Functions
     override func setupView() {
         super.setupView()
-        title = "_new_tender".localized
+        title = "Tender".localized
+    }
+    
+    override func tabBarItemTitle() -> String? {
+        "Tender".localized
+    }
+    
+    override func tabBarItemImage() -> UIImage? {
+        R.image.tender()
+    }
+    
+    override func tabBarItemSelectedImage() -> UIImage? {
+        R.image.tenderActive()
+    }
+    
+    override func shouldShowTabBar() -> Bool {
+        isFromTabbar
     }
     
     override func bindViewModelToViews() {
@@ -56,7 +87,16 @@ class AddTenderViewController: BaseViewController {
     override func setupCallbacks() {
         viewModel.tenderAdded.bind { [weak self] _ in
             Alert.show(title: nil, message: "_tender_added", cancelTitle: "_ok", otherTitles: []) { _ in
-                self?.pop()
+                guard let self = self else { return }
+                if self.isFromTabbar {
+                    self.selectedCategoryLabel.text = "_choose_category"
+                    self.selectedCategory = nil
+                    self.viewModel.selectedCategory.accept(nil)
+                    self.selectedProductLabel.text = "_choose_product"
+                    self.viewModel.selectedProduct.accept(nil)
+                } else {
+                    self.pop()
+                }
             }
         }.disposed(by: disposeBag)
         

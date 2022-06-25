@@ -37,7 +37,7 @@ class MyPostsViewController: BaseTabBarViewController {
         navigationController?.navigationBar.isHidden = true
         tabBarController?.navigationController?.navigationBar.isHidden = true
         if let user = UserModel.current {
-            userView.userPic.setImageWith(stringUrl: user.image, placeholder: R.image.screenShot20220412At95108PM())
+            userView.userPic.setImageWith(stringUrl: user.image, placeholder: R.image.appLogo())
         }
     }
     
@@ -45,9 +45,9 @@ class MyPostsViewController: BaseTabBarViewController {
         false
     }
     
-    override func shouldShowTopView() -> Bool {
-        false
-    }
+//    override func shouldShowTopView() -> Bool {
+//        false
+//    }
     
     override func tabBarItemTitle() -> String? {
         "Posts".localized
@@ -100,7 +100,6 @@ extension MyPostsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         posts.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -110,8 +109,6 @@ extension MyPostsViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
-
-
 
 extension MyPostsViewController: UserSectionViewDelegate {
     func didTapNotifications() {
@@ -126,6 +123,7 @@ extension MyPostsViewController: UserSectionViewDelegate {
         push(controller: SearchFilterViewController())
     }
 }
+
 extension MyPostsViewController: MyPostsTableViewCellDelegate {
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didLike item: PostModel) {
         viewModel.likePost(postId: item.id)
@@ -142,5 +140,4 @@ extension MyPostsViewController: MyPostsTableViewCellDelegate {
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, makeCall item: PostModel) {
         
     }
-    
 }

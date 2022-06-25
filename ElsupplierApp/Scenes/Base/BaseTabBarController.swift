@@ -16,7 +16,7 @@ class BaseTabBarController: UITabBarController {
     init() {
         super.init(nibName: nil, bundle: nil)
         self.viewControllers = [CartViewController(),
-                                NavigationController(rootViewController: TendersViewController()),
+                                AddTenderViewController(isFromTabbar: true),
                                 NavigationController(rootViewController: HomeViewController()),
                                 FavoritesViewController(),
                                 MyPostsViewController()]

@@ -16,6 +16,7 @@ class EditProfileViewController: BaseViewController {
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var activityTypeTF: UITextField!
     @IBOutlet weak var companyNameTF: UITextField!
+    @IBOutlet weak var profilePic: UIImageView!
     
     // MARK: - Variables
     let viewModel = ProfileViewModel()
@@ -30,7 +31,6 @@ class EditProfileViewController: BaseViewController {
         super.setupView()
         title = "_personal_info".localized
         viewModel.showProfile()
-  
     }
     
     override func bindViewsToViewModel() {
@@ -58,8 +58,6 @@ class EditProfileViewController: BaseViewController {
             .orEmpty
             .bind(to: viewModel.companyType)
             .disposed(by: disposeBag)
-        
-        
     }
     
     override func bindViewModelToViews() {
@@ -73,14 +71,14 @@ class EditProfileViewController: BaseViewController {
     }
     
     override func setupCallbacks() {
-        
         viewModel.user.bind { data in
-            self.setupTextFields(data: data)
+            self.setupUI(data: data)
         }.disposed(by: disposeBag)
         
-        
         viewModel.updatedSuccessfully.bind { _ in
-            Alert.show(message: "Updated successfully")
+            Alert.show(title: nil, message: "Updated successfully", cancelTitle: "Ok", otherTitles: []) { index in
+                self.pop()
+            }
         }.disposed(by: disposeBag)
         
         viewModel.error.bind { error in
@@ -96,8 +94,8 @@ class EditProfileViewController: BaseViewController {
         }.disposed(by: disposeBag)
     }
     
-    
-    func setupTextFields(data : UserModel) {
+    func setupUI(data: UserModel) {
+        profilePic.setImageWith(stringUrl: data.image, placeholder: R.image.appLogo())
         nameTF.text = data.name
         mobileNoTF.text = data.phone
         emailTF.text = data.email
@@ -120,7 +118,7 @@ class EditProfileViewController: BaseViewController {
     }
     
     func showAreas(areas: [PickerModel]) {
-        ActionSheet.show(title: "Select City", cancelTitle: "Cancel", otherTitles: areas.map({ $0.name }), sender: cityTF) {[weak self] index in
+        ActionSheet.show(title: "_select_area", cancelTitle: "Cancel", otherTitles: areas.map({ $0.name }), sender: cityTF) {[weak self] index in
             guard let self = self else { return }
             if index != 0 {
                 self.cityTF.text = areas[index - 1].name
@@ -132,6 +130,16 @@ class EditProfileViewController: BaseViewController {
     // MARK: - Actions
     @IBAction func saveChangesClicked(_ sender: UIButton) {
         viewModel.updateProfile()
+    }
+    
+    @IBAction func changeUserImage(_ sender: UIButton) {
+        ImagePicker.pickImage(sender: profilePic) { [weak self] image in
+            guard let self = self,
+                  let image = image
+            else { return }
+            self.viewModel.image.accept(image)
+            self.viewModel.updateProfile()
+        }
     }
 }
 

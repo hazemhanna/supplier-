@@ -19,7 +19,7 @@ final class OrderModel: BaseObject {
     var orderStatus = ""
     var datePlaced = ""
     var address = ""
-    var payment_type = ""
+    var paymentType = ""
     
     override func mapping(map: Map) {
         super.mapping(map: map)
@@ -33,7 +33,7 @@ final class OrderModel: BaseObject {
         orderStatus <- map["order_status"]
         datePlaced <- map["date_placed"]
         address <- map["address"]
-        payment_type <- map["payment_type"]
+        paymentType <- map["payment_type"]
     }
     
 }

@@ -14,10 +14,12 @@ final class CategoriesViewController: HomeViewController {
     
     // MARK: - Variables
     let categoryModel: CategoryModel
+    let sliders: [SliderModel]
     
     // MARK: - Life Cycle
-    init(categoryModel: CategoryModel) {
+    init(categoryModel: CategoryModel, sliders: [SliderModel]) {
         self.categoryModel = categoryModel
+        self.sliders = sliders
         super.init()
     }
     
@@ -39,30 +41,37 @@ final class CategoriesViewController: HomeViewController {
         true
     }
     
-    override func setupCallbacks() {
-        viewModel.supplierDetails.bind { [weak self] in
-            self?.push(controller: SupplierDetailsViewController(supplier: $0))
-        }.disposed(by: disposeBag)
-    }
     // MARK: - Actions
 
 }
 
 extension CategoriesViewController {
-    
+
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        categoryModel.childs.count
+        return collectionView == offersCollectionView ? sliders.count : categoryModel.childs.count
     }
-    
+
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: HomeDeptCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)!
-        let child = categoryModel.childs[indexPath.row]
-        cell.deptImageView.setImageWith(stringUrl: child.image)
-        cell.deptName.text = child.name
-        return cell
+        switch collectionView {
+        case offersCollectionView:
+            let cell: HomeOfferCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)!
+            cell.slider = sliders[indexPath.row]
+            return cell
+        default:
+            let cell: HomeDeptCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)!
+            let child = categoryModel.childs[indexPath.row]
+            cell.deptImageView.setImageWith(stringUrl: child.image, placeholder: R.image.appLogo())
+            cell.deptName.text = child.name
+            return cell
+        }
     }
-    
+
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.getSupplierDetails(with: categoryModel.childs[indexPath.row].id)
+        switch collectionView {
+        case offersCollectionView:
+            break
+        default:
+            push(controller: CategorySuppliersViewController(category: categoryModel.childs[indexPath.row], sliders: sliders))
+        }
     }
 }

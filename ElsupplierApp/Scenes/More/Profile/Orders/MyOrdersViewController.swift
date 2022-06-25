@@ -64,6 +64,12 @@ extension MyOrdersViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: OrderTableViewCell = tableView.dequeueReusableCell()!
+        let order = model.items[indexPath.row]
+        cell.orderNo.text = "order_no:".localized + order.id.string()
+        cell.dateLabel.text = order.datePlaced
+        cell.stateLabel.text = order.orderStatus
+        cell.supplierName.text = "_supplier:".localized + order.supplierName
+        cell.totalLabel.text = "total:".localized + order.totalAmount.string() + " LE".localized
         return cell
     }
     

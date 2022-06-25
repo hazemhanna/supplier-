@@ -67,7 +67,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yri-RT-zAf">
                     <rect key="frame" x="0.0" y="44" width="414" height="167.5"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2022-04-12 at 9.51.08 PM" translatesAutoresizingMaskIntoConstraints="NO" id="kHY-4r-tmF">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appLogo" translatesAutoresizingMaskIntoConstraints="NO" id="kHY-4r-tmF">
                             <rect key="frame" x="30" y="18" width="80" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="icd-z4-o66"/>
@@ -384,7 +384,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Screen Shot 2022-04-12 at 9.51.08 PM" width="360" height="364"/>
+        <image name="appLogo" width="1024" height="1024"/>
         <image name="edit_ic" width="86" height="86"/>
         <image name="empty-wallet" width="48" height="48"/>
         <image name="fav prod" width="48" height="43"/>
@@ -394,7 +394,7 @@
         <image name="my msg" width="43" height="43"/>
         <image name="my orders" width="46" height="51"/>
         <image name="my posts" width="47" height="45"/>
-        <image name="tender" width="59" height="51"/>
+        <image name="tender" width="24" height="21"/>
         <namedColor name="DarkBlue">
             <color red="0.0" green="0.10196078431372549" blue="0.3843137254901961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

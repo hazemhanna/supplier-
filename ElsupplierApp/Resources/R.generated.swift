@@ -369,7 +369,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 73 images.
+  /// This `R.image` struct is generated, and contains static references to 74 images.
   struct image {
     /// Image `Call`.
     static let call = Rswift.ImageResource(bundle: R.hostingBundle, name: "Call")
@@ -387,6 +387,8 @@ struct R: Rswift.Validatable {
     static let addComment = Rswift.ImageResource(bundle: R.hostingBundle, name: "add comment")
     /// Image `add to fav`.
     static let addToFav = Rswift.ImageResource(bundle: R.hostingBundle, name: "add to fav")
+    /// Image `appLogo`.
+    static let appLogo = Rswift.ImageResource(bundle: R.hostingBundle, name: "appLogo")
     /// Image `arrow-circle-down`.
     static let arrowCircleDown = Rswift.ImageResource(bundle: R.hostingBundle, name: "arrow-circle-down")
     /// Image `arrow-left_3`.
@@ -571,6 +573,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "add to fav", bundle: ..., traitCollection: ...)`
     static func addToFav(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.addToFav, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "appLogo", bundle: ..., traitCollection: ...)`
+    static func appLogo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.appLogo, compatibleWith: traitCollection)
     }
     #endif
 
@@ -1032,7 +1041,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 69 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 70 nibs.
   struct nib {
     /// Nib `AddAddressViewController`.
     static let addAddressViewController = _R.nib._AddAddressViewController()
@@ -1052,6 +1061,8 @@ struct R: Rswift.Validatable {
     static let cartViewController = _R.nib._CartViewController()
     /// Nib `CategoriesViewController`.
     static let categoriesViewController = _R.nib._CategoriesViewController()
+    /// Nib `CategorySuppliersViewController`.
+    static let categorySuppliersViewController = _R.nib._CategorySuppliersViewController()
     /// Nib `ChangePasswordViewController`.
     static let changePasswordViewController = _R.nib._ChangePasswordViewController()
     /// Nib `ChooseAddressViewController`.
@@ -1242,6 +1253,14 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.categoriesViewController) instead")
     static func categoriesViewController(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.categoriesViewController)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "CategorySuppliersViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.categorySuppliersViewController) instead")
+    static func categorySuppliersViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.categorySuppliersViewController)
     }
     #endif
 
@@ -1761,6 +1780,10 @@ struct R: Rswift.Validatable {
       return R.nib.categoriesViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
+    static func categorySuppliersViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.categorySuppliersViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
     static func changePasswordViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.changePasswordViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
@@ -2213,6 +2236,17 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
+    struct _CategorySuppliersViewController: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "CategorySuppliersViewController"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      fileprivate init() {}
+    }
+
     struct _ChangePasswordViewController: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "ChangePasswordViewController"
@@ -2274,6 +2308,7 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
+        if UIKit.UIImage(named: "appLogo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'appLogo' is used in nib 'EditProfileViewController', but couldn't be loaded.") }
         if UIKit.UIImage(named: "drop arrow", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'drop arrow' is used in nib 'EditProfileViewController', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "DarkBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'DarkBlue' is used in nib 'EditProfileViewController', but couldn't be loaded.") }
@@ -2311,6 +2346,7 @@ struct _R: Rswift.Validatable {
 
       static func validate() throws {
         if UIKit.UIImage(named: "Screen Shot 2022-04-16 at 12.39.35 AM", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Screen Shot 2022-04-16 at 12.39.35 AM' is used in nib 'FavProductTableViewCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "fav prod", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'fav prod' is used in nib 'FavProductTableViewCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "saved item", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'saved item' is used in nib 'FavProductTableViewCell', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "DarkBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'DarkBlue' is used in nib 'FavProductTableViewCell', but couldn't be loaded.") }
@@ -2432,7 +2468,7 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
-        if UIKit.UIImage(named: "Screen Shot 2022-04-16 at 10.18.14 AM", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Screen Shot 2022-04-16 at 10.18.14 AM' is used in nib 'HomeDeptCollectionViewCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "appLogo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'appLogo' is used in nib 'HomeDeptCollectionViewCell', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }
@@ -2449,7 +2485,7 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
-        if UIKit.UIImage(named: "Screen Shot 2022-04-16 at 10.14.17 AM", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Screen Shot 2022-04-16 at 10.14.17 AM' is used in nib 'HomeOfferCollectionViewCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "appLogo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'appLogo' is used in nib 'HomeOfferCollectionViewCell', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }
@@ -2900,7 +2936,7 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
-        if UIKit.UIImage(named: "Screen Shot 2022-04-12 at 9.51.08 PM", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Screen Shot 2022-04-12 at 9.51.08 PM' is used in nib 'ProfileViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "appLogo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'appLogo' is used in nib 'ProfileViewController', but couldn't be loaded.") }
         if UIKit.UIImage(named: "edit_ic", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'edit_ic' is used in nib 'ProfileViewController', but couldn't be loaded.") }
         if UIKit.UIImage(named: "empty-wallet", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'empty-wallet' is used in nib 'ProfileViewController', but couldn't be loaded.") }
         if UIKit.UIImage(named: "fav prod", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'fav prod' is used in nib 'ProfileViewController', but couldn't be loaded.") }
@@ -3164,7 +3200,7 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
-        if UIKit.UIImage(named: "Screen Shot 2022-04-12 at 9.51.08 PM", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Screen Shot 2022-04-12 at 9.51.08 PM' is used in nib 'UserSectionView', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "appLogo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'appLogo' is used in nib 'UserSectionView', but couldn't be loaded.") }
         if UIKit.UIImage(named: "notifications", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'notifications' is used in nib 'UserSectionView', but couldn't be loaded.") }
         if UIKit.UIImage(named: "search", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'search' is used in nib 'UserSectionView', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {

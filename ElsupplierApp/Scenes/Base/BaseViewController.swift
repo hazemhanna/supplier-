@@ -108,7 +108,7 @@ class BaseViewController: UIViewController {
     func checkLoggedInUser() -> Bool {
         if UserModel.current == nil {
             let controller = LoginAlertViewController()
-            controller.login = {[weak self] in
+            controller.login = { [weak self] in
                 self?.push(controller: LoginViewController())
             }
             self.present(controller, animated: true, completion: nil)

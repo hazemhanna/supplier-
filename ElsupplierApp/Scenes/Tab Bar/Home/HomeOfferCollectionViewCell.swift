@@ -15,7 +15,7 @@ class HomeOfferCollectionViewCell: UICollectionViewCell {
     // MARK: - Variables
     var slider: SliderModel! {
         didSet {
-            offerImageView.setImageWith(stringUrl: slider.image)
+            offerImageView.setImageWith(stringUrl: slider.image, placeholder: R.image.appLogo())
         }
     }
     

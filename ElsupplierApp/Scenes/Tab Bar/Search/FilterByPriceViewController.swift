@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol FilterByPriceViewControllerDelegate: AnyObject {
+    func didSelectPrice(priceFrom: Int?, priceTo: Int?)
+}
+
 class FilterByPriceViewController: PresentingViewController {
 
     // MARK: - Outlets
@@ -14,8 +18,20 @@ class FilterByPriceViewController: PresentingViewController {
     @IBOutlet weak var toTF: UITextField!
     
     // MARK: - Variables
+    var fromPrice: Int?
+    var toPrice: Int?
+    weak var delegate: FilterByPriceViewControllerDelegate?
     
     // MARK: - Life Cycle
+    init(delegate: FilterByPriceViewControllerDelegate) {
+        self.delegate = delegate
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -28,5 +44,17 @@ class FilterByPriceViewController: PresentingViewController {
     }
     
     @IBAction func applyClicked(_ sender: UIButton) {
+        if fromTF.isEmpty && toTF.isEmpty {
+            dismiss(animated: true)
+            return
+        }
+        if !fromTF.isEmpty {
+            fromPrice = fromTF.text?.intValue
+        }
+        if !toTF.isEmpty {
+            toPrice = toTF.text?.intValue
+        }
+        delegate?.didSelectPrice(priceFrom: fromPrice, priceTo: toPrice)
+        dismiss(animated: true)
     }
 }

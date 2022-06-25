@@ -28,20 +28,34 @@ final class ProfileAPIs {
         return NetworkManager.execute(request: request)
     }
     
-    func updateProfile(name: String,
-                       email: String,
-                       phone: String,
-                       companyName: String,
-                       companyType: String,
-                       areaId: Int) -> Single<Any> {
+    func updateProfile
+    (
+        name: String,
+        email: String,
+        phone: String,
+        companyName: String,
+        companyType: String,
+        areaId: Int,
+        image: UIImage?
+    ) -> Single<Any> {
         let request = ESNetworkRequest("profile/update")
         request.method = .post
-        request.parameters = ["name": name,
-                              "email": email,
-                              "phone": phone,
-                              "company_name": companyName,
-                              "company_type": companyType,
-                              "area_id": areaId]
+        request.parameters = [
+            "name": name,
+            "email": email,
+            "phone": phone,
+            "company_name": companyName,
+            "company_type": companyType,
+            "area_id": areaId
+        ]
+        if let image = image,
+           let data = image.jpegData(compressionQuality: 0.5) {
+            return NetworkManager.upload(data: .multipart(
+                [.init(data: data, key: "image", name: "image", memType: "Jpeg")]
+            ), request: request) { progress in
+                debugPrint("ProfilePicUpload progress: \(progress)")
+            }
+        }
         return NetworkManager.execute(request: request)
     }
     
@@ -59,7 +73,7 @@ final class ProfileAPIs {
         return NetworkManager.execute(request: request)
     }
     
-    func listFavorites() -> Single<[TrendingProductModel]> {
+    func listFavorites() -> Single<[ProductModel]> {
         let request = ESNetworkRequest("products/get/favourite")
         request.selections = [.key("data"), .key("favourite_products")]
         return NetworkManager.execute(request: request)
@@ -98,34 +112,53 @@ final class ProfileAPIs {
         return NetworkManager.execute(request: request)
     }
     
-    func addAddress(areaId: Int, street: String, floor: String,
-                    apartment: String, landmark: String, cityId: Int,
-                    provinceId: Int) -> Single<Any> {
+    func addAddress
+    (
+        areaId: Int,
+        street: String,
+        floor: String,
+        apartment: String,
+        landmark: String,
+        cityId: Int,
+        provinceId: Int
+    ) -> Single<Any> {
         let request = ESNetworkRequest("addresses/store")
         request.method = .post
-        request.parameters = ["areaId": areaId,
-                              "street": street,
-                              "floor": floor,
-                              "apartment": apartment,
-                              "landmark": landmark,
-                              "cityId": cityId,
-                              "provinceId": provinceId]
+        request.parameters = [
+            "areaId": areaId,
+            "street": street,
+            "floor": floor,
+            "apartment": apartment,
+            "landmark": landmark,
+            "cityId": cityId,
+            "provinceId": provinceId
+        ]
         return NetworkManager.execute(request: request)
     }
     
-    func updateAddress(addressId: Int, areaId: Int, street: String, floor: String,
-                       apartment: String, landmark: String, cityId: Int,
-                       provinceId: Int) -> Single<Any> {
+    func updateAddress
+    (
+        addressId: Int,
+        areaId: Int,
+        street: String,
+        floor: String,
+        apartment: String,
+        landmark: String,
+        cityId: Int,
+        provinceId: Int
+    ) -> Single<Any> {
         let request = ESNetworkRequest("addresses/update")
         request.method = .post
-        request.parameters = ["addressId": addressId,
-                              "areaId": areaId,
-                              "street": street,
-                              "floor": floor,
-                              "apartment": apartment,
-                              "landmark": landmark,
-                              "cityId": cityId,
-                              "provinceId": provinceId]
+        request.parameters = [
+            "addressId": addressId,
+            "areaId": areaId,
+            "street": street,
+            "floor": floor,
+            "apartment": apartment,
+            "landmark": landmark,
+            "cityId": cityId,
+            "provinceId": provinceId
+        ]
         return NetworkManager.execute(request: request)
     }
     
@@ -138,6 +171,7 @@ final class ProfileAPIs {
     
     func listOrders(page: Int) -> Single<PagedObject<OrderModel>> {
         let request = ESNetworkRequest("orders?page=\(page)")
+        request.selections = [.key("data")]
         return NetworkManager.execute(request: request)
     }
     
@@ -150,7 +184,11 @@ final class ProfileAPIs {
     func storeTender(categoryId: Int, productId: Int, message: String) -> Single<String> {
         let request = ESNetworkRequest("tenders/store")
         request.method = .post
-        request.parameters = ["categoryId": categoryId,"productId":productId , "message":message]
+        request.parameters = [
+            "categoryId": categoryId,
+            "productId":productId,
+            "message":message
+        ]
         request.selections = [.key("message")]
         return NetworkManager.execute(request: request)
     }

@@ -21,7 +21,7 @@ class SearchFilterViewController: BaseViewController {
     
     // MARK: - Variables
     let viewModel = SearchFilterViewModel()
-    var selectedCategoryProducts: [ProductModel] = []
+    var selectedCategoryProducts: [CategoryChildModel] = []
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -50,7 +50,7 @@ class SearchFilterViewController: BaseViewController {
         }.disposed(by: disposeBag)
         
         viewModel.selectedCategory.bind { [weak self] in
-            self?.selectedCategoryProducts = $0?.products ?? []
+            self?.selectedCategoryProducts = $0?.childs ?? []
         }.disposed(by: disposeBag)
         
         viewModel.error.bind {
@@ -68,7 +68,7 @@ class SearchFilterViewController: BaseViewController {
     }
     
     func showProducts() {
-        ActionSheet.show(title: "_select_category", cancelTitle: "Cancel", otherTitles: selectedCategoryProducts.map { $0.name }, sender: deptLabel) {[weak self] index in
+        ActionSheet.show(title: "_choose_sub_cat", cancelTitle: "Cancel", otherTitles: selectedCategoryProducts.map { $0.name }, sender: deptLabel) {[weak self] index in
             if index != 0 {
                 self?.viewModel.selectedProduct.accept(self?.selectedCategoryProducts[index - 1])
                 self?.productLabel.text = self?.selectedCategoryProducts[index - 1].name
@@ -102,7 +102,7 @@ class SearchFilterViewController: BaseViewController {
     @IBAction func filterSearchClicked(_ sender: UIButton) {
         viewModel.isFilter.accept(true)
         if filterSupplierButton.isSelected {
-            push(controller: SupplierSearchResultsViewController(viewModel: viewModel))
+            push(controller: SupplierSearchResultsViewController(keyword: searchKeyTF.text, selectedCategory: viewModel.selectedCategory.value?.id, selectedParentCategory: viewModel.selectedProduct.value?.id))
         }
     }
     
@@ -121,7 +121,7 @@ class SearchFilterViewController: BaseViewController {
     @IBAction func searchWithKeyClicked(_ sender: UIButton) {
         viewModel.isFilter.accept(false)
         if searchSupplierButton.isSelected {
-            push(controller: SupplierSearchResultsViewController(viewModel: viewModel))
+            push(controller: SupplierSearchResultsViewController(keyword: searchKeyTF.text, selectedCategory: viewModel.selectedCategory.value?.id, selectedParentCategory: viewModel.selectedProduct.value?.id))
         }
     }
 }

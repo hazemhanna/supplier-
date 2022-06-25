@@ -73,10 +73,10 @@ class ProductDetailsViewController: BaseViewController {
         title = product.name
         productImageView.setImageWith(stringUrl: product.mainImage)
         piecesNo.text = "_piece"
-        favButton.isSelected = product.isFav
+        favButton.isSelected = product.isFav == 1
         productName.text = product.name
         priceLabel.text = product.price.string()
-        addToCartButton.setTitle(product.inCart ? "_remove_from_cart" : "_add_to_cart", for: .normal)
+        addToCartButton.setTitle(product.inCart == 1 ? "_remove_from_cart" : "_add_to_cart", for: .normal)
         productDesc.text = product.desc
         supplierName.text = product.supplierName
         supplierImageView.setImageWith(stringUrl: product.supplier.logo)
@@ -119,8 +119,8 @@ class ProductDetailsViewController: BaseViewController {
         
         profileViewModel.favoriteToggledSucceeded.bind { [weak self] _ in
             guard let self = self else { return }
-            self.product.isFav = !self.product.isFav
-            self.favButton.isSelected = self.product.isFav
+            self.product.isFav = self.product.isFav == 1 ? 0 : 1
+            self.favButton.isSelected = self.product.isFav == 1
         }.disposed(by: disposeBag)
     }
     
@@ -169,7 +169,7 @@ class ProductDetailsViewController: BaseViewController {
     
     @objc
     func openCartClicked() {
-        push(controller: CartViewController())
+        push(controller: CartViewController(isFromTabbar: false))
     }
     
 }

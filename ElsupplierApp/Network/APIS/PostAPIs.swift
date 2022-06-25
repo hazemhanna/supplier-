@@ -32,20 +32,20 @@ final class PostAPIs {
         return NetworkManager.execute(request: request)
     }
     
-    func addComment(postId: Int,comment : String) -> Single<String> {
+    func addComment(postId: Int, comment : String) -> Single<String> {
         let request = ESNetworkRequest("posts/add/comment")
         request.method = .post
         request.parameters = ["postId": postId,
-                              "comment" : comment]
+                              "comment": comment]
         request.selections = [.key("message")]
         return NetworkManager.execute(request: request)
     }
     
-    func addPost(title: String,body : String,attachments : [UIImage]?) -> Single<String> {
+    func addPost(title: String, body: String, attachments: [UIImage]?) -> Single<String> {
         let request = ESNetworkRequest("posts/store")
         request.method = .post
         request.parameters = ["title": title,
-                              "body" : body]
+                              "body": body]
         var files = [MPFile]()
         attachments?.forEach { photo  in
             if let data = photo.jpegData(compressionQuality: 0.5){
@@ -53,8 +53,8 @@ final class PostAPIs {
             }
         }
         request.selections = [.key("message")]
-       return NetworkManager.upload(data: .multipart(files), request: request) { progress in
-       }
+        return NetworkManager.upload(data: .multipart(files), request: request) { progress in
+        }
     }
     
 }

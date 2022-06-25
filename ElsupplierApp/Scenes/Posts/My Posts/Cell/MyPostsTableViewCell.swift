@@ -19,14 +19,14 @@ protocol MyPostsTableViewCellDelegate: AnyObject {
 class MyPostsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var collectionViewHeight : NSLayoutConstraint!
-    @IBOutlet weak var userImage : UIImageView!
-    @IBOutlet weak var userName : UILabel!
-    @IBOutlet weak var bostBody : UILabel!
-    @IBOutlet weak var dateLbl  : UILabel!
-    @IBOutlet weak var userType : UILabel!
-    @IBOutlet weak var addCommentTF  : UITextField!
-    @IBOutlet weak var likeBtn  : UIButton!
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var bostBody: UILabel!
+    @IBOutlet weak var dateLbl: UILabel!
+    @IBOutlet weak var userType: UILabel!
+    @IBOutlet weak var addCommentTF: UITextField!
+    @IBOutlet weak var likeBtn: UIButton!
 
     weak var delegate: MyPostsTableViewCellDelegate?
     
@@ -43,7 +43,7 @@ class MyPostsTableViewCell: UITableViewCell {
             } else {
                 collectionViewHeight.constant = 0
             }
-            post.isLiked == 0 ? likeBtn.setImage(UIImage(named: "like"), for: .normal) : likeBtn.setImage(UIImage(named: "liked"), for: .normal)
+            likeBtn.setImage(post.isLiked == 1 ? R.image.liked() : R.image.like(), for: .normal)
         }
     }
     
@@ -95,7 +95,6 @@ extension MyPostsTableViewCell: UICollectionViewDelegate,
         }
         cell.imageNumber.text = "\(post.media.count)"
         cell.itemImage.setImageWith(stringUrl: post.media[indexPath.row].media)
-        
         return cell
     }
     

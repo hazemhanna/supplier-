@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="402" height="187"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2022-04-16 at 10.14.17 AM" translatesAutoresizingMaskIntoConstraints="NO" id="tPp-2D-uaF">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appLogo" translatesAutoresizingMaskIntoConstraints="NO" id="tPp-2D-uaF">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="187"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -42,6 +42,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="Screen Shot 2022-04-16 at 10.14.17 AM" width="1502" height="704"/>
+        <image name="appLogo" width="1024" height="1024"/>
     </resources>
 </document>

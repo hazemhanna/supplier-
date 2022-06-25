@@ -24,6 +24,11 @@ class HomeViewController: BaseTabBarViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.navigationController?.isNavigationBarHidden = true
+    }
+    
     // MARK: - Functions
     override func setupView() {
         super.setupView()
@@ -35,7 +40,7 @@ class HomeViewController: BaseTabBarViewController {
         tabBarController?.navigationController?.navigationBar.isHidden = true
         viewModel.loadHome()
         if let user = UserModel.current {
-            userView.userPic.setImageWith(stringUrl: user.image, placeholder: R.image.screenShot20220412At95108PM())
+            userView.userPic.setImageWith(stringUrl: user.image, placeholder: R.image.appLogo())
         }
     }
     
@@ -71,13 +76,16 @@ class HomeViewController: BaseTabBarViewController {
     
     override func setupCallbacks() {
         viewModel.homeModel
-            .bind(onNext: {
+            .bind {
                 self.homeModel = $0
                 self.offersCollectionView.reloadData()
                 self.deptCollectionView.reloadData()
                 self.deptCollectionViewHeight.constant = CGFloat(($0.categories.count / 3) * 180)
-            })
-            .disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
+        
+        viewModel.error.bind {
+            Alert.show(message: $0.localizedDescription)
+        }.disposed(by: disposeBag)
     }
     
     override func shouldShowTabBar() -> Bool {
@@ -118,7 +126,7 @@ extension HomeViewController: UICollectionViewDelegate,
             return cell
         default:
             let cell: HomeDeptCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)!
-            cell.deptImageView.setImageWith(stringUrl: homeModel.categories[indexPath.row].image)
+            cell.deptImageView.setImageWith(stringUrl: homeModel.categories[indexPath.row].image, placeholder: R.image.appLogo())
             cell.deptName.text = homeModel.categories[indexPath.row].name
             return cell
         }
@@ -129,7 +137,7 @@ extension HomeViewController: UICollectionViewDelegate,
         case offersCollectionView:
             break
         default:
-            push(controller: CategoriesViewController(categoryModel: homeModel.categories[indexPath.row]))
+            push(controller: CategoriesViewController(categoryModel: homeModel.categories[indexPath.row], sliders: homeModel.sliders))
         }
     }
     

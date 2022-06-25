@@ -27,16 +27,21 @@ final class AuthAPIs: AuthAPIsProtocol {
         return NetworkManager.execute(request: request)
     }
     
-    func register(name: String,
-                  phone: String,
-                  companyName: String,
-                  userTypeId: Int) -> Single<UserModel> {
+    func register
+    (
+        name: String,
+        phone: String,
+        companyName: String,
+        userTypeId: Int
+    ) -> Single<UserModel> {
         let request = ESNetworkRequest("register")
         request.method = .post
-        request.parameters = ["name": name,
-                              "phone": phone,
-                              "company_name": companyName,
-                              "userTypeId": userTypeId]
+        request.parameters = [
+            "name": name,
+            "phone": phone,
+            "company_name": companyName,
+            "userTypeId": userTypeId
+        ]
         return NetworkManager.execute(request: request)
     }
     

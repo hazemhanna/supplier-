@@ -58,7 +58,7 @@
 "Posts" = "مشنورات";
 "Tender" = "مناقصة";
 "Search" = "بحث";
-"Logout" = "خروج";
+"Logout" = "تسجيل خروج";
 "_home" = "الرئيسية";
 "Add" = "اضف";
 "_main_address" = "العنوان الاساسي";
@@ -76,7 +76,7 @@
 "_landmark" = "علامة مميزة";
 "_select_gov" = "اختر المحافظة";
 "_select_city" = "اختر المدينة";
-"_select_gov" = "اختر المنطقة";
+"_select_area" = "اختر المنطقة";
 "_new_address" = "عنوان جديد";
 "_please_select_gov" = "من فضلك اختر المحافظة";
 "_please_select_city" = "من فضلك اختر المدينة";
@@ -129,6 +129,7 @@
 "_address" = "العنوان";
 "_payment_type" = "طريقة الدفع";
 "_sub_total" = "الاجمالي";
+"total:" = "الاجمالي: ";
 "_shipping_fees" = "مصاريف الشحن";
 "_total" = "الاجمالي";
 "_order_summary" = "ملخص الطلب";
@@ -138,6 +139,7 @@
 "_empty_cart" = "لا يوجد منتجات في عربة التسوق";
 "_all_orders" = "كل الطلبات";
 "order_no:" = "طلب رقم # ";
+"_supplier:" = "المورد: ";
 "_sub_depts" = "الاقسام الفرعية";
 "offers " = "عروض ";
 "_new_tender" = "مناقصة جديدة";
@@ -165,3 +167,9 @@
 "_sendـmesaage" = "ارسال رسالة" ;
 "_send_supplier_message" = "ارسال رسالة للمورد";
 "_price_list_request" = "طلب قائمة اسعار";
+"_change_profile_pic" = "تغيير صورة الحساب";
+"Pick Your Picture" = "اختر صورتك";
+"Choose from Library" = "اختر من المكتبة";
+"Take a Picture from Camera" = "التقط صورة باستخدام الكاميرا";
+"suppliers " = "موردين ";
+"_choose_sub_cat" = "اختر القسم الفرعي";

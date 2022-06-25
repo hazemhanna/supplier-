@@ -17,14 +17,21 @@ class CartViewController: BaseTabBarViewController {
     // MARK: - Variables
     let viewModel = CartViewModel()
     var cartModel = CartModel()
+    var isFromTabbar = true
     
     // MARK: - Life Cycle
+    convenience init(isFromTabbar: Bool) {
+        self.init()
+        self.isFromTabbar = isFromTabbar
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tabBarController?.navigationController?.isNavigationBarHidden = false
         viewModel.loadCart()
     }
     
@@ -61,14 +68,17 @@ class CartViewController: BaseTabBarViewController {
     override func tabBarItemTitle() -> String? {
         "Cart".localized
     }
+    
     override func tabBarItemImage() -> UIImage? {
         R.image.cart()
     }
+    
     override func tabBarItemSelectedImage() -> UIImage? {
         R.image.cartActive()
     }
+    
     override func shouldShowTabBar() -> Bool {
-        true
+        isFromTabbar
     }
     
     // MARK: - Actions

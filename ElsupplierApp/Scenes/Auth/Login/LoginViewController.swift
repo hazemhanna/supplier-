@@ -69,5 +69,9 @@ class LoginViewController: BaseViewController {
     }
     
     @IBAction func downloadSupplierAppClicked(_ sender: UIButton) {
+        let urlString = "https://apps.apple.com/us/app/elsupplier-business/id1551979645"
+        if let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:])
+        }
     }
 }

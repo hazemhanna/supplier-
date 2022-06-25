@@ -14,8 +14,8 @@ final class ProductModel: BaseObject {
     var supplier = SupplierModel()
     var categoryName = ""
     var price = 0
-    var isFav = false
-    var inCart = false
+    var isFav = 0
+    var inCart = 0
     var groupPrice: [GroupPriceModel] = []
     var rank = 0
     var views = 0
@@ -34,20 +34,21 @@ final class ProductModel: BaseObject {
     var orderMinAmount = 0
     var promotions: [ProductPromotionModel] = []
     var rfqSend = false
+    var productSpecs: [[String: String]] = []
     
     override func mapping(map: Map) {
         super.mapping(map: map)
         name <- map["name"]
-        supplierName <- map["supplier_name"]
+        supplierName <- map["supplier_name", "supplierName"]
         supplier <- map["supplier"]
-        categoryName <- map[Language.isArabic ? "subCategoryArName" : "subCategoryEnName"]
+        categoryName <- map["subCategoryName", Language.isArabic ? "subCategoryArName" : "subCategoryEnName"]
         price <- map["price"]
         isFav <- map["is_fav"]
         inCart <- map["in_cart"]
         groupPrice <- map["groups_prices"]
         rank <- map["rank"]
         views <- map["views"]
-        measurmentUnit <- map["unit_measurement"]
+        measurmentUnit <- map["unit_measurement", "unitMeasurement"]
         pageTitle <- map["page_title"]
         video <- map["video"]
         availability <- map["availability"]
@@ -61,6 +62,7 @@ final class ProductModel: BaseObject {
         addToCart <- map["addToCart"]
         orderMinAmount <- map["order_minimum_amount"]
         rfqSend <- map["rfq_send"]
+        productSpecs <- map["product_specs"]
     }
     
 }

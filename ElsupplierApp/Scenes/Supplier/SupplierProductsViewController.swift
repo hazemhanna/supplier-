@@ -36,6 +36,11 @@ class SupplierProductsViewController: BaseViewController {
         tableView.registerCell(ofType: FavProductTableViewCell.self)
         collectionView.registerCell(ofType: SupplierProductCategoryCell.self)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        collectionView.semanticContentAttribute = .forceLeftToRight
+        if Language.isArabic {
+            collectionView.transform = CGAffineTransform(scaleX: -1, y: 1)
+        }
+        supplier.categoryProducts.first?.isSelected = true
     }
     
     // MARK: - Actions
@@ -45,22 +50,37 @@ class SupplierProductsViewController: BaseViewController {
 extension SupplierProductsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return supplier.categoryProducts.count
+        supplier.categoryProducts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: SupplierProductCategoryCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)!
+        if Language.isArabic {
+            cell.transform = CGAffineTransform(scaleX: -1, y: 1)
+        }
         cell.categoryName.text = supplier.categoryProducts[indexPath.row].name
+        cell.bgView.backgroundColor = supplier.categoryProducts[indexPath.row].isSelected ? R.color.lightBlue() : .white
+        cell.bgView.borderWidth = supplier.categoryProducts[indexPath.row].isSelected ? 0 : 1
+        cell.bgView.borderColor = R.color.lightBlue()!
+        cell.categoryName.textColor = supplier.categoryProducts[indexPath.row].isSelected ? UIColor.white : R.color.lightBlue()
+        cell.bgView.cornerRadius = cell.bgView.frame.height / 2
+        cell.bgView.clipsToBounds = true
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let textWidth = supplier.categoryProducts[indexPath.row].name.widthOfString (usingFont: .appFont(ofSize: 14, weight: .bold)!) + 40
-        return CGSize(width: textWidth, height: collectionView.frame.height)
+        return CGSize(width: textWidth, height: collectionView.frame.height - 4)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        selectedIndex = indexPath.row
+        supplier.categoryProducts.forEach { item in
+            item.isSelected = false
+        }
+        supplier.categoryProducts[indexPath.row].isSelected = true
+        collectionView.reloadData()
+        tableView.reloadData()
     }
     
 }
@@ -68,12 +88,13 @@ extension SupplierProductsViewController: UICollectionViewDelegate, UICollection
 extension SupplierProductsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return supplier.categoryProducts[selectedIndex].products.count
+        supplier.categoryProducts.isEmpty ? 0 : supplier.categoryProducts[selectedIndex].products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: FavProductTableViewCell = tableView.dequeueReusableCell()!
-        cell.supplierProduct = supplier.categoryProducts[selectedIndex].products[indexPath.row]
+        cell.product = supplier.categoryProducts[selectedIndex].products[indexPath.row]
+        cell.delegate = self
         return cell
     }
     
@@ -81,4 +102,14 @@ extension SupplierProductsViewController: UITableViewDelegate, UITableViewDataSo
         push(controller: ProductDetailsViewController(product: supplier.categoryProducts[selectedIndex].products[indexPath.row]))
     }
     
+}
+
+extension SupplierProductsViewController: FavProductTableViewCellDelegate {
+    func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapAdd product: ProductModel) {
+        
+    }
+    
+    func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapFav product: ProductModel) {
+        
+    }
 }

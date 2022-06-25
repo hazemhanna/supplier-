@@ -39,4 +39,16 @@ final class MockupsAPIs {
         request.selections = [.key("data"), .key("sub_categories")]
         return NetworkManager.execute(request: request)
     }
+    
+    func listMockCategories() -> Single<[PickerModel]> {
+        let request = ESNetworkRequest("sub-categories/products")
+        request.selections = [.key("data"), .key("sub_categories")]
+        return NetworkManager.execute(request: request)
+    }
+    func listParentCategories() -> Single<[CategoryModel]> {
+        let request = ESNetworkRequest("categories-list")
+        request.selections = [.key("data"), .key("category_list")]
+        return NetworkManager.execute(request: request)
+    }
+    
 }

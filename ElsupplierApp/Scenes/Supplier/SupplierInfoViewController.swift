@@ -41,6 +41,13 @@ class SupplierInfoViewController: BaseViewController {
     }
     
     // MARK: - Functions
+    override func setupView() {
+        mobileNoButton.setTitle(supplier.supplier.phone, for: .normal)
+        emailButton.setTitle(supplier.supplier.email, for: .normal)
+        websiteButton.setTitle(supplier.supplier.website, for: .normal)
+        addressLabel.text = supplier.supplier.address
+        aboutSupplierDesc.text = supplier.supplier.desc.html2String
+    }
     
     // MARK: - Actions
     @IBAction func infoClicked(_ sender: UIButton) {

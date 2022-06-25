@@ -25,6 +25,7 @@ class ProfileViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
+        viewModel.showProfile()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -36,7 +37,6 @@ class ProfileViewController: BaseViewController {
     override func setupView() {
         super.setupView()
         title = "_profile".localized
-        viewModel.showProfile()
     }
     
     override func bindViewModelToViews() {
@@ -60,7 +60,7 @@ class ProfileViewController: BaseViewController {
     }
     
     func updateUI(user: UserModel) {
-        userPic.setImageWith(stringUrl: user.image, placeholder: R.image.screenShot20220412At95108PM())
+        userPic.setImageWith(stringUrl: user.image, placeholder: R.image.appLogo())
         username.text = user.name
         userEmail.text = user.email
     }

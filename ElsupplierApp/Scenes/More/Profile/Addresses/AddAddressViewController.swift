@@ -111,7 +111,7 @@ class AddAddressViewController: BaseViewController {
         }
     }
     func showAreas(_ areas: [PickerModel]) {
-        ActionSheet.show(title: "_select_gov", cancelTitle: "Cancel", otherTitles: areas.map { $0.name }, sender: governrantTF) {[weak self] index in
+        ActionSheet.show(title: "_select_area", cancelTitle: "Cancel", otherTitles: areas.map { $0.name }, sender: governrantTF) {[weak self] index in
             if index != 0 {
                 self?.areaTF.text = areas[index - 1].name
                 self?.viewModel.selectedArea.accept(areas[index - 1])

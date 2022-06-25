@@ -189,6 +189,8 @@
 		06B9B53B2842BAD000A2C7CC /* ChoosePaymentWayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B9B5392842BAD000A2C7CC /* ChoosePaymentWayViewController.xib */; };
 		06B9B53E2842BDB600A2C7CC /* PaymentTypeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9B53C2842BDB600A2C7CC /* PaymentTypeTableCell.swift */; };
 		06B9B53F2842BDB600A2C7CC /* PaymentTypeTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B9B53D2842BDB600A2C7CC /* PaymentTypeTableCell.xib */; };
+		06BD082A2867841500920FDF /* CategorySuppliersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BD08282867841400920FDF /* CategorySuppliersViewController.swift */; };
+		06BD082D2867856500920FDF /* CategorySuppliersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06BD082C2867856500920FDF /* CategorySuppliersViewController.xib */; };
 		06C2CD47284B6C9600C73828 /* OrderSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2CD45284B6C9600C73828 /* OrderSummaryViewController.swift */; };
 		06C2CD48284B6C9600C73828 /* OrderSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06C2CD46284B6C9600C73828 /* OrderSummaryViewController.xib */; };
 		06C2CD4B284B71FD00C73828 /* OrderSummaryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2CD49284B71FD00C73828 /* OrderSummaryTableCell.swift */; };
@@ -441,6 +443,8 @@
 		06B9B5392842BAD000A2C7CC /* ChoosePaymentWayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChoosePaymentWayViewController.xib; sourceTree = "<group>"; };
 		06B9B53C2842BDB600A2C7CC /* PaymentTypeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTypeTableCell.swift; sourceTree = "<group>"; };
 		06B9B53D2842BDB600A2C7CC /* PaymentTypeTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentTypeTableCell.xib; sourceTree = "<group>"; };
+		06BD08282867841400920FDF /* CategorySuppliersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySuppliersViewController.swift; sourceTree = "<group>"; };
+		06BD082C2867856500920FDF /* CategorySuppliersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategorySuppliersViewController.xib; sourceTree = "<group>"; };
 		06C2CD45284B6C9600C73828 /* OrderSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryViewController.swift; sourceTree = "<group>"; };
 		06C2CD46284B6C9600C73828 /* OrderSummaryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderSummaryViewController.xib; sourceTree = "<group>"; };
 		06C2CD49284B71FD00C73828 /* OrderSummaryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryTableCell.swift; sourceTree = "<group>"; };
@@ -964,6 +968,8 @@
 				06A53FDB2813A4C10052D713 /* HomeViewModel.swift */,
 				06D0882E284BB674008F9F3F /* CategoriesViewController.swift */,
 				06D0882F284BB674008F9F3F /* CategoriesViewController.xib */,
+				06BD08282867841400920FDF /* CategorySuppliersViewController.swift */,
+				06BD082C2867856500920FDF /* CategorySuppliersViewController.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1288,6 +1294,7 @@
 				06ED3EB82800F91900AA6D55 /* RegisterViewController.xib in Resources */,
 				0664E00D2809B7860095AC42 /* ChangePasswordViewController.xib in Resources */,
 				06C2CD4C284B71FD00C73828 /* OrderSummaryTableCell.xib in Resources */,
+				06BD082D2867856500920FDF /* CategorySuppliersViewController.xib in Resources */,
 				06ED3EA52800855B00AA6D55 /* Cairo-Light.ttf in Resources */,
 				0609A80C280AB28300806081 /* HomeOfferCollectionViewCell.xib in Resources */,
 				06D08823284B93F0008F9F3F /* MyOrdersViewController.xib in Resources */,
@@ -1481,6 +1488,7 @@
 				067F4644280080C5004C403F /* FloatingTextField.swift in Sources */,
 				067F4659280080D0004C403F /* Language.swift in Sources */,
 				0609A80B280AB28300806081 /* HomeOfferCollectionViewCell.swift in Sources */,
+				06BD082A2867841500920FDF /* CategorySuppliersViewController.swift in Sources */,
 				065C89D9283319840096AE54 /* SupplierSearchResultViewModel.swift in Sources */,
 				06B9B5362842B46F00A2C7CC /* ChooseAddressViewController.swift in Sources */,
 				067269C7285513AA00906BA5 /* SupplierProductsViewController.swift in Sources */,
@@ -1684,10 +1692,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = G5KAMXDVUX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow Supplier access to Camera to be abel to upload profile pic and post images";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow Supplier access to Gallery to be abel to upload profile pic and post images";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1715,10 +1725,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = G5KAMXDVUX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow Supplier access to Camera to be abel to upload profile pic and post images";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow Supplier access to Gallery to be abel to upload profile pic and post images";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

@@ -13,6 +13,8 @@ class TenderTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryName: UILabel!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var statusView: UIView!
+    @IBOutlet weak var statusLabel: UILabel!
     
     // MARK: - Variables
     var tender: TenderModel! {
@@ -20,6 +22,7 @@ class TenderTableViewCell: UITableViewCell {
             categoryName.text = tender.category
             productName.text = tender.product
             dateLabel.text = tender.date
+            statusLabel.text = tender.status
         }
     }
     

@@ -13,6 +13,7 @@ class ProfileViewModel: BaseViewModel {
 
     var selectedUserAddress = BehaviorRelay<Int>(value: -1)
     var selectedPaymentMethod = BehaviorRelay<Int>(value: -1)
+    var image = BehaviorRelay<UIImage?>(value: nil)
     var doneAddressSelection = PublishRelay<Bool>()
     var donePaymentMethodSelection = PublishRelay<Bool>()
 
@@ -32,7 +33,7 @@ class ProfileViewModel: BaseViewModel {
     var updatedSuccessfully = PublishRelay<Bool>()
 
     // MARK: - Favorites
-    var favorites = PublishRelay<[TrendingProductModel]>()
+    var favorites = PublishRelay<[ProductModel]>()
     var favoriteSuppliers = PublishRelay<[SupplierModel]>()
     var favoriteToggledSucceeded = PublishRelay<Bool>()
     
@@ -101,7 +102,8 @@ class ProfileViewModel: BaseViewModel {
                                   phone: mobileNo.value,
                                   companyName: companyName.value,
                                   companyType: companyType.value,
-                                  areaId: areaId.value).subscribe { [weak self] _ in
+                                  areaId: areaId.value,
+                                  image: image.value).subscribe { [weak self] _ in
             guard let self = self else { return }
             self.isLoading.accept(false)
             self.updatedSuccessfully.accept(true)

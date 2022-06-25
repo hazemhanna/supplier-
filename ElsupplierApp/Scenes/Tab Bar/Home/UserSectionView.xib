@@ -21,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2022-04-12 at 9.51.08 PM" translatesAutoresizingMaskIntoConstraints="NO" id="djh-cp-6NU">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appLogo" translatesAutoresizingMaskIntoConstraints="NO" id="djh-cp-6NU">
                     <rect key="frame" x="357.5" y="30" width="36.5" height="36.5"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36.5" id="bh2-8y-1Tg"/>
@@ -107,7 +107,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Screen Shot 2022-04-12 at 9.51.08 PM" width="360" height="364"/>
+        <image name="appLogo" width="1024" height="1024"/>
         <image name="notifications" width="96" height="96"/>
         <image name="search" width="38" height="38"/>
         <namedColor name="DarkBlue">

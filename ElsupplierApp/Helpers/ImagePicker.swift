@@ -12,11 +12,13 @@ class ImagePicker: NSObject {
     
     static func pickImage(sender: UIView, completion: @escaping (_ image: UIImage?) -> Void) {
         ImagePicker.shared.comletion =  completion
-//        let controller = SelectPhotoFromViewController.init { location in
-//            self.pickImage(sourceType: location)
-//        }
-//        UIApplication.topViewController()?.present(controller, animated: true, completion: nil)
-    }
+        ActionSheet.show(title: "Pick Your Picture", cancelTitle: "Cancel",
+                         otherTitles: ["Choose from Library", "Take a Picture from Camera"],
+                         sender: sender) { index in
+            if index == 0 { return }
+            self.pickImage(sourceType: index == 1 ? .photoLibrary : .camera)
+        }
+   }
     
 }
 

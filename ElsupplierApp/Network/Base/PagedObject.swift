@@ -18,11 +18,16 @@ class PagedObject<T: BaseObject>: Mappable {
     init() { }
     required init?(map: Map) { }
     func mapping(map: Map) {
-        items <- map["search_result", "orders"]
+        items <- map["search_result", "orders", "suppliers", "products", "sub_category_owners"]
         totalCount <- map["pagination.total"]
         pageSize <- map["pagination.size"]
     }
     func hasNext(_ indexPath: IndexPath) -> Bool {
         return items.count < totalCount && indexPath.row == items.count - 1
+    }
+    
+    func append(_ model: PagedObject) {
+        items.append(contentsOf: model.items)
+        totalCount = model.totalCount
     }
 }

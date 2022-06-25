@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TendersViewController: BaseTabBarViewController {
+class TendersViewController: BaseViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -24,6 +24,7 @@ class TendersViewController: BaseTabBarViewController {
     // MARK: - Functions
     override func setupView() {
         super.setupView()
+        title = "_my_tenders".localized
         tableView.registerCell(ofType: TenderTableViewCell.self)
         let newTenderButton = UIBarButtonItem(title: "_new_tender".localized, style: .plain, target: self, action: #selector(newTenderClicked))
         newTenderButton.tintColor = R.color.lightBlue()
@@ -35,19 +36,6 @@ class TendersViewController: BaseTabBarViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.listTenders()
-    }
-    
-    
-    override func tabBarItemTitle() -> String? {
-        "Tender".localized
-    }
-    
-    override func tabBarItemImage() -> UIImage? {
-        R.image.tender()
-    }
-    
-    override func tabBarItemSelectedImage() -> UIImage? {
-        R.image.tenderActive()
     }
     
     @objc

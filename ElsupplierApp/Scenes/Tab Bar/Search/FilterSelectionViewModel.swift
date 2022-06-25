@@ -27,4 +27,16 @@ class FilterSelectionViewModel: BaseViewModel {
         }.disposed(by: disposeBag)
     }
     
+    func listCategories() {
+        isLoading.accept(true)
+        mockupsApis.listMockCategories().subscribe {[weak self] areas in
+            guard let self = self else { return }
+            self.isLoading.accept(false)
+            self.filterItems.accept(areas)
+        } onError: {[weak self] error in
+            guard let self = self else { return }
+            self.isLoading.accept(false)
+            self.error.accept(error)
+        }.disposed(by: disposeBag)
+    }
 }

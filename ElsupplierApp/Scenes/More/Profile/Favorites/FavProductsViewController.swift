@@ -14,7 +14,7 @@ class FavProductsViewController: BaseViewController {
     
     // MARK: - Variables
     let viewModel = ProfileViewModel()
-    var favorites: [TrendingProductModel] = []
+    var favorites: [ProductModel] = []
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -79,11 +79,11 @@ extension FavProductsViewController: UITableViewDelegate, UITableViewDataSource 
 
 extension FavProductsViewController: FavProductTableViewCellDelegate {
     
-    func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapAdd product: TrendingProductModel) {
+    func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapAdd product: ProductModel) {
         
     }
     
-    func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapFav product: TrendingProductModel) {
+    func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapFav product: ProductModel) {
         viewModel.favToggle(productId: product.id)
     }
     

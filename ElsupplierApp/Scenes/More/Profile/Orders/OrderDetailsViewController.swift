@@ -18,6 +18,7 @@ class OrderDetailsViewController: BaseViewController {
     @IBOutlet weak var subTotalLabel: UILabel!
     @IBOutlet weak var shippingFeesLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
+    
     // MARK: - Variables
     let order: OrderModel
     
@@ -41,6 +42,12 @@ class OrderDetailsViewController: BaseViewController {
         title = "_order_summary".localized
         tableView.registerCell(ofType: OrderSummaryTableCell.self)
         tableViewHeight.constant = CGFloat(order.items.count * 90)
+        addressLabel.text = order.address
+        paymentType.text = order.paymentType
+        mobileNo.text = order.userPhone
+        subTotalLabel.text = order.subtotal.string()
+        shippingFeesLabel.text = order.deliveryFees.string()
+        totalLabel.text = order.totalAmount.string()
     }
     
     // MARK: - Actions
