@@ -58,7 +58,6 @@ class ProfileViewController: BaseViewController {
             Alert.show(message: $0.localizedDescription)
         }.disposed(by: disposeBag)
     }
-    
     func updateUI(user: UserModel) {
         userPic.setImageWith(stringUrl: user.image, placeholder: R.image.appLogo())
         username.text = user.name

@@ -134,13 +134,12 @@ class EditProfileViewController: BaseViewController {
     
     @IBAction func changeUserImage(_ sender: UIButton) {
         ImagePicker.pickImage(sender: profilePic) { [weak self] image in
-            guard let self = self,
-                  let image = image
-            else { return }
+            guard let self = self, let image = image else { return }
             self.viewModel.image.accept(image)
-            self.viewModel.updateProfile()
+            self.profilePic.image = image
         }
     }
+    
 }
 
 extension EditProfileViewController: UITextFieldDelegate {
