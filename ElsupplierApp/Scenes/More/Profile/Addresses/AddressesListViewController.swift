@@ -62,7 +62,6 @@ class AddressesListViewController: BaseViewController {
             Alert.show(message: $0.localizedDescription)
         }.disposed(by: disposeBag)
     }
-    
     // MARK: - Actions
     @objc func newAddressClicked() {
         push(controller: AddAddressViewController())

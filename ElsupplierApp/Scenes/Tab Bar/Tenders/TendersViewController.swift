@@ -11,7 +11,8 @@ class TendersViewController: BaseViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var emptyView: UIView!
+
     // MARK: - Variables
     let viewModel = ProfileViewModel()
     var tenders: [TenderModel] = []
@@ -56,6 +57,11 @@ class TendersViewController: BaseViewController {
     override func setupCallbacks() {
         viewModel.tenders.bind { [weak self] in
             self?.tenders = $0
+            if (self?.tenders.count ?? 0) > 0 {
+                self?.emptyView.isHidden = true
+            }else {
+                self?.emptyView.isHidden = false
+            }
             self?.tableView.reloadData()
         }.disposed(by: disposeBag)
         
@@ -69,7 +75,6 @@ class TendersViewController: BaseViewController {
     }
     
     // MARK: - Actions
-
 }
 
 extension TendersViewController: UITableViewDelegate, UITableViewDataSource {

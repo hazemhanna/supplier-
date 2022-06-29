@@ -152,5 +152,4 @@ extension EditProfileViewController: UITextFieldDelegate {
         }
         return false
     }
-    
 }
