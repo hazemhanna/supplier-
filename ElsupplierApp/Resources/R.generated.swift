@@ -2090,6 +2090,7 @@ struct _R: Rswift.Validatable {
       try _SupplierProductSearchCollectionCell.validate()
       try _SupplierSearchResultTableCell.validate()
       try _SupplierSearchResultsViewController.validate()
+      try _TendersViewController.validate()
       try _UserSectionView.validate()
     }
 
@@ -3180,12 +3181,19 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    struct _TendersViewController: Rswift.NibResourceType {
+    struct _TendersViewController: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "TendersViewController"
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "my tenders", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'my tenders' is used in nib 'TendersViewController', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "SteelGrey", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'SteelGrey' is used in nib 'TendersViewController', but couldn't be loaded.") }
+        }
       }
 
       fileprivate init() {}

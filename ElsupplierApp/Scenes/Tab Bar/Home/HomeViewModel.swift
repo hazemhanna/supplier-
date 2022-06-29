@@ -14,6 +14,7 @@ final class HomeViewModel: BaseViewModel {
     let homeApis = HomeAPIs()
     var supplierDetails = PublishRelay<SupplierDetailsModel>()
     var suppliers = PublishRelay<PagedObject<SupplierModel>>()
+    var user = PublishRelay<UserModel>()
 
     func loadHome() {
         isLoading.accept(true)
@@ -50,4 +51,17 @@ final class HomeViewModel: BaseViewModel {
         }.disposed(by: disposeBag)
     }
     
+    func showProfile() {
+        isLoading.accept(true)
+        let profileApis = ProfileAPIs()
+        profileApis.showProfile().subscribe { [weak self] user in
+            guard let self = self else { return }
+            self.isLoading.accept(false)
+            self.user.accept(user)
+        } onError: { [weak self] error in
+            guard let self = self else { return }
+            self.isLoading.accept(false)
+            self.error.accept(error)
+        }.disposed(by: disposeBag)
+    }
 }

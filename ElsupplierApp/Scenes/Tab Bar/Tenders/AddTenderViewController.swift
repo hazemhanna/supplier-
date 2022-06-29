@@ -94,6 +94,7 @@ class AddTenderViewController: BaseTabBarViewController {
                     self.viewModel.selectedCategory.accept(nil)
                     self.selectedProductLabel.text = "_choose_product"
                     self.viewModel.selectedProduct.accept(nil)
+                    self.tenderDetailsTV.text = ""
                 } else {
                     self.pop()
                 }
