@@ -56,10 +56,10 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="sKh-Z5-0ve">
-                            <rect key="frame" x="18" y="221" width="378" height="490"/>
+                            <rect key="frame" x="18" y="221" width="378" height="429"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="nSb-jh-jaZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="378" height="290"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="378" height="229"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNp-H1-j4Z">
                                             <rect key="frame" x="0.0" y="0.0" width="378" height="46"/>
@@ -119,8 +119,8 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYd-bD-gdt">
-                                            <rect key="frame" x="0.0" y="122" width="378" height="46"/>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYd-bD-gdt">
+                                            <rect key="frame" x="0.0" y="114.5" width="378" height="46"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="_email*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oTR-7V-Tpj">
                                                     <rect key="frame" x="16" y="0.0" width="346" height="46"/>
@@ -149,7 +149,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="clN-ta-wd2">
-                                            <rect key="frame" x="0.0" y="183" width="378" height="46"/>
+                                            <rect key="frame" x="0.0" y="122" width="378" height="46"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="_activity_type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iRH-Hw-ib4">
                                                     <rect key="frame" x="16" y="0.0" width="346" height="46"/>
@@ -187,7 +187,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y1c-2X-e52">
-                                            <rect key="frame" x="0.0" y="244" width="378" height="46"/>
+                                            <rect key="frame" x="0.0" y="183" width="378" height="46"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="_company_name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Qp-GD-ISR">
                                                     <rect key="frame" x="16" y="0.0" width="346" height="46"/>
@@ -218,7 +218,7 @@
                                     </subviews>
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLz-P8-V4c">
-                                    <rect key="frame" x="0.0" y="310" width="378" height="28"/>
+                                    <rect key="frame" x="0.0" y="249" width="378" height="28"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="_by_creating_you_accept">
@@ -229,7 +229,7 @@
                                     </connections>
                                 </button>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="a9E-35-Sk9">
-                                    <rect key="frame" x="0.0" y="358" width="378" height="132"/>
+                                    <rect key="frame" x="0.0" y="297" width="378" height="132"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="73t-42-4DA">
                                             <rect key="frame" x="0.0" y="0.0" width="378" height="60"/>

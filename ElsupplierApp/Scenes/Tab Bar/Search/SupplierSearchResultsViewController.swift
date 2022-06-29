@@ -47,7 +47,14 @@ class SupplierSearchResultsViewController: BaseViewController {
         super.setupView()
         title = "_search_results".localized
         tableView.registerCell(ofType: SupplierSearchResultTableCell.self)
-        viewModel.filterSuppliers(isPromotion: 0, page: model.nextPage, keyword: keyword, parentCategoryId: selectedParentCategory, categoryId: selectedCategory, areaId: areaId, priceFrom: priceFrom, priceTo: priceTo)
+        viewModel.filterSuppliers(isPromotion: 0,
+                                  page: model.nextPage,
+                                  keyword: keyword,
+                                  parentCategoryId: selectedParentCategory,
+                                  categoryId: selectedCategory,
+                                  areaId: areaId,
+                                  priceFrom: priceFrom,
+                                  priceTo: priceTo)
     }
     
     override func bindViewModelToViews() {
