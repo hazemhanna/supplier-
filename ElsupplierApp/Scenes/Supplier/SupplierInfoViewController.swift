@@ -26,6 +26,7 @@ class SupplierInfoViewController: BaseViewController {
     // MARK: - Variables
     let supplier: SupplierDetailsModel
     
+    
     // MARK: - Life Cycle
     init(supplier: SupplierDetailsModel) {
         self.supplier = supplier
@@ -61,6 +62,7 @@ class SupplierInfoViewController: BaseViewController {
     }
     
     @IBAction func callRequestClicked(_ sender: UIButton) {
+        
     }
     
     @IBAction func priceRequestClicked(_ sender: UIButton) {

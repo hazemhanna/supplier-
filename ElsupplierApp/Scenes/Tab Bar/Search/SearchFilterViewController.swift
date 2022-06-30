@@ -63,6 +63,9 @@ class SearchFilterViewController: BaseViewController {
             if index != 0 {
                 self?.viewModel.selectedCategory.accept(categories[index - 1])
                 self?.deptLabel.text = categories[index - 1].name
+            } else {
+                self?.viewModel.selectedCategory.accept(nil)
+                self?.deptLabel.text = "_choose_dept"
             }
         }
     }
@@ -72,6 +75,9 @@ class SearchFilterViewController: BaseViewController {
             if index != 0 {
                 self?.viewModel.selectedProduct.accept(self?.selectedCategoryProducts[index - 1])
                 self?.productLabel.text = self?.selectedCategoryProducts[index - 1].name
+            } else {
+                self?.viewModel.selectedProduct.accept(nil)
+                self?.productLabel.text = "_choose_sub_cat"
             }
         }
     }
@@ -102,7 +108,9 @@ class SearchFilterViewController: BaseViewController {
     @IBAction func filterSearchClicked(_ sender: UIButton) {
         viewModel.isFilter.accept(true)
         if filterSupplierButton.isSelected {
-            push(controller: SupplierSearchResultsViewController(keyword: searchKeyTF.text, selectedCategory: viewModel.selectedCategory.value?.id, selectedParentCategory: viewModel.selectedProduct.value?.id))
+            push(controller: SupplierSearchResultsViewController(keyword: searchKeyTF.text, selectedCategory: viewModel.selectedProduct.value?.id, selectedParentCategory: viewModel.selectedCategory.value?.id))
+        } else {
+            push(controller: ProductsSearchResultsViewController(keyword: searchKeyTF.text, selectedCategory: viewModel.selectedProduct.value?.id, selectedParentCategory: viewModel.selectedCategory.value?.id))
         }
     }
     
@@ -121,7 +129,9 @@ class SearchFilterViewController: BaseViewController {
     @IBAction func searchWithKeyClicked(_ sender: UIButton) {
         viewModel.isFilter.accept(false)
         if searchSupplierButton.isSelected {
-            push(controller: SupplierSearchResultsViewController(keyword: searchKeyTF.text, selectedCategory: viewModel.selectedCategory.value?.id, selectedParentCategory: viewModel.selectedProduct.value?.id))
+            push(controller: SupplierSearchResultsViewController(keyword: searchKeyTF.text, selectedCategory: viewModel.selectedProduct.value?.id, selectedParentCategory: viewModel.selectedCategory.value?.id))
+        } else {
+            push(controller: ProductsSearchResultsViewController(keyword: searchKeyTF.text, selectedCategory: viewModel.selectedProduct.value?.id, selectedParentCategory: viewModel.selectedCategory.value?.id))
         }
     }
 }

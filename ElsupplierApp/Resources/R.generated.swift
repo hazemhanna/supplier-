@@ -369,7 +369,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 74 images.
+  /// This `R.image` struct is generated, and contains static references to 75 images.
   struct image {
     /// Image `Call`.
     static let call = Rswift.ImageResource(bundle: R.hostingBundle, name: "Call")
@@ -387,6 +387,8 @@ struct R: Rswift.Validatable {
     static let addComment = Rswift.ImageResource(bundle: R.hostingBundle, name: "add comment")
     /// Image `add to fav`.
     static let addToFav = Rswift.ImageResource(bundle: R.hostingBundle, name: "add to fav")
+    /// Image `addedToFav`.
+    static let addedToFav = Rswift.ImageResource(bundle: R.hostingBundle, name: "addedToFav")
     /// Image `appLogo`.
     static let appLogo = Rswift.ImageResource(bundle: R.hostingBundle, name: "appLogo")
     /// Image `arrow-circle-down`.
@@ -573,6 +575,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "add to fav", bundle: ..., traitCollection: ...)`
     static func addToFav(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.addToFav, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "addedToFav", bundle: ..., traitCollection: ...)`
+    static func addedToFav(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.addedToFav, compatibleWith: traitCollection)
     }
     #endif
 
@@ -1041,7 +1050,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 70 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 71 nibs.
   struct nib {
     /// Nib `AddAddressViewController`.
     static let addAddressViewController = _R.nib._AddAddressViewController()
@@ -1149,6 +1158,8 @@ struct R: Rswift.Validatable {
     static let postsViewController = _R.nib._PostsViewController()
     /// Nib `ProductDetailsViewController`.
     static let productDetailsViewController = _R.nib._ProductDetailsViewController()
+    /// Nib `ProductsSearchResultsViewController`.
+    static let productsSearchResultsViewController = _R.nib._ProductsSearchResultsViewController()
     /// Nib `ProfileViewController`.
     static let profileViewController = _R.nib._ProfileViewController()
     /// Nib `RegisterViewController`.
@@ -1609,6 +1620,14 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "ProductsSearchResultsViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.productsSearchResultsViewController) instead")
+    static func productsSearchResultsViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.productsSearchResultsViewController)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "ProfileViewController", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.profileViewController) instead")
     static func profileViewController(_: Void = ()) -> UIKit.UINib {
@@ -1956,6 +1975,10 @@ struct R: Rswift.Validatable {
       return R.nib.productDetailsViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
+    static func productsSearchResultsViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.productsSearchResultsViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
     static func profileViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.profileViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
@@ -2082,10 +2105,12 @@ struct _R: Rswift.Validatable {
       try _PickerViewController.validate()
       try _PostTableViewCell.validate()
       try _ProductDetailsViewController.validate()
+      try _ProductsSearchResultsViewController.validate()
       try _ProfileViewController.validate()
       try _RegisterViewController.validate()
       try _SearchFilterViewController.validate()
       try _SplashViewController.validate()
+      try _SupplierDetailsViewController.validate()
       try _SupplierInfoViewController.validate()
       try _SupplierProductSearchCollectionCell.validate()
       try _SupplierSearchResultTableCell.validate()
@@ -2928,6 +2953,26 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
+    struct _ProductsSearchResultsViewController: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "ProductsSearchResultsViewController"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "blue down arrow", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'blue down arrow' is used in nib 'ProductsSearchResultsViewController', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "DarkBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'DarkBlue' is used in nib 'ProductsSearchResultsViewController', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "LightBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'LightBlue' is used in nib 'ProductsSearchResultsViewController', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "SteelGrey", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'SteelGrey' is used in nib 'ProductsSearchResultsViewController', but couldn't be loaded.") }
+        }
+      }
+
+      fileprivate init() {}
+    }
+
     struct _ProfileViewController: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "ProfileViewController"
@@ -3041,12 +3086,24 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    struct _SupplierDetailsViewController: Rswift.NibResourceType {
+    struct _SupplierDetailsViewController: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "SupplierDetailsViewController"
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "add to fav", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'add to fav' is used in nib 'SupplierDetailsViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "addedToFav", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'addedToFav' is used in nib 'SupplierDetailsViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "back arrow", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'back arrow' is used in nib 'SupplierDetailsViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "star", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'star' is used in nib 'SupplierDetailsViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "star active", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'star active' is used in nib 'SupplierDetailsViewController', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "IceBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'IceBlue' is used in nib 'SupplierDetailsViewController', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "LightBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'LightBlue' is used in nib 'SupplierDetailsViewController', but couldn't be loaded.") }
+        }
       }
 
       fileprivate init() {}

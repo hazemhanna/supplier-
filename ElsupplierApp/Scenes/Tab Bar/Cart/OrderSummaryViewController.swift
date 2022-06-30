@@ -26,7 +26,10 @@ class OrderSummaryViewController: BaseViewController {
     let viewModel: CartViewModel
     
     // MARK: - Life Cycle
-    init(cartModel: CartModel, paymentType: PaymentTypeModel, address: AddressModel, viewModel: CartViewModel) {
+    init(cartModel: CartModel,
+         paymentType: PaymentTypeModel,
+         address: AddressModel,
+         viewModel: CartViewModel) {
         self.cartModel = cartModel
         self.paymentModel = paymentType
         self.address = address
@@ -48,6 +51,12 @@ class OrderSummaryViewController: BaseViewController {
         title = "_order_summary".localized
         tableView.registerCell(ofType: OrderSummaryTableCell.self)
         tableViewHeight.constant = CGFloat(cartModel.items.count * 90)
+        addressLabel.text = address.address
+        paymentType.text = paymentModel.name
+        mobileNo.text = UserModel.current?.phone ?? "-"
+        subTotalLabel.text = cartModel.subTotal.string() + " LE".localized
+        totalLabel.text = cartModel.total.string() + " LE".localized
+        shippingFeesLabel.text = cartModel.delivery.string() + " LE".localized
     }
     
     override func bindViewModelToViews() {

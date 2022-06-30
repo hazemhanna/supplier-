@@ -17,6 +17,7 @@ class SupplierDetailsViewController: BaseViewController {
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var segmentView: UISegmentedControl!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var favButton: UIButton!
     
     // MARK: - Variables
     var viewController: UIViewController? = nil
@@ -36,6 +37,16 @@ class SupplierDetailsViewController: BaseViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
     // MARK: - Functions
     override func setupView() {
         super.setupView()
@@ -44,8 +55,9 @@ class SupplierDetailsViewController: BaseViewController {
 //        rateView.rating = supplier.supplier.
         
         addToContrainer(SupplierProductsViewController(supplier: supplier))
-        let favButton = UIBarButtonItem(image: R.image.addToFav(), style: .plain, target: self, action: #selector(toggleFavorite))
-        navigationItem.rightBarButtonItem = favButton
+//        let favButton = UIBarButtonItem(image: R.image.addToFav(), style: .plain, target: self, action: #selector(toggleFavorite))
+//        navigationItem.rightBarButtonItem = favButton
+        favButton.isSelected = supplier.isFav
     }
     
     func addToContrainer(_ controller: UIViewController) {
@@ -60,6 +72,8 @@ class SupplierDetailsViewController: BaseViewController {
     func toggleFavorite() {
         
     }
+    
+    override func shouldShowNavigation() -> Bool { false }
     
     // MARK: - Actions
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
@@ -78,4 +92,10 @@ class SupplierDetailsViewController: BaseViewController {
         }
     }
     
+    @IBAction func backClicked(_ sender: UIButton) {
+        pop()
+    }
+    
+    @IBAction func favoriteClicked(_ sender: UIButton) {
+    }
 }

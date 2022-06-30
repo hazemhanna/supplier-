@@ -19,20 +19,15 @@ class OrderCompletedViewController: BaseViewController {
     }
     
     // MARK: - Functions
-    override func shouldShowTopView() -> Bool {
-        false
-    }
+    override func shouldShowTopView() -> Bool { false }
     
-    override func shouldShowNavigation() -> Bool {
-        false
-    }
+    override func shouldShowNavigation() -> Bool { false }
     
-    override func shouldShowDismissButon() -> Bool {
-        false
-    }
+    override func shouldShowDismissButon() -> Bool { false }
     
     // MARK: - Actions
     @IBAction func ordersClicked(_ sender: UIButton) {
+        push(controller: MyOrdersViewController(isFromOrderCreated: true))
     }
     
     @IBAction func homeClicked(_ sender: UIButton) {
