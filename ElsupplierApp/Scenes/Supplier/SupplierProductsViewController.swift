@@ -16,6 +16,8 @@ class SupplierProductsViewController: BaseViewController {
     // MARK: - Variables
     let supplier: SupplierDetailsModel
     var selectedIndex = 0
+    var viewModel = CartViewModel()
+    let profileViewModel = ProfileViewModel()
     
     // MARK: - Life Cycle
     init(supplier: SupplierDetailsModel) {
@@ -30,7 +32,6 @@ class SupplierProductsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
     // MARK: - Functions
     override func setupView() {
         tableView.registerCell(ofType: FavProductTableViewCell.self)
@@ -43,8 +44,41 @@ class SupplierProductsViewController: BaseViewController {
         supplier.categoryProducts.first?.isSelected = true
     }
     
-    // MARK: - Actions
+    override func bindViewModelToViews() {
+        viewModel.isLoading.bind {
+            if $0 {
+                Hud.show()
+            } else {
+                Hud.hide()
+            }
+        }.disposed(by: disposeBag)
+        profileViewModel.isLoading.bind {
+            if $0 {
+                Hud.show()
+            } else {
+                Hud.hide()
+            }
+        }.disposed(by: disposeBag)
+    }
+    
+    override func setupCallbacks() {
+        viewModel.itemAdded.bind { [weak self] _ in
+            self?.tableView.reloadData()
+            
+        }.disposed(by: disposeBag)
+        
+        viewModel.itemRemoved.bind { [weak self] _ in
+            self?.tableView.reloadData()
+        }.disposed(by: disposeBag)
+        
+        profileViewModel.favoriteToggledSucceeded.bind { [weak self] _ in
+            guard let self = self else { return }
+            self.tableView.reloadData()
+        }.disposed(by: disposeBag)
+        
+    }
 
+    // MARK: - Actions
 }
 
 extension SupplierProductsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -82,7 +116,6 @@ extension SupplierProductsViewController: UICollectionViewDelegate, UICollection
         collectionView.reloadData()
         tableView.reloadData()
     }
-    
 }
 
 extension SupplierProductsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -105,11 +138,17 @@ extension SupplierProductsViewController: UITableViewDelegate, UITableViewDataSo
 }
 
 extension SupplierProductsViewController: FavProductTableViewCellDelegate {
+    
     func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapAdd product: ProductModel) {
-        
+   
+        viewModel.addToCart(itemId: product.id, qty: 1)
+
     }
     
     func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapFav product: ProductModel) {
-        
+        profileViewModel.favToggle(productId: product.id)
+      //  product.isFav == 1 ? 0 : 1
+        cell.favButton.isSelected = product.isFav == 1
     }
+    
 }

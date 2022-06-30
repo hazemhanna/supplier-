@@ -30,6 +30,7 @@ class ProductDetailsViewController: BaseViewController {
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var relatedCollectionView: UICollectionView!
     @IBOutlet weak var piecesView: UIView!
+    @IBOutlet weak var counterLbl : UILabel!
     
     // MARK: - Variables
     let product: ProductModel
@@ -84,6 +85,7 @@ class ProductDetailsViewController: BaseViewController {
         emailButton.setTitle(product.supplier.email, for: .normal)
         websiteButton.setTitle(product.supplier.website, for: .normal)
         locationLabel.text = product.supplier.address
+        
         let button = UIBarButtonItem(image: R.image.shoppingCart(), style: .plain, target: self, action: #selector(openCartClicked))
         navigationItem.rightBarButtonItem = button
     }
@@ -131,15 +133,17 @@ class ProductDetailsViewController: BaseViewController {
     
     @IBAction func plusClicked(_ sender: UIButton) {
         selectedCount += 1
+        counterLbl.text = "\(selectedCount)"
     }
     
     @IBAction func minusClicked(_ sender: UIButton) {
         if selectedCount == 1 { return }
         selectedCount -= 1
+        counterLbl.text = "\(selectedCount)"
     }
     
     @IBAction func addToCartClicked(_ sender: UIButton) {
-        viewModel.addToCart(itemId: product.id, qty: selectedCount)
+      viewModel.addToCart(itemId: product.id, qty: selectedCount)
     }
     
     @IBAction func showInfoClicked(_ sender: UIButton) {
