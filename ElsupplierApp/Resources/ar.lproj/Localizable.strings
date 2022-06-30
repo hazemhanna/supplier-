@@ -163,6 +163,7 @@
 "_photo" = "صورة" ;
 "_describe_Post" = "اكتب وصف للمنشور ...";
 "_allPosts" = "كل المنشورات" ;
+"_myPosts" = "منشوراتي" ;
 "_call" = "طلب اتصال" ;
 "_sendـmesaage" = "ارسال رسالة" ;
 "_send_supplier_message" = "ارسال رسالة للمورد";

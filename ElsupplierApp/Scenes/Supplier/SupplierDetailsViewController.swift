@@ -22,6 +22,7 @@ class SupplierDetailsViewController: BaseViewController {
     // MARK: - Variables
     var viewController: UIViewController? = nil
     let supplier: SupplierDetailsModel
+    let profileViewModel = ProfileViewModel()
     
     // MARK: - Life Cycle
     init(supplier: SupplierDetailsModel) {
@@ -53,11 +54,31 @@ class SupplierDetailsViewController: BaseViewController {
         supplierImageView.setImageWith(stringUrl: supplier.supplier.logo)
         supplierName.text = supplier.supplier.name
 //        rateView.rating = supplier.supplier.
-        
         addToContrainer(SupplierProductsViewController(supplier: supplier))
-//        let favButton = UIBarButtonItem(image: R.image.addToFav(), style: .plain, target: self, action: #selector(toggleFavorite))
-//        navigationItem.rightBarButtonItem = favButton
         favButton.isSelected = supplier.isFav
+    
+    }
+    
+    override func bindViewModelToViews() {
+
+        profileViewModel.isLoading.bind {
+            if $0 {
+                Hud.show()
+            } else {
+                Hud.hide()
+            }
+        }.disposed(by: disposeBag)
+    }
+    
+    
+    override func setupCallbacks() {
+        
+        profileViewModel.favoriteToggledSucceeded.bind { [weak self] _ in
+            guard let self = self else { return }
+            self.supplier.isFav = self.supplier.isFav == true ? false : true
+            self.favButton.isSelected = self.supplier.isFav == true
+        }.disposed(by: disposeBag)
+        
     }
     
     func addToContrainer(_ controller: UIViewController) {
@@ -67,12 +88,7 @@ class SupplierDetailsViewController: BaseViewController {
         addChild(_viewController)
         containerView.addSubIntrinsicView(_viewController.view, replace: true)
     }
-    
-    @objc
-    func toggleFavorite() {
-        
-    }
-    
+
     override func shouldShowNavigation() -> Bool { false }
     
     // MARK: - Actions
@@ -97,5 +113,6 @@ class SupplierDetailsViewController: BaseViewController {
     }
     
     @IBAction func favoriteClicked(_ sender: UIButton) {
+        profileViewModel.favToggle(supplierId: supplier.supplier.id)
     }
 }

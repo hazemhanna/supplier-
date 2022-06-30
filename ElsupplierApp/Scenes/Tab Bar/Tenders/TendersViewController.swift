@@ -73,7 +73,7 @@ class TendersViewController: BaseViewController {
     override func shouldShowTabBar() -> Bool {
         true
     }
-    
+
     // MARK: - Actions
 }
 

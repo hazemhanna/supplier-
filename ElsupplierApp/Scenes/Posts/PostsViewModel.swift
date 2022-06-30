@@ -15,6 +15,7 @@ class PostsViewModel: BaseViewModel {
     // MARK: - Profile
     var posts = PublishRelay<[PostModel]>()
     var succeeded = PublishRelay<String>()
+    var user = PublishRelay<UserModel>()
 
     // MARK: - Variables
     let postsApis = PostAPIs()
@@ -86,6 +87,18 @@ class PostsViewModel: BaseViewModel {
         }.disposed(by: disposeBag)
     }
 
-
+    func showProfile() {
+        isLoading.accept(true)
+        let profileApis = ProfileAPIs()
+        profileApis.showProfile().subscribe { [weak self] user in
+            guard let self = self else { return }
+            self.isLoading.accept(false)
+            self.user.accept(user)
+        } onError: { [weak self] error in
+            guard let self = self else { return }
+            self.isLoading.accept(false)
+            self.error.accept(error)
+        }.disposed(by: disposeBag)
+    }
     
 }

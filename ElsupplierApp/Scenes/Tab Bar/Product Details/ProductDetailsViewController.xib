@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductDetailsViewController" customModule="ElsupplierApp" customModuleProvider="target">
             <connections>
                 <outlet property="addToCartButton" destination="Epv-PS-JdC" id="g9J-Pu-Sys"/>
+                <outlet property="counterLbl" destination="ATW-V1-Sdo" id="lgM-XW-aN8"/>
                 <outlet property="emailButton" destination="kR9-Gw-4gI" id="vAg-Yf-3Td"/>
                 <outlet property="facebookButton" destination="6ke-2X-SOh" id="o6D-ml-rLh"/>
                 <outlet property="favButton" destination="Qdi-Bp-Typ" id="qec-AN-ra1"/>
@@ -31,6 +32,7 @@
                 <outlet property="relatedCollectionView" destination="4P2-1E-X42" id="zmb-Za-v2i"/>
                 <outlet property="supplierImageView" destination="ldw-Bh-Aru" id="JkO-MS-RGn"/>
                 <outlet property="supplierName" destination="mAd-jv-k4i" id="xz6-s2-rLs"/>
+                <outlet property="titleLabel" destination="cRU-bY-YhO" id="H7a-ic-AUq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="websiteButton" destination="NKa-KL-a8z" id="jk5-77-nNu"/>
             </connections>
@@ -40,8 +42,57 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="1985"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LRX-p8-nWL">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RsW-dz-Dhq">
+                            <rect key="frame" x="20" y="48" width="30" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="Jcy-QM-4xM"/>
+                                <constraint firstAttribute="width" constant="30" id="WkG-nD-KcC"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="back arrow"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isEnglishFlip" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="backClicked:" destination="-1" eventType="touchUpInside" id="bZy-SI-yAG"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JV7-Sc-Z8m">
+                            <rect key="frame" x="354" y="48" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="2eL-VY-Rb6"/>
+                                <constraint firstAttribute="height" constant="40" id="bnZ-tr-XbA"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="shopping-cart"/>
+                            <state key="selected" image="addedToFav"/>
+                            <connections>
+                                <action selector="cartClicked:" destination="-1" eventType="touchUpInside" id="3N1-Yw-7yD"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRU-bY-YhO">
+                            <rect key="frame" x="186" y="58" width="42.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" name="IceBlue"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="8yB-S0-fa7"/>
+                        <constraint firstItem="cRU-bY-YhO" firstAttribute="centerY" secondItem="JV7-Sc-Z8m" secondAttribute="centerY" id="E72-UU-cX9"/>
+                        <constraint firstItem="cRU-bY-YhO" firstAttribute="centerX" secondItem="LRX-p8-nWL" secondAttribute="centerX" id="Yp9-Ig-3MQ"/>
+                        <constraint firstItem="RsW-dz-Dhq" firstAttribute="top" secondItem="LRX-p8-nWL" secondAttribute="top" constant="48" id="azy-lp-rlv"/>
+                        <constraint firstAttribute="trailing" secondItem="JV7-Sc-Z8m" secondAttribute="trailing" constant="20" id="e5Y-tg-Olz"/>
+                        <constraint firstItem="JV7-Sc-Z8m" firstAttribute="top" secondItem="LRX-p8-nWL" secondAttribute="top" constant="48" id="gKg-wP-1E6"/>
+                        <constraint firstItem="RsW-dz-Dhq" firstAttribute="leading" secondItem="LRX-p8-nWL" secondAttribute="leading" constant="20" id="rmk-eN-eUp"/>
+                    </constraints>
+                </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cac-0I-Cn9">
-                    <rect key="frame" x="0.0" y="64" width="414" height="1887"/>
+                    <rect key="frame" x="0.0" y="140" width="414" height="1811"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LqT-BE-QMh">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
@@ -50,7 +101,7 @@
                                 <constraint firstAttribute="height" id="LZX-g1-Dmc"/>
                             </constraints>
                         </view>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S7Q-8u-6hd">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S7Q-8u-6hd">
                             <rect key="frame" x="23.5" y="8" width="367" height="302"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="302" id="G97-pd-qya"/>
@@ -613,10 +664,13 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="Cac-0I-Cn9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="9Kq-2q-LIt"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Cac-0I-Cn9" secondAttribute="bottom" id="TPw-ic-A6i"/>
+                <constraint firstItem="LRX-p8-nWL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bE2-Qg-6fT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Cac-0I-Cn9" secondAttribute="trailing" id="fye-KL-AQ3"/>
+                <constraint firstItem="Cac-0I-Cn9" firstAttribute="top" secondItem="LRX-p8-nWL" secondAttribute="bottom" constant="20" id="ggl-bF-Maa"/>
+                <constraint firstItem="LRX-p8-nWL" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ldq-2S-wy6"/>
                 <constraint firstItem="LqT-BE-QMh" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="s0k-Q4-5mk"/>
+                <constraint firstItem="LRX-p8-nWL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="s4k-Xf-LbH"/>
                 <constraint firstItem="Cac-0I-Cn9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wpJ-ro-1vl"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -625,6 +679,8 @@
     </objects>
     <resources>
         <image name="Call" width="51" height="51"/>
+        <image name="addedToFav" width="129" height="130"/>
+        <image name="back arrow" width="65" height="48"/>
         <image name="drop arrow" width="28" height="16"/>
         <image name="fb" width="40" height="40"/>
         <image name="heart" width="48" height="48"/>
@@ -634,9 +690,13 @@
         <image name="rfq" width="112" height="112"/>
         <image name="rqst call" width="112" height="112"/>
         <image name="saved item" width="40" height="36"/>
+        <image name="shopping-cart" width="126" height="126"/>
         <image name="website" width="51" height="51"/>
         <namedColor name="DarkBlue">
             <color red="0.0" green="0.10196078431372549" blue="0.3843137254901961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="IceBlue">
+            <color red="0.9137254901960784" green="0.97647058823529409" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LightBlue">
             <color red="0.0" green="0.69803921568627447" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
