@@ -16,6 +16,14 @@ final class CartModel: BaseObject {
     var address = AddressModel()
     var paymentType = ""
     var items = [CartItem]()
+    var userPhone = ""
+    var total = 0
+    var subTotal = 0
+    var delivery = 0
+    var commissionRate = 0
+    var commissionAmount = 0
+    var commissionStatus = ""
+    var supplierId = 0
     
     override func mapping(map: Map) {
         super.mapping(map: map)
@@ -26,6 +34,14 @@ final class CartModel: BaseObject {
         address <- map["address"]
         paymentType <- map["paymentType"]
         items <- map["items"]
+        userPhone <- map["user_phone"]
+        total <- map["total.total"]
+        subTotal <- map["total.subtotal"]
+        delivery <- map["total.deliveryFees"]
+        commissionRate <- map["total.commissionRate"]
+        commissionAmount <- map["total.commissionAmount"]
+        commissionStatus <- map["total.commissionStatus"]
+        supplierId <- map["total.supplierId"]
     }
     
 }

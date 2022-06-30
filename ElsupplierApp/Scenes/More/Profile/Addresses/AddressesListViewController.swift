@@ -20,7 +20,11 @@ class AddressesListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.listAddresses()
+    }
+
     // MARK: - Functions
     override func setupView() {
         super.setupView()
@@ -31,7 +35,6 @@ class AddressesListViewController: BaseViewController {
         navigationItem.rightBarButtonItem = newAddressButton
         tableView.registerCell(ofType: AddressTableViewCell.self)
         tableView.isRefreshControlEnabled = true
-        viewModel.listAddresses()
     }
 
     override func bindViewModelToViews() {

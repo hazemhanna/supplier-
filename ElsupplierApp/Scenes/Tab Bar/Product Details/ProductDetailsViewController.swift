@@ -72,7 +72,7 @@ class ProductDetailsViewController: BaseViewController {
         
         title = product.name
         productImageView.setImageWith(stringUrl: product.mainImage)
-        piecesNo.text = "_piece"
+        piecesNo.text = product.measurmentUnit
         favButton.isSelected = product.isFav == 1
         productName.text = product.name
         priceLabel.text = product.price.string()

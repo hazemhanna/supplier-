@@ -1,32 +1,31 @@
 //
-//  SupplierSearchResultsViewController.swift
+//  ProductsSearchResultsViewController.swift
 //  ElsupplierApp
 //
-//  Created by Ahmed Madeh on 17/05/2022.
+//  Created by Ahmed Madeh on 29/06/2022.
 //
 
 import UIKit
 
-class SupplierSearchResultsViewController: BaseViewController {
+class ProductsSearchResultsViewController: BaseViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var areasLabel: UILabel!
     @IBOutlet weak var deptsLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var keywordLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var keywordForSearch: UILabel!
     
     // MARK: - Variables
     let viewModel = SearchFilterViewModel()
-    let viewModel2 = HomeViewModel()
-    var model = PagedObject<SupplierModel>()
+    var model = PagedObject<ProductModel>()
     var keyword: String?
     var selectedCategory: Int?
     var selectedParentCategory: Int?
     var priceFrom: Int?
     var priceTo: Int?
     var areaId: Int?
-    
+
     // MARK: - Life Cycle
     init(keyword: String?, selectedCategory: Int?, selectedParentCategory: Int?) {
         self.keyword = keyword
@@ -47,16 +46,16 @@ class SupplierSearchResultsViewController: BaseViewController {
     override func setupView() {
         super.setupView()
         title = "_search_results".localized
-        keywordLabel.text = keyword ?? ""
-        tableView.registerCell(ofType: SupplierSearchResultTableCell.self)
-        viewModel.filterSuppliers(isPromotion: 0,
-                                  page: model.nextPage,
-                                  keyword: keyword,
-                                  parentCategoryId: selectedParentCategory,
-                                  categoryId: selectedCategory,
-                                  areaId: areaId,
-                                  priceFrom: priceFrom,
-                                  priceTo: priceTo)
+        keywordForSearch.text = keyword ?? ""
+        collectionView.registerCell(ofType: OfferCollectionViewCell.self)
+        viewModel.filterProducts(isPromotion: 0,
+                                 page: model.nextPage,
+                                 keyword: keyword,
+                                 parentCategoryId: selectedParentCategory,
+                                 categoryId: selectedCategory,
+                                 areaId: areaId,
+                                 priceFrom: priceFrom,
+                                 priceTo: priceTo)
     }
     
     override func bindViewModelToViews() {
@@ -68,30 +67,30 @@ class SupplierSearchResultsViewController: BaseViewController {
             }
         }.disposed(by: disposeBag)
         
-        viewModel2.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
-        }.disposed(by: disposeBag)
+//        viewModel2.isLoading.bind {
+//            if $0 {
+//                Hud.show()
+//            } else {
+//                Hud.hide()
+//            }
+//        }.disposed(by: disposeBag)
     }
     
     override func setupCallbacks() {
-        viewModel.suppliersSearchModel.bind {[weak self] in
+        viewModel.productsSearchModel.bind {[weak self] in
             self?.model.append($0)
-            self?.tableView.reloadData()
+            self?.collectionView.reloadData()
         }.disposed(by: disposeBag)
         viewModel.error.bind {
             Alert.show(message: $0.localizedDescription)
         }.disposed(by: disposeBag)
         
-        viewModel2.supplierDetails.bind { [weak self] in
-            self?.push(controller: SupplierDetailsViewController(supplier: $0))
-        }.disposed(by: disposeBag)
-        viewModel2.error.bind {
-            Alert.show(message: $0.localizedDescription)
-        }.disposed(by: disposeBag)
+//        viewModel2.supplierDetails.bind { [weak self] in
+//            self?.push(controller: SupplierDetailsViewController(supplier: $0))
+//        }.disposed(by: disposeBag)
+//        viewModel2.error.bind {
+//            Alert.show(message: $0.localizedDescription)
+//        }.disposed(by: disposeBag)
     }
     
     // MARK: - Actions
@@ -106,62 +105,67 @@ class SupplierSearchResultsViewController: BaseViewController {
     @IBAction func priceClicked(_ sender: UIButton) {
         present(FilterByPriceViewController(delegate: self), animated: true)
     }
+
 }
 
-extension SupplierSearchResultsViewController: UITableViewDelegate, UITableViewDataSource {
+extension ProductsSearchResultsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         model.items.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: SupplierSearchResultTableCell = tableView.dequeueReusableCell()!
-        cell.supplier = model.items[indexPath.row]
-        cell.delegate = self
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: OfferCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)!
+        cell.product = model.items[indexPath.row]
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel2.getSupplierDetails(with: model.items[indexPath.row].id)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        push(controller: ProductDetailsViewController(product: model.items[indexPath.row]))
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if model.hasNext(indexPath) {
-            viewModel.filterSuppliers(isPromotion: 0, page: model.nextPage, keyword: keyword, parentCategoryId: selectedParentCategory, categoryId: selectedCategory, areaId: areaId, priceFrom: priceFrom, priceTo: priceTo)
+            viewModel.filterProducts(isPromotion: 0, page: model.nextPage, keyword: keyword, parentCategoryId: selectedParentCategory, categoryId: selectedCategory, areaId: areaId, priceFrom: priceFrom, priceTo: priceTo)
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = CGFloat((collectionView.frame.width - 10) / 2)
+        let height = 460.0
+        return CGSize(width: width, height: height)
+    }
 }
 
-extension SupplierSearchResultsViewController: SupplierSearchResultTableCellDelegate {
+extension ProductsSearchResultsViewController: SupplierSearchResultTableCellDelegate {
     func supplierSearchResultTableCell(_ cell: SupplierSearchResultTableCell, didSelect product: ProductModel) {
         push(controller: ProductDetailsViewController(product: product))
     }
 }
 
-extension SupplierSearchResultsViewController: FilterSelectionViewControllerDelegate {
+extension ProductsSearchResultsViewController: FilterSelectionViewControllerDelegate {
     func didSelectArea(area: PickerModel) {
         areaId = area.id
         areasLabel.text = area.name
         model.items.removeAll()
-        tableView.reloadData()
+        collectionView.reloadData()
         viewModel.filterSuppliers(isPromotion: 0, page: model.nextPage, keyword: keyword, parentCategoryId: selectedParentCategory, categoryId: selectedCategory, areaId: areaId, priceFrom: priceFrom, priceTo: priceTo)
     }
     func didSelectDipartment(dept: PickerModel) {
         selectedCategory = dept.id
         deptsLabel.text = dept.name
         model.items.removeAll()
-        tableView.reloadData()
+        collectionView.reloadData()
         viewModel.filterSuppliers(isPromotion: 0, page: model.nextPage, keyword: keyword, parentCategoryId: selectedParentCategory, categoryId: selectedCategory, areaId: areaId, priceFrom: priceFrom, priceTo: priceTo)
     }
 }
 
-extension SupplierSearchResultsViewController: FilterByPriceViewControllerDelegate {
+extension ProductsSearchResultsViewController: FilterByPriceViewControllerDelegate {
     func didSelectPrice(priceFrom: Int?, priceTo: Int?) {
         self.priceFrom = priceFrom
         self.priceTo = priceTo
         model.items.removeAll()
-        tableView.reloadData()
+        collectionView.reloadData()
         viewModel.filterSuppliers(isPromotion: 0, page: model.nextPage, keyword: keyword, parentCategoryId: selectedParentCategory, categoryId: selectedCategory, areaId: areaId, priceFrom: priceFrom, priceTo: priceTo)
     }
 }

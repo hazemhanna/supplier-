@@ -45,7 +45,7 @@ extension UIView {
         transform = CGAffineTransform(rotationAngle: CGFloat(degrees * Double.pi/180));
     }
     func addActivityindicator() {
-        let indicator = UIActivityIndicatorView.init(style: .gray)
+        let indicator = UIActivityIndicatorView.init(style: UIActivityIndicatorView.Style.medium)
         addSubview(indicator)
         indicator.snp.makeConstraints { (maker) in
 //            maker.center.equalTo(self)

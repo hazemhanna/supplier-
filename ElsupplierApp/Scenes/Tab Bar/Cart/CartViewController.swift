@@ -31,7 +31,9 @@ class CartViewController: BaseTabBarViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tabBarController?.navigationController?.isNavigationBarHidden = false
+        if isFromTabbar {
+            tabBarController?.navigationController?.isNavigationBarHidden = false
+        }
         viewModel.loadCart()
     }
     
@@ -65,21 +67,15 @@ class CartViewController: BaseTabBarViewController {
         }.disposed(by: disposeBag)
     }
     
-    override func tabBarItemTitle() -> String? {
-        "Cart".localized
-    }
+    override func tabBarItemTitle() -> String? { "Cart".localized }
     
-    override func tabBarItemImage() -> UIImage? {
-        R.image.cart()
-    }
+    override func tabBarItemImage() -> UIImage? { R.image.cart() }
     
-    override func tabBarItemSelectedImage() -> UIImage? {
-        R.image.cartActive()
-    }
+    override func tabBarItemSelectedImage() -> UIImage? { R.image.cartActive() }
     
-    override func shouldShowTabBar() -> Bool {
-        isFromTabbar
-    }
+    override func shouldShowTabBar() -> Bool { isFromTabbar }
+    
+    override func shouldShowNavigation() -> Bool { true }
     
     // MARK: - Actions
     @IBAction func continueClicked(_ sender: UIButton) {

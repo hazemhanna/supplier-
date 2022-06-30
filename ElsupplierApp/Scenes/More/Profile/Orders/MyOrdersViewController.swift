@@ -16,8 +16,13 @@ class MyOrdersViewController: BaseViewController {
     // MARK: - Variables
     let viewModel = ProfileViewModel()
     var model = PagedObject<OrderModel>()
+    var isFromOrderCreated = false
     
     // MARK: - Life Cycle
+    convenience init(isFromOrderCreated: Bool) {
+        self.init()
+        self.isFromOrderCreated = isFromOrderCreated
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -28,6 +33,8 @@ class MyOrdersViewController: BaseViewController {
         title = "_my_orders".localized
         tableView.registerCell(ofType: OrderTableViewCell.self)
         viewModel.listOrders(page: model.nextPage)
+        navigationItem.leftBarButtonItem
+        = .init(image: R.image.arrowLeft()?.imageFlippedForRightToLeftLayoutDirection(), style: .plain, target: self, action: #selector(customBack))
     }
     
     override func bindViewModelToViews() {
@@ -48,6 +55,14 @@ class MyOrdersViewController: BaseViewController {
             self.model.pageSize = $0.pageSize
             self.tableView.reloadData()
         }.disposed(by: disposeBag)
+    }
+    @objc
+    func customBack() {
+        if isFromOrderCreated {
+            navigationController?.popToRootViewController(animated: true)
+        } else {
+            pop()
+        }
     }
     
     // MARK: - Actions

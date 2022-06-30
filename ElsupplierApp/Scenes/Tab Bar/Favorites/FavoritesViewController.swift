@@ -59,10 +59,22 @@ class FavoritesViewController: BaseTabBarViewController {
                 Hud.hide()
             }
         }.disposed(by: disposeBag)
+        
+        viewModel2.isLoading.bind {
+            if $0 {
+                Hud.show()
+            } else {
+                Hud.hide()
+            }
+        }.disposed(by: disposeBag)
     }
     
     override func setupCallbacks() {
         viewModel.error.bind {
+            Alert.show(message: $0.localizedDescription)
+        }.disposed(by: disposeBag)
+        
+        viewModel2.error.bind {
             Alert.show(message: $0.localizedDescription)
         }.disposed(by: disposeBag)
         
