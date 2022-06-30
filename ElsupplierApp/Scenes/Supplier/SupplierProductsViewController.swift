@@ -18,7 +18,6 @@ class SupplierProductsViewController: BaseViewController {
     var selectedIndex = 0
     var viewModel = CartViewModel()
     let profileViewModel = ProfileViewModel()
-    
     // MARK: - Life Cycle
     init(supplier: SupplierDetailsModel) {
         self.supplier = supplier
@@ -140,15 +139,14 @@ extension SupplierProductsViewController: UITableViewDelegate, UITableViewDataSo
 extension SupplierProductsViewController: FavProductTableViewCellDelegate {
     
     func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapAdd product: ProductModel) {
-   
+      // product.addToCart == 1 ? viewModel.removeFromCart(itemId: product.id) : viewModel.addToCart(itemId: product.id, qty: 1)
         viewModel.addToCart(itemId: product.id, qty: 1)
-
     }
     
     func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapFav product: ProductModel) {
         profileViewModel.favToggle(productId: product.id)
-      //  product.isFav == 1 ? 0 : 1
+        product.isFav = product.isFav == 1 ? 0 : 1
         cell.favButton.isSelected = product.isFav == 1
-    }
+      }
     
 }

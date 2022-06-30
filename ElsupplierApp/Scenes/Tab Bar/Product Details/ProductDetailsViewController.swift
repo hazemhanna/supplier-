@@ -26,6 +26,8 @@ class ProductDetailsViewController: BaseViewController {
     @IBOutlet weak var emailButton: UIButton!
     @IBOutlet weak var websiteButton: UIButton!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var relatedCollectionView: UICollectionView!
@@ -55,7 +57,15 @@ class ProductDetailsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
     // MARK: - Functions
     override func setupView() {
         super.setupView()
@@ -71,7 +81,6 @@ class ProductDetailsViewController: BaseViewController {
         relatedCollectionView.delegate = self
         relatedCollectionView.dataSource = self
         
-        title = product.name
         productImageView.setImageWith(stringUrl: product.mainImage)
         piecesNo.text = product.measurmentUnit
         favButton.isSelected = product.isFav == 1
@@ -85,9 +94,8 @@ class ProductDetailsViewController: BaseViewController {
         emailButton.setTitle(product.supplier.email, for: .normal)
         websiteButton.setTitle(product.supplier.website, for: .normal)
         locationLabel.text = product.supplier.address
-        
-        let button = UIBarButtonItem(image: R.image.shoppingCart(), style: .plain, target: self, action: #selector(openCartClicked))
-        navigationItem.rightBarButtonItem = button
+        titleLabel.text = product.name
+
     }
     
     override func bindViewModelToViews() {
@@ -116,8 +124,6 @@ class ProductDetailsViewController: BaseViewController {
             self?.addToCartButton.setTitle("_add_to_cart", for: .normal)
         }.disposed(by: disposeBag)
         
-//        viewModel.itemUpdated.bind { _ in
-//        }.disposed(by: disposeBag)
         
         profileViewModel.favoriteToggledSucceeded.bind { [weak self] _ in
             guard let self = self else { return }
@@ -156,6 +162,15 @@ class ProductDetailsViewController: BaseViewController {
         viewModel.requestPhoneCall(supplierId: product.supplier.id)
     }
     
+    @IBAction func backClicked(_ sender: UIButton) {
+        pop()
+    }
+    
+    @IBAction func cartClicked(_ sender: UIButton) {
+        push(controller: CartViewController(isFromTabbar: false))
+    }
+
+    
     @IBAction func requestPriceClicked(_ sender: UIButton) {
     }
     
@@ -169,13 +184,9 @@ class ProductDetailsViewController: BaseViewController {
     }
     
     @IBAction func facebookClicked(_ sender: UIButton) {
-    }
     
-    @objc
-    func openCartClicked() {
-        push(controller: CartViewController(isFromTabbar: false))
     }
-    
+
 }
 
 extension ProductDetailsViewController: UICollectionViewDelegate,

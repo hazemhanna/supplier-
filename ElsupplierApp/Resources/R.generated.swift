@@ -2933,6 +2933,8 @@ struct _R: Rswift.Validatable {
 
       static func validate() throws {
         if UIKit.UIImage(named: "Call", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Call' is used in nib 'ProductDetailsViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "addedToFav", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'addedToFav' is used in nib 'ProductDetailsViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "back arrow", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'back arrow' is used in nib 'ProductDetailsViewController', but couldn't be loaded.") }
         if UIKit.UIImage(named: "drop arrow", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'drop arrow' is used in nib 'ProductDetailsViewController', but couldn't be loaded.") }
         if UIKit.UIImage(named: "fb", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'fb' is used in nib 'ProductDetailsViewController', but couldn't be loaded.") }
         if UIKit.UIImage(named: "heart", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'heart' is used in nib 'ProductDetailsViewController', but couldn't be loaded.") }
@@ -2942,9 +2944,11 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "rfq", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'rfq' is used in nib 'ProductDetailsViewController', but couldn't be loaded.") }
         if UIKit.UIImage(named: "rqst call", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'rqst call' is used in nib 'ProductDetailsViewController', but couldn't be loaded.") }
         if UIKit.UIImage(named: "saved item", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'saved item' is used in nib 'ProductDetailsViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "shopping-cart", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'shopping-cart' is used in nib 'ProductDetailsViewController', but couldn't be loaded.") }
         if UIKit.UIImage(named: "website", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'website' is used in nib 'ProductDetailsViewController', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "DarkBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'DarkBlue' is used in nib 'ProductDetailsViewController', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "IceBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'IceBlue' is used in nib 'ProductDetailsViewController', but couldn't be loaded.") }
           if UIKit.UIColor(named: "LightBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'LightBlue' is used in nib 'ProductDetailsViewController', but couldn't be loaded.") }
           if UIKit.UIColor(named: "SteelGrey", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'SteelGrey' is used in nib 'ProductDetailsViewController', but couldn't be loaded.") }
         }

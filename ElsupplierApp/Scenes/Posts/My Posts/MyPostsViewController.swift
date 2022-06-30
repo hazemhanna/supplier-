@@ -6,16 +6,21 @@
 //
 
 import UIKit
+import DropDown
 
 class MyPostsViewController: BaseTabBarViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var userView: UserSectionView!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var arrowBtn : UIButton!
+    @IBOutlet weak var titleLbl : UILabel!
+    let dropDown = DropDown()
+
+    var TypesArr = ["_allPosts".localized,"_myPosts".localized]
+
     // MARK: - Variables
     let viewModel = PostsViewModel()
-    
     var posts = [PostModel](){
         didSet{
             tableView.reloadData()
@@ -36,19 +41,38 @@ class MyPostsViewController: BaseTabBarViewController {
         userView.delegate = self
         navigationController?.navigationBar.isHidden = true
         tabBarController?.navigationController?.navigationBar.isHidden = true
-        if let user = UserModel.current {
-            userView.userPic.setImageWith(stringUrl: user.image, placeholder: R.image.appLogo())
+        if UserModel.current != nil {
+           // userView.userPic.setImageWith(stringUrl: user.image, placeholder: R.image.appLogo())
+            viewModel.showProfile()
+
         }
+        SetupDropDown()
+    }
+    
+    @IBAction func StatusBtn(_ sender: Any) {
+        dropDown.show()
+    }
+    
+    func SetupDropDown() {
+        dropDown.anchorView = arrowBtn
+        dropDown.dataSource = TypesArr
+        dropDown.selectionAction = {[weak self] (index, item) in
+            self?.titleLbl.text =  item
+            if index == 0 {
+                self?.viewModel.loadAllPosts()
+            }else{
+                self?.viewModel.loadMyPosts()
+            }
+        }
+        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
+        dropDown.direction = .bottom
+        dropDown.width = 277
     }
     
     override func shouldShowNavigation() -> Bool {
         false
     }
-    
-//    override func shouldShowTopView() -> Bool {
-//        false
-//    }
-    
+
     override func tabBarItemTitle() -> String? {
         "Posts".localized
     }
@@ -85,6 +109,10 @@ class MyPostsViewController: BaseTabBarViewController {
             Alert.show(message: message)
         }.disposed(by: disposeBag)
         
+        viewModel.user.bind {
+            self.updateUI(user: $0)
+        }.disposed(by: disposeBag)
+        
         viewModel.error.bind {
             Alert.show(message: $0.localizedDescription)
         }.disposed(by: disposeBag)
@@ -94,6 +122,10 @@ class MyPostsViewController: BaseTabBarViewController {
     @IBAction func addPostClicked(_ sender: UIButton) {
         push(controller: AddPostsViewController())
     }
+    func updateUI(user: UserModel) {
+        self.userView.userPic.setImageWith(stringUrl: user.image, placeholder: R.image.appLogo())
+    }
+    
 }
 
 extension MyPostsViewController: UITableViewDelegate, UITableViewDataSource {

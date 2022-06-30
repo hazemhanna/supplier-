@@ -16,5 +16,6 @@ target 'ElsupplierApp' do
   pod 'R.swift'
   pod 'SnapKit'
   pod 'Cosmos', '~> 23.0'
+  pod 'DropDown'
 
 end

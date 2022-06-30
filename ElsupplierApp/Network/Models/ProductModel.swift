@@ -8,7 +8,6 @@
 import ObjectMapper
 
 final class ProductModel: BaseObject {
-    
     var name = ""
     var supplierName = ""
     var supplier = SupplierModel()

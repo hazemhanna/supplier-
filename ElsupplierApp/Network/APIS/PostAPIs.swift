@@ -19,7 +19,7 @@ final class PostAPIs {
     }
     
     func loadMyPosts() -> Single<[PostModel]> {
-        let request = ESNetworkRequest("posts/my_posts")
+        let request = ESNetworkRequest("posts/my-posts")
         request.selections = [.key("data"), .key("my_posts")]
         return NetworkManager.execute(request: request)
     }

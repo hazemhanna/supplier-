@@ -12,7 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyPostsViewController" customModule="ElsupplierApp" customModuleProvider="target">
             <connections>
+                <outlet property="arrowBtn" destination="64c-zI-hDq" id="FEV-jy-FQD"/>
                 <outlet property="tableView" destination="goE-Zh-e2D" id="4Jg-1S-3B8"/>
+                <outlet property="titleLbl" destination="g9h-bK-Oqy" id="Ali-jh-Foe"/>
                 <outlet property="userView" destination="0Wf-fQ-Bgw" id="Zhh-Xi-XEL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -61,6 +63,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64c-zI-hDq">
                                     <rect key="frame" x="0.0" y="0.0" width="368" height="54"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <connections>
+                                        <action selector="StatusBtn:" destination="-1" eventType="touchUpInside" id="E0c-YY-UcF"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
