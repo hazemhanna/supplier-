@@ -27,6 +27,10 @@ class HomeViewController: BaseTabBarViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.navigationController?.isNavigationBarHidden = true
+        viewModel.loadHome()
+        if let user = UserModel.current {
+            userView.userPic.setImageWith(stringUrl: user.image, placeholder: R.image.appLogo())
+        }
     }
     
     // MARK: - Functions
@@ -38,11 +42,6 @@ class HomeViewController: BaseTabBarViewController {
         deptCollectionViewHeight.constant = ((10.0 / 3.0).rounded(.up) * 180.0)
         navigationController?.navigationBar.isHidden = true
         tabBarController?.navigationController?.navigationBar.isHidden = true
-        viewModel.loadHome()
-        if UserModel.current != nil {
-            //userView.userPic.setImageWith(stringUrl: user.image, placeholder: R.image.appLogo())
-            viewModel.showProfile()
-        }
     }
     
     override func shouldShowNavigation() -> Bool {
@@ -84,11 +83,6 @@ class HomeViewController: BaseTabBarViewController {
                 self.deptCollectionViewHeight.constant = CGFloat(($0.categories.count / 3) * 180)
             }.disposed(by: disposeBag)
         
-        viewModel.user.bind {
-            self.updateUI(user: $0)
-        }.disposed(by: disposeBag)
-        
-        
         viewModel.error.bind {
             Alert.show(message: $0.localizedDescription)
         }.disposed(by: disposeBag)
@@ -97,11 +91,6 @@ class HomeViewController: BaseTabBarViewController {
     override func shouldShowTabBar() -> Bool {
         true
     }
-    
-    func updateUI(user: UserModel) {
-        self.userView.userPic.setImageWith(stringUrl: user.image, placeholder: R.image.appLogo())
-    }
-    
     
     // MARK: - Actions
 

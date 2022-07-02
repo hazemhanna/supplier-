@@ -148,6 +148,7 @@
                 <outlet property="piecesNo" destination="coZ-6t-tsz" id="blB-aa-WkN"/>
                 <outlet property="piecesView" destination="Pvx-zr-go0" id="s0k-MU-LtT"/>
                 <outlet property="priceLabel" destination="5cF-PK-htQ" id="e1x-Qy-FJS"/>
+                <outlet property="productImage" destination="RFm-fK-Rce" id="Qov-IV-2If"/>
                 <outlet property="productName" destination="AkG-xI-dAk" id="1bh-xQ-0Sh"/>
                 <outlet property="requestPriceButton" destination="ap9-jk-irD" id="U33-C0-rzd"/>
             </connections>

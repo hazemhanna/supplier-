@@ -15,12 +15,6 @@ class HomeAPIs {
         return NetworkManager.execute(request: request)
     }
     
-    func showSupplier(with supplierId: Int) -> Single<SupplierDetailsModel> {
-        let request = ESNetworkRequest("suppliers/show?supplierId=\(supplierId)")
-        request.selections = [.key("data")]
-        return NetworkManager.execute(request: request)
-    }
-    
     func filterSuppliers
     (
         isPromotion: Int,
@@ -87,14 +81,6 @@ class HomeAPIs {
             path += "&price_to=\(priceTo)"
         }
         let request = ESNetworkRequest(path)
-        request.selections = [.key("data")]
-        return NetworkManager.execute(request: request)
-    }
-    
-    func categorySuppliers(with categoryId: Int) -> Single<PagedObject<SupplierModel>> {
-        let request = ESNetworkRequest("suppliers/sub-category")
-        request.method = .post
-        request.parameters = ["categoryId": categoryId]
         request.selections = [.key("data")]
         return NetworkManager.execute(request: request)
     }

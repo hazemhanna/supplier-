@@ -175,3 +175,11 @@
 "suppliers " = "موردين ";
 "_choose_sub_cat" = "اختر القسم الفرعي";
 "_min_amount" = "الحد الادنى للطلب ";
+"_rate" = "تقييم ";
+"_request_call_succeed" = "طلب الاتصال تم بنجاح";
+"Updated successfully" = "تم التعديل بنجاح";
+"_show_on_map" = "عرض على الخريطة";
+"_remove" = "حذف";
+"_session_expired" = "تم انتهاء الجلسة";
+"_enter_message" = "من فضلك ادخل الرسالة";
+"_message_sent" = "تم ارسال الرسالة بنجاح";

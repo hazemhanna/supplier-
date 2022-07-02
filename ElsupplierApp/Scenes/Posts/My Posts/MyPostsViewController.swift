@@ -15,12 +15,13 @@ class MyPostsViewController: BaseTabBarViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var arrowBtn : UIButton!
     @IBOutlet weak var titleLbl : UILabel!
-    let dropDown = DropDown()
-
-    var TypesArr = ["_allPosts".localized,"_myPosts".localized]
-
+    
     // MARK: - Variables
+    let dropDown = DropDown()
+    var TypesArr = ["_allPosts".localized,"_myPosts".localized]
     let viewModel = PostsViewModel()
+    let supplierViewModel = SupplierViewModel()
+    var selectedType = 0
     var posts = [PostModel](){
         didSet{
             tableView.reloadData()
@@ -29,6 +30,13 @@ class MyPostsViewController: BaseTabBarViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let user = UserModel.current {
+            userView.userPic.setImageWith(stringUrl: user.image, placeholder: R.image.appLogo())
+        }
     }
 
     // MARK: - Functions
@@ -41,11 +49,6 @@ class MyPostsViewController: BaseTabBarViewController {
         userView.delegate = self
         navigationController?.navigationBar.isHidden = true
         tabBarController?.navigationController?.navigationBar.isHidden = true
-        if UserModel.current != nil {
-           // userView.userPic.setImageWith(stringUrl: user.image, placeholder: R.image.appLogo())
-            viewModel.showProfile()
-
-        }
         SetupDropDown()
     }
     
@@ -58,6 +61,7 @@ class MyPostsViewController: BaseTabBarViewController {
         dropDown.dataSource = TypesArr
         dropDown.selectionAction = {[weak self] (index, item) in
             self?.titleLbl.text =  item
+            self?.selectedType = index
             if index == 0 {
                 self?.viewModel.loadAllPosts()
             }else{
@@ -69,25 +73,15 @@ class MyPostsViewController: BaseTabBarViewController {
         dropDown.width = 277
     }
     
-    override func shouldShowNavigation() -> Bool {
-        false
-    }
+    override func shouldShowNavigation() -> Bool { false }
 
-    override func tabBarItemTitle() -> String? {
-        "Posts".localized
-    }
+    override func tabBarItemTitle() -> String? { "Posts".localized }
     
-    override func tabBarItemImage() -> UIImage? {
-        R.image.posts()
-    }
+    override func tabBarItemImage() -> UIImage? { R.image.posts() }
     
-    override func tabBarItemSelectedImage() -> UIImage? {
-        R.image.postsActive()
-    }
+    override func tabBarItemSelectedImage() -> UIImage? { R.image.postsActive() }
     
-    override func shouldShowTabBar() -> Bool {
-        true
-    }
+    override func shouldShowTabBar() -> Bool { true }
     
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
@@ -97,33 +91,46 @@ class MyPostsViewController: BaseTabBarViewController {
                 Hud.hide()
             }
         }.disposed(by: disposeBag)
+        
+        supplierViewModel.isLoading.bind {
+            if $0 {
+                Hud.show()
+            } else {
+                Hud.hide()
+            }
+        }.disposed(by: disposeBag)
     }
-    
     
     override func setupCallbacks() {
         viewModel.posts.bind { post in
             self.posts = post
         }.disposed(by: disposeBag)
         
-        viewModel.succeeded.bind {  message in
+        viewModel.succeeded.bind { [weak self] message in
+            if self?.selectedType == 0 {
+                self?.viewModel.loadAllPosts()
+            } else {
+                self?.viewModel.loadMyPosts()
+            }
             Alert.show(message: message)
         }.disposed(by: disposeBag)
-        
-        viewModel.user.bind {
-            self.updateUI(user: $0)
-        }.disposed(by: disposeBag)
-        
+                
         viewModel.error.bind {
             Alert.show(message: $0.localizedDescription)
+        }.disposed(by: disposeBag)
+        
+        supplierViewModel.error.bind {
+            Alert.show(message: $0.localizedDescription)
+        }.disposed(by: disposeBag)
+        
+        supplierViewModel.callbackRequested.bind { _ in
+            Alert.show(message: "_request_call_succeed")
         }.disposed(by: disposeBag)
     }
     
     // MARK: - Actions
     @IBAction func addPostClicked(_ sender: UIButton) {
         push(controller: AddPostsViewController())
-    }
-    func updateUI(user: UserModel) {
-        self.userView.userPic.setImageWith(stringUrl: user.image, placeholder: R.image.appLogo())
     }
     
 }
@@ -170,6 +177,6 @@ extension MyPostsViewController: MyPostsTableViewCellDelegate {
     }
     
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, makeCall item: PostModel) {
-        
+        supplierViewModel.requestCallBack(supplierId: item.ownerId)
     }
 }

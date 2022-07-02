@@ -14,10 +14,13 @@ class SupplierPostsViewController: BaseViewController {
     
     // MARK: - Variables
     let viewModel = PostsViewModel()
+    let supplierViewModel = SupplierViewModel()
     let posts: [PostModel]
+    let supplier: SupplierModel
     
     // MARK: - Life Cycle
-    init(posts: [PostModel]) {
+    init(supplier: SupplierModel, posts: [PostModel]) {
+        self.supplier = supplier
         self.posts = posts
         super.init()
     }
@@ -35,6 +38,32 @@ class SupplierPostsViewController: BaseViewController {
         tableView.registerCell(ofType: MyPostsTableViewCell.self)
     }
     
+    override func setupCallbacks() {
+        viewModel.isLoading.bind {
+            if $0 {
+                Hud.show()
+            } else {
+                Hud.hide()
+            }
+        }.disposed(by: disposeBag)
+        
+        viewModel.succeeded.bind { str in
+            Alert.show(message: str)
+        }.disposed(by: disposeBag)
+        
+        supplierViewModel.isLoading.bind {
+            if $0 {
+                Hud.show()
+            } else {
+                Hud.hide()
+            }
+        }.disposed(by: disposeBag)
+        
+        supplierViewModel.callbackRequested.bind { _ in
+            Alert.show(message: "_request_call_succeed")
+        }.disposed(by: disposeBag)
+    }
+    
     // MARK: - Actions
 
 }
@@ -46,6 +75,7 @@ extension SupplierPostsViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MyPostsTableViewCell = tableView.dequeueReusableCell()!
         cell.post = posts[indexPath.row]
+        cell.delegate = self
         return cell
     }
 }
@@ -53,6 +83,8 @@ extension SupplierPostsViewController: UITableViewDelegate, UITableViewDataSourc
 extension SupplierPostsViewController: MyPostsTableViewCellDelegate {
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didLike item: PostModel) {
         viewModel.likePost(postId: item.id)
+        item.isLiked = item.isLiked == 1 ? 0 : 1
+        cell.likeBtn.isSelected = item.isLiked == 1
     }
     
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didAddComent item: PostModel,comment : String) {
@@ -64,7 +96,7 @@ extension SupplierPostsViewController: MyPostsTableViewCellDelegate {
     }
     
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, makeCall item: PostModel) {
-        
+        supplierViewModel.requestCallBack(supplierId: supplier.id)
     }
     
 }

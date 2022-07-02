@@ -18,8 +18,10 @@ class CartViewModel: BaseViewModel {
     var paymentTypeSelected = PublishRelay<Int>()
     var paymentTypes = PublishRelay<[PaymentTypeModel]>()
     var orderCreationSucceed = PublishRelay<Bool>()
+    var relatedProducts = PublishRelay<[ProductModel]>()
 
     let cartApis = CartAPIs()
+    let supplierApis = SupplierAPIs()
     
     func loadCart() {
         isLoading.accept(true)
@@ -56,7 +58,7 @@ class CartViewModel: BaseViewModel {
     
     func requestPhoneCall(supplierId: Int) {
         isLoading.accept(true)
-        cartApis.requestCallBack(supplierId: supplierId).subscribe { [weak self] _ in
+        supplierApis.requestCallBack(supplierId: supplierId).subscribe { [weak self] _ in
             self?.isLoading.accept(false)
             self?.requestCallBackSucceed.accept(true)
         } onError: { [weak self] error in
@@ -97,6 +99,17 @@ class CartViewModel: BaseViewModel {
             guard let self = self else { return }
             self.isLoading.accept(false)
             self.error.accept($0)
+        }.disposed(by: disposeBag)
+    }
+    
+    func loadProductDetails(productId: Int) {
+        isLoading.accept(true)
+        cartApis.loadRelatedProducts(productId: productId).subscribe { [weak self] in
+            self?.isLoading.accept(false)
+            self?.relatedProducts.accept($0)
+        } onError: { [weak self] in
+            self?.isLoading.accept(false)
+            self?.error.accept($0)
         }.disposed(by: disposeBag)
     }
     

@@ -43,7 +43,7 @@ class MyPostsTableViewCell: UITableViewCell {
             } else {
                 collectionViewHeight.constant = 0
             }
-            likeBtn.setImage(post.isLiked == 1 ? R.image.liked() : R.image.like(), for: .normal)
+            likeBtn.isSelected = post.isLiked == 1 //.setImage(post.isLiked == 1 ? R.image.liked() : R.image.like(), for: .normal)
         }
     }
     

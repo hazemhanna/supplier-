@@ -37,7 +37,7 @@ final class ProfileAPIs {
         companyType: String,
         areaId: Int,
         image: UIImage?
-    ) -> Single<Any> {
+    ) -> Single<UserModel> {
         let request = ESNetworkRequest("profile/update")
         request.method = .post
         request.parameters = [
@@ -48,6 +48,7 @@ final class ProfileAPIs {
             "company_type": companyType,
             "area_id": areaId
         ]
+        request.selections = [.key("data"), .key("user_profile")]
         if let image = image,
            let data = image.jpegData(compressionQuality: 0.5) {
             return NetworkManager.upload(data: .multipart(

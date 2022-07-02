@@ -199,6 +199,8 @@
 		06C2CD4F284B88F100C73828 /* OrderCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2CD4D284B88F100C73828 /* OrderCompletedViewController.swift */; };
 		06C2CD50284B88F100C73828 /* OrderCompletedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06C2CD4E284B88F100C73828 /* OrderCompletedViewController.xib */; };
 		06C2CD52284B90BF00C73828 /* EmptyCartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06C2CD51284B90BF00C73828 /* EmptyCartView.xib */; };
+		06CE727A286FC0D200E54C87 /* SupplierAPIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CE7279286FC0D200E54C87 /* SupplierAPIs.swift */; };
+		06CE727C286FC45A00E54C87 /* SupplierViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CE727B286FC45A00E54C87 /* SupplierViewModel.swift */; };
 		06D08822284B93F0008F9F3F /* MyOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D08820284B93F0008F9F3F /* MyOrdersViewController.swift */; };
 		06D08823284B93F0008F9F3F /* MyOrdersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06D08821284B93F0008F9F3F /* MyOrdersViewController.xib */; };
 		06D08826284B9E22008F9F3F /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D08824284B9E21008F9F3F /* OrderTableViewCell.swift */; };
@@ -454,6 +456,8 @@
 		06C2CD4D284B88F100C73828 /* OrderCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCompletedViewController.swift; sourceTree = "<group>"; };
 		06C2CD4E284B88F100C73828 /* OrderCompletedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderCompletedViewController.xib; sourceTree = "<group>"; };
 		06C2CD51284B90BF00C73828 /* EmptyCartView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCartView.xib; sourceTree = "<group>"; };
+		06CE7279286FC0D200E54C87 /* SupplierAPIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierAPIs.swift; sourceTree = "<group>"; };
+		06CE727B286FC45A00E54C87 /* SupplierViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierViewModel.swift; sourceTree = "<group>"; };
 		06D08820284B93F0008F9F3F /* MyOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewController.swift; sourceTree = "<group>"; };
 		06D08821284B93F0008F9F3F /* MyOrdersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyOrdersViewController.xib; sourceTree = "<group>"; };
 		06D08824284B9E21008F9F3F /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
@@ -680,6 +684,7 @@
 				067269D228552ECC00906BA5 /* PostTableViewCell.xib */,
 				06DC6C88285E078700B17837 /* SupplierInfoViewController.swift */,
 				06DC6C89285E078700B17837 /* SupplierInfoViewController.xib */,
+				06CE727B286FC45A00E54C87 /* SupplierViewModel.swift */,
 			);
 			path = Supplier;
 			sourceTree = "<group>";
@@ -816,6 +821,7 @@
 				06A53FDD2813AFA60052D713 /* ProfileAPIs.swift */,
 				06B9B53228426D0C00A2C7CC /* CartAPIs.swift */,
 				049AE8CA285B76E50006BFE9 /* PostAPIs.swift */,
+				06CE7279286FC0D200E54C87 /* SupplierAPIs.swift */,
 			);
 			path = APIS;
 			sourceTree = "<group>";
@@ -1380,6 +1386,7 @@
 				06FD070A28095F510032C297 /* NotificationTableViewCell.swift in Sources */,
 				067269D328552ECC00906BA5 /* PostTableViewCell.swift in Sources */,
 				067F4632280080C5004C403F /* UIImageViewExtension.swift in Sources */,
+				06CE727C286FC45A00E54C87 /* SupplierViewModel.swift in Sources */,
 				067F463A280080C5004C403F /* AlertService.swift in Sources */,
 				067F4634280080C5004C403F /* UIColorExtension.swift in Sources */,
 				06F3831A283926850073438C /* FilterSelectionTableCell.swift in Sources */,
@@ -1450,6 +1457,7 @@
 				06DECF222832FFDC00BE5959 /* SupplierModel.swift in Sources */,
 				067F46BE28008157004C403F /* PresentingViewController.swift in Sources */,
 				067F463C280080C5004C403F /* UITextFieldExtension.swift in Sources */,
+				06CE727A286FC0D200E54C87 /* SupplierAPIs.swift in Sources */,
 				06F3831628391AD10073438C /* FilterByPriceViewController.swift in Sources */,
 				06FD0711280966BB0032C297 /* ProfileViewController.swift in Sources */,
 				06D08826284B9E22008F9F3F /* OrderTableViewCell.swift in Sources */,
@@ -1696,7 +1704,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = G5KAMXDVUX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Resources/Info.plist;
@@ -1729,7 +1737,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = G5KAMXDVUX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Resources/Info.plist;

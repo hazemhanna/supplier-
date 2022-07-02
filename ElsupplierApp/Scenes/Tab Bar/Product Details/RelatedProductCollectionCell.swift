@@ -10,6 +10,7 @@ import UIKit
 class RelatedProductCollectionCell: UICollectionViewCell {
 
     // MARK: - Outlets
+    @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var piecesView: UIView!
     @IBOutlet weak var piecesNo: UILabel!
     @IBOutlet weak var categoryView: UIView!
@@ -19,6 +20,16 @@ class RelatedProductCollectionCell: UICollectionViewCell {
     @IBOutlet weak var requestPriceButton: UIButton!
     @IBOutlet weak var descLabel: UILabel!
     
+    var product: ProductModel! {
+        didSet {
+            piecesNo.text = product.measurmentUnit
+            productImage.setImageWith(stringUrl: product.mainImage, placeholder: R.image.appLogo())
+            categoryLabel.text = product.categoryName
+            productName.text = product.name
+            priceLabel.text = product.price.string()
+            descLabel.text = product.desc
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

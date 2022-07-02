@@ -39,10 +39,13 @@ class ProductDetailsViewController: BaseViewController {
     var selectedCount: Int = 1 {
         didSet {
             priceTotalLabel.text = (selectedCount * product.price).string()
+            counterLbl.text = selectedCount.string()
         }
     }
     var viewModel = CartViewModel()
     let profileViewModel = ProfileViewModel()
+    let supplierViewModel = SupplierViewModel()
+    var relatedProducts: [ProductModel] = []
     
     // MARK: - Life Cycle
     init(product: ProductModel) {
@@ -57,6 +60,7 @@ class ProductDetailsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
@@ -66,9 +70,11 @@ class ProductDetailsViewController: BaseViewController {
         super.viewWillDisappear(animated)
         navigationController?.isNavigationBarHidden = false
     }
+    
     // MARK: - Functions
     override func setupView() {
         super.setupView()
+        viewModel.loadProductDetails(productId: product.id)
         imagesCollectionView.registerCell(ofType: DetailsImageCollectionCell.self)
         relatedCollectionView.registerCell(ofType: RelatedProductCollectionCell.self)
         piecesView.layer.maskedCorners = !Language.isArabic ? [.layerMinXMinYCorner, .layerMaxXMaxYCorner] : [.layerMaxXMinYCorner, .layerMinXMaxYCorner]
@@ -86,6 +92,7 @@ class ProductDetailsViewController: BaseViewController {
         favButton.isSelected = product.isFav == 1
         productName.text = product.name
         priceLabel.text = product.price.string()
+        priceTotalLabel.text = product.price.string()
         addToCartButton.setTitle(product.inCart == 1 ? "_remove_from_cart" : "_add_to_cart", for: .normal)
         productDesc.text = product.desc
         supplierName.text = product.supplierName
@@ -95,7 +102,10 @@ class ProductDetailsViewController: BaseViewController {
         websiteButton.setTitle(product.supplier.website, for: .normal)
         locationLabel.text = product.supplier.address
         titleLabel.text = product.name
-
+        relatedCollectionView.semanticContentAttribute = .forceLeftToRight
+        if Language.isArabic {
+            relatedCollectionView.transform = CGAffineTransform(scaleX: -1, y: 1)
+        }
     }
     
     override func bindViewModelToViews() {
@@ -124,11 +134,19 @@ class ProductDetailsViewController: BaseViewController {
             self?.addToCartButton.setTitle("_add_to_cart", for: .normal)
         }.disposed(by: disposeBag)
         
+        viewModel.requestCallBackSucceed.bind { _ in
+            Alert.show(message: "_request_call_succeed")
+        }.disposed(by: disposeBag)
         
         profileViewModel.favoriteToggledSucceeded.bind { [weak self] _ in
             guard let self = self else { return }
             self.product.isFav = self.product.isFav == 1 ? 0 : 1
             self.favButton.isSelected = self.product.isFav == 1
+        }.disposed(by: disposeBag)
+        
+        viewModel.relatedProducts.bind { [weak self] in
+            self?.relatedProducts = $0
+            self?.relatedCollectionView.reloadData()
         }.disposed(by: disposeBag)
     }
     
@@ -139,13 +157,11 @@ class ProductDetailsViewController: BaseViewController {
     
     @IBAction func plusClicked(_ sender: UIButton) {
         selectedCount += 1
-        counterLbl.text = "\(selectedCount)"
     }
     
     @IBAction func minusClicked(_ sender: UIButton) {
         if selectedCount == 1 { return }
         selectedCount -= 1
-        counterLbl.text = "\(selectedCount)"
     }
     
     @IBAction func addToCartClicked(_ sender: UIButton) {
@@ -170,21 +186,41 @@ class ProductDetailsViewController: BaseViewController {
         push(controller: CartViewController(isFromTabbar: false))
     }
 
+    @IBAction func showOnMap(_ sender: UIButton) {
+        MapUtil.visit(lat: product.supplier.latitude.doubleValue, long: product.supplier.longitude.doubleValue)
+    }
     
     @IBAction func requestPriceClicked(_ sender: UIButton) {
+        #warning("check quantity")
+        supplierViewModel.requestProductPrice(supplierId: product.supplier.id, productId: product.id, quantity: 1)
     }
     
     @IBAction func phoneClicked(_ sender: UIButton) {
+        if let url = URL(string: product.supplier.phone),
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     @IBAction func emailClicked(_ sender: UIButton) {
+        if let url = URL(string: product.supplier.email),
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     @IBAction func websiteClicked(_ sender: UIButton) {
+        if let url = URL(string: product.supplier.website),
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     @IBAction func facebookClicked(_ sender: UIButton) {
-    
+        if let url = URL(string: product.supplier.facebook),
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
 
 }
@@ -194,7 +230,7 @@ extension ProductDetailsViewController: UICollectionViewDelegate,
                                         UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionView == imagesCollectionView ? product.productImages.count : 0
+        return collectionView == imagesCollectionView ? product.productImages.count : relatedProducts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -204,7 +240,17 @@ extension ProductDetailsViewController: UICollectionViewDelegate,
             return cell
         } else {
             let cell: RelatedProductCollectionCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)!
+            if Language.isArabic {
+                cell.transform = CGAffineTransform(scaleX: -1, y: 1)
+            }
+            cell.product = relatedProducts[indexPath.row]
             return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == relatedCollectionView {
+            push(controller: ProductDetailsViewController(product: relatedProducts[indexPath.row]))
         }
     }
     

@@ -20,10 +20,13 @@ final class SupplierModel: BaseObject {
     var website = ""
     var desc = ""
     var keywords = ""
-    var socialLinks = ""
+    var facebook = ""
+    var linkedin = ""
+    var instagram = ""
     var longitude = ""
     var latitude = ""
     var products: [ProductModel] = []
+    var overAllRank = 0
     
     override func mapping(map: Map) {
         super.mapping(map: map)
@@ -38,10 +41,25 @@ final class SupplierModel: BaseObject {
         website <- map["website"]
         desc <- map["description"]
         keywords <- map["keywords"]
-        socialLinks <- map["socialLinks"]
+        facebook <- map["socialLinks.facebook"]
+        linkedin <- map["socialLinks.linkedin"]
+        instagram <- map["socialLinks.instagram"]
         longitude <- map["longitude"]
         latitude <- map["latitude"]
         products <- map["products"]
+        overAllRank <- map["overAllRank"]
+    }
+    
+}
+
+final class PriceRequestModel: BaseObject {
+    
+    var productId = "0"
+    var quantity = "0"
+    
+    override func mapping(map: Map) {
+        productId <- map["productId"]
+        quantity <- map["quantity"]
     }
     
 }

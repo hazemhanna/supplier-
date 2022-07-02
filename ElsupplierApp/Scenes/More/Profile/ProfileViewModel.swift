@@ -103,8 +103,10 @@ class ProfileViewModel: BaseViewModel {
                                   companyName: companyName.value,
                                   companyType: companyType.value,
                                   areaId: areaId.value,
-                                  image: image.value).subscribe { [weak self] _ in
+                                  image: image.value).subscribe { [weak self] in
             guard let self = self else { return }
+            $0.token = UserModel.current?.token ?? ""
+            $0.store()
             self.isLoading.accept(false)
             self.updatedSuccessfully.accept(true)
         } onError: { [weak self] error in

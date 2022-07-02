@@ -38,13 +38,6 @@ final class CartAPIs {
         return NetworkManager.execute(request: request)
     }
     
-    func requestCallBack(supplierId: Int) -> Single<Any> {
-        let request = ESNetworkRequest("actions/callBack/request")
-        request.method = .post
-        request.parameters = ["supplierId": supplierId]
-        return NetworkManager.execute(request: request)
-    }
-    
     func loadPaymentTypes() -> Single<[PaymentTypeModel]> {
         let request = ESNetworkRequest("payment/types")
         request.selections = [.key("data"), .key("types")]
@@ -68,6 +61,12 @@ final class CartAPIs {
     func makeOrder() -> Single<Any> {
         let request = ESNetworkRequest("cart/order")
         request.method = .post
+        return NetworkManager.execute(request: request)
+    }
+    
+    func loadRelatedProducts(productId: Int) -> Single<[ProductModel]> {
+        let request = ESNetworkRequest("products/show?productId=\(productId)")
+        request.selections = [.key("data"), .key("related-products")]
         return NetworkManager.execute(request: request)
     }
     

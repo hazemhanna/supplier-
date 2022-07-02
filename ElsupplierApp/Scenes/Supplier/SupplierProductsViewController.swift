@@ -62,19 +62,17 @@ class SupplierProductsViewController: BaseViewController {
     
     override func setupCallbacks() {
         viewModel.itemAdded.bind { [weak self] _ in
-            self?.tableView.reloadData()
-            
+//            self?.tableView.reloadData()
         }.disposed(by: disposeBag)
         
         viewModel.itemRemoved.bind { [weak self] _ in
-            self?.tableView.reloadData()
+//            self?.tableView.reloadData()
         }.disposed(by: disposeBag)
         
         profileViewModel.favoriteToggledSucceeded.bind { [weak self] _ in
             guard let self = self else { return }
             self.tableView.reloadData()
         }.disposed(by: disposeBag)
-        
     }
 
     // MARK: - Actions
@@ -91,11 +89,12 @@ extension SupplierProductsViewController: UICollectionViewDelegate, UICollection
         if Language.isArabic {
             cell.transform = CGAffineTransform(scaleX: -1, y: 1)
         }
-        cell.categoryName.text = supplier.categoryProducts[indexPath.row].name
-        cell.bgView.backgroundColor = supplier.categoryProducts[indexPath.row].isSelected ? R.color.lightBlue() : .white
-        cell.bgView.borderWidth = supplier.categoryProducts[indexPath.row].isSelected ? 0 : 1
+        let product = supplier.categoryProducts[indexPath.row]
+        cell.categoryName.text = product.name
+        cell.bgView.backgroundColor = product.isSelected ? R.color.lightBlue() : .white
+        cell.bgView.borderWidth = product.isSelected ? 0 : 1
         cell.bgView.borderColor = R.color.lightBlue()!
-        cell.categoryName.textColor = supplier.categoryProducts[indexPath.row].isSelected ? UIColor.white : R.color.lightBlue()
+        cell.categoryName.textColor = product.isSelected ? UIColor.white : R.color.lightBlue()
         cell.bgView.cornerRadius = cell.bgView.frame.height / 2
         cell.bgView.clipsToBounds = true
         return cell
@@ -139,8 +138,10 @@ extension SupplierProductsViewController: UITableViewDelegate, UITableViewDataSo
 extension SupplierProductsViewController: FavProductTableViewCellDelegate {
     
     func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapAdd product: ProductModel) {
-      // product.addToCart == 1 ? viewModel.removeFromCart(itemId: product.id) : viewModel.addToCart(itemId: product.id, qty: 1)
-        viewModel.addToCart(itemId: product.id, qty: 1)
+       product.addToCart == 1 ? viewModel.removeFromCart(itemId: product.id) : viewModel.addToCart(itemId: product.id, qty: 1)
+        product.inCart = product.inCart == 1 ? 0 : 1
+        cell.addButton.setTitle(product.inCart == 1 ? "Add".localized : "_remove".localized, for: .normal)
+//        viewModel.addToCart(itemId: product.id, qty: 1)
     }
     
     func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapFav product: ProductModel) {

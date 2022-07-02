@@ -25,7 +25,7 @@ class SupplierInfoViewController: BaseViewController {
     
     // MARK: - Variables
     let supplier: SupplierDetailsModel
-    
+    let viewModel = SupplierViewModel()
     
     // MARK: - Life Cycle
     init(supplier: SupplierDetailsModel) {
@@ -50,6 +50,34 @@ class SupplierInfoViewController: BaseViewController {
         aboutSupplierDesc.text = supplier.supplier.desc.html2String
     }
     
+    override func bindViewModelToViews() {
+        viewModel.isLoading.bind {
+            if $0 {
+                Hud.show()
+            } else {
+                Hud.hide()
+            }
+        }.disposed(by: disposeBag)
+    }
+    
+    override func setupCallbacks() {
+        viewModel.error.bind {
+            Alert.show(message: $0.localizedDescription)
+        }.disposed(by: disposeBag)
+        
+        viewModel.callbackRequested.bind { _ in
+            Alert.show(message: "_request_call_succeed")
+        }.disposed(by: disposeBag)
+        
+        viewModel.messageSent.bind { _ in
+            #warning("show that message sent alert here")
+        }.disposed(by: disposeBag)
+        
+        viewModel.priceRequested.bind { _ in
+            Alert.show(message: "_message_sent")
+        }.disposed(by: disposeBag)
+    }
+    
     // MARK: - Actions
     @IBAction func infoClicked(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
@@ -62,10 +90,11 @@ class SupplierInfoViewController: BaseViewController {
     }
     
     @IBAction func callRequestClicked(_ sender: UIButton) {
-        
+        viewModel.requestCallBack(supplierId: supplier.id)
     }
     
     @IBAction func priceRequestClicked(_ sender: UIButton) {
+        #warning("request price for selected products")
     }
     
     @IBAction func openMessageClicked(_ sender: UIButton) {
@@ -79,18 +108,39 @@ class SupplierInfoViewController: BaseViewController {
     }
     
     @IBAction func mobileNoClicked(_ sender: UIButton) {
+        if let url = URL(string: supplier.supplier.phone),
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     @IBAction func emailClicked(_ sender: UIButton) {
+        if let url = URL(string: supplier.supplier.email),
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     @IBAction func websiteClicked(_ sender: UIButton) {
+        if let url = URL(string: supplier.supplier.website),
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     @IBAction func facebookClicked(_ sender: UIButton) {
+        if let url = URL(string: supplier.supplier.facebook),
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     @IBAction func sendMessageClicked(_ sender: UIButton) {
+        if messageTV.text.isEmpty {
+            Alert.show(message: "_enter_message")
+            return
+        }
+        viewModel.sendMessage(supplierId: supplier.id, message: messageTV.text!)
     }
     
     @IBAction func cancelMessageClicked(_ sender: UIButton) {

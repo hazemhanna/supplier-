@@ -51,6 +51,10 @@ class ProfileViewController: BaseViewController {
     
     override func setupCallbacks() {
         viewModel.user.bind {
+            if let user = UserModel.current {
+                user.image = $0.image
+                user.store()
+            }
             self.updateUI(user: $0)
         }.disposed(by: disposeBag)
         

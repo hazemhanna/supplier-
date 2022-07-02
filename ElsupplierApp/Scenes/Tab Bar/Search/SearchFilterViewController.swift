@@ -106,6 +106,14 @@ class SearchFilterViewController: BaseViewController {
     }
     
     @IBAction func filterSearchClicked(_ sender: UIButton) {
+        if viewModel.selectedCategory.value == nil {
+            Alert.show(message: "_choose_dept")
+            return
+        }
+        if viewModel.selectedProduct.value == nil {
+            Alert.show(message: "_choose_sub_cat")
+            return
+        }
         viewModel.isFilter.accept(true)
         if filterSupplierButton.isSelected {
             push(controller: SupplierSearchResultsViewController(keyword: searchKeyTF.text, selectedCategory: viewModel.selectedProduct.value?.id, selectedParentCategory: viewModel.selectedCategory.value?.id))

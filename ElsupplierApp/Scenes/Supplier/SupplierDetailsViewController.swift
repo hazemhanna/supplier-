@@ -53,10 +53,10 @@ class SupplierDetailsViewController: BaseViewController {
         super.setupView()
         supplierImageView.setImageWith(stringUrl: supplier.supplier.logo)
         supplierName.text = supplier.supplier.name
-//        rateView.rating = supplier.supplier.
+        rateView.rating = Double(supplier.supplier.overAllRank)
+        rateLabel.text = "_rate".localized + "\(supplier.supplier.overAllRank)/5"
         addToContrainer(SupplierProductsViewController(supplier: supplier))
         favButton.isSelected = supplier.isFav
-    
     }
     
     override func bindViewModelToViews() {
@@ -98,7 +98,7 @@ class SupplierDetailsViewController: BaseViewController {
             addToContrainer(SupplierProductsViewController(supplier: supplier))
             break
         case 1:
-            addToContrainer(SupplierPostsViewController(posts: supplier.posts))
+            addToContrainer(SupplierPostsViewController(supplier: supplier.supplier, posts: supplier.posts))
             break
         case 2:
             addToContrainer(SupplierInfoViewController(supplier: supplier))
