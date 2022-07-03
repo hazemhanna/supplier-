@@ -25,6 +25,8 @@
 		048F4614285A239C00E0EE6F /* MyPostsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F4612285A239C00E0EE6F /* MyPostsTableViewCell.xib */; };
 		049AE8CB285B76E50006BFE9 /* PostAPIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049AE8CA285B76E50006BFE9 /* PostAPIs.swift */; };
 		049AE8CD285B83360006BFE9 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049AE8CC285B83360006BFE9 /* PostsViewModel.swift */; };
+		04BDDAF82871DB45005B8433 /* PriceRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDDAF62871DB45005B8433 /* PriceRequestTableViewCell.swift */; };
+		04BDDAF92871DB45005B8433 /* PriceRequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04BDDAF72871DB45005B8433 /* PriceRequestTableViewCell.xib */; };
 		055AF33888E3281697E5F2A9 /* Pods_ElsupplierApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5023ACE50E7883637337AF3 /* Pods_ElsupplierApp.framework */; };
 		0609A807280AA65000806081 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609A805280AA65000806081 /* HomeViewController.swift */; };
 		0609A808280AA65000806081 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0609A806280AA65000806081 /* HomeViewController.xib */; };
@@ -281,6 +283,8 @@
 		048F4612285A239C00E0EE6F /* MyPostsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPostsTableViewCell.xib; sourceTree = "<group>"; };
 		049AE8CA285B76E50006BFE9 /* PostAPIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAPIs.swift; sourceTree = "<group>"; };
 		049AE8CC285B83360006BFE9 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
+		04BDDAF62871DB45005B8433 /* PriceRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRequestTableViewCell.swift; sourceTree = "<group>"; };
+		04BDDAF72871DB45005B8433 /* PriceRequestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceRequestTableViewCell.xib; sourceTree = "<group>"; };
 		0609A805280AA65000806081 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0609A806280AA65000806081 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		0609A809280AB28300806081 /* HomeOfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOfferCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -684,6 +688,8 @@
 				067269D228552ECC00906BA5 /* PostTableViewCell.xib */,
 				06DC6C88285E078700B17837 /* SupplierInfoViewController.swift */,
 				06DC6C89285E078700B17837 /* SupplierInfoViewController.xib */,
+				04BDDAF62871DB45005B8433 /* PriceRequestTableViewCell.swift */,
+				04BDDAF72871DB45005B8433 /* PriceRequestTableViewCell.xib */,
 				06CE727B286FC45A00E54C87 /* SupplierViewModel.swift */,
 			);
 			path = Supplier;
@@ -1245,6 +1251,7 @@
 				06ED3EA12800855B00AA6D55 /* Cairo-ExtraBold.ttf in Resources */,
 				06DC6C8B285E078700B17837 /* SupplierInfoViewController.xib in Resources */,
 				06ED3EA02800855B00AA6D55 /* Cairo-Bold.ttf in Resources */,
+				04BDDAF92871DB45005B8433 /* PriceRequestTableViewCell.xib in Resources */,
 				067F46C128008157004C403F /* SplashViewController.xib in Resources */,
 				067269D028552DAB00906BA5 /* SupplierPostsViewController.xib in Resources */,
 				06ECB375280A297D0056B8FF /* FavProductsViewController.xib in Resources */,
@@ -1462,6 +1469,7 @@
 				06FD0711280966BB0032C297 /* ProfileViewController.swift in Sources */,
 				06D08826284B9E22008F9F3F /* OrderTableViewCell.swift in Sources */,
 				067F46B428008157004C403F /* LoginAlertViewController.swift in Sources */,
+				04BDDAF82871DB45005B8433 /* PriceRequestTableViewCell.swift in Sources */,
 				067F467C280080D9004C403F /* PickerModel.swift in Sources */,
 				067269CF28552DAB00906BA5 /* SupplierPostsViewController.swift in Sources */,
 				06282A202850098900BE199E /* AddTenderViewController.swift in Sources */,

@@ -1050,7 +1050,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 71 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 72 nibs.
   struct nib {
     /// Nib `AddAddressViewController`.
     static let addAddressViewController = _R.nib._AddAddressViewController()
@@ -1156,6 +1156,8 @@ struct R: Rswift.Validatable {
     static let postTableViewCell = _R.nib._PostTableViewCell()
     /// Nib `PostsViewController`.
     static let postsViewController = _R.nib._PostsViewController()
+    /// Nib `PriceRequestTableViewCell`.
+    static let priceRequestTableViewCell = _R.nib._PriceRequestTableViewCell()
     /// Nib `ProductDetailsViewController`.
     static let productDetailsViewController = _R.nib._ProductDetailsViewController()
     /// Nib `ProductsSearchResultsViewController`.
@@ -1612,6 +1614,14 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "PriceRequestTableViewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.priceRequestTableViewCell) instead")
+    static func priceRequestTableViewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.priceRequestTableViewCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "ProductDetailsViewController", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.productDetailsViewController) instead")
     static func productDetailsViewController(_: Void = ()) -> UIKit.UINib {
@@ -1971,6 +1981,10 @@ struct R: Rswift.Validatable {
       return R.nib.postsViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
+    static func priceRequestTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PriceRequestTableViewCell? {
+      return R.nib.priceRequestTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PriceRequestTableViewCell
+    }
+
     static func productDetailsViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.productDetailsViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
@@ -2104,6 +2118,7 @@ struct _R: Rswift.Validatable {
       try _PickerTableViewCell.validate()
       try _PickerViewController.validate()
       try _PostTableViewCell.validate()
+      try _PriceRequestTableViewCell.validate()
       try _ProductDetailsViewController.validate()
       try _ProductsSearchResultsViewController.validate()
       try _ProfileViewController.validate()
@@ -2919,6 +2934,25 @@ struct _R: Rswift.Validatable {
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _PriceRequestTableViewCell: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "PriceRequestTableViewCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PriceRequestTableViewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PriceRequestTableViewCell
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "drop arrow", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'drop arrow' is used in nib 'PriceRequestTableViewCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "DarkBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'DarkBlue' is used in nib 'PriceRequestTableViewCell', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "LightBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'LightBlue' is used in nib 'PriceRequestTableViewCell', but couldn't be loaded.") }
+        }
       }
 
       fileprivate init() {}
