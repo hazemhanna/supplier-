@@ -239,6 +239,8 @@ extension SupplierInfoViewController: PriceRequestTableViewCellDelegate{
             guard let self = self, index != 0 else { return }
             cell.selectedProductLabel.text = self.products[index - 1].name
             self.productId = self.products[index - 1].id
+            cell.price.productName = self.products[index - 1].name
+            cell.price.productId = self.products[index - 1].id
           }
         }
     }
