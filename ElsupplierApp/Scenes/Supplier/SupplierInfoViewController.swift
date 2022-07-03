@@ -7,6 +7,15 @@
 
 import UIKit
 
+class PriceRequeste{
+    var productName  = " "
+    var productId  = 0
+    var quantity  = 0
+    var completed: Bool{
+        return !productName.isEmpty && quantity != 0
+    }
+}
+
 class SupplierInfoViewController: BaseViewController {
 
     // MARK: - Outlets
@@ -31,6 +40,17 @@ class SupplierInfoViewController: BaseViewController {
     let viewModel = SupplierViewModel()
     var products  = [ProductModel]()
     var productId = 0
+    var selectedProducts  = [PriceRequeste](){
+        didSet{
+            tableView.reloadData()
+            tableViewHeight.constant = CGFloat(200 * selectedProducts.count)
+        }
+    }
+
+    
+    var tempPrice : PriceRequeste?
+    var index = -1
+    
     // MARK: - Life Cycle
     init(supplier: SupplierDetailsModel) {
         self.supplier = supplier
@@ -49,6 +69,8 @@ class SupplierInfoViewController: BaseViewController {
     override func setupView() {
         bindViewModelToViews()
         setupCallbacks()
+        selectedProducts.append(PriceRequeste())
+
         tableView.registerCell(ofType: PriceRequestTableViewCell.self)
         mobileNoButton.setTitle(supplier.supplier.phone, for: .normal)
         emailButton.setTitle(supplier.supplier.email, for: .normal)
@@ -178,24 +200,35 @@ class SupplierInfoViewController: BaseViewController {
         viewModel.requestProductPrice(supplierId: supplier.supplier.id, productId: productId, quantity: 1)
     }
     
+    
+    @IBAction func addAnotherClicked(_ sender: UIButton) {
+        if let tempPrice = tempPrice, tempPrice.completed, index != -1 {
+            selectedProducts[index] = tempPrice
+            self.tempPrice = nil
+            let add = PriceRequeste()
+            selectedProducts.append(add)
+            tableView.reloadData()
+        }
+    }
 }
 
 extension SupplierInfoViewController: UITableViewDelegate, UITableViewDataSource {
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        selectedProducts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: PriceRequestTableViewCell = tableView.dequeueReusableCell()!
         cell.delegate = self
+        cell.price = selectedProducts[indexPath.row]
+        cell.index = indexPath.row
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         200
     }
-    
 }
 
 extension SupplierInfoViewController: PriceRequestTableViewCellDelegate{
@@ -208,5 +241,10 @@ extension SupplierInfoViewController: PriceRequestTableViewCellDelegate{
             self.productId = self.products[index - 1].id
           }
         }
+    }
+
+    func priceRequestTableViewCell(_ cell: PriceRequestTableViewCell, didChangeModel at: Int, price: PriceRequeste){
+        tempPrice = price
+        self.index = at
     }
 }
