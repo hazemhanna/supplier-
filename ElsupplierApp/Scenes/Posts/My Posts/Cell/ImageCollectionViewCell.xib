@@ -30,17 +30,13 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvi-5k-ksE">
-                                <rect key="frame" x="39.5" y="41" width="20" height="20"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play" translatesAutoresizingMaskIntoConstraints="NO" id="ftc-uw-hw7">
+                                <rect key="frame" x="34.5" y="36" width="30" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="rxC-qP-Uvh"/>
-                                    <constraint firstAttribute="width" constant="20" id="vei-0R-oaQ"/>
+                                    <constraint firstAttribute="width" constant="30" id="BtV-HG-pVR"/>
+                                    <constraint firstAttribute="height" constant="30" id="Mg4-pA-c06"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="play" title="1">
-                                    <color key="baseForegroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                            </button>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bh7-Og-GqV">
                                 <rect key="frame" x="0.0" y="0.0" width="99" height="102"/>
                                 <subviews>
@@ -66,13 +62,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="fuW-VJ-Tgs" secondAttribute="trailing" id="5bI-vd-tm9"/>
-                            <constraint firstItem="tvi-5k-ksE" firstAttribute="centerX" secondItem="9Oq-Ll-VeR" secondAttribute="centerX" id="7h6-mP-G6h"/>
                             <constraint firstAttribute="trailing" secondItem="bh7-Og-GqV" secondAttribute="trailing" id="9px-f4-Fqf"/>
+                            <constraint firstItem="ftc-uw-hw7" firstAttribute="centerY" secondItem="9Oq-Ll-VeR" secondAttribute="centerY" id="BEk-o4-Toi"/>
                             <constraint firstAttribute="bottom" secondItem="bh7-Og-GqV" secondAttribute="bottom" id="GxU-3M-pBr"/>
                             <constraint firstItem="bh7-Og-GqV" firstAttribute="leading" secondItem="9Oq-Ll-VeR" secondAttribute="leading" id="PfL-35-RbQ"/>
+                            <constraint firstItem="ftc-uw-hw7" firstAttribute="centerX" secondItem="9Oq-Ll-VeR" secondAttribute="centerX" id="R1c-ZH-28i"/>
                             <constraint firstItem="bh7-Og-GqV" firstAttribute="top" secondItem="9Oq-Ll-VeR" secondAttribute="top" id="So9-jc-vtc"/>
                             <constraint firstItem="fuW-VJ-Tgs" firstAttribute="leading" secondItem="9Oq-Ll-VeR" secondAttribute="leading" id="Z4y-Wv-YoJ"/>
-                            <constraint firstItem="tvi-5k-ksE" firstAttribute="centerY" secondItem="9Oq-Ll-VeR" secondAttribute="centerY" id="c3N-gl-8z6"/>
                             <constraint firstAttribute="bottom" secondItem="fuW-VJ-Tgs" secondAttribute="bottom" id="iLV-gu-Hkn"/>
                             <constraint firstItem="fuW-VJ-Tgs" firstAttribute="top" secondItem="9Oq-Ll-VeR" secondAttribute="top" id="pJn-qc-TnU"/>
                         </constraints>
@@ -102,6 +98,7 @@
                 <outlet property="blackView" destination="bh7-Og-GqV" id="Y9p-4x-zta"/>
                 <outlet property="imageNumber" destination="kyN-h5-2qw" id="VID-GC-t6M"/>
                 <outlet property="itemImage" destination="fuW-VJ-Tgs" id="0vH-dI-Ju6"/>
+                <outlet property="playImage" destination="ftc-uw-hw7" id="LNY-I7-zKS"/>
             </connections>
             <point key="canvasLocation" x="173.18840579710147" y="84.375"/>
         </collectionViewCell>
