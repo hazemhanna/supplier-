@@ -5,6 +5,7 @@
 //  Created by Ahmed Madeh on 02/07/2022.
 //
 
+import Alamofire
 import ESNetworkManager
 import RxCocoa
 import RxSwift

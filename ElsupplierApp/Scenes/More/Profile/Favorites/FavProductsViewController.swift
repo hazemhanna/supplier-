@@ -58,11 +58,17 @@ class FavProductsViewController: BaseViewController {
 
 }
 
-extension FavProductsViewController: UITableViewDelegate, UITableViewDataSource {
+extension FavProductsViewController: UITableViewDelegate, TableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favorites.count
+    func viewForPlaceholder(in tableView: UITableView) -> UIView {
+        Bundle.main.loadNibNamed("EmptyProductsFavView", owner: self, options: [:])?.first as? UIView ?? UIView()
     }
+    
+    func shouldShowPlaceholder(in tableView: UITableView) -> Bool { favorites.isEmpty }
+    
+    func frameForPlaceholder(in tableView: UITableView) -> CGRect { tableView.bounds }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { favorites.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: FavProductTableViewCell = tableView.dequeueReusableCell()!

@@ -7,12 +7,12 @@
 
 import UIKit
 
-class PriceRequeste{
+class PriceRequest {
     var productName  = " "
-    var productId  = 0
-    var quantity  = 0
-    var completed: Bool{
-        return !productName.isEmpty && quantity != 0
+    var productId = 0
+    var quantity = 0
+    var completed: Bool {
+        return productId != 0 && quantity != 0
     }
 }
 
@@ -38,17 +38,16 @@ class SupplierInfoViewController: BaseViewController {
     // MARK: - Variables
     let supplier: SupplierDetailsModel
     let viewModel = SupplierViewModel()
-    var products  = [ProductModel]()
+    var products = [ProductModel]()
     var productId = 0
-    var selectedProducts  = [PriceRequeste](){
+    var selectedProducts = [PriceRequest](){
         didSet{
             tableView.reloadData()
             tableViewHeight.constant = CGFloat(200 * selectedProducts.count)
         }
     }
-
     
-    var tempPrice : PriceRequeste?
+    var tempPrice: PriceRequest?
     var index = -1
     
     // MARK: - Life Cycle
@@ -69,7 +68,7 @@ class SupplierInfoViewController: BaseViewController {
     override func setupView() {
         bindViewModelToViews()
         setupCallbacks()
-        selectedProducts.append(PriceRequeste())
+        selectedProducts.append(PriceRequest())
 
         tableView.registerCell(ofType: PriceRequestTableViewCell.self)
         mobileNoButton.setTitle(supplier.supplier.phone, for: .normal)
@@ -110,7 +109,7 @@ class SupplierInfoViewController: BaseViewController {
         }.disposed(by: disposeBag)
         
         viewModel.priceRequested.bind { _ in
-            Alert.show(message: "_message_sent")
+            Alert.show(message: "_product_price_sent")
         }.disposed(by: disposeBag)
     }
     
@@ -131,7 +130,6 @@ class SupplierInfoViewController: BaseViewController {
     }
     
     @IBAction func priceRequestClicked(_ sender: UIButton) {
-        
         sender.isSelected = !sender.isSelected
         priceRequestView.isHidden = !sender.isSelected
         callRequestButton.isSelected = false
@@ -139,7 +137,6 @@ class SupplierInfoViewController: BaseViewController {
         infoButton.isSelected = false
         sendMessageView.isHidden = true
         infoView.isHidden = true
-
     }
     
     @IBAction func openMessageClicked(_ sender: UIButton) {
@@ -193,11 +190,12 @@ class SupplierInfoViewController: BaseViewController {
     }
     
     @IBAction func PriceRequestClicked(_ sender: UIButton) {
-        if productId == 0 {
+        if selectedProducts.filter({ $0.completed }).isEmpty {
             Alert.show(message: "_select_product")
             return
         }
-        viewModel.requestProductPrice(supplierId: supplier.supplier.id, productId: productId, quantity: 1)
+        let priceRequestModels: [PriceRequestModel] = selectedProducts.map { .init($0) }
+        viewModel.requestSupplierPrice(supplierId: supplier.supplier.id, products: priceRequestModels)
     }
     
     
@@ -205,7 +203,7 @@ class SupplierInfoViewController: BaseViewController {
         if let tempPrice = tempPrice, tempPrice.completed, index != -1 {
             selectedProducts[index] = tempPrice
             self.tempPrice = nil
-            let add = PriceRequeste()
+            let add = PriceRequest()
             selectedProducts.append(add)
             tableView.reloadData()
         }
@@ -245,7 +243,7 @@ extension SupplierInfoViewController: PriceRequestTableViewCellDelegate{
         }
     }
 
-    func priceRequestTableViewCell(_ cell: PriceRequestTableViewCell, didChangeModel at: Int, price: PriceRequeste){
+    func priceRequestTableViewCell(_ cell: PriceRequestTableViewCell, didChangeModel at: Int, price: PriceRequest){
         tempPrice = price
         self.index = at
     }

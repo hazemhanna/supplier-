@@ -64,9 +64,7 @@ class TendersViewController: BaseViewController {
         }.disposed(by: disposeBag)
     }
     
-    override func shouldShowTabBar() -> Bool {
-        true
-    }
+    override func shouldShowTabBar() -> Bool { true }
     
     // MARK: - Actions
 }
@@ -74,20 +72,14 @@ class TendersViewController: BaseViewController {
 extension TendersViewController: UITableViewDelegate, TableViewDataSource {
     
     func viewForPlaceholder(in tableView: UITableView) -> UIView {
-        return Bundle.main.loadNibNamed("EmptyCartView", owner: self, options: [:])?.first as? UIView ?? UIView()
+        Bundle.main.loadNibNamed("EmptyTenders", owner: self, options: [:])?.first as? UIView ?? UIView()
     }
 
-    func shouldShowPlaceholder(in tableView: UITableView) -> Bool {
-        tenders.isEmpty
-    }
+    func shouldShowPlaceholder(in tableView: UITableView) -> Bool { tenders.isEmpty }
     
-    func frameForPlaceholder(in tableView: UITableView) -> CGRect {
-        tableView.bounds
-    }
+    func frameForPlaceholder(in tableView: UITableView) -> CGRect { tableView.bounds }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tenders.count
-    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { tenders.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TenderTableViewCell = tableView.dequeueReusableCell()!

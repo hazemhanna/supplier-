@@ -184,3 +184,11 @@
 "_enter_message" = "من فضلك ادخل الرسالة";
 "_message_sent" = "تم ارسال الرسالة بنجاح";
 "_another_product" = "+منتج اخر";
+"_product_price_sent" = "تم ارسال طلب السعر بنجاح";
+"_empty_addresses" = "لا يوجد لديك اي عناوين";
+"_empty_orders" = "لا يوجد طلبات حتي الان ";
+"_empty_payment_ways" = "لا يوجد لديك اي طرق دفع";
+"_empty_fav_products" = "لم تقم بأضافة منتجات مفضلة حتي الان";
+"_empty_fav_suppliers" = "لم تقم بأضافة موردين مفضلين حتي الان";
+"_empty_tenders" = "لم تقم بأي مناقصات حتي الان";
+"_empty_notifications" = "لا يوجد اشعارات";

@@ -135,7 +135,15 @@ class MyPostsViewController: BaseTabBarViewController {
     
 }
 
-extension MyPostsViewController: UITableViewDelegate, UITableViewDataSource {
+extension MyPostsViewController: UITableViewDelegate, TableViewDataSource {
+    
+    func viewForPlaceholder(in tableView: UITableView) -> UIView {
+        Bundle.main.loadNibNamed("EmptyPostsView", owner: self, options: [:])?.first as? UIView ?? UIView()
+    }
+    
+    func shouldShowPlaceholder(in tableView: UITableView) -> Bool { posts.isEmpty }
+    
+    func frameForPlaceholder(in tableView: UITableView) -> CGRect { tableView.bounds }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         posts.count

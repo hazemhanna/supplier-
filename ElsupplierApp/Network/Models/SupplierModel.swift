@@ -57,6 +57,16 @@ final class PriceRequestModel: BaseObject {
     var productId = "0"
     var quantity = "0"
     
+    init(_ request: PriceRequest) {
+        productId = request.productId.string()
+        quantity = request.quantity.string()
+        super.init()
+    }
+    
+    required init?(map: Map) {
+        fatalError("init(map:) has not been implemented")
+    }
+    
     override func mapping(map: Map) {
         productId <- map["productId"]
         quantity <- map["quantity"]

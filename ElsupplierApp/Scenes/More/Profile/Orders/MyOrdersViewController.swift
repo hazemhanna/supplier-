@@ -71,11 +71,17 @@ class MyOrdersViewController: BaseViewController {
     
 }
 
-extension MyOrdersViewController: UITableViewDelegate, UITableViewDataSource {
+extension MyOrdersViewController: UITableViewDelegate, TableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        model.items.count
+    func viewForPlaceholder(in tableView: UITableView) -> UIView {
+        Bundle.main.loadNibNamed("EmptyOrdersView", owner: self, options: [:])?.first as? UIView ?? UIView()
     }
+    
+    func shouldShowPlaceholder(in tableView: UITableView) -> Bool { model.items.isEmpty }
+    
+    func frameForPlaceholder(in tableView: UITableView) -> CGRect { tableView.bounds }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { model.items.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: OrderTableViewCell = tableView.dequeueReusableCell()!

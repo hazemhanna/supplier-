@@ -10,7 +10,7 @@ import UIKit
 
 protocol PriceRequestTableViewCellDelegate: AnyObject {
     func priceRequestTableViewCell(_ cell: PriceRequestTableViewCell)
-    func priceRequestTableViewCell(_ cell: PriceRequestTableViewCell, didChangeModel at: Int, price: PriceRequeste)
+    func priceRequestTableViewCell(_ cell: PriceRequestTableViewCell, didChangeModel at: Int, price: PriceRequest)
 
 }
 
@@ -19,7 +19,7 @@ class PriceRequestTableViewCell: UITableViewCell ,UITextFieldDelegate{
     @IBOutlet weak var selectedProductLabel: UILabel!
     @IBOutlet weak var ProductCount: UITextField!
 
-    var price:PriceRequeste!{
+    var price:PriceRequest!{
         didSet{
             selectedProductLabel.text = price.productName
             ProductCount.text = "\(price.quantity)"
