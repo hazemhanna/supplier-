@@ -8,13 +8,13 @@
 import UIKit
 
 protocol MyPostsTableViewCellDelegate: AnyObject {
-
+    
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didLike item: PostModel)
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didAddComent item: PostModel,comment : String)
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, sendMessage item: PostModel)
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, makeCall item: PostModel)
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, selectMedia item: PostModel,index :Int)
-
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, playVideo item: PostModel)
 }
 
 class MyPostsTableViewCell: UITableViewCell {
@@ -64,7 +64,6 @@ class MyPostsTableViewCell: UITableViewCell {
     @IBAction func addCommentClicked(_ sender: UIButton) {
         delegate?.myPostsTableViewCell(self, didAddComent: post, comment : addCommentTF.text ?? "")
         addCommentTF.text = ""
-        
     }
     
     @IBAction func sendMessageClicked(_ sender: UIButton) {
@@ -74,15 +73,16 @@ class MyPostsTableViewCell: UITableViewCell {
     @IBAction func makeCallClicked(_ sender: UIButton) {
         delegate?.myPostsTableViewCell(self, makeCall: post)
     }
-    
 }
 
 extension MyPostsTableViewCell: UICollectionViewDelegate,
                                 UICollectionViewDataSource,
                                 UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { post.media.count }
-    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        post.media.count
+    }
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)!
         if post.media.count > 3 {
@@ -98,12 +98,15 @@ extension MyPostsTableViewCell: UICollectionViewDelegate,
         cell.itemImage.setImageWith(stringUrl: post.media[indexPath.row].media)
         return cell
     }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: (collectionView.frame.width / 3.5) , height: 100)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+     if post.media[indexPath.row].isVideo{
+        delegate?.myPostsTableViewCell(self, playVideo: post)
+     }else{
         delegate?.myPostsTableViewCell(self, selectMedia: post, index: indexPath.row)
+      }
     }
 }

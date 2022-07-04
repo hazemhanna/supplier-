@@ -44,14 +44,13 @@ final class PostModel: BaseObject {
         comments <- map["comments"]
         media <- map["media"]
     }
-    
 }
-
 
 final class MediaModel: BaseObject {
     var route = ""
     var media = ""
-    
+    var isVideo = false
+
     override func mapping(map: Map) {
         super.mapping(map: map)
         route <- map["route"]
