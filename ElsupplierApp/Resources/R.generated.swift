@@ -1104,7 +1104,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 80 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 81 nibs.
   struct nib {
     /// Nib `AddAddressViewController`.
     static let addAddressViewController = _R.nib._AddAddressViewController()
@@ -1242,6 +1242,8 @@ struct R: Rswift.Validatable {
     static let searchFilterViewController = _R.nib._SearchFilterViewController()
     /// Nib `SegmentViewCell`.
     static let segmentViewCell = _R.nib._SegmentViewCell()
+    /// Nib `SendMessageViewController`.
+    static let sendMessageViewController = _R.nib._SendMessageViewController()
     /// Nib `SplashViewController`.
     static let splashViewController = _R.nib._SplashViewController()
     /// Nib `SupplierDetailsViewController`.
@@ -1812,6 +1814,14 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "SendMessageViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.sendMessageViewController) instead")
+    static func sendMessageViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.sendMessageViewController)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "SplashViewController", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.splashViewController) instead")
     static func splashViewController(_: Void = ()) -> UIKit.UINib {
@@ -2179,6 +2189,10 @@ struct R: Rswift.Validatable {
       return R.nib.segmentViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SegmentViewCell
     }
 
+    static func sendMessageViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.sendMessageViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
     static func splashViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.splashViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
@@ -2298,6 +2312,7 @@ struct _R: Rswift.Validatable {
       try _ProfileViewController.validate()
       try _RegisterViewController.validate()
       try _SearchFilterViewController.validate()
+      try _SendMessageViewController.validate()
       try _SplashViewController.validate()
       try _SupplierDetailsViewController.validate()
       try _SupplierInfoViewController.validate()
@@ -3411,6 +3426,26 @@ struct _R: Rswift.Validatable {
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SegmentViewCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SegmentViewCell
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _SendMessageViewController: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "SendMessageViewController"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "back arrow", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'back arrow' is used in nib 'SendMessageViewController', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "DarkBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'DarkBlue' is used in nib 'SendMessageViewController', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "IceBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'IceBlue' is used in nib 'SendMessageViewController', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "LightBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'LightBlue' is used in nib 'SendMessageViewController', but couldn't be loaded.") }
+        }
       }
 
       fileprivate init() {}

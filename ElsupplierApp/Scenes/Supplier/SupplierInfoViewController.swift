@@ -198,7 +198,6 @@ class SupplierInfoViewController: BaseViewController {
         viewModel.requestSupplierPrice(supplierId: supplier.supplier.id, products: priceRequestModels)
     }
     
-    
     @IBAction func addAnotherClicked(_ sender: UIButton) {
         if let tempPrice = tempPrice, tempPrice.completed, index != -1 {
             selectedProducts[index] = tempPrice

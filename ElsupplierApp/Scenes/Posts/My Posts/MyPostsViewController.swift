@@ -181,7 +181,7 @@ extension MyPostsViewController: MyPostsTableViewCellDelegate {
     }
     
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, sendMessage item: PostModel) {
-        
+        push(controller: SendMessageViewController(supplierId: item.ownerId))
     }
     
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, makeCall item: PostModel) {

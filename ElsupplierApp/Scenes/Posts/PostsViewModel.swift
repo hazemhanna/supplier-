@@ -13,9 +13,10 @@ import UIKit
 class PostsViewModel: BaseViewModel {
     
     // MARK: - Profile
-    var posts = PublishRelay<[PostModel]>()
     var succeeded = PublishRelay<String>()
+    var messageSent = PublishRelay<Bool>()
     var user = PublishRelay<UserModel>()
+    var posts = PublishRelay<[PostModel]>()
 
     // MARK: - Variables
     let postsApis = PostAPIs()
@@ -101,4 +102,15 @@ class PostsViewModel: BaseViewModel {
         }.disposed(by: disposeBag)
     }
     
+    func sendMessage(supplierId: Int, message: String) {
+         isLoading.accept(true)
+        let supplierApis = SupplierAPIs()
+        supplierApis.messageRequest(supplierId: supplierId, message: message).subscribe { [weak self] _ in
+            self?.isLoading.accept(false)
+            self?.messageSent.accept(true)
+        } onError: { [weak self] in
+            self?.isLoading.accept(false)
+            self?.error.accept($0)
+        }.disposed(by: disposeBag)
+    }
 }

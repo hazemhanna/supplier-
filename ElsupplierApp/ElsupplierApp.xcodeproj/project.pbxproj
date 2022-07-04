@@ -15,6 +15,8 @@
 		0438A55528596BCC00502F73 /* MessagesDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0438A55328596BCC00502F73 /* MessagesDetailsViewController.xib */; };
 		0438A55928596D7200502F73 /* MessagesReceverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438A55728596D7200502F73 /* MessagesReceverTableViewCell.swift */; };
 		0438A55A28596D7200502F73 /* MessagesReceverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0438A55828596D7200502F73 /* MessagesReceverTableViewCell.xib */; };
+		0477899828730C6C003A9B23 /* SendMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0477899628730C6C003A9B23 /* SendMessageViewController.swift */; };
+		0477899928730C6C003A9B23 /* SendMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0477899728730C6C003A9B23 /* SendMessageViewController.xib */; };
 		047FA0C82858F428009EFFBB /* OffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FA0C62858F428009EFFBB /* OffersViewController.swift */; };
 		047FA0C92858F428009EFFBB /* OffersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047FA0C72858F428009EFFBB /* OffersViewController.xib */; };
 		047FA0CD2858F56D009EFFBB /* OfferCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FA0CB2858F56D009EFFBB /* OfferCollectionViewCell.swift */; };
@@ -281,6 +283,8 @@
 		0438A55328596BCC00502F73 /* MessagesDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessagesDetailsViewController.xib; sourceTree = "<group>"; };
 		0438A55728596D7200502F73 /* MessagesReceverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesReceverTableViewCell.swift; sourceTree = "<group>"; };
 		0438A55828596D7200502F73 /* MessagesReceverTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessagesReceverTableViewCell.xib; sourceTree = "<group>"; };
+		0477899628730C6C003A9B23 /* SendMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewController.swift; sourceTree = "<group>"; };
+		0477899728730C6C003A9B23 /* SendMessageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendMessageViewController.xib; sourceTree = "<group>"; };
 		047FA0C62858F428009EFFBB /* OffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewController.swift; sourceTree = "<group>"; };
 		047FA0C72858F428009EFFBB /* OffersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OffersViewController.xib; sourceTree = "<group>"; };
 		047FA0CB2858F56D009EFFBB /* OfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -559,6 +563,7 @@
 		0438A54C2859551F00502F73 /* Posts */ = {
 			isa = PBXGroup;
 			children = (
+				0477899528730C4C003A9B23 /* SendMessage */,
 				048F460A285A1A0F00E0EE6F /* My Posts */,
 				048F460F285A1E3D00E0EE6F /* Add Post */,
 				049AE8CC285B83360006BFE9 /* PostsViewModel.swift */,
@@ -583,6 +588,15 @@
 				0438A55828596D7200502F73 /* MessagesReceverTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		0477899528730C4C003A9B23 /* SendMessage */ = {
+			isa = PBXGroup;
+			children = (
+				0477899628730C6C003A9B23 /* SendMessageViewController.swift */,
+				0477899728730C6C003A9B23 /* SendMessageViewController.xib */,
+			);
+			path = SendMessage;
 			sourceTree = "<group>";
 		};
 		047FA0C52858F409009EFFBB /* Offers */ = {
@@ -1307,6 +1321,7 @@
 				06D08827284B9E22008F9F3F /* OrderTableViewCell.xib in Resources */,
 				0672472A287261780027B79E /* EmptyPostsView.xib in Resources */,
 				06ECB379280A2A370056B8FF /* FavProductTableViewCell.xib in Resources */,
+				0477899928730C6C003A9B23 /* SendMessageViewController.xib in Resources */,
 				069C9455285403920024D010 /* FavoriteSuppliersCollectionCell.xib in Resources */,
 				067269D428552ECC00906BA5 /* PostTableViewCell.xib in Resources */,
 				06ED3EA42800855B00AA6D55 /* Cairo-Medium.ttf in Resources */,
@@ -1521,6 +1536,7 @@
 				067F465E280080D0004C403F /* LocationDataFetcher.swift in Sources */,
 				067F465F280080D0004C403F /* ImagePicker.swift in Sources */,
 				0438A55428596BCC00502F73 /* MessagesDetailsViewController.swift in Sources */,
+				0477899828730C6C003A9B23 /* SendMessageViewController.swift in Sources */,
 				06FD070728095E850032C297 /* NotificationsViewModel.swift in Sources */,
 				067F465B280080D0004C403F /* Swizzler.swift in Sources */,
 				0609A823280AD76A00806081 /* TendersViewController.swift in Sources */,
