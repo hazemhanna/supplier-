@@ -26,6 +26,7 @@ final class SupplierViewModel: BaseViewModel {
     }
     
     func requestProductPrice(supplierId: Int, productId: Int, quantity: Int) {
+        isLoading.accept(true)
         supplierApis.productRFQ(supplierId: supplierId,
                                 productId: productId,
                                 quantity: quantity).subscribe { [weak self] _ in
@@ -38,6 +39,7 @@ final class SupplierViewModel: BaseViewModel {
     }
     
     func requestSupplierPrice(supplierId: Int, products: [PriceRequestModel]) {
+        isLoading.accept(true)
         supplierApis.generalRFQ(supplierId: supplierId, products: products).subscribe { [weak self] _ in
             self?.isLoading.accept(false)
             self?.priceRequested.accept(true)
@@ -48,6 +50,7 @@ final class SupplierViewModel: BaseViewModel {
     }
     
     func sendMessage(supplierId: Int, message: String) {
+         isLoading.accept(true)
         supplierApis.messageRequest(supplierId: supplierId, message: message).subscribe { [weak self] _ in
             self?.isLoading.accept(false)
             self?.messageSent.accept(true)

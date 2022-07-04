@@ -72,7 +72,15 @@ class AddressesListViewController: BaseViewController {
 
 }
 
-extension AddressesListViewController: UITableViewDelegate, UITableViewDataSource {
+extension AddressesListViewController: UITableViewDelegate, TableViewDataSource {
+    
+    func viewForPlaceholder(in tableView: UITableView) -> UIView {
+        Bundle.main.loadNibNamed("EmptyAddressesView", owner: self, options: [:])?.first as? UIView ?? UIView()
+    }
+    
+    func shouldShowPlaceholder(in tableView: UITableView) -> Bool { addresses.isEmpty }
+    
+    func frameForPlaceholder(in tableView: UITableView) -> CGRect { tableView.bounds }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         addresses.count

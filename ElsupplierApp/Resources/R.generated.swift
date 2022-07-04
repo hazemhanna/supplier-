@@ -369,7 +369,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 75 images.
+  /// This `R.image` struct is generated, and contains static references to 81 images.
   struct image {
     /// Image `Call`.
     static let call = Rswift.ImageResource(bundle: R.hostingBundle, name: "Call")
@@ -465,6 +465,18 @@ struct R: Rswift.Validatable {
     static let myPosts = Rswift.ImageResource(bundle: R.hostingBundle, name: "my posts")
     /// Image `my tenders`.
     static let myTenders = Rswift.ImageResource(bundle: R.hostingBundle, name: "my tenders")
+    /// Image `no_addresses`.
+    static let no_addresses = Rswift.ImageResource(bundle: R.hostingBundle, name: "no_addresses")
+    /// Image `no_fav_products`.
+    static let no_fav_products = Rswift.ImageResource(bundle: R.hostingBundle, name: "no_fav_products")
+    /// Image `no_fav_suppliers`.
+    static let no_fav_suppliers = Rswift.ImageResource(bundle: R.hostingBundle, name: "no_fav_suppliers")
+    /// Image `no_orders`.
+    static let no_orders = Rswift.ImageResource(bundle: R.hostingBundle, name: "no_orders")
+    /// Image `no_payments`.
+    static let no_payments = Rswift.ImageResource(bundle: R.hostingBundle, name: "no_payments")
+    /// Image `no_tendrs`.
+    static let no_tendrs = Rswift.ImageResource(bundle: R.hostingBundle, name: "no_tendrs")
     /// Image `notifications`.
     static let notifications = Rswift.ImageResource(bundle: R.hostingBundle, name: "notifications")
     /// Image `off`.
@@ -852,6 +864,48 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "no_addresses", bundle: ..., traitCollection: ...)`
+    static func no_addresses(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.no_addresses, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "no_fav_products", bundle: ..., traitCollection: ...)`
+    static func no_fav_products(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.no_fav_products, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "no_fav_suppliers", bundle: ..., traitCollection: ...)`
+    static func no_fav_suppliers(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.no_fav_suppliers, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "no_orders", bundle: ..., traitCollection: ...)`
+    static func no_orders(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.no_orders, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "no_payments", bundle: ..., traitCollection: ...)`
+    static func no_payments(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.no_payments, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "no_tendrs", bundle: ..., traitCollection: ...)`
+    static func no_tendrs(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.no_tendrs, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "notifications", bundle: ..., traitCollection: ...)`
     static func notifications(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.notifications, compatibleWith: traitCollection)
@@ -1050,7 +1104,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 71 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 80 nibs.
   struct nib {
     /// Nib `AddAddressViewController`.
     static let addAddressViewController = _R.nib._AddAddressViewController()
@@ -1082,8 +1136,24 @@ struct R: Rswift.Validatable {
     static let detailsImageCollectionCell = _R.nib._DetailsImageCollectionCell()
     /// Nib `EditProfileViewController`.
     static let editProfileViewController = _R.nib._EditProfileViewController()
+    /// Nib `EmptyAddressesView`.
+    static let emptyAddressesView = _R.nib._EmptyAddressesView()
     /// Nib `EmptyCartView`.
     static let emptyCartView = _R.nib._EmptyCartView()
+    /// Nib `EmptyNotificationsView`.
+    static let emptyNotificationsView = _R.nib._EmptyNotificationsView()
+    /// Nib `EmptyOrdersView`.
+    static let emptyOrdersView = _R.nib._EmptyOrdersView()
+    /// Nib `EmptyPaymentsView`.
+    static let emptyPaymentsView = _R.nib._EmptyPaymentsView()
+    /// Nib `EmptyPostsView`.
+    static let emptyPostsView = _R.nib._EmptyPostsView()
+    /// Nib `EmptyProductsFavView`.
+    static let emptyProductsFavView = _R.nib._EmptyProductsFavView()
+    /// Nib `EmptySupplierFavView`.
+    static let emptySupplierFavView = _R.nib._EmptySupplierFavView()
+    /// Nib `EmptyTenders`.
+    static let emptyTenders = _R.nib._EmptyTenders()
     /// Nib `FavProductTableViewCell`.
     static let favProductTableViewCell = _R.nib._FavProductTableViewCell()
     /// Nib `FavProductsViewController`.
@@ -1156,6 +1226,8 @@ struct R: Rswift.Validatable {
     static let postTableViewCell = _R.nib._PostTableViewCell()
     /// Nib `PostsViewController`.
     static let postsViewController = _R.nib._PostsViewController()
+    /// Nib `PriceRequestTableViewCell`.
+    static let priceRequestTableViewCell = _R.nib._PriceRequestTableViewCell()
     /// Nib `ProductDetailsViewController`.
     static let productDetailsViewController = _R.nib._ProductDetailsViewController()
     /// Nib `ProductsSearchResultsViewController`.
@@ -1316,10 +1388,74 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "EmptyAddressesView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.emptyAddressesView) instead")
+    static func emptyAddressesView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.emptyAddressesView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "EmptyCartView", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.emptyCartView) instead")
     static func emptyCartView(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.emptyCartView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "EmptyNotificationsView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.emptyNotificationsView) instead")
+    static func emptyNotificationsView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.emptyNotificationsView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "EmptyOrdersView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.emptyOrdersView) instead")
+    static func emptyOrdersView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.emptyOrdersView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "EmptyPaymentsView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.emptyPaymentsView) instead")
+    static func emptyPaymentsView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.emptyPaymentsView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "EmptyPostsView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.emptyPostsView) instead")
+    static func emptyPostsView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.emptyPostsView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "EmptyProductsFavView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.emptyProductsFavView) instead")
+    static func emptyProductsFavView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.emptyProductsFavView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "EmptySupplierFavView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.emptySupplierFavView) instead")
+    static func emptySupplierFavView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.emptySupplierFavView)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "EmptyTenders", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.emptyTenders) instead")
+    static func emptyTenders(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.emptyTenders)
     }
     #endif
 
@@ -1612,6 +1748,14 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "PriceRequestTableViewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.priceRequestTableViewCell) instead")
+    static func priceRequestTableViewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.priceRequestTableViewCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "ProductDetailsViewController", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.productDetailsViewController) instead")
     static func productDetailsViewController(_: Void = ()) -> UIKit.UINib {
@@ -1823,8 +1967,40 @@ struct R: Rswift.Validatable {
       return R.nib.editProfileViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
+    static func emptyAddressesView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.emptyAddressesView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
     static func emptyCartView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.emptyCartView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
+    static func emptyNotificationsView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.emptyNotificationsView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
+    static func emptyOrdersView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.emptyOrdersView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
+    static func emptyPaymentsView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.emptyPaymentsView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
+    static func emptyPostsView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.emptyPostsView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
+    static func emptyProductsFavView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.emptyProductsFavView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
+    static func emptySupplierFavView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.emptySupplierFavView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
+    static func emptyTenders(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.emptyTenders.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
     static func favProductTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> FavProductTableViewCell? {
@@ -1971,6 +2147,10 @@ struct R: Rswift.Validatable {
       return R.nib.postsViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
+    static func priceRequestTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PriceRequestTableViewCell? {
+      return R.nib.priceRequestTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PriceRequestTableViewCell
+    }
+
     static func productDetailsViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.productDetailsViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
@@ -2083,7 +2263,15 @@ struct _R: Rswift.Validatable {
       try _CartTableCell.validate()
       try _ChangePasswordViewController.validate()
       try _EditProfileViewController.validate()
+      try _EmptyAddressesView.validate()
       try _EmptyCartView.validate()
+      try _EmptyNotificationsView.validate()
+      try _EmptyOrdersView.validate()
+      try _EmptyPaymentsView.validate()
+      try _EmptyPostsView.validate()
+      try _EmptyProductsFavView.validate()
+      try _EmptySupplierFavView.validate()
+      try _EmptyTenders.validate()
       try _FavProductTableViewCell.validate()
       try _FilterByPriceViewController.validate()
       try _FilterSelectionTableCell.validate()
@@ -2104,6 +2292,7 @@ struct _R: Rswift.Validatable {
       try _PickerTableViewCell.validate()
       try _PickerViewController.validate()
       try _PostTableViewCell.validate()
+      try _PriceRequestTableViewCell.validate()
       try _ProductDetailsViewController.validate()
       try _ProductsSearchResultsViewController.validate()
       try _ProfileViewController.validate()
@@ -2115,7 +2304,6 @@ struct _R: Rswift.Validatable {
       try _SupplierProductSearchCollectionCell.validate()
       try _SupplierSearchResultTableCell.validate()
       try _SupplierSearchResultsViewController.validate()
-      try _TendersViewController.validate()
       try _UserSectionView.validate()
     }
 
@@ -2345,6 +2533,23 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
+    struct _EmptyAddressesView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "EmptyAddressesView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "no_addresses", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'no_addresses' is used in nib 'EmptyAddressesView', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
     struct _EmptyCartView: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "EmptyCartView"
@@ -2355,6 +2560,125 @@ struct _R: Rswift.Validatable {
 
       static func validate() throws {
         if UIKit.UIImage(named: "cart no item", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'cart no item' is used in nib 'EmptyCartView', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _EmptyNotificationsView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "EmptyNotificationsView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "notifications", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'notifications' is used in nib 'EmptyNotificationsView', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _EmptyOrdersView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "EmptyOrdersView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "no_orders", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'no_orders' is used in nib 'EmptyOrdersView', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _EmptyPaymentsView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "EmptyPaymentsView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "no_payments", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'no_payments' is used in nib 'EmptyPaymentsView', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _EmptyPostsView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "EmptyPostsView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "cart no item", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'cart no item' is used in nib 'EmptyPostsView', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _EmptyProductsFavView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "EmptyProductsFavView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "no_fav_products", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'no_fav_products' is used in nib 'EmptyProductsFavView', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _EmptySupplierFavView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "EmptySupplierFavView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "no_fav_suppliers", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'no_fav_suppliers' is used in nib 'EmptySupplierFavView', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _EmptyTenders: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "EmptyTenders"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "no_tendrs", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'no_tendrs' is used in nib 'EmptyTenders', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }
@@ -2924,6 +3248,25 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
+    struct _PriceRequestTableViewCell: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "PriceRequestTableViewCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PriceRequestTableViewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PriceRequestTableViewCell
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "drop arrow", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'drop arrow' is used in nib 'PriceRequestTableViewCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "DarkBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'DarkBlue' is used in nib 'PriceRequestTableViewCell', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "LightBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'LightBlue' is used in nib 'PriceRequestTableViewCell', but couldn't be loaded.") }
+        }
+      }
+
+      fileprivate init() {}
+    }
+
     struct _ProductDetailsViewController: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "ProductDetailsViewController"
@@ -3243,19 +3586,12 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    struct _TendersViewController: Rswift.NibResourceType, Rswift.Validatable {
+    struct _TendersViewController: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "TendersViewController"
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "my tenders", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'my tenders' is used in nib 'TendersViewController', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-          if UIKit.UIColor(named: "SteelGrey", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'SteelGrey' is used in nib 'TendersViewController', but couldn't be loaded.") }
-        }
       }
 
       fileprivate init() {}

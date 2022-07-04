@@ -87,16 +87,12 @@ class CartViewController: BaseTabBarViewController {
 
 extension CartViewController: UITableViewDelegate, TableViewDataSource, CartTableCellDelegate {
     func viewForPlaceholder(in tableView: UITableView) -> UIView {
-        return Bundle.main.loadNibNamed("EmptyCartView", owner: self, options: [:])?.first as? UIView ?? UIView()
+        Bundle.main.loadNibNamed("EmptyCartView", owner: self, options: [:])?.first as? UIView ?? UIView()
     }
     
-    func shouldShowPlaceholder(in tableView: UITableView) -> Bool {
-        cartModel.items.isEmpty
-    }
+    func shouldShowPlaceholder(in tableView: UITableView) -> Bool { cartModel.items.isEmpty }
     
-    func frameForPlaceholder(in tableView: UITableView) -> CGRect {
-        tableView.bounds
-    }
+    func frameForPlaceholder(in tableView: UITableView) -> CGRect { tableView.bounds }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         cartModel.items.count
@@ -110,9 +106,7 @@ extension CartViewController: UITableViewDelegate, TableViewDataSource, CartTabl
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        130
-    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 130 }
     
     func cartTableCell(_ cell: CartTableCell, didRemove item: CartItem) {
         viewModel.removeFromCart(itemId: item.id)

@@ -8,11 +8,10 @@
 import UIKit
 
 class TendersViewController: BaseViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var emptyView: UIView!
-
+    
     // MARK: - Variables
     let viewModel = ProfileViewModel()
     var tenders: [TenderModel] = []
@@ -57,11 +56,6 @@ class TendersViewController: BaseViewController {
     override func setupCallbacks() {
         viewModel.tenders.bind { [weak self] in
             self?.tenders = $0
-            if (self?.tenders.count ?? 0) > 0 {
-                self?.emptyView.isHidden = true
-            }else {
-                self?.emptyView.isHidden = false
-            }
             self?.tableView.reloadData()
         }.disposed(by: disposeBag)
         
@@ -70,23 +64,26 @@ class TendersViewController: BaseViewController {
         }.disposed(by: disposeBag)
     }
     
-    override func shouldShowTabBar() -> Bool {
-        true
-    }
-
+    override func shouldShowTabBar() -> Bool { true }
+    
     // MARK: - Actions
 }
 
-extension TendersViewController: UITableViewDelegate, UITableViewDataSource {
+extension TendersViewController: UITableViewDelegate, TableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tenders.count
+    func viewForPlaceholder(in tableView: UITableView) -> UIView {
+        Bundle.main.loadNibNamed("EmptyTenders", owner: self, options: [:])?.first as? UIView ?? UIView()
     }
+
+    func shouldShowPlaceholder(in tableView: UITableView) -> Bool { tenders.isEmpty }
+    
+    func frameForPlaceholder(in tableView: UITableView) -> CGRect { tableView.bounds }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { tenders.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TenderTableViewCell = tableView.dequeueReusableCell()!
         cell.tender = tenders[indexPath.row]
         return cell
     }
-    
 }

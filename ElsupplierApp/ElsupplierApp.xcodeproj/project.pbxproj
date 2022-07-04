@@ -25,6 +25,8 @@
 		048F4614285A239C00E0EE6F /* MyPostsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F4612285A239C00E0EE6F /* MyPostsTableViewCell.xib */; };
 		049AE8CB285B76E50006BFE9 /* PostAPIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049AE8CA285B76E50006BFE9 /* PostAPIs.swift */; };
 		049AE8CD285B83360006BFE9 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049AE8CC285B83360006BFE9 /* PostsViewModel.swift */; };
+		04BDDAF82871DB45005B8433 /* PriceRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BDDAF62871DB45005B8433 /* PriceRequestTableViewCell.swift */; };
+		04BDDAF92871DB45005B8433 /* PriceRequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04BDDAF72871DB45005B8433 /* PriceRequestTableViewCell.xib */; };
 		055AF33888E3281697E5F2A9 /* Pods_ElsupplierApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5023ACE50E7883637337AF3 /* Pods_ElsupplierApp.framework */; };
 		0609A807280AA65000806081 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609A805280AA65000806081 /* HomeViewController.swift */; };
 		0609A808280AA65000806081 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0609A806280AA65000806081 /* HomeViewController.xib */; };
@@ -62,6 +64,14 @@
 		0664E00C2809B7860095AC42 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0664E00A2809B7860095AC42 /* ChangePasswordViewController.swift */; };
 		0664E00D2809B7860095AC42 /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0664E00B2809B7860095AC42 /* ChangePasswordViewController.xib */; };
 		06658E86282EEAD300F039EE /* EditAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06658E85282EEAD300F039EE /* EditAddressViewController.swift */; };
+		0672472A287261780027B79E /* EmptyPostsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06724723287261770027B79E /* EmptyPostsView.xib */; };
+		0672472B287261780027B79E /* EmptyTenders.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06724724287261780027B79E /* EmptyTenders.xib */; };
+		0672472C287261780027B79E /* EmptyOrdersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06724725287261780027B79E /* EmptyOrdersView.xib */; };
+		0672472D287261780027B79E /* EmptySupplierFavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06724726287261780027B79E /* EmptySupplierFavView.xib */; };
+		0672472E287261780027B79E /* EmptyPaymentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06724727287261780027B79E /* EmptyPaymentsView.xib */; };
+		0672472F287261780027B79E /* EmptyAddressesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06724728287261780027B79E /* EmptyAddressesView.xib */; };
+		06724730287261780027B79E /* EmptyProductsFavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06724729287261780027B79E /* EmptyProductsFavView.xib */; };
+		06724732287263E70027B79E /* EmptyNotificationsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06724731287263E70027B79E /* EmptyNotificationsView.xib */; };
 		067269C7285513AA00906BA5 /* SupplierProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067269C5285513AA00906BA5 /* SupplierProductsViewController.swift */; };
 		067269C8285513AA00906BA5 /* SupplierProductsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 067269C6285513AA00906BA5 /* SupplierProductsViewController.xib */; };
 		067269CB2855286600906BA5 /* SupplierProductCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067269C92855286600906BA5 /* SupplierProductCategoryCell.swift */; };
@@ -281,6 +291,8 @@
 		048F4612285A239C00E0EE6F /* MyPostsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPostsTableViewCell.xib; sourceTree = "<group>"; };
 		049AE8CA285B76E50006BFE9 /* PostAPIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAPIs.swift; sourceTree = "<group>"; };
 		049AE8CC285B83360006BFE9 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
+		04BDDAF62871DB45005B8433 /* PriceRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRequestTableViewCell.swift; sourceTree = "<group>"; };
+		04BDDAF72871DB45005B8433 /* PriceRequestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceRequestTableViewCell.xib; sourceTree = "<group>"; };
 		0609A805280AA65000806081 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0609A806280AA65000806081 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		0609A809280AB28300806081 /* HomeOfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOfferCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -317,6 +329,14 @@
 		0664E00A2809B7860095AC42 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		0664E00B2809B7860095AC42 /* ChangePasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordViewController.xib; sourceTree = "<group>"; };
 		06658E85282EEAD300F039EE /* EditAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddressViewController.swift; sourceTree = "<group>"; };
+		06724723287261770027B79E /* EmptyPostsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyPostsView.xib; sourceTree = "<group>"; };
+		06724724287261780027B79E /* EmptyTenders.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyTenders.xib; sourceTree = "<group>"; };
+		06724725287261780027B79E /* EmptyOrdersView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyOrdersView.xib; sourceTree = "<group>"; };
+		06724726287261780027B79E /* EmptySupplierFavView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptySupplierFavView.xib; sourceTree = "<group>"; };
+		06724727287261780027B79E /* EmptyPaymentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyPaymentsView.xib; sourceTree = "<group>"; };
+		06724728287261780027B79E /* EmptyAddressesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyAddressesView.xib; sourceTree = "<group>"; };
+		06724729287261780027B79E /* EmptyProductsFavView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyProductsFavView.xib; sourceTree = "<group>"; };
+		06724731287263E70027B79E /* EmptyNotificationsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyNotificationsView.xib; sourceTree = "<group>"; };
 		067269C5285513AA00906BA5 /* SupplierProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierProductsViewController.swift; sourceTree = "<group>"; };
 		067269C6285513AA00906BA5 /* SupplierProductsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SupplierProductsViewController.xib; sourceTree = "<group>"; };
 		067269C92855286600906BA5 /* SupplierProductCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierProductCategoryCell.swift; sourceTree = "<group>"; };
@@ -684,6 +704,8 @@
 				067269D228552ECC00906BA5 /* PostTableViewCell.xib */,
 				06DC6C88285E078700B17837 /* SupplierInfoViewController.swift */,
 				06DC6C89285E078700B17837 /* SupplierInfoViewController.xib */,
+				04BDDAF62871DB45005B8433 /* PriceRequestTableViewCell.swift */,
+				04BDDAF72871DB45005B8433 /* PriceRequestTableViewCell.xib */,
 				06CE727B286FC45A00E54C87 /* SupplierViewModel.swift */,
 			);
 			path = Supplier;
@@ -884,6 +906,14 @@
 		067F46932800812F004C403F /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				06724731287263E70027B79E /* EmptyNotificationsView.xib */,
+				06724728287261780027B79E /* EmptyAddressesView.xib */,
+				06724725287261780027B79E /* EmptyOrdersView.xib */,
+				06724727287261780027B79E /* EmptyPaymentsView.xib */,
+				06724723287261770027B79E /* EmptyPostsView.xib */,
+				06724729287261780027B79E /* EmptyProductsFavView.xib */,
+				06724726287261780027B79E /* EmptySupplierFavView.xib */,
+				06724724287261780027B79E /* EmptyTenders.xib */,
 				067F46912800812E004C403F /* DateTextField.swift */,
 				067F46982800812F004C403F /* LoaderView.swift */,
 				067F46922800812F004C403F /* ReusableView.swift */,
@@ -1240,11 +1270,14 @@
 				0609A820280AD71D00806081 /* PostsViewController.xib in Resources */,
 				06F3831B283926850073438C /* FilterSelectionTableCell.xib in Resources */,
 				0438A55528596BCC00502F73 /* MessagesDetailsViewController.xib in Resources */,
+				0672472C287261780027B79E /* EmptyOrdersView.xib in Resources */,
 				06DECF2828330CC400BE5959 /* SupplierProductSearchCollectionCell.xib in Resources */,
+				06724732287263E70027B79E /* EmptyNotificationsView.xib in Resources */,
 				06ECB36D280A246B0056B8FF /* PasswordChangedViewController.xib in Resources */,
 				06ED3EA12800855B00AA6D55 /* Cairo-ExtraBold.ttf in Resources */,
 				06DC6C8B285E078700B17837 /* SupplierInfoViewController.xib in Resources */,
 				06ED3EA02800855B00AA6D55 /* Cairo-Bold.ttf in Resources */,
+				04BDDAF92871DB45005B8433 /* PriceRequestTableViewCell.xib in Resources */,
 				067F46C128008157004C403F /* SplashViewController.xib in Resources */,
 				067269D028552DAB00906BA5 /* SupplierPostsViewController.xib in Resources */,
 				06ECB375280A297D0056B8FF /* FavProductsViewController.xib in Resources */,
@@ -1263,19 +1296,23 @@
 				06738338286CF22C00079665 /* ProductsSearchResultsViewController.xib in Resources */,
 				06ED3E9F2800855B00AA6D55 /* Cairo-Regular.ttf in Resources */,
 				067F460928007FDE004C403F /* LaunchScreen.storyboard in Resources */,
+				06724730287261780027B79E /* EmptyProductsFavView.xib in Resources */,
 				048F460E285A1A3D00E0EE6F /* MyPostsViewController.xib in Resources */,
 				06B9B52D2842575300A2C7CC /* CartTableCell.xib in Resources */,
 				0609A810280AB2F700806081 /* HomeDeptCollectionViewCell.xib in Resources */,
 				06DECF202832FA2200BE5959 /* SupplierSearchResultTableCell.xib in Resources */,
 				06F3831F28393B8E0073438C /* FilterSelectionViewController.xib in Resources */,
+				0672472E287261780027B79E /* EmptyPaymentsView.xib in Resources */,
 				06E8941E28406B1400AEEFBF /* DetailsImageCollectionCell.xib in Resources */,
 				06D08827284B9E22008F9F3F /* OrderTableViewCell.xib in Resources */,
+				0672472A287261780027B79E /* EmptyPostsView.xib in Resources */,
 				06ECB379280A2A370056B8FF /* FavProductTableViewCell.xib in Resources */,
 				069C9455285403920024D010 /* FavoriteSuppliersCollectionCell.xib in Resources */,
 				067269D428552ECC00906BA5 /* PostTableViewCell.xib in Resources */,
 				06ED3EA42800855B00AA6D55 /* Cairo-Medium.ttf in Resources */,
 				06C2CD52284B90BF00C73828 /* EmptyCartView.xib in Resources */,
 				0414907F285A3F940088E68A /* ImageCollectionViewCell.xib in Resources */,
+				0672472F287261780027B79E /* EmptyAddressesView.xib in Resources */,
 				06B9B53F2842BDB600A2C7CC /* PaymentTypeTableCell.xib in Resources */,
 				062456F028541CBC00521B1C /* SupplierDetailsViewController.xib in Resources */,
 				068F9A7C282B130A0093BD41 /* AddressesListViewController.xib in Resources */,
@@ -1301,9 +1338,11 @@
 				06282A212850098900BE199E /* AddTenderViewController.xib in Resources */,
 				0664E00928099D9D0095AC42 /* EditProfileViewController.xib in Resources */,
 				0609A824280AD76A00806081 /* TendersViewController.xib in Resources */,
+				0672472B287261780027B79E /* EmptyTenders.xib in Resources */,
 				06ED3EB82800F91900AA6D55 /* RegisterViewController.xib in Resources */,
 				0664E00D2809B7860095AC42 /* ChangePasswordViewController.xib in Resources */,
 				06C2CD4C284B71FD00C73828 /* OrderSummaryTableCell.xib in Resources */,
+				0672472D287261780027B79E /* EmptySupplierFavView.xib in Resources */,
 				06BD082D2867856500920FDF /* CategorySuppliersViewController.xib in Resources */,
 				06ED3EA52800855B00AA6D55 /* Cairo-Light.ttf in Resources */,
 				0609A80C280AB28300806081 /* HomeOfferCollectionViewCell.xib in Resources */,
@@ -1462,6 +1501,7 @@
 				06FD0711280966BB0032C297 /* ProfileViewController.swift in Sources */,
 				06D08826284B9E22008F9F3F /* OrderTableViewCell.swift in Sources */,
 				067F46B428008157004C403F /* LoginAlertViewController.swift in Sources */,
+				04BDDAF82871DB45005B8433 /* PriceRequestTableViewCell.swift in Sources */,
 				067F467C280080D9004C403F /* PickerModel.swift in Sources */,
 				067269CF28552DAB00906BA5 /* SupplierPostsViewController.swift in Sources */,
 				06282A202850098900BE199E /* AddTenderViewController.swift in Sources */,

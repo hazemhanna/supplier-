@@ -43,11 +43,17 @@ class NotificationsViewController: BaseViewController {
 
 }
 
-extension NotificationsViewController: UITableViewDelegate, UITableViewDataSource {
+extension NotificationsViewController: UITableViewDelegate, TableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+    func viewForPlaceholder(in tableView: UITableView) -> UIView {
+        Bundle.main.loadNibNamed("EmptyNotificationsView", owner: self, options: [:])?.first as? UIView ?? UIView()
     }
+    
+    func shouldShowPlaceholder(in tableView: UITableView) -> Bool { true }
+    
+    func frameForPlaceholder(in tableView: UITableView) -> CGRect { tableView.bounds }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { 0 }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: NotificationTableViewCell = tableView.dequeueReusableCell()!

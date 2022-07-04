@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TendersViewController" customModule="ElsupplierApp" customModuleProvider="target">
             <connections>
-                <outlet property="emptyView" destination="AP6-em-xRb" id="RzC-KX-9rb"/>
                 <outlet property="tableView" destination="pT5-nu-PlY" id="mm3-9M-EfY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="pT5-nu-PlY">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="pT5-nu-PlY" customClass="TableView" customModule="ElsupplierApp" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="64" width="414" height="798"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <connections>
@@ -30,39 +28,10 @@
                         <outlet property="delegate" destination="-1" id="xX5-Oa-qH5"/>
                     </connections>
                 </tableView>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AP6-em-xRb">
-                    <rect key="frame" x="0.0" y="64" width="414" height="798"/>
-                    <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my tenders" translatesAutoresizingMaskIntoConstraints="NO" id="gCF-2v-Rsx">
-                            <rect key="frame" x="187" y="319" width="40" height="40"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="40" id="3Fv-Kc-97v"/>
-                                <constraint firstAttribute="height" constant="40" id="SmO-lF-aen"/>
-                            </constraints>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="لم يتم اضافة اي مناقصات بعد " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9XV-wS-LTp">
-                            <rect key="frame" x="108.5" y="389.5" width="197.5" height="19.5"/>
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                            <color key="textColor" name="SteelGrey"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstItem="gCF-2v-Rsx" firstAttribute="centerX" secondItem="AP6-em-xRb" secondAttribute="centerX" id="JAx-VJ-snq"/>
-                        <constraint firstItem="9XV-wS-LTp" firstAttribute="centerY" secondItem="AP6-em-xRb" secondAttribute="centerY" id="P4Q-p9-rHj"/>
-                        <constraint firstItem="9XV-wS-LTp" firstAttribute="centerX" secondItem="AP6-em-xRb" secondAttribute="centerX" id="QR8-gW-YMr"/>
-                        <constraint firstItem="gCF-2v-Rsx" firstAttribute="centerY" secondItem="AP6-em-xRb" secondAttribute="centerY" constant="-60" id="iZd-vS-CKF"/>
-                    </constraints>
-                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="AP6-em-xRb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="1Zi-BI-B6K"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="AP6-em-xRb" secondAttribute="trailing" id="94v-5M-kAn"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="AP6-em-xRb" secondAttribute="bottom" id="CMy-Dt-olX"/>
-                <constraint firstItem="AP6-em-xRb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="EB6-2x-SPR"/>
                 <constraint firstItem="pT5-nu-PlY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="F1S-If-Yun"/>
                 <constraint firstItem="pT5-nu-PlY" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="LIS-Wj-rN4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="pT5-nu-PlY" secondAttribute="bottom" id="Qvn-b0-Sat"/>
@@ -72,10 +41,6 @@
         </view>
     </objects>
     <resources>
-        <image name="my tenders" width="53" height="48"/>
-        <namedColor name="SteelGrey">
-            <color red="0.50980392156862742" green="0.51372549019607838" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
