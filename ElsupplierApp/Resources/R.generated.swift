@@ -369,7 +369,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 81 images.
+  /// This `R.image` struct is generated, and contains static references to 82 images.
   struct image {
     /// Image `Call`.
     static let call = Rswift.ImageResource(bundle: R.hostingBundle, name: "Call")
@@ -491,6 +491,8 @@ struct R: Rswift.Validatable {
     static let phone = Rswift.ImageResource(bundle: R.hostingBundle, name: "phone")
     /// Image `picture`.
     static let picture = Rswift.ImageResource(bundle: R.hostingBundle, name: "picture")
+    /// Image `play`.
+    static let play = Rswift.ImageResource(bundle: R.hostingBundle, name: "play")
     /// Image `plus_ic`.
     static let plus_ic = Rswift.ImageResource(bundle: R.hostingBundle, name: "plus_ic")
     /// Image `posts active`.
@@ -951,6 +953,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "picture", bundle: ..., traitCollection: ...)`
     static func picture(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.picture, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "play", bundle: ..., traitCollection: ...)`
+    static func play(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.play, compatibleWith: traitCollection)
     }
     #endif
 
@@ -2908,6 +2917,7 @@ struct _R: Rswift.Validatable {
 
       static func validate() throws {
         if UIKit.UIImage(named: "Screen Shot 2022-04-16 at 12.39.35 AM", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Screen Shot 2022-04-16 at 12.39.35 AM' is used in nib 'ImageCollectionViewCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "play", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'play' is used in nib 'ImageCollectionViewCell', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "SteelGrey", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'SteelGrey' is used in nib 'ImageCollectionViewCell', but couldn't be loaded.") }
         }

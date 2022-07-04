@@ -194,9 +194,8 @@ extension MyPostsViewController: MyPostsTableViewCellDelegate {
         push(controller: PostsMediaViewController(list: item.media, index: index))
     }
     
-    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, playVideo item: PostModel){
-        if let url = item.media {
-        guard let videoURL = URL(string:  url) else { return }
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, playVideo item: String){
+        guard let videoURL = URL(string:  item) else { return }
         let video = AVPlayer(url: videoURL)
             let videoPlayer = AVPlayerViewController()
             videoPlayer.player = video
@@ -205,6 +204,6 @@ extension MyPostsViewController: MyPostsTableViewCellDelegate {
             self.present(videoPlayer, animated: true, completion: {
                 video.play()
             })
-       }
+       
     }
 }

@@ -14,7 +14,7 @@ protocol MyPostsTableViewCellDelegate: AnyObject {
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, sendMessage item: PostModel)
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, makeCall item: PostModel)
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, selectMedia item: PostModel,index :Int)
-    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, playVideo item: PostModel)
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, playVideo item: String)
 }
 
 class MyPostsTableViewCell: UITableViewCell {
@@ -104,7 +104,7 @@ extension MyPostsTableViewCell: UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
      if post.media[indexPath.row].isVideo{
-        delegate?.myPostsTableViewCell(self, playVideo: post)
+         delegate?.myPostsTableViewCell(self, playVideo: post.media[indexPath.row].media)
      }else{
         delegate?.myPostsTableViewCell(self, selectMedia: post, index: indexPath.row)
       }

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class SupplierPostsViewController: BaseViewController {
 
@@ -81,8 +83,6 @@ extension SupplierPostsViewController: UITableViewDelegate, UITableViewDataSourc
 }
 
 extension SupplierPostsViewController: MyPostsTableViewCellDelegate {
-  
-    
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didLike item: PostModel) {
         viewModel.likePost(postId: item.id)
         item.isLiked = item.isLiked == 1 ? 0 : 1
@@ -105,4 +105,15 @@ extension SupplierPostsViewController: MyPostsTableViewCellDelegate {
         push(controller: PostsMediaViewController(list: item.media, index: index))
     }
 
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, playVideo item: String) {
+        guard let videoURL = URL(string:  item) else { return }
+        let video = AVPlayer(url: videoURL)
+            let videoPlayer = AVPlayerViewController()
+            videoPlayer.player = video
+            videoPlayer.modalPresentationStyle = .overFullScreen
+            videoPlayer.modalTransitionStyle = .crossDissolve
+            self.present(videoPlayer, animated: true, completion: {
+                video.play()
+            })
+      }
 }
