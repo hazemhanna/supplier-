@@ -187,4 +187,8 @@ extension MyPostsViewController: MyPostsTableViewCellDelegate {
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, makeCall item: PostModel) {
         supplierViewModel.requestCallBack(supplierId: item.ownerId)
     }
+    
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, selectMedia item: PostModel,index :Int){
+        push(controller: PostsMediaViewController(list: item.media, index: index))
+    }
 }

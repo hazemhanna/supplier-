@@ -12,8 +12,6 @@ class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var itemImage : UIImageView!
     @IBOutlet weak var imageNumber : UILabel!
-
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

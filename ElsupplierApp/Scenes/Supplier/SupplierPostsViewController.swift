@@ -81,6 +81,8 @@ extension SupplierPostsViewController: UITableViewDelegate, UITableViewDataSourc
 }
 
 extension SupplierPostsViewController: MyPostsTableViewCellDelegate {
+  
+    
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didLike item: PostModel) {
         viewModel.likePost(postId: item.id)
         item.isLiked = item.isLiked == 1 ? 0 : 1
@@ -98,4 +100,9 @@ extension SupplierPostsViewController: MyPostsTableViewCellDelegate {
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, makeCall item: PostModel) {
         supplierViewModel.requestCallBack(supplierId: supplier.id)
     }
+    
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, selectMedia item: PostModel, index: Int) {
+        push(controller: PostsMediaViewController(list: item.media, index: index))
+    }
+
 }
