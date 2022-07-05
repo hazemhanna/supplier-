@@ -49,7 +49,10 @@ final class PostModel: BaseObject {
 final class MediaModel: BaseObject {
     var route = ""
     var media = ""
-    var isVideo = false
+    var isVideo: Bool {
+        guard let url = URL(string: media) else { return false }
+        return url.containsVideo
+    }
 
     override func mapping(map: Map) {
         super.mapping(map: map)

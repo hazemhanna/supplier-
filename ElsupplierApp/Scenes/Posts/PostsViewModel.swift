@@ -35,7 +35,6 @@ class PostsViewModel: BaseViewModel {
         }.disposed(by: disposeBag)
     }
 
-
     func loadMyPosts() {
         isLoading.accept(true)
         postsApis.loadMyPosts().subscribe { [weak self] posts in
@@ -62,7 +61,7 @@ class PostsViewModel: BaseViewModel {
         }.disposed(by: disposeBag)
     }
     
-    func addPost(title: String, body: String, images: [UIImage]?) {
+    func addPost(title: String, body: String, images: [Data]?) {
         isLoading.accept(true)
         postsApis.addPost(title: title, body: body, attachments: images).subscribe { [weak self] message in
             guard let self = self else { return }

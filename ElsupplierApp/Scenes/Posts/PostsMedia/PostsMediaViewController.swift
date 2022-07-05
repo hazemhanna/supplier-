@@ -59,6 +59,7 @@ extension PostsMediaViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: PostsMediaCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)!
         cell.mediaImageView.setImageWith(stringUrl: list[indexPath.row].media)
+        cell.deleteIC.isHidden = true
         return cell
     }
     

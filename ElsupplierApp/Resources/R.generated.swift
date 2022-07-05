@@ -2343,6 +2343,7 @@ struct _R: Rswift.Validatable {
       try _PickerTableViewCell.validate()
       try _PickerViewController.validate()
       try _PostTableViewCell.validate()
+      try _PostsMediaCollectionViewCell.validate()
       try _PostsMediaViewController.validate()
       try _PriceRequestTableViewCell.validate()
       try _ProductDetailsViewController.validate()
@@ -3291,12 +3292,18 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    struct _PostsMediaCollectionViewCell: Rswift.NibResourceType {
+    struct _PostsMediaCollectionViewCell: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "PostsMediaCollectionViewCell"
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PostsMediaCollectionViewCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? PostsMediaCollectionViewCell
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "del", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'del' is used in nib 'PostsMediaCollectionViewCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
       }
 
       fileprivate init() {}

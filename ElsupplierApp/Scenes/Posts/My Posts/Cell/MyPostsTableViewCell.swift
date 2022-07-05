@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol MyPostsTableViewCellDelegate: AnyObject {
     
@@ -95,7 +96,18 @@ extension MyPostsTableViewCell: UICollectionViewDelegate,
             cell.blackView.isHidden = true
         }
         cell.imageNumber.text = "\(post.media.count)"
-        cell.itemImage.setImageWith(stringUrl: post.media[indexPath.row].media)
+        if post.media[indexPath.row].isVideo {
+            if let url = URL(string: post.media[indexPath.row].media) {
+                AVAsset(url: url).generateThumbnail { image in
+                    DispatchQueue.main.async {
+                        cell.itemImage.image = image
+                    }
+                }
+            }
+        } else {
+            cell.itemImage.setImageWith(stringUrl: post.media[indexPath.row].media)
+        }
+        cell.playImage.isHidden = !post.media[indexPath.row].isVideo
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -108,5 +120,23 @@ extension MyPostsTableViewCell: UICollectionViewDelegate,
      }else{
         delegate?.myPostsTableViewCell(self, selectMedia: post, index: indexPath.row)
       }
+    }
+}
+
+extension AVAsset {
+
+    func generateThumbnail(completion: @escaping (UIImage?) -> Void) {
+        DispatchQueue.global().async {
+            let imageGenerator = AVAssetImageGenerator(asset: self)
+            let time = CMTime(seconds: 0.0, preferredTimescale: 600)
+            let times = [NSValue(time: time)]
+            imageGenerator.generateCGImagesAsynchronously(forTimes: times, completionHandler: { _, image, _, _, _ in
+                if let image = image {
+                    completion(UIImage(cgImage: image))
+                } else {
+                    completion(nil)
+                }
+            })
+        }
     }
 }

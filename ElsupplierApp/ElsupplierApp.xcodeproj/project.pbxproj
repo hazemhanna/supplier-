@@ -195,6 +195,7 @@
 		06A53FDA2813A4480052D713 /* SliderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A53FD92813A4480052D713 /* SliderModel.swift */; };
 		06A53FDC2813A4C10052D713 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A53FDB2813A4C10052D713 /* HomeViewModel.swift */; };
 		06A53FDE2813AFA60052D713 /* ProfileAPIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A53FDD2813AFA60052D713 /* ProfileAPIs.swift */; };
+		06B4279C2873998C0007D74C /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B4279B2873998C0007D74C /* URL+Extension.swift */; };
 		06B9B52C2842575300A2C7CC /* CartTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9B52A2842575300A2C7CC /* CartTableCell.swift */; };
 		06B9B52D2842575300A2C7CC /* CartTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B9B52B2842575300A2C7CC /* CartTableCell.xib */; };
 		06B9B52F284268C700A2C7CC /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9B52E284268C700A2C7CC /* CartModel.swift */; };
@@ -468,6 +469,7 @@
 		06A53FD92813A4480052D713 /* SliderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderModel.swift; sourceTree = "<group>"; };
 		06A53FDB2813A4C10052D713 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		06A53FDD2813AFA60052D713 /* ProfileAPIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPIs.swift; sourceTree = "<group>"; };
+		06B4279B2873998C0007D74C /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		06B9B52A2842575300A2C7CC /* CartTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableCell.swift; sourceTree = "<group>"; };
 		06B9B52B2842575300A2C7CC /* CartTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartTableCell.xib; sourceTree = "<group>"; };
 		06B9B52E284268C700A2C7CC /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
@@ -833,6 +835,7 @@
 				067F462C280080C5004C403F /* UILabelExtensions.swift */,
 				067F462D280080C5004C403F /* UIImageExtension.swift */,
 				067F462E280080C5004C403F /* UIDeviceExtention.swift */,
+				06B4279B2873998C0007D74C /* URL+Extension.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -1491,6 +1494,7 @@
 				06D08829284BA1B5008F9F3F /* OrderModel.swift in Sources */,
 				067F4630280080C5004C403F /* CGRectExtensions.swift in Sources */,
 				067F4643280080C5004C403F /* UINavigationControllerExtensions.swift in Sources */,
+				06B4279C2873998C0007D74C /* URL+Extension.swift in Sources */,
 				0609A81F280AD71D00806081 /* PostsViewController.swift in Sources */,
 				06282A2928501A1100BE199E /* MessageTableViewCell.swift in Sources */,
 				067F467E280080D9004C403F /* UserModel.swift in Sources */,

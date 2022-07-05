@@ -10,7 +10,7 @@ import UIKit
 class PostsMediaCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var mediaImageView: UIImageView!
-
+    @IBOutlet weak var deleteIC: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
