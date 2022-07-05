@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class SupplierPostsViewController: BaseViewController {
 
@@ -98,4 +100,20 @@ extension SupplierPostsViewController: MyPostsTableViewCellDelegate {
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, makeCall item: PostModel) {
         supplierViewModel.requestCallBack(supplierId: supplier.id)
     }
+    
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, selectMedia item: PostModel, index: Int) {
+        push(controller: PostsMediaViewController(list: item.media, index: index))
+    }
+
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, playVideo item: String) {
+        guard let videoURL = URL(string:  item) else { return }
+        let video = AVPlayer(url: videoURL)
+            let videoPlayer = AVPlayerViewController()
+            videoPlayer.player = video
+            videoPlayer.modalPresentationStyle = .overFullScreen
+            videoPlayer.modalTransitionStyle = .crossDissolve
+            self.present(videoPlayer, animated: true, completion: {
+                video.play()
+            })
+      }
 }

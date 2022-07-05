@@ -17,6 +17,10 @@
 		0438A55A28596D7200502F73 /* MessagesReceverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0438A55828596D7200502F73 /* MessagesReceverTableViewCell.xib */; };
 		0477899828730C6C003A9B23 /* SendMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0477899628730C6C003A9B23 /* SendMessageViewController.swift */; };
 		0477899928730C6C003A9B23 /* SendMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0477899728730C6C003A9B23 /* SendMessageViewController.xib */; };
+		0477899D28731D72003A9B23 /* PostsMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0477899B28731D72003A9B23 /* PostsMediaViewController.swift */; };
+		0477899E28731D72003A9B23 /* PostsMediaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0477899C28731D72003A9B23 /* PostsMediaViewController.xib */; };
+		047789A128731EC9003A9B23 /* PostsMediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0477899F28731EC9003A9B23 /* PostsMediaCollectionViewCell.swift */; };
+		047789A228731EC9003A9B23 /* PostsMediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047789A028731EC9003A9B23 /* PostsMediaCollectionViewCell.xib */; };
 		047FA0C82858F428009EFFBB /* OffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FA0C62858F428009EFFBB /* OffersViewController.swift */; };
 		047FA0C92858F428009EFFBB /* OffersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047FA0C72858F428009EFFBB /* OffersViewController.xib */; };
 		047FA0CD2858F56D009EFFBB /* OfferCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FA0CB2858F56D009EFFBB /* OfferCollectionViewCell.swift */; };
@@ -191,6 +195,7 @@
 		06A53FDA2813A4480052D713 /* SliderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A53FD92813A4480052D713 /* SliderModel.swift */; };
 		06A53FDC2813A4C10052D713 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A53FDB2813A4C10052D713 /* HomeViewModel.swift */; };
 		06A53FDE2813AFA60052D713 /* ProfileAPIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A53FDD2813AFA60052D713 /* ProfileAPIs.swift */; };
+		06B4279C2873998C0007D74C /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B4279B2873998C0007D74C /* URL+Extension.swift */; };
 		06B9B52C2842575300A2C7CC /* CartTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9B52A2842575300A2C7CC /* CartTableCell.swift */; };
 		06B9B52D2842575300A2C7CC /* CartTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B9B52B2842575300A2C7CC /* CartTableCell.xib */; };
 		06B9B52F284268C700A2C7CC /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9B52E284268C700A2C7CC /* CartModel.swift */; };
@@ -285,6 +290,10 @@
 		0438A55828596D7200502F73 /* MessagesReceverTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessagesReceverTableViewCell.xib; sourceTree = "<group>"; };
 		0477899628730C6C003A9B23 /* SendMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewController.swift; sourceTree = "<group>"; };
 		0477899728730C6C003A9B23 /* SendMessageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendMessageViewController.xib; sourceTree = "<group>"; };
+		0477899B28731D72003A9B23 /* PostsMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsMediaViewController.swift; sourceTree = "<group>"; };
+		0477899C28731D72003A9B23 /* PostsMediaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostsMediaViewController.xib; sourceTree = "<group>"; };
+		0477899F28731EC9003A9B23 /* PostsMediaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsMediaCollectionViewCell.swift; sourceTree = "<group>"; };
+		047789A028731EC9003A9B23 /* PostsMediaCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostsMediaCollectionViewCell.xib; sourceTree = "<group>"; };
 		047FA0C62858F428009EFFBB /* OffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewController.swift; sourceTree = "<group>"; };
 		047FA0C72858F428009EFFBB /* OffersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OffersViewController.xib; sourceTree = "<group>"; };
 		047FA0CB2858F56D009EFFBB /* OfferCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -460,6 +469,7 @@
 		06A53FD92813A4480052D713 /* SliderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderModel.swift; sourceTree = "<group>"; };
 		06A53FDB2813A4C10052D713 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		06A53FDD2813AFA60052D713 /* ProfileAPIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPIs.swift; sourceTree = "<group>"; };
+		06B4279B2873998C0007D74C /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		06B9B52A2842575300A2C7CC /* CartTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableCell.swift; sourceTree = "<group>"; };
 		06B9B52B2842575300A2C7CC /* CartTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartTableCell.xib; sourceTree = "<group>"; };
 		06B9B52E284268C700A2C7CC /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
@@ -563,6 +573,7 @@
 		0438A54C2859551F00502F73 /* Posts */ = {
 			isa = PBXGroup;
 			children = (
+				0477899A28731D3E003A9B23 /* PostsMedia */,
 				0477899528730C4C003A9B23 /* SendMessage */,
 				048F460A285A1A0F00E0EE6F /* My Posts */,
 				048F460F285A1E3D00E0EE6F /* Add Post */,
@@ -597,6 +608,17 @@
 				0477899728730C6C003A9B23 /* SendMessageViewController.xib */,
 			);
 			path = SendMessage;
+			sourceTree = "<group>";
+		};
+		0477899A28731D3E003A9B23 /* PostsMedia */ = {
+			isa = PBXGroup;
+			children = (
+				0477899B28731D72003A9B23 /* PostsMediaViewController.swift */,
+				0477899C28731D72003A9B23 /* PostsMediaViewController.xib */,
+				0477899F28731EC9003A9B23 /* PostsMediaCollectionViewCell.swift */,
+				047789A028731EC9003A9B23 /* PostsMediaCollectionViewCell.xib */,
+			);
+			path = PostsMedia;
 			sourceTree = "<group>";
 		};
 		047FA0C52858F409009EFFBB /* Offers */ = {
@@ -813,6 +835,7 @@
 				067F462C280080C5004C403F /* UILabelExtensions.swift */,
 				067F462D280080C5004C403F /* UIImageExtension.swift */,
 				067F462E280080C5004C403F /* UIDeviceExtention.swift */,
+				06B4279B2873998C0007D74C /* URL+Extension.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -1277,6 +1300,7 @@
 				067F46B728008157004C403F /* PickerTableViewCell.xib in Resources */,
 				06D08831284BB674008F9F3F /* CategoriesViewController.xib in Resources */,
 				067F469D2800812F004C403F /* SegmentViewCell.xib in Resources */,
+				047789A228731EC9003A9B23 /* PostsMediaCollectionViewCell.xib in Resources */,
 				067F46BD28008157004C403F /* LoginAlertViewController.xib in Resources */,
 				047FA0C92858F428009EFFBB /* OffersViewController.xib in Resources */,
 				06B9B5372842B46F00A2C7CC /* ChooseAddressViewController.xib in Resources */,
@@ -1336,6 +1360,7 @@
 				069C9451285403040024D010 /* FavoriteSuppliersViewController.xib in Resources */,
 				0609A818280AD5EA00806081 /* CartViewController.xib in Resources */,
 				062CA8C728302D5200EFAC19 /* SearchFilterViewController.xib in Resources */,
+				0477899E28731D72003A9B23 /* PostsMediaViewController.xib in Resources */,
 				06282A1B285004DB00BE199E /* TenderTableViewCell.xib in Resources */,
 				067F460628007FDE004C403F /* Assets.xcassets in Resources */,
 				06ED3EA22800855B00AA6D55 /* Cairo-Black.ttf in Resources */,
@@ -1449,6 +1474,7 @@
 				06C2CD47284B6C9600C73828 /* OrderSummaryViewController.swift in Sources */,
 				06282A1A285004DB00BE199E /* TenderTableViewCell.swift in Sources */,
 				067F4639280080C5004C403F /* UICollectionViewExtensions.swift in Sources */,
+				0477899D28731D72003A9B23 /* PostsMediaViewController.swift in Sources */,
 				06ED3EA92800866700AA6D55 /* R.generated.swift in Sources */,
 				06ECB36C280A246B0056B8FF /* PasswordChangedViewController.swift in Sources */,
 				0438A54F2859554300502F73 /* AddPostsViewController.swift in Sources */,
@@ -1468,6 +1494,7 @@
 				06D08829284BA1B5008F9F3F /* OrderModel.swift in Sources */,
 				067F4630280080C5004C403F /* CGRectExtensions.swift in Sources */,
 				067F4643280080C5004C403F /* UINavigationControllerExtensions.swift in Sources */,
+				06B4279C2873998C0007D74C /* URL+Extension.swift in Sources */,
 				0609A81F280AD71D00806081 /* PostsViewController.swift in Sources */,
 				06282A2928501A1100BE199E /* MessageTableViewCell.swift in Sources */,
 				067F467E280080D9004C403F /* UserModel.swift in Sources */,
@@ -1544,6 +1571,7 @@
 				067F46BC28008157004C403F /* SplashViewController.swift in Sources */,
 				067F46B528008157004C403F /* PickerViewController.swift in Sources */,
 				068F9A82282B1AEC0093BD41 /* AddressModel.swift in Sources */,
+				047789A128731EC9003A9B23 /* PostsMediaCollectionViewCell.swift in Sources */,
 				067F467B280080D9004C403F /* NetworkManager.swift in Sources */,
 				067F468D280080EB004C403F /* Messages.swift in Sources */,
 				06C2CD4F284B88F100C73828 /* OrderCompletedViewController.swift in Sources */,

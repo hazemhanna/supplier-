@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol MyPostsTableViewCellDelegate: AnyObject {
-
+    
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didLike item: PostModel)
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didAddComent item: PostModel,comment : String)
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, sendMessage item: PostModel)
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, makeCall item: PostModel)
-
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, selectMedia item: PostModel,index :Int)
+    func myPostsTableViewCell(_ cell: MyPostsTableViewCell, playVideo item: String)
 }
 
 class MyPostsTableViewCell: UITableViewCell {
@@ -63,7 +65,6 @@ class MyPostsTableViewCell: UITableViewCell {
     @IBAction func addCommentClicked(_ sender: UIButton) {
         delegate?.myPostsTableViewCell(self, didAddComent: post, comment : addCommentTF.text ?? "")
         addCommentTF.text = ""
-        
     }
     
     @IBAction func sendMessageClicked(_ sender: UIButton) {
@@ -73,15 +74,16 @@ class MyPostsTableViewCell: UITableViewCell {
     @IBAction func makeCallClicked(_ sender: UIButton) {
         delegate?.myPostsTableViewCell(self, makeCall: post)
     }
-    
 }
 
 extension MyPostsTableViewCell: UICollectionViewDelegate,
                                 UICollectionViewDataSource,
                                 UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { post.media.count }
-    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        post.media.count
+    }
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)!
         if post.media.count > 3 {
@@ -94,11 +96,47 @@ extension MyPostsTableViewCell: UICollectionViewDelegate,
             cell.blackView.isHidden = true
         }
         cell.imageNumber.text = "\(post.media.count)"
-        cell.itemImage.setImageWith(stringUrl: post.media[indexPath.row].media)
+        if post.media[indexPath.row].isVideo {
+            if let url = URL(string: post.media[indexPath.row].media) {
+                AVAsset(url: url).generateThumbnail { image in
+                    DispatchQueue.main.async {
+                        cell.itemImage.image = image
+                    }
+                }
+            }
+        } else {
+            cell.itemImage.setImageWith(stringUrl: post.media[indexPath.row].media)
+        }
+        cell.playImage.isHidden = !post.media[indexPath.row].isVideo
         return cell
     }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: (collectionView.frame.width / 3.5) , height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+     if post.media[indexPath.row].isVideo{
+         delegate?.myPostsTableViewCell(self, playVideo: post.media[indexPath.row].media)
+     }else{
+        delegate?.myPostsTableViewCell(self, selectMedia: post, index: indexPath.row)
+      }
+    }
+}
+
+extension AVAsset {
+
+    func generateThumbnail(completion: @escaping (UIImage?) -> Void) {
+        DispatchQueue.global().async {
+            let imageGenerator = AVAssetImageGenerator(asset: self)
+            let time = CMTime(seconds: 0.0, preferredTimescale: 600)
+            let times = [NSValue(time: time)]
+            imageGenerator.generateCGImagesAsynchronously(forTimes: times, completionHandler: { _, image, _, _, _ in
+                if let image = image {
+                    completion(UIImage(cgImage: image))
+                } else {
+                    completion(nil)
+                }
+            })
+        }
     }
 }
