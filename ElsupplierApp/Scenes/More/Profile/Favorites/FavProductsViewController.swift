@@ -55,7 +55,6 @@ class FavProductsViewController: BaseViewController {
     }
     
     // MARK: - Actions
-
 }
 
 extension FavProductsViewController: UITableViewDelegate, TableViewDataSource {
@@ -78,19 +77,16 @@ extension FavProductsViewController: UITableViewDelegate, TableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        push(controller: ProductDetailsViewController(product: favorites[indexPath.row]))
+        push(controller: ProductDetailsViewController(product: favorites[indexPath.row]))
     }
-    
 }
 
 extension FavProductsViewController: FavProductTableViewCellDelegate {
     
     func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapAdd product: ProductModel) {
-        
     }
     
     func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapFav product: ProductModel) {
         viewModel.favToggle(productId: product.id)
     }
-    
 }
