@@ -57,9 +57,7 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         push(controller: MessagesDetailsViewController())
-
     }
     
 }

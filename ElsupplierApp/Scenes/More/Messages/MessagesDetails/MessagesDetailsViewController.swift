@@ -11,6 +11,7 @@ class MessagesDetailsViewController: BaseViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    
     var message = [Message](){
         didSet{
             tableView.reloadData()
