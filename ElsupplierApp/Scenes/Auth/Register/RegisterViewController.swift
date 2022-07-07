@@ -58,16 +58,13 @@ class RegisterViewController: BaseViewController {
         
         companyTypeTF.rx.text
             .orEmpty
-            .bind(to: viewModel.company_type)
+            .bind(to: viewModel.companyType)
             .disposed(by: disposeBag)
         
         companyNameTF.rx.text
             .orEmpty
             .bind(to: viewModel.companyName)
             .disposed(by: disposeBag)
-        
-
-        
     }
     
     override func bindViewModelToViews() {

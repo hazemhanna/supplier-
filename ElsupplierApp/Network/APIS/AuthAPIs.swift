@@ -34,8 +34,7 @@ final class AuthAPIs: AuthAPIsProtocol {
         phone: String,
         companyName: String,
         userTypeId: Int,
-        company_type : String
-    ) -> Single<UserModel> {
+        company_type : String) -> Single<UserModel> {
         let request = ESNetworkRequest("register")
         request.method = .post
         request.parameters = [
@@ -43,7 +42,7 @@ final class AuthAPIs: AuthAPIsProtocol {
             "phone": phone,
             "company_name": companyName,
             "userTypeId": userTypeId,
-            "company_type": userTypeId
+            "company_type": company_type
         ]
         return NetworkManager.execute(request: request)
     }
