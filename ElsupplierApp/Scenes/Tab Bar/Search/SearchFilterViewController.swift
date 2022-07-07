@@ -125,12 +125,14 @@ class SearchFilterViewController: BaseViewController {
     @IBAction func searchProductClicked(_ sender: UIButton) {
         searchProductButton.isSelected = true
         searchSupplierButton.isSelected = false
+        searchKeyTF.placeholder = "_search_for_product".localized
         viewModel.selectedSearchType.accept(.product)
     }
     
     @IBAction func searchSupplierClicked(_ sender: UIButton) {
         searchSupplierButton.isSelected = true
         searchProductButton.isSelected = false
+        searchKeyTF.placeholder = "_search_for_supplier".localized
         viewModel.selectedSearchType.accept(.supplier)
     }
     

@@ -12,7 +12,7 @@ final class ImagePicker: NSObject {
     static let shared = ImagePicker()
     private var isVideo: Bool!
     private var comletion: (( _ image: UIImage?) -> Void)!
-    private var dataComletion: (( _ data: Data?, _ image: UIImage?) -> Void)!
+    private var dataComletion: (( _ data: Data?, _ image: UIImage?, _ mimeType: String?) -> Void)!
 
     static func pickImage(sender: UIView, completion: @escaping (_ image: UIImage?) -> Void) {
         ImagePicker.shared.comletion = completion
@@ -25,7 +25,7 @@ final class ImagePicker: NSObject {
         }
    }
     
-    static func pickVideo(sender: UIView, completion: @escaping (_ data: Data?, _ image: UIImage?) -> Void) {
+    static func pickVideo(sender: UIView, completion: @escaping (_ data: Data?, _ image: UIImage?, _ mimeType: String?) -> Void) {
         ImagePicker.shared.dataComletion = completion
         ImagePicker.shared.isVideo = true
         self.pickVideo()
@@ -37,7 +37,7 @@ extension ImagePicker: UIImagePickerControllerDelegate, UINavigationControllerDe
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if ImagePicker.shared.isVideo {
             guard let videoUrl = info[.mediaURL] as? URL else {
-                ImagePicker.shared.dataComletion(nil, nil)
+                ImagePicker.shared.dataComletion(nil, nil, nil)
                 picker.dismiss(animated: true, completion: nil)
                 return
             }
@@ -45,12 +45,12 @@ extension ImagePicker: UIImagePickerControllerDelegate, UINavigationControllerDe
                 let data = try Data(contentsOf: videoUrl)
                 AVAsset(url: videoUrl).generateThumbnail { image in
                     DispatchQueue.main.async {
-                        ImagePicker.shared.dataComletion(data, image)
+                        ImagePicker.shared.dataComletion(data, image, videoUrl.pathExtension)
                         picker.dismiss(animated: true, completion: nil)
                     }
                 }
             } catch {
-                ImagePicker.shared.dataComletion(nil, nil)
+                ImagePicker.shared.dataComletion(nil, nil, nil)
                 picker.dismiss(animated: true, completion: nil)
             }
         } else {
@@ -62,7 +62,7 @@ extension ImagePicker: UIImagePickerControllerDelegate, UINavigationControllerDe
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         if ImagePicker.shared.isVideo {
-            ImagePicker.shared.dataComletion(nil, nil)
+            ImagePicker.shared.dataComletion(nil, nil, nil)
         } else {
             ImagePicker.shared.comletion(nil)
         }

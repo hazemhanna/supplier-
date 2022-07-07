@@ -27,9 +27,9 @@ class SupplierSearchResultTableCell: UITableViewCell {
         didSet {
             supplierLogo.setImageWith(stringUrl: supplier.logo)
             supplierName.text = supplier.name
-//            orderMinLabel.text = supplier
-//            ratingView.rating = supplier
-//            ratingLabel.text = supplier
+//            orderMinLabel.text = supplier.
+            ratingView.rating = Double(supplier.overAllRank)
+            ratingLabel.text = "\(supplier.overAllRank)/5"
             collectionView.reloadData()
         }
     }

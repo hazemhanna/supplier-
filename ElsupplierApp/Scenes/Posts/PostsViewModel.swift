@@ -61,9 +61,9 @@ class PostsViewModel: BaseViewModel {
         }.disposed(by: disposeBag)
     }
     
-    func addPost(title: String, body: String, images: [Data]?) {
+    func addPost(body: String, images: [Attachment]?) {
         isLoading.accept(true)
-        postsApis.addPost(title: title, body: body, attachments: images).subscribe { [weak self] message in
+        postsApis.addPost(body: body, attachments: images).subscribe { [weak self] message in
             guard let self = self else { return }
             self.isLoading.accept(false)
             self.succeeded.accept(message)

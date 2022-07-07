@@ -55,7 +55,8 @@ final class NetworkManager: ESNetworkManager {
 extension ESNetworkRequest {
     convenience init(_ path: String) {
         self.init(base: Constants.baseUrl, path: path)
-        self.headers = ["x-localization": Language.currentLanguage.rawValue, "Accept": "application/json"]
+//        "x-localization": Language.currentLanguage.rawValue, 
+        self.headers = ["Accept": "application/json"]
         if let user = UserModel.current {
             self.headers?["Authorization"] = "Bearer " + user.token
         }

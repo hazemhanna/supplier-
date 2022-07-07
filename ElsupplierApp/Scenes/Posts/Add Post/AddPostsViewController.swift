@@ -15,7 +15,7 @@ class AddPostsViewController: BaseViewController {
     
     // MARK: - Variables
     let viewModel = PostsViewModel()
-    var attachments: [Data] = []
+    var attachments: [Attachment] = []
     var imagesAndThumbnails: [UIImage] = []
 
     // MARK: - Life Cycle
@@ -62,25 +62,25 @@ class AddPostsViewController: BaseViewController {
     
     // MARK: - Actions
     @IBAction func addPostClicked(_ sender: UIButton) {
-        viewModel.addPost(title: "", body: postTf.text!, images: attachments)
+        viewModel.addPost(body: postTf.text!, images: attachments)
     }
     
     @IBAction func uploadLogoClicked(_ sender: UIButton) {
         ImagePicker.pickImage(sender: sender) { [weak self] image in
             guard let image = image else { return }
             self?.imagesAndThumbnails.append(image)
-            self?.attachments.append(image.jpegData(compressionQuality: 0.5)!)
+            self?.attachments.append(.init(data: image.jpegData(compressionQuality: 0.5), mimeType: "Image/jpeg", ext: "jpeg"))
             self?.collectionView.reloadData()
         }
     }
     
     @IBAction func uploadVideoClicked(_ sender: UIButton) {
-        ImagePicker.pickVideo(sender: sender) { [weak self] data, image in
+        ImagePicker.pickVideo(sender: sender) { [weak self] data, image, mimeType in
             guard let data = data,
                   let image = image
             else { return }
             self?.imagesAndThumbnails.append(image)
-            self?.attachments.append(data)
+            self?.attachments.append(.init(data: data, mimeType: "Video/" + mimeType!, ext: mimeType))
             self?.collectionView.reloadData()
         }
     }    

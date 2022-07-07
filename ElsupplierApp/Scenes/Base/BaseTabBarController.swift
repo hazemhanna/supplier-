@@ -19,7 +19,7 @@ class BaseTabBarController: UITabBarController {
                                 AddTenderViewController(isFromTabbar: true),
                                 NavigationController(rootViewController: HomeViewController()),
                                 FavoritesViewController(),
-                                MyPostsViewController()]
+                                NavigationController(rootViewController:MyPostsViewController())]
     }
     
     required init?(coder: NSCoder) {

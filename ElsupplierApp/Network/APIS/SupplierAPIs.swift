@@ -43,8 +43,9 @@ final class SupplierAPIs {
     func generalRFQ(supplierId: Int, products: [PriceRequestModel]) -> Single<Any> {
         let request = ESNetworkRequest("actions/general/rfq/request")
         request.method = .post
+        request.encoding = JSONEncoding.default
         request.parameters = [
-            "supplierId": supplierId,
+            "supplierId": supplierId.string(),
             "productQuantity": products.toJSON()
         ]
         return NetworkManager.execute(request: request)

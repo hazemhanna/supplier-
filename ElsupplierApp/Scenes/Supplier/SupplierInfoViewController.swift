@@ -126,7 +126,7 @@ class SupplierInfoViewController: BaseViewController {
     }
     
     @IBAction func callRequestClicked(_ sender: UIButton) {
-        viewModel.requestCallBack(supplierId: supplier.id)
+        viewModel.requestCallBack(supplierId: supplier.supplier.id)
     }
     
     @IBAction func priceRequestClicked(_ sender: UIButton) {
