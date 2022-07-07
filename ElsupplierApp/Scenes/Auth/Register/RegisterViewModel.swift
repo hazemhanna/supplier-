@@ -15,7 +15,10 @@ class RegisterViewModel: BaseViewModel {
     var email = BehaviorRelay<String>(value: "")
     var activityType = BehaviorRelay<Int>(value: 0)
     var companyName = BehaviorRelay<String>(value: "")
+    var companyType = BehaviorRelay<String>(value: "")
 
+    
+    
     var user = PublishRelay<UserModel>()
     var activities = PublishRelay<[UserTypeModel]>()
     let authApi = AuthAPIs()
@@ -30,10 +33,10 @@ class RegisterViewModel: BaseViewModel {
             error.accept(NSError.init(error: "Please enter valid mobile no", code: 0))
             return false
         }
-//        if !email.value.isValidEmail {
-//            error.accept(NSError.init(error: "Please enter valid email", code: 0))
-//            return false
-//        }
+        if companyType.value.isEmpty {
+            error.accept(NSError.init(error: "Please enter company type", code: 0))
+            return false
+        }
         if companyName.value.isEmpty {
             error.accept(NSError.init(error: "Please enter company name", code: 0))
             return false
@@ -47,7 +50,7 @@ class RegisterViewModel: BaseViewModel {
         authApi.register(name: name.value,
                          phone: mobileNo.value,
                          companyName: companyName.value,
-                         userTypeId: activityType.value).subscribe {[weak self] user in
+                         userTypeId: activityType.value, company_type: companyType.value).subscribe {[weak self] user in
             guard let self = self else { return }
             self.isLoading.accept(false)
             self.user.accept(user)

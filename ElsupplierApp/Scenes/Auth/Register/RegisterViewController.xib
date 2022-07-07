@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -14,7 +14,7 @@
             <connections>
                 <outlet property="activityTypeTF" destination="iRH-Hw-ib4" id="SFq-ul-6cJ"/>
                 <outlet property="companyNameTF" destination="9Qp-GD-ISR" id="OHc-vc-QVS"/>
-                <outlet property="emailTF" destination="oTR-7V-Tpj" id="3W4-pg-k25"/>
+                <outlet property="companyTypeTF" destination="oTR-7V-Tpj" id="O3Z-DU-7HA"/>
                 <outlet property="mobileNoTF" destination="fGW-49-6Jg" id="WXw-mC-t7b"/>
                 <outlet property="nameTF" destination="Kk0-jB-6WH" id="B82-bs-2fv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -56,10 +56,10 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="sKh-Z5-0ve">
-                            <rect key="frame" x="18" y="221" width="378" height="429"/>
+                            <rect key="frame" x="18" y="221" width="378" height="490"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="nSb-jh-jaZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="378" height="229"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="378" height="290"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNp-H1-j4Z">
                                             <rect key="frame" x="0.0" y="0.0" width="378" height="46"/>
@@ -106,35 +106,6 @@
                                                 <constraint firstItem="fGW-49-6Jg" firstAttribute="leading" secondItem="IS9-8e-b9g" secondAttribute="leading" constant="16" id="ceC-VC-HmH"/>
                                                 <constraint firstItem="fGW-49-6Jg" firstAttribute="top" secondItem="IS9-8e-b9g" secondAttribute="top" id="oIK-wQ-MbU"/>
                                                 <constraint firstAttribute="trailing" secondItem="fGW-49-6Jg" secondAttribute="trailing" constant="16" id="tAf-Ru-eiC"/>
-                                            </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="5"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                    <real key="value" value="1"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                    <color key="value" name="LightBlue"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </view>
-                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYd-bD-gdt">
-                                            <rect key="frame" x="0.0" y="114.5" width="378" height="46"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="_email*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oTR-7V-Tpj">
-                                                    <rect key="frame" x="16" y="0.0" width="346" height="46"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="oTR-7V-Tpj" secondAttribute="trailing" constant="16" id="485-hI-cy2"/>
-                                                <constraint firstAttribute="bottom" secondItem="oTR-7V-Tpj" secondAttribute="bottom" id="D1C-AV-YgF"/>
-                                                <constraint firstAttribute="height" constant="46" id="TBH-AJ-Ex5"/>
-                                                <constraint firstItem="oTR-7V-Tpj" firstAttribute="top" secondItem="TYd-bD-gdt" secondAttribute="top" id="TYh-tN-eLp"/>
-                                                <constraint firstItem="oTR-7V-Tpj" firstAttribute="leading" secondItem="TYd-bD-gdt" secondAttribute="leading" constant="16" id="wLz-Rl-pvS"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -215,10 +186,39 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYd-bD-gdt">
+                                            <rect key="frame" x="0.0" y="244" width="378" height="46"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="_company_type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oTR-7V-Tpj">
+                                                    <rect key="frame" x="16" y="0.0" width="346" height="46"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="oTR-7V-Tpj" secondAttribute="trailing" constant="16" id="485-hI-cy2"/>
+                                                <constraint firstAttribute="bottom" secondItem="oTR-7V-Tpj" secondAttribute="bottom" id="D1C-AV-YgF"/>
+                                                <constraint firstAttribute="height" constant="46" id="TBH-AJ-Ex5"/>
+                                                <constraint firstItem="oTR-7V-Tpj" firstAttribute="top" secondItem="TYd-bD-gdt" secondAttribute="top" id="TYh-tN-eLp"/>
+                                                <constraint firstItem="oTR-7V-Tpj" firstAttribute="leading" secondItem="TYd-bD-gdt" secondAttribute="leading" constant="16" id="wLz-Rl-pvS"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                    <color key="value" name="LightBlue"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLz-P8-V4c">
-                                    <rect key="frame" x="0.0" y="249" width="378" height="28"/>
+                                    <rect key="frame" x="0.0" y="310" width="378" height="28"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="_by_creating_you_accept">
@@ -229,7 +229,7 @@
                                     </connections>
                                 </button>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="a9E-35-Sk9">
-                                    <rect key="frame" x="0.0" y="297" width="378" height="132"/>
+                                    <rect key="frame" x="0.0" y="358" width="378" height="132"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="73t-42-4DA">
                                             <rect key="frame" x="0.0" y="0.0" width="378" height="60"/>

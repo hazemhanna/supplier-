@@ -71,6 +71,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="datLbl" destination="Zd0-yA-Bza" id="H9j-EZ-5Da"/>
                 <outlet property="messageContent" destination="Hdv-OC-cZC" id="Rgk-H7-ypu"/>
                 <outlet property="supplierImageView" destination="TqP-wo-nhA" id="zel-tQ-dpV"/>
                 <outlet property="supplierName" destination="v0y-Ke-zPc" id="hxs-36-8Kp"/>

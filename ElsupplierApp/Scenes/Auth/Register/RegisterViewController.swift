@@ -12,9 +12,10 @@ class RegisterViewController: BaseViewController {
     // MARK: - Outlets
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var mobileNoTF: UITextField!
-    @IBOutlet weak var emailTF: UITextField!
+    //@IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var activityTypeTF: UITextField!
     @IBOutlet weak var companyNameTF: UITextField!
+    @IBOutlet weak var companyTypeTF: UITextField!
     
     // MARK: - Variables
     let viewModel = RegisterViewModel()
@@ -55,9 +56,9 @@ class RegisterViewController: BaseViewController {
             .bind(to: viewModel.mobileNo)
             .disposed(by: disposeBag)
         
-        emailTF.rx.text
+        companyTypeTF.rx.text
             .orEmpty
-            .bind(to: viewModel.email)
+            .bind(to: viewModel.companyType)
             .disposed(by: disposeBag)
         
         companyNameTF.rx.text

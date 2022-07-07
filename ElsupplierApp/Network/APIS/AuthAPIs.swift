@@ -15,7 +15,8 @@ protocol AuthAPIsProtocol: AnyObject {
     func register(name: String,
                   phone: String,
                   companyName: String,
-                  userTypeId: Int) -> Single<UserModel>
+                  userTypeId: Int,
+                  company_type : String) -> Single<UserModel>
 }
 
 final class AuthAPIs: AuthAPIsProtocol {
@@ -32,15 +33,16 @@ final class AuthAPIs: AuthAPIsProtocol {
         name: String,
         phone: String,
         companyName: String,
-        userTypeId: Int
-    ) -> Single<UserModel> {
+        userTypeId: Int,
+        company_type : String) -> Single<UserModel> {
         let request = ESNetworkRequest("register")
         request.method = .post
         request.parameters = [
             "name": name,
             "phone": phone,
             "company_name": companyName,
-            "userTypeId": userTypeId
+            "userTypeId": userTypeId,
+            "company_type": company_type
         ]
         return NetworkManager.execute(request: request)
     }
