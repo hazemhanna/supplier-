@@ -182,13 +182,13 @@ final class ProfileAPIs {
         return NetworkManager.execute(request: request)
     }
     
-    func listMessages() -> Single<[TenderModel]> {
+    func listMessages() -> Single<[MessagesModel]> {
         let request = ESNetworkRequest("actions/messages")
         request.selections = [.key("data"), .key("messages")]
         return NetworkManager.execute(request: request)
     }
 
-    func showChat(supplierId: Int) -> Single<[TenderModel]> {
+    func showChat(supplierId: Int) -> Single<[MessagesModel]> {
         let request = ESNetworkRequest("actions/supplier-chat")
         request.method = .post
         request.parameters = ["supplierId": supplierId]

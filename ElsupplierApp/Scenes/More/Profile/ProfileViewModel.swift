@@ -16,10 +16,9 @@ class ProfileViewModel: BaseViewModel {
     var image = BehaviorRelay<UIImage?>(value: nil)
     var doneAddressSelection = PublishRelay<Bool>()
     var donePaymentMethodSelection = PublishRelay<Bool>()
-
+    
     // MARK: - Profile
     var user = PublishRelay<UserModel>()
-
     // MARK: - Edit profile
     var name = BehaviorRelay<String>(value: "")
     var email = BehaviorRelay<String>(value: "")
@@ -31,22 +30,20 @@ class ProfileViewModel: BaseViewModel {
     var areas = PublishRelay<[PickerModel]>()
     var activities = PublishRelay<[UserTypeModel]>()
     var updatedSuccessfully = PublishRelay<Bool>()
-
     // MARK: - Favorites
     var favorites = PublishRelay<[ProductModel]>()
     var favoriteSuppliers = PublishRelay<[SupplierModel]>()
     var favoriteToggledSucceeded = PublishRelay<Bool>()
-    
     // MARK: - Orders
     var orders = PublishRelay<PagedObject<OrderModel>>()
-   
     // MARK: - Tenders
     var tenders = PublishRelay<[TenderModel]>()
     var tenderAdded = PublishRelay<Bool>()
     var selectedCategory = BehaviorRelay<Int?>(value: nil)
     var selectedProduct = BehaviorRelay<Int?>(value: nil)
     var tenderDetails = BehaviorRelay<String>(value: "")
-    
+    var messages = PublishRelay<[MessagesModel]>()
+
     // MARK: - Variables
     let profileApis = ProfileAPIs()
 
@@ -271,6 +268,33 @@ class ProfileViewModel: BaseViewModel {
             return false
         }
         return true
+    }
+    
+    
+    func listMessages() {
+        isLoading.accept(true)
+        profileApis.listMessages().subscribe { [weak self] message in
+            guard let self = self else { return }
+            self.isLoading.accept(false)
+            self.messages.accept(message)
+        } onError: {[weak self] error in
+            guard let self = self else { return }
+            self.isLoading.accept(false)
+            self.error.accept(error)
+        }.disposed(by: disposeBag)
+    }
+
+    func listChats(supplierId : Int) {
+        isLoading.accept(true)
+        profileApis.showChat(supplierId: supplierId).subscribe { [weak self] message in
+            guard let self = self else { return }
+            self.isLoading.accept(false)
+            self.messages.accept(message)
+        } onError: {[weak self] error in
+            guard let self = self else { return }
+            self.isLoading.accept(false)
+            self.error.accept(error)
+        }.disposed(by: disposeBag)
     }
     
 }

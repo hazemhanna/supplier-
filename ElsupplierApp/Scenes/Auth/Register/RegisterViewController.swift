@@ -64,6 +64,9 @@ class RegisterViewController: BaseViewController {
             .orEmpty
             .bind(to: viewModel.companyName)
             .disposed(by: disposeBag)
+        
+
+        
     }
     
     override func bindViewModelToViews() {
