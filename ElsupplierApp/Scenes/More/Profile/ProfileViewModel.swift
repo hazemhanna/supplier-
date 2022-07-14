@@ -34,6 +34,9 @@ class ProfileViewModel: BaseViewModel {
     var favorites = PublishRelay<[ProductModel]>()
     var favoriteSuppliers = PublishRelay<[SupplierModel]>()
     var favoriteToggledSucceeded = PublishRelay<Bool>()
+    var itemRemoved = PublishRelay<Bool>()
+    var itemAdded = PublishRelay<Bool>()
+    
     // MARK: - Orders
     var orders = PublishRelay<PagedObject<OrderModel>>()
     // MARK: - Tenders
@@ -296,5 +299,31 @@ class ProfileViewModel: BaseViewModel {
             self.error.accept(error)
         }.disposed(by: disposeBag)
     }
+    
+    
+    func removeFromCart(itemId: Int) {
+        isLoading.accept(true)
+        let cartApis = CartAPIs()
+        cartApis.removeFromCart(itemId: itemId).subscribe { [weak self] _ in
+            self?.isLoading.accept(false)
+            self?.itemRemoved.accept(true)
+        } onError: { [weak self] error in
+            self?.isLoading.accept(false)
+            self?.error.accept(error)
+        }.disposed(by: disposeBag)
+    }
+    
+    func addToCart(itemId: Int, qty: Int) {
+        isLoading.accept(true)
+        let cartApis = CartAPIs()
+        cartApis.addToCart(itemId: itemId, qty: qty).subscribe { [weak self] _ in
+            self?.isLoading.accept(false)
+            self?.itemAdded.accept(true)
+        } onError: { [weak self] error in
+            self?.isLoading.accept(false)
+            self?.error.accept(error)
+        }.disposed(by: disposeBag)
+    }
+    
     
 }

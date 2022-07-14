@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -68,6 +68,53 @@
                                     <constraint firstAttribute="height" constant="28" id="y1f-nZ-vVP"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60.00 LE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3a-fj-lun">
+                                <rect key="frame" x="109" y="61" width="52.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                <color key="textColor" name="DarkBlue"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60.00 LE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7T-Mr-KpT">
+                                <rect key="frame" x="279.5" y="60.5" width="56.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                <color key="textColor" name="DarkBlue"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="grv-fa-MCi">
+                                <rect key="frame" x="105" y="110" width="108" height="36"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyE-To-irp">
+                                        <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="0of-bp-UDa"/>
+                                            <constraint firstAttribute="height" constant="36" id="Uu2-C8-MrH"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="plus_ic"/>
+                                        <connections>
+                                            <action selector="plusClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hoq-Gz-tUD"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myU-fn-1IG">
+                                        <rect key="frame" x="50" y="0.0" width="8" height="36"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khe-cc-XgS">
+                                        <rect key="frame" x="72" y="0.0" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="e2y-g6-dpG"/>
+                                            <constraint firstAttribute="width" constant="36" id="rdZ-9X-Vb5"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="minus_ic"/>
+                                        <connections>
+                                            <action selector="minClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xss-k2-1LP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ثلاجة" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56A-76-SRI">
                                 <rect key="frame" x="109" y="37" width="227" height="16"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
@@ -109,12 +156,18 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="grv-fa-MCi" firstAttribute="leading" secondItem="gwP-sq-Ism" secondAttribute="trailing" constant="26" id="4Yx-l6-hU9"/>
                             <constraint firstItem="a1A-BO-ngv" firstAttribute="top" secondItem="pL9-oz-Qu0" secondAttribute="top" id="7kn-UW-vv1"/>
                             <constraint firstItem="gwP-sq-Ism" firstAttribute="top" secondItem="5iN-38-1tQ" secondAttribute="bottom" constant="22" id="7ng-9Z-VdB"/>
+                            <constraint firstItem="Y3a-fj-lun" firstAttribute="leading" secondItem="5iN-38-1tQ" secondAttribute="trailing" constant="16" id="WaF-Hl-7Tj"/>
                             <constraint firstItem="gwP-sq-Ism" firstAttribute="leading" secondItem="pL9-oz-Qu0" secondAttribute="leading" constant="20" id="WhF-CV-acE"/>
+                            <constraint firstAttribute="trailing" secondItem="T7T-Mr-KpT" secondAttribute="trailing" constant="16" id="XV9-eC-UnS"/>
                             <constraint firstItem="5iN-38-1tQ" firstAttribute="leading" secondItem="pL9-oz-Qu0" secondAttribute="leading" constant="20" id="Yw6-zr-5SD"/>
                             <constraint firstAttribute="trailing" secondItem="56A-76-SRI" secondAttribute="trailing" constant="16" id="Zno-FA-geV"/>
+                            <constraint firstAttribute="bottom" secondItem="grv-fa-MCi" secondAttribute="bottom" constant="16" id="cAi-j0-l8Z"/>
+                            <constraint firstItem="T7T-Mr-KpT" firstAttribute="centerY" secondItem="Y3a-fj-lun" secondAttribute="centerY" id="gIr-Mn-5eC"/>
                             <constraint firstItem="5iN-38-1tQ" firstAttribute="top" secondItem="pL9-oz-Qu0" secondAttribute="top" constant="15" id="gje-a8-I60"/>
+                            <constraint firstItem="Y3a-fj-lun" firstAttribute="top" secondItem="56A-76-SRI" secondAttribute="bottom" constant="8" id="h5W-0b-aHX"/>
                             <constraint firstAttribute="bottom" secondItem="0Ub-er-Jwo" secondAttribute="bottom" constant="22" id="hxD-h1-ihD"/>
                             <constraint firstAttribute="trailing" secondItem="a1A-BO-ngv" secondAttribute="trailing" id="phc-jz-QAg"/>
                             <constraint firstItem="56A-76-SRI" firstAttribute="top" secondItem="40b-Ee-aXl" secondAttribute="top" constant="20" id="qP6-t4-zvP"/>
@@ -145,8 +198,11 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addButton" destination="gwP-sq-Ism" id="gLc-Ek-DcL"/>
+                <outlet property="counterLbl" destination="myU-fn-1IG" id="cmP-sr-Koq"/>
                 <outlet property="favButton" destination="0Ub-er-Jwo" id="JP8-Pt-26l"/>
                 <outlet property="piecesNo" destination="sZy-5f-Liv" id="yWT-cv-svp"/>
+                <outlet property="priceLabel" destination="Y3a-fj-lun" id="0oj-cU-5re"/>
+                <outlet property="priceTotalLabel" destination="T7T-Mr-KpT" id="GiC-sl-hsR"/>
                 <outlet property="productImageView" destination="40b-Ee-aXl" id="YCX-AV-AIy"/>
                 <outlet property="productTitle" destination="56A-76-SRI" id="zkJ-nu-1ty"/>
             </connections>
@@ -156,6 +212,8 @@
     <resources>
         <image name="Screen Shot 2022-04-16 at 12.39.35 AM" width="354" height="530"/>
         <image name="fav prod" width="48" height="43"/>
+        <image name="minus_ic" width="96" height="96"/>
+        <image name="plus_ic" width="96" height="96"/>
         <image name="saved item" width="40" height="36"/>
         <namedColor name="DarkBlue">
             <color red="0.0" green="0.10196078431372549" blue="0.3843137254901961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

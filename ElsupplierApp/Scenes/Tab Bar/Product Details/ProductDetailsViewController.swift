@@ -27,7 +27,6 @@ class ProductDetailsViewController: BaseViewController {
     @IBOutlet weak var websiteButton: UIButton!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var relatedCollectionView: UICollectionView!
@@ -162,6 +161,7 @@ class ProductDetailsViewController: BaseViewController {
     @IBAction func minusClicked(_ sender: UIButton) {
         if selectedCount == 1 { return }
         selectedCount -= 1
+        
     }
     
     @IBAction func addToCartClicked(_ sender: UIButton) {

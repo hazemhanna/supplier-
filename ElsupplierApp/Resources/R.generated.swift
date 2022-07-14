@@ -2752,6 +2752,8 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if UIKit.UIImage(named: "Screen Shot 2022-04-16 at 12.39.35 AM", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Screen Shot 2022-04-16 at 12.39.35 AM' is used in nib 'FavProductTableViewCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "fav prod", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'fav prod' is used in nib 'FavProductTableViewCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "minus_ic", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'minus_ic' is used in nib 'FavProductTableViewCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "plus_ic", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'plus_ic' is used in nib 'FavProductTableViewCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "saved item", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'saved item' is used in nib 'FavProductTableViewCell', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "DarkBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'DarkBlue' is used in nib 'FavProductTableViewCell', but couldn't be loaded.") }
