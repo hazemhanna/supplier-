@@ -61,11 +61,11 @@ class SupplierProductsViewController: BaseViewController {
     }
     
     override func setupCallbacks() {
-        viewModel.itemAdded.bind { [weak self] _ in
+        viewModel.itemAdded.bind { _ in
 //            self?.tableView.reloadData()
         }.disposed(by: disposeBag)
         
-        viewModel.itemRemoved.bind { [weak self] _ in
+        viewModel.itemRemoved.bind { _ in
 //            self?.tableView.reloadData()
         }.disposed(by: disposeBag)
         

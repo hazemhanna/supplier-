@@ -2324,6 +2324,7 @@ struct _R: Rswift.Validatable {
       try _EmptySupplierFavView.validate()
       try _EmptyTenders.validate()
       try _FavProductTableViewCell.validate()
+      try _FavoriteSuppliersViewController.validate()
       try _FilterByPriceViewController.validate()
       try _FilterSelectionTableCell.validate()
       try _FilterSelectionViewController.validate()
@@ -2783,12 +2784,18 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    struct _FavoriteSuppliersViewController: Rswift.NibResourceType {
+    struct _FavoriteSuppliersViewController: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "FavoriteSuppliersViewController"
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "no_fav_suppliers", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'no_fav_suppliers' is used in nib 'FavoriteSuppliersViewController', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
       }
 
       fileprivate init() {}

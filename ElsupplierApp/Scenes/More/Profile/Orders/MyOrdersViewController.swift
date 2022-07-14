@@ -67,6 +67,17 @@ class MyOrdersViewController: BaseViewController {
     
     // MARK: - Actions
     @IBAction func filterClicked(_ sender: UIButton) {
+        let array = ["_all_orders",
+                     "_pending_orders",
+                     "_delivered_orders",
+                     "_waiting_orders"]
+        ActionSheet.show(title: nil,
+                         cancelTitle: "Cancel",
+                         otherTitles: array,
+                         sender: sender) { [weak self] index in
+            guard let self = self, index != 0 else { return }
+            self.selectedFilter.text = array[index - 1]
+        }
     }
     
 }

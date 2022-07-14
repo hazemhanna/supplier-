@@ -22,16 +22,6 @@ class FavProductTableViewCell: UITableViewCell {
     @IBOutlet weak var favButton: UIButton!
     
     weak var delegate: FavProductTableViewCellDelegate?
-
-//    var product: TrendingProductModel! {
-//        didSet {
-//            productImageView.setImageWith(stringUrl: product.mainImage)
-//            productTitle.text = product.name
-//            piecesNo.text = "-"
-//            favButton.isSelected = product.isFav == 1
-//        }
-//    }
-    
     var product: ProductModel! {
         didSet {
             productImageView.setImageWith(stringUrl: product.mainImage)

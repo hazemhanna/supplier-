@@ -11,6 +11,7 @@ class FavoriteSuppliersViewController: BaseViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var emptyView: UIView!
     
     // MARK: - Variables
     var list: [SupplierModel] = []
@@ -51,6 +52,7 @@ class FavoriteSuppliersViewController: BaseViewController {
         viewModel.favoriteSuppliers.bind { [weak self] in
             self?.list = $0
             self?.collectionView.reloadData()
+            self?.emptyView.isHidden = !$0.isEmpty
         }.disposed(by: disposeBag)
     }
     

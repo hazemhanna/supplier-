@@ -8,7 +8,7 @@ import UIKit
 
 class ActionSheet: NSObject {
     
-    class func show(title : String, message: String = "" , cancelTitle : String , otherTitles : [String], sender: UIView, completion :@escaping (_ index : Int) -> Void)  {
+    class func show(title : String?, message: String = "" , cancelTitle : String , otherTitles : [String], sender: UIView, completion :@escaping (_ index : Int) -> Void)  {
                 
         let alertController = UIAlertController.init(title: title, message: message, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction.init(title: cancelTitle, style: .cancel, handler: { (action) in

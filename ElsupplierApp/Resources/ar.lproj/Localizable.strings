@@ -195,3 +195,7 @@
 "_message_text" = "نص الرسالة";
 "_search_for_supplier" = "ابحث عن مورد";
 "_company_type" = "نوع الشركة";
+"_all_orders" = "كل الطلبات";
+"_pending_orders" = "قيد التنفيذ";
+"_delivered_orders" = "تم التوصيل";
+"_waiting_orders" = "جاري الانتظار";
