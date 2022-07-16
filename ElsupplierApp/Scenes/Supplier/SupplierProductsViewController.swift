@@ -18,6 +18,9 @@ class SupplierProductsViewController: BaseViewController {
     var selectedIndex = 0
     var viewModel = CartViewModel()
     let profileViewModel = ProfileViewModel()
+    
+    var selectedCount: Int = 1
+    
     // MARK: - Life Cycle
     init(supplier: SupplierDetailsModel) {
         self.supplier = supplier
@@ -136,12 +139,11 @@ extension SupplierProductsViewController: UITableViewDelegate, UITableViewDataSo
 }
 
 extension SupplierProductsViewController: FavProductTableViewCellDelegate {
-    
     func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapAdd product: ProductModel) {
-       product.addToCart == 1 ? viewModel.removeFromCart(itemId: product.id) : viewModel.addToCart(itemId: product.id, qty: 1)
+       product.addToCart == 1 ? viewModel.removeFromCart(itemId: product.id) : viewModel.addToCart(itemId: product.id, qty: selectedCount)
         product.inCart = product.inCart == 1 ? 0 : 1
         cell.addButton.setTitle(product.inCart == 1 ? "Add".localized : "_remove".localized, for: .normal)
-//        viewModel.addToCart(itemId: product.id, qty: 1)
+      // viewModel.addToCart(itemId: product.id, qty: selectedCount)
     }
     
     func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapFav product: ProductModel) {
@@ -149,5 +151,18 @@ extension SupplierProductsViewController: FavProductTableViewCellDelegate {
         product.isFav = product.isFav == 1 ? 0 : 1
         cell.favButton.isSelected = product.isFav == 1
       }
+    
+    func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapMin product: ProductModel){
+        if selectedCount == 1 { return }
+        selectedCount -= 1
+        cell.priceTotalLabel.text = (selectedCount * product.price).string()
+        cell.counterLbl.text = selectedCount.string()
+    }
+    
+    func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapPlus product: ProductModel){
+        selectedCount += 1
+        cell.priceTotalLabel.text = (selectedCount * product.price).string()
+        cell.counterLbl.text = selectedCount.string()
+    }
     
 }

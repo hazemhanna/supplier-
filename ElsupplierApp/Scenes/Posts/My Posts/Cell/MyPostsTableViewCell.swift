@@ -9,7 +9,6 @@ import UIKit
 import AVFoundation
 
 protocol MyPostsTableViewCellDelegate: AnyObject {
-    
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didLike item: PostModel)
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, didAddComent item: PostModel,comment : String)
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, sendMessage item: PostModel)

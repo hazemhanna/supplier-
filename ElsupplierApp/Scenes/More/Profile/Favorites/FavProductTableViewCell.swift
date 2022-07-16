@@ -10,6 +10,9 @@ import UIKit
 protocol FavProductTableViewCellDelegate: AnyObject {
     func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapAdd product: ProductModel)
     func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapFav product: ProductModel)
+    func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapMin product: ProductModel)
+    func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapPlus product: ProductModel)
+
 }
 
 class FavProductTableViewCell: UITableViewCell {
@@ -20,6 +23,10 @@ class FavProductTableViewCell: UITableViewCell {
     @IBOutlet weak var piecesNo: UILabel!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var favButton: UIButton!
+    @IBOutlet weak var counterLbl : UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var priceTotalLabel: UILabel!
+    
     
     weak var delegate: FavProductTableViewCellDelegate?
     var product: ProductModel! {
@@ -30,6 +37,9 @@ class FavProductTableViewCell: UITableViewCell {
             favButton.isSelected = product.isFav == 1
             piecesNo.text = product.measurmentUnit
             addButton.setTitle(product.inCart == 1 ? "_remove".localized : "Add".localized, for: .normal)
+            priceLabel.text = product.price.string()
+            priceTotalLabel.text = product.price.string()
+
         }
     }
     
@@ -45,4 +55,12 @@ class FavProductTableViewCell: UITableViewCell {
     @IBAction func favClicked(_ sender: UIButton) {
         delegate?.favProductTableViewCell(self, didTapFav: product)
     }
+    
+    @IBAction func minClicked(_ sender: UIButton) {
+        delegate?.favProductTableViewCell(self, didTapMin: product)
+    }
+    @IBAction func plusClicked(_ sender: UIButton) {
+        delegate?.favProductTableViewCell(self, didTapPlus: product)
+    }
+    
 }
