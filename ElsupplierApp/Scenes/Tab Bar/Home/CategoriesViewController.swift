@@ -16,6 +16,8 @@ final class CategoriesViewController: HomeViewController {
     let categoryModel: CategoryModel
     let sliders: [SliderModel]
     
+    override var isHome: Bool { false }
+    
     // MARK: - Life Cycle
     init(categoryModel: CategoryModel, sliders: [SliderModel]) {
         self.categoryModel = categoryModel
@@ -35,6 +37,7 @@ final class CategoriesViewController: HomeViewController {
     override func setupView() {
         super.setupView()
         categoryOffersLabel.text = "offers ".localized + categoryModel.name
+        deptCollectionViewHeight.constant = ((Double(categoryModel.childs.count) / 3.0).rounded(.up) * 180.0)
     }
     
     override func shouldShowTabBar() -> Bool {
@@ -61,6 +64,7 @@ extension CategoriesViewController {
             let cell: HomeDeptCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)!
             let child = categoryModel.childs[indexPath.row]
             cell.deptImageView.setImageWith(stringUrl: child.image, placeholder: R.image.appLogo())
+            print(#function, child.image)
             cell.deptName.text = child.name
             return cell
         }

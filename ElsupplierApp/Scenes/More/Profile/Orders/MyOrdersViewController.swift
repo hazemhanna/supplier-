@@ -23,6 +23,7 @@ class MyOrdersViewController: BaseViewController {
         self.init()
         self.isFromOrderCreated = isFromOrderCreated
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -33,8 +34,7 @@ class MyOrdersViewController: BaseViewController {
         title = "_my_orders".localized
         tableView.registerCell(ofType: OrderTableViewCell.self)
         viewModel.listOrders(page: model.nextPage)
-        navigationItem.leftBarButtonItem
-        = .init(image: R.image.arrowLeft()?.imageFlippedForRightToLeftLayoutDirection(), style: .plain, target: self, action: #selector(customBack))
+        navigationItem.leftBarButtonItem = .init(image: R.image.arrowLeft()?.imageFlippedForRightToLeftLayoutDirection(), style: .plain, target: self, action: #selector(customBack))
     }
     
     override func bindViewModelToViews() {
@@ -56,6 +56,7 @@ class MyOrdersViewController: BaseViewController {
             self.tableView.reloadData()
         }.disposed(by: disposeBag)
     }
+    
     @objc
     func customBack() {
         if isFromOrderCreated {
@@ -84,9 +85,7 @@ class MyOrdersViewController: BaseViewController {
 
 extension MyOrdersViewController: UITableViewDelegate, TableViewDataSource {
     
-    func viewForPlaceholder(in tableView: UITableView) -> UIView {
-        Bundle.main.loadNibNamed("EmptyOrdersView", owner: self, options: [:])?.first as? UIView ?? UIView()
-    }
+    func viewForPlaceholder(in tableView: UITableView) -> UIView { Bundle.main.loadNibNamed("EmptyOrdersView", owner: self, options: [:])?.first as? UIView ?? UIView() }
     
     func shouldShowPlaceholder(in tableView: UITableView) -> Bool { model.items.isEmpty }
     

@@ -19,6 +19,8 @@ class HomeViewController: BaseTabBarViewController {
     let viewModel = HomeViewModel()
     var homeModel = HomeModel()
     
+    var isHome: Bool { true }
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,9 @@ class HomeViewController: BaseTabBarViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.navigationController?.isNavigationBarHidden = true
-        viewModel.loadHome()
+        if isHome {
+            viewModel.loadHome()
+        }
         if let user = UserModel.current {
             userView.userPic.setImageWith(stringUrl: user.image, placeholder: R.image.appLogo())
         }
@@ -80,7 +84,7 @@ class HomeViewController: BaseTabBarViewController {
                 self.homeModel = $0
                 self.offersCollectionView.reloadData()
                 self.deptCollectionView.reloadData()
-                self.deptCollectionViewHeight.constant = CGFloat(($0.categories.count / 3) * 180)
+                self.deptCollectionViewHeight.constant = CGFloat(((Double($0.categories.count) / 3.0).rounded(.up)) * 180)
             }.disposed(by: disposeBag)
         
         viewModel.error.bind {

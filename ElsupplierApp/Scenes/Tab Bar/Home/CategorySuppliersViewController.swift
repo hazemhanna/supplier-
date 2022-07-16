@@ -18,6 +18,8 @@ class CategorySuppliersViewController: HomeViewController {
     let sliders: [SliderModel]
     var suppliers = PagedObject<SupplierModel>()
     
+    override var isHome: Bool { false }
+    
     // MARK: - Life Cycle
     init(category: CategoryChildModel, sliders: [SliderModel]) {
         self.category = category
@@ -46,7 +48,7 @@ class CategorySuppliersViewController: HomeViewController {
         viewModel.suppliers.bind { [weak self] in
             guard let self = self else { return }
             self.suppliers.append($0)
-            self.deptCollectionViewHeight.constant = CGFloat((self.suppliers.items.count / 3) * 180)
+            self.deptCollectionViewHeight.constant = CGFloat((Double(self.suppliers.items.count) / 3.0).rounded(.up) * 180)
             self.deptCollectionView.reloadData()
         }.disposed(by: disposeBag)
         
