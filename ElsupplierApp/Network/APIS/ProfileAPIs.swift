@@ -173,7 +173,7 @@ final class ProfileAPIs {
     func listOrders(page: Int,status : OrderStatues?) -> Single<PagedObject<OrderModel>> {
         var path = "orders?page=\(page)"
         if let status = status {
-        path += "&status=\(status)"
+            path += "&status=\(status.rawValue)"
         }
         let request = ESNetworkRequest(path)
         request.selections = [.key("data")]
