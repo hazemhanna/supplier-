@@ -33,7 +33,7 @@ class MyOrdersViewController: BaseViewController {
         super.setupView()
         title = "_my_orders".localized
         tableView.registerCell(ofType: OrderTableViewCell.self)
-        viewModel.listOrders(page: model.nextPage)
+        viewModel.listOrders(page: model.nextPage, status: nil)
         navigationItem.leftBarButtonItem = .init(image: R.image.arrowLeft()?.imageFlippedForRightToLeftLayoutDirection(), style: .plain, target: self, action: #selector(customBack))
     }
     
@@ -70,13 +70,31 @@ class MyOrdersViewController: BaseViewController {
     @IBAction func filterClicked(_ sender: UIButton) {
         let array = ["_all_orders",
                      "_pending_orders",
+                     "_preparing_orders",
+                     "_onRoute_orders",
                      "_delivered_orders",
-                     "_waiting_orders"]
+                     "_cancelled_orders"]
+        
         ActionSheet.show(title: nil,
                          cancelTitle: "Cancel",
                          otherTitles: array,
                          sender: sender) { [weak self] index in
             guard let self = self, index != 0 else { return }
+            switch index {
+            case 2 :
+                self.viewModel.listOrders(page: self.model.nextPage, status: 1)
+            case 3 :
+                self.viewModel.listOrders(page: self.model.nextPage, status: 2)
+            case 4 :
+                self.viewModel.listOrders(page: self.model.nextPage, status: 3)
+            case 5 :
+                self.viewModel.listOrders(page: self.model.nextPage, status: 4)
+            case 6 :
+                self.viewModel.listOrders(page: self.model.nextPage, status: 0)
+            default:
+                self.viewModel.listOrders(page: self.model.nextPage, status: nil)
+
+            }
             self.selectedFilter.text = array[index - 1]
         }
     }
@@ -112,7 +130,7 @@ extension MyOrdersViewController: UITableViewDelegate, TableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if model.hasNext(indexPath) {
-            viewModel.listOrders(page: model.nextPage)
+            viewModel.listOrders(page: model.nextPage, status: nil)
         }
     }
     

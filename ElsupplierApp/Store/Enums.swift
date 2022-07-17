@@ -24,3 +24,12 @@ enum FilterType {
     case areas
     case departments
 }
+
+enum OrderStatues : Int{
+    case cancelled
+    case pending
+    case preparing
+    case onRoute
+    case delivered
+}
+
