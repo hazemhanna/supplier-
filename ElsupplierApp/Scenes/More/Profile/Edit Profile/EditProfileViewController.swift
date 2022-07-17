@@ -100,9 +100,9 @@ class EditProfileViewController: BaseViewController {
         mobileNoTF.text = data.phone
         emailTF.text = data.email
         cityTF.text = data.area.name
-        activityTypeTF.text = data.companyType
+        activityTypeTF.text = data.userType.name
         companyNameTF.text = data.companyName
-        self.viewModel.areaId.accept(data.area.id)
+        viewModel.areaId.accept(data.area.id)
         bindViewsToViewModel()
     }
     
