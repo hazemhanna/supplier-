@@ -199,3 +199,10 @@
 "_pending_orders" = "قيد التنفيذ";
 "_delivered_orders" = "تم التوصيل";
 "_waiting_orders" = "جاري الانتظار";
+"_preparing_orders" = "قيد التجهيز";
+"_onRoute_orders" = "علي الطريق";
+"_cancelled_orders" = "ملغاة";
+
+
+
+

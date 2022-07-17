@@ -170,8 +170,12 @@ final class ProfileAPIs {
         return NetworkManager.execute(request: request)
     }
     
-    func listOrders(page: Int) -> Single<PagedObject<OrderModel>> {
-        let request = ESNetworkRequest("orders?page=\(page)")
+    func listOrders(page: Int,status : OrderStatues?) -> Single<PagedObject<OrderModel>> {
+        var path = "orders?page=\(page)"
+        if let status = status {
+            path += "&status=\(status.rawValue)"
+        }
+        let request = ESNetworkRequest(path)
         request.selections = [.key("data")]
         return NetworkManager.execute(request: request)
     }

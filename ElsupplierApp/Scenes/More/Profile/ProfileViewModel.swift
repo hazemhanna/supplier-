@@ -221,9 +221,9 @@ class ProfileViewModel: BaseViewModel {
         }.disposed(by: disposeBag)
     }
     
-    func listOrders(page: Int) {
+    func listOrders(page: Int,status: OrderStatues?) {
         isLoading.accept(true)
-        profileApis.listOrders(page: page).subscribe { [weak self] in
+        profileApis.listOrders(page: page, status: status).subscribe { [weak self] in
             self?.isLoading.accept(false)
             self?.orders.accept($0)
         } onError: { [weak self] in
