@@ -170,7 +170,7 @@ final class ProfileAPIs {
         return NetworkManager.execute(request: request)
     }
     
-    func listOrders(page: Int,status : Int?) -> Single<PagedObject<OrderModel>> {
+    func listOrders(page: Int,status : OrderStatues?) -> Single<PagedObject<OrderModel>> {
         var path = "orders?page=\(page)"
         if let status = status {
         path += "&status=\(status)"
