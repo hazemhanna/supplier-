@@ -30,36 +30,26 @@ class AddTenderViewController: BaseTabBarViewController {
         super.viewDidLoad()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        tabBarController?.navigationController?.isNavigationBarHidden = false
-//    }
-    
-    override func shouldShowNavigation() -> Bool {
-        true
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.navigationController?.isNavigationBarHidden = false
     }
+    
+    override func shouldShowNavigation() -> Bool { true }
     
     // MARK: - Functions
     override func setupView() {
         super.setupView()
-        title = "Tender".localized
+        title = "_new_tender".localized //"Tender".localized
     }
     
-    override func tabBarItemTitle() -> String? {
-        "Tender".localized
-    }
+    override func tabBarItemTitle() -> String? { "Tender".localized }
     
-    override func tabBarItemImage() -> UIImage? {
-        R.image.tender()
-    }
+    override func tabBarItemImage() -> UIImage? { R.image.tender() }
     
-    override func tabBarItemSelectedImage() -> UIImage? {
-        R.image.tenderActive()
-    }
+    override func tabBarItemSelectedImage() -> UIImage? { R.image.tenderActive() }
     
-    override func shouldShowTabBar() -> Bool {
-        isFromTabbar
-    }
+    override func shouldShowTabBar() -> Bool { isFromTabbar }
     
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
@@ -86,7 +76,7 @@ class AddTenderViewController: BaseTabBarViewController {
     
     override func setupCallbacks() {
         viewModel.tenderAdded.bind { [weak self] _ in
-            Alert.show(title: nil, message: "_tender_added", cancelTitle: "_ok", otherTitles: []) { _ in
+            Alert.show(title: nil, message: "_tender_added", cancelTitle: "ok", otherTitles: []) { _ in
                 guard let self = self else { return }
                 if self.isFromTabbar {
                     self.selectedCategoryLabel.text = "_choose_category"

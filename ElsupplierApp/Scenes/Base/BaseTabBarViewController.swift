@@ -31,20 +31,15 @@ class BaseTabBarViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         parent?.title = title
+        tabBarItem.title = tabBarItemTitle()?.localized
     }
     
     // MARK: - Functions
-    func tabBarItemTitle() -> String? {
-        return nil
-    }
+    func tabBarItemTitle() -> String? { nil }
     
-    func tabBarItemImage() -> UIImage? {
-        return nil
-    }
+    func tabBarItemImage() -> UIImage? { nil }
     
-    func tabBarItemSelectedImage() -> UIImage? {
-        return nil
-    }
+    func tabBarItemSelectedImage() -> UIImage? { nil }
     
     // MARK: - Actions
 

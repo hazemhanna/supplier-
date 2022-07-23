@@ -217,6 +217,7 @@
 		06C2CD4F284B88F100C73828 /* OrderCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2CD4D284B88F100C73828 /* OrderCompletedViewController.swift */; };
 		06C2CD50284B88F100C73828 /* OrderCompletedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06C2CD4E284B88F100C73828 /* OrderCompletedViewController.xib */; };
 		06C2CD52284B90BF00C73828 /* EmptyCartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06C2CD51284B90BF00C73828 /* EmptyCartView.xib */; };
+		06CA427D288779E5006E7869 /* SubCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CA427C288779E5006E7869 /* SubCategoryModel.swift */; };
 		06CE727A286FC0D200E54C87 /* SupplierAPIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CE7279286FC0D200E54C87 /* SupplierAPIs.swift */; };
 		06CE727C286FC45A00E54C87 /* SupplierViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CE727B286FC45A00E54C87 /* SupplierViewModel.swift */; };
 		06D08822284B93F0008F9F3F /* MyOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D08820284B93F0008F9F3F /* MyOrdersViewController.swift */; };
@@ -492,6 +493,7 @@
 		06C2CD4D284B88F100C73828 /* OrderCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCompletedViewController.swift; sourceTree = "<group>"; };
 		06C2CD4E284B88F100C73828 /* OrderCompletedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderCompletedViewController.xib; sourceTree = "<group>"; };
 		06C2CD51284B90BF00C73828 /* EmptyCartView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCartView.xib; sourceTree = "<group>"; };
+		06CA427C288779E5006E7869 /* SubCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryModel.swift; sourceTree = "<group>"; };
 		06CE7279286FC0D200E54C87 /* SupplierAPIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierAPIs.swift; sourceTree = "<group>"; };
 		06CE727B286FC45A00E54C87 /* SupplierViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierViewModel.swift; sourceTree = "<group>"; };
 		06D08820284B93F0008F9F3F /* MyOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewController.swift; sourceTree = "<group>"; };
@@ -905,6 +907,7 @@
 				064EC72A285FD5DD00973AB7 /* SupplierDetailsModel.swift */,
 				06DECF232833001300BE5959 /* ProductModel.swift */,
 				06A261B22837223C00F1B88F /* CategoryModel.swift */,
+				06CA427C288779E5006E7869 /* SubCategoryModel.swift */,
 				06B9B52E284268C700A2C7CC /* CartModel.swift */,
 				06D08828284BA1B5008F9F3F /* OrderModel.swift */,
 				06282A1C2850052500BE199E /* TenderModel.swift */,
@@ -1484,6 +1487,7 @@
 				06D08830284BB674008F9F3F /* CategoriesViewController.swift in Sources */,
 				06658E86282EEAD300F039EE /* EditAddressViewController.swift in Sources */,
 				06282A252850196D00BE199E /* MessagesViewController.swift in Sources */,
+				06CA427D288779E5006E7869 /* SubCategoryModel.swift in Sources */,
 				06840B20281338F700738B2B /* PostModel.swift in Sources */,
 				068F9A87282B2A6A0093BD41 /* AddAddressViewController.swift in Sources */,
 				06A261B32837223C00F1B88F /* CategoryModel.swift in Sources */,
@@ -1792,7 +1796,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = G5KAMXDVUX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Resources/Info.plist;
@@ -1825,7 +1829,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = G5KAMXDVUX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Resources/Info.plist;

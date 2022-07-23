@@ -26,7 +26,7 @@ class SearchFilterViewModel: BaseViewModel {
     
     func listCategories() {
         isLoading.accept(true)
-        mockApis.listParentCategories().subscribe {[weak self] categories in
+        mockApis.listCategories().subscribe {[weak self] categories in
             guard let self = self else { return }
             self.isLoading.accept(false)
             self.categories.accept(categories)

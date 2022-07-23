@@ -19,6 +19,7 @@ final class CategoryModel: BaseObject {
     var parent = ""
     var childs: [CategoryChildModel] = []
     var products: [ProductModel] = []
+    var productsCount = 0
     
     override func mapping(map: Map) {
         super.mapping(map: map)
@@ -32,6 +33,7 @@ final class CategoryModel: BaseObject {
         parent <- map["parent"]
         childs <- map["childs"]
         products <- map["products"]
+        productsCount <- map["products"]
     }
 }
 

@@ -35,9 +35,7 @@ class BaseViewController: UIViewController {
         setupView()
     }
             
-    deinit {
-        print(String(describing: type(of: self)) + "  Deinit")
-    }
+    deinit { debugPrint(String(describing: type(of: self)) + "  Deinit") }
     
     // MARK: - Functions
     func setupView() {
@@ -81,28 +79,14 @@ class BaseViewController: UIViewController {
         view.sendSubviewToBack(_view)
     }
     
-    func shouldShowDismissButon() -> Bool {
-        true
-    }
-    
-    func shouldShowNavigation() -> Bool {
-        true
-    }
-    
-    func shouldShowTopView() -> Bool {
-        true
-    }
-    
-    func shouldSetupMaskedView() -> Bool {
-        true
-    }
-    
+    func shouldShowDismissButon() -> Bool { true }
+    func shouldShowNavigation() -> Bool { true }
+    func shouldShowTopView() -> Bool { true }
+    func shouldSetupMaskedView() -> Bool { true }
+    func shouldShowTabBar() -> Bool { false }
+
     @objc func backClicked() {
         navigationController?.dismiss(animated: true)
-    }
-    
-    func shouldShowTabBar() -> Bool {
-        false
     }
     
     func checkLoggedInUser() -> Bool {
