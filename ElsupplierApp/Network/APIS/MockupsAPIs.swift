@@ -35,8 +35,14 @@ final class MockupsAPIs {
     }
     
     func listCategories() -> Single<[CategoryModel]> {
-        let request = ESNetworkRequest("sub-categories/products")
+        let request = ESNetworkRequest("sub-categories/all")
         request.selections = [.key("data"), .key("sub_categories")]
+        return NetworkManager.execute(request: request)
+    }
+    
+    func listCategoryProducts(categoryId: Int) -> Single<[ProductModel]> {
+        let request = ESNetworkRequest("sub-category/products/all?categoryId=\(categoryId)")
+        request.selections = [.key("data"), .key("sub_category_products"), .key("products")]
         return NetworkManager.execute(request: request)
     }
     

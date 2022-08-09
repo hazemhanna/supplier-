@@ -84,7 +84,7 @@ class SearchFilterViewController: BaseViewController {
     
     // MARK: - Actions
     @IBAction func chooseDeptClicked(_ sender: UIButton) {
-        viewModel.listCategories()
+        viewModel.listParentCategories()
     }
     
     @IBAction func chooseProductClicked(_ sender: UIButton) {

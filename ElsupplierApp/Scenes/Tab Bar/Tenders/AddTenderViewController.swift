@@ -99,6 +99,10 @@ class AddTenderViewController: BaseTabBarViewController {
             self?.showCategories($0)
         }.disposed(by: disposeBag)
         
+        searchFilterViewModel.categoryProducts.bind { [weak self] in
+            self?.showProducts($0)
+        }.disposed(by: disposeBag)
+        
         searchFilterViewModel.error.bind {
             Alert.show(message: $0.localizedDescription)
         }.disposed(by: disposeBag)
@@ -113,18 +117,21 @@ class AddTenderViewController: BaseTabBarViewController {
         }
     }
     
+    func showProducts(_ products: [ProductModel]) {
+        ActionSheet.show(title: "_choose_product", cancelTitle: "Cancel", otherTitles: products.map { $0.name }, sender: view) { [weak self] index in
+            guard let self = self, index != 0 else { return }
+            self.selectedProductLabel.text = products[index - 1].name
+            self.viewModel.selectedProduct.accept(products[index - 1].id)
+        }
+    }
+    
     // MARK: - Actions
     @IBAction func selectCategoryClicked(_ sender: UIButton) {
         searchFilterViewModel.listCategories()
     }
     
     @IBAction func selectProductClicked(_ sender: UIButton) {
-        guard let products = selectedCategory?.products else { return }
-        ActionSheet.show(title: "_choose_product", cancelTitle: "Cancel", otherTitles: products.map { $0.name }, sender: view) { [weak self] index in
-            guard let self = self, index != 0 else { return }
-            self.selectedProductLabel.text = products[index - 1].name
-            self.viewModel.selectedProduct.accept(products[index - 1].id)
-        }
+        searchFilterViewModel.listCategoryProducts(categoryId: selectedCategory?.id ?? 0)
     }
     
     @IBAction func sendClicked(_ sender: UIButton) {
