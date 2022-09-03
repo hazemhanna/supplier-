@@ -43,15 +43,27 @@ class ChooseAddressViewController: AddressesListViewController {
         }.disposed(by: disposeBag)
     }
     
+    override func setSelectedAddress() {
+        guard let selectedAddress = addresses.enumerated().first(where: { $0.element.isSelected }) else { return }
+        viewModel.selectCartAddress(
+            addressId: selectedAddress.element.id,
+            index: selectedAddress.offset
+        )
+    }
+    
     // MARK: - Actions
     @IBAction func continueClicked(_ sender: UIButton) {
         if let selectedAddress = addresses.first(where: { $0.isSelected }) {
-            push(controller: ChoosePaymentWayViewController(cartModel: cartModel, addressModel: selectedAddress))
+            push(
+                controller: ChoosePaymentWayViewController(
+                    cartModel: cartModel,
+                    addressModel: selectedAddress
+                )
+            )
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.selectCartAddress(addressId: addresses[indexPath.row].id, index: indexPath.row)
     }
-    
 }

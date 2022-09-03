@@ -20,8 +20,8 @@ class HomeAPIs {
         isPromotion: Int,
         page: Int,
         keyword: String? = nil,
-        parentCategoryId: Int? = nil,
-        categoryId: Int? = nil,
+        parentCategoryId: String? = nil,
+        categoryId: String? = nil,
         areaId: Int? = nil,
         priceFrom: Int? = nil,
         priceTo: Int? = nil
@@ -55,8 +55,8 @@ class HomeAPIs {
         isPromotion: Int,
         page: Int,
         keyword: String? = nil,
-        parentCategoryId: Int? = nil,
-        categoryId: Int? = nil,
+        parentCategoryId: String? = nil,
+        categoryId: String? = nil,
         areaId: Int? = nil,
         priceFrom: Int? = nil,
         priceTo: Int? = nil

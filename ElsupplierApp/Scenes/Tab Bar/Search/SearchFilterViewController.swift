@@ -36,11 +36,7 @@ class SearchFilterViewController: BaseViewController {
     
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
     }
     
@@ -107,18 +103,29 @@ class SearchFilterViewController: BaseViewController {
     
     @IBAction func filterSearchClicked(_ sender: UIButton) {
         if viewModel.selectedCategory.value == nil {
-            Alert.show(message: "_choose_dept")
-            return
+            return Alert.show(message: "_choose_dept")
         }
         if viewModel.selectedProduct.value == nil {
-            Alert.show(message: "_choose_sub_cat")
-            return
+            return Alert.show(message: "_choose_sub_cat")
         }
+        
         viewModel.isFilter.accept(true)
         if filterSupplierButton.isSelected {
-            push(controller: SupplierSearchResultsViewController(keyword: searchKeyTF.text, selectedCategory: viewModel.selectedProduct.value?.id, selectedParentCategory: viewModel.selectedCategory.value?.id))
+            push(
+                controller: SupplierSearchResultsViewController(
+                    keyword: searchKeyTF.text,
+                    selectedCategory: viewModel.selectedProduct.value?.name,
+                    selectedParentCategory: viewModel.selectedCategory.value?.name
+                )
+            )
         } else {
-            push(controller: ProductsSearchResultsViewController(keyword: searchKeyTF.text, selectedCategory: viewModel.selectedProduct.value?.id, selectedParentCategory: viewModel.selectedCategory.value?.id))
+            push(
+                controller: ProductsSearchResultsViewController(
+                    keyword: searchKeyTF.text,
+                    selectedCategory: viewModel.selectedProduct.value?.name,
+                    selectedParentCategory: viewModel.selectedCategory.value?.name
+                )
+            )
         }
     }
     
@@ -139,9 +146,21 @@ class SearchFilterViewController: BaseViewController {
     @IBAction func searchWithKeyClicked(_ sender: UIButton) {
         viewModel.isFilter.accept(false)
         if searchSupplierButton.isSelected {
-            push(controller: SupplierSearchResultsViewController(keyword: searchKeyTF.text, selectedCategory: viewModel.selectedProduct.value?.id, selectedParentCategory: viewModel.selectedCategory.value?.id))
+            push(
+                controller: SupplierSearchResultsViewController(
+                    keyword: searchKeyTF.text,
+                    selectedCategory: viewModel.selectedProduct.value?.name,
+                    selectedParentCategory: viewModel.selectedCategory.value?.name
+                )
+            )
         } else {
-            push(controller: ProductsSearchResultsViewController(keyword: searchKeyTF.text, selectedCategory: viewModel.selectedProduct.value?.id, selectedParentCategory: viewModel.selectedCategory.value?.id))
+            push(
+                controller: ProductsSearchResultsViewController(
+                    keyword: searchKeyTF.text,
+                    selectedCategory: viewModel.selectedProduct.value?.name,
+                    selectedParentCategory: viewModel.selectedCategory.value?.name
+                )
+            )
         }
     }
 }

@@ -18,18 +18,17 @@ class Hud {
         return rootView?.subviews.contains(where: {$0 is LoaderView}) ?? false
     }
     
-    static func show(on view: UIView? = nil)  {
-        guard let view = view ?? rootView, !isVisible else {
+    static func showDismiss(_ shouldShow: Bool, on view: UIView? = nil)  {
+        guard shouldShow else {
+            guard let view = view ?? rootView,
+                  let loaderView = view.subviews.first(where: {$0 is LoaderView})
+            else { return }
+            loaderView.removeFromSuperview()
             return
         }
+        guard let view = view ?? rootView,
+              !isVisible
+        else { return }
         view.addSubIntrinsicView(LoaderView())
     }
-    
-    static func hide(from view: UIView? = nil) {
-        guard let view = view ?? rootView, let loaderView = view.subviews.first(where: {$0 is LoaderView}) else {
-            return
-        }
-        loaderView.removeFromSuperview()
-    }
-        
 }

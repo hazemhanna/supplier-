@@ -11,21 +11,26 @@ import RxCocoa
 final class SupplierViewModel: BaseViewModel {
     
     let supplierApis = SupplierAPIs()
-    var callbackRequested = PublishRelay<Bool>()
+    var callbackRequested = PublishRelay<String>()
     var messageSent = PublishRelay<Bool>()
     var priceRequested = PublishRelay<Bool>()
     
     func requestCallBack(supplierId: Int) {
-        supplierApis.requestCallBack(supplierId: supplierId).subscribe { [weak self] _ in
+        isLoading.accept(true)
+        supplierApis.requestCallBack(supplierId: supplierId).subscribe { [weak self] in
             self?.isLoading.accept(false)
-            self?.callbackRequested.accept(true)
+            self?.callbackRequested.accept($0)
         } onError: { [weak self] in
             self?.isLoading.accept(false)
             self?.error.accept($0)
         }.disposed(by: disposeBag)
     }
     
-    func requestProductPrice(supplierId: Int, productId: Int, quantity: Int) {
+    func requestProductPrice(
+        supplierId: Int,
+        productId: Int,
+        quantity: Int
+    ) {
         isLoading.accept(true)
         supplierApis.productRFQ(supplierId: supplierId,
                                 productId: productId,

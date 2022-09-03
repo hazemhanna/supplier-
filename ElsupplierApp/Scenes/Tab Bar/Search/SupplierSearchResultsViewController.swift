@@ -21,14 +21,18 @@ class SupplierSearchResultsViewController: BaseViewController {
     let viewModel2 = HomeViewModel()
     var model = PagedObject<SupplierModel>()
     var keyword: String?
-    var selectedCategory: Int?
-    var selectedParentCategory: Int?
+    var selectedCategory: String?
+    var selectedParentCategory: String?
     var priceFrom: Int?
     var priceTo: Int?
     var areaId: Int?
     
     // MARK: - Life Cycle
-    init(keyword: String?, selectedCategory: Int?, selectedParentCategory: Int?) {
+    init(
+        keyword: String?,
+        selectedCategory: String?,
+        selectedParentCategory: String?
+    ) {
         self.keyword = keyword
         self.selectedCategory = selectedCategory
         self.selectedParentCategory = selectedParentCategory
@@ -61,19 +65,11 @@ class SupplierSearchResultsViewController: BaseViewController {
     
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
         
         viewModel2.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
     }
     
@@ -108,7 +104,21 @@ class SupplierSearchResultsViewController: BaseViewController {
     }
 }
 
-extension SupplierSearchResultsViewController: UITableViewDelegate, UITableViewDataSource {
+extension SupplierSearchResultsViewController: UITableViewDelegate, TableViewDataSource {
+    func viewForPlaceholder(in tableView: UITableView) -> UIView {
+        let label = UILabel()
+        label.text = "_no_suppliers_found"
+        label.textAlignment = .center
+        label.font = label.font.appFont()
+        return label
+    }
+    
+    func shouldShowPlaceholder(in tableView: UITableView) -> Bool {
+        model.items.isEmpty
+    }
+    
+    func frameForPlaceholder(in tableView: UITableView) -> CGRect { tableView.bounds }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         model.items.count
@@ -148,7 +158,7 @@ extension SupplierSearchResultsViewController: FilterSelectionViewControllerDele
         viewModel.filterSuppliers(isPromotion: 0, page: model.nextPage, keyword: keyword, parentCategoryId: selectedParentCategory, categoryId: selectedCategory, areaId: areaId, priceFrom: priceFrom, priceTo: priceTo)
     }
     func didSelectDipartment(dept: PickerModel) {
-        selectedCategory = dept.id
+        selectedCategory = dept.name
         deptsLabel.text = dept.name
         model.items.removeAll()
         tableView.reloadData()

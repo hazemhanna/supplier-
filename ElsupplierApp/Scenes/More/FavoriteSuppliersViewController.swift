@@ -36,11 +36,7 @@ class FavoriteSuppliersViewController: BaseViewController {
     
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
     }
     
@@ -76,7 +72,7 @@ extension FavoriteSuppliersViewController: UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 150)
+        return CGSize(width: 100, height: 180)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

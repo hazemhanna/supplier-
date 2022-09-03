@@ -20,6 +20,7 @@ class AddressesListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.listAddresses()
@@ -39,11 +40,7 @@ class AddressesListViewController: BaseViewController {
 
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
     }
     
@@ -51,6 +48,7 @@ class AddressesListViewController: BaseViewController {
         viewModel.addresses.bind {
             self.addresses = $0
             self.tableView.reloadData()
+            self.setSelectedAddress()
         }.disposed(by: disposeBag)
         
         viewModel.addressDeleted.bind { _ in
@@ -65,10 +63,13 @@ class AddressesListViewController: BaseViewController {
             Alert.show(message: $0.localizedDescription)
         }.disposed(by: disposeBag)
     }
+    
     // MARK: - Actions
     @objc func newAddressClicked() {
         push(controller: AddAddressViewController())
     }
+    
+    func setSelectedAddress() {}
 
 }
 

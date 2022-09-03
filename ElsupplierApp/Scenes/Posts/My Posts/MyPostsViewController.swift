@@ -20,7 +20,7 @@ class MyPostsViewController: BaseTabBarViewController {
     
     // MARK: - Variables
     let dropDown = DropDown()
-    var TypesArr = ["_allPosts".localized,"_myPosts".localized]
+    var TypesArr = ["_allPosts".localized, "_myPosts".localized]
     let viewModel = PostsViewModel()
     let supplierViewModel = SupplierViewModel()
     var selectedType = 0
@@ -40,14 +40,26 @@ class MyPostsViewController: BaseTabBarViewController {
             userView.userPic.setImageWith(stringUrl: user.image, placeholder: R.image.appLogo())
         }
     }
+    
+    convenience init(selectedType: Int) {
+        self.init()
+        self.selectedType = selectedType
+    }
 
     // MARK: - Functions
     override func setupView() {
         super.setupView()
-        viewModel.loadAllPosts()
+        if selectedType == 0 {
+            viewModel.loadAllPosts()
+            titleLbl.text = "_allPosts".localized
+        } else {
+            viewModel.loadMyPosts()
+            titleLbl.text = "_myPosts".localized
+        }
         tableView.registerCell(ofType: MyPostsTableViewCell.self)
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = UITableView.automaticDimension
+//        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.isRefreshControlEnabled = true
         userView.delegate = self
         navigationController?.navigationBar.isHidden = true
         tabBarController?.navigationController?.navigationBar.isHidden = true
@@ -66,7 +78,7 @@ class MyPostsViewController: BaseTabBarViewController {
             self?.selectedType = index
             if index == 0 {
                 self?.viewModel.loadAllPosts()
-            }else{
+            } else {
                 self?.viewModel.loadMyPosts()
             }
         }
@@ -87,19 +99,11 @@ class MyPostsViewController: BaseTabBarViewController {
     
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
         
         supplierViewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
     }
     
@@ -132,12 +136,15 @@ class MyPostsViewController: BaseTabBarViewController {
     
     // MARK: - Actions
     @IBAction func addPostClicked(_ sender: UIButton) {
-        push(controller: AddPostsViewController())
+        push(controller:
+                AddPostsViewController() { [weak self] in
+            self?.didRefresh(self?.tableView.refreshControl ?? UIRefreshControl())
+        })
     }
     
 }
 
-extension MyPostsViewController: UITableViewDelegate, TableViewDataSource {
+extension MyPostsViewController: UITableViewDelegate, TableViewDataSource, UIRefreshControlDelegate {
     
     func viewForPlaceholder(in tableView: UITableView) -> UIView {
         Bundle.main.loadNibNamed("EmptyPostsView", owner: self, options: [:])?.first as? UIView ?? UIView()
@@ -154,8 +161,18 @@ extension MyPostsViewController: UITableViewDelegate, TableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MyPostsTableViewCell = tableView.dequeueReusableCell()!
         cell.post = posts[indexPath.row]
+        cell.userActionsStackView.isHidden = true
         cell.delegate = self
         return cell
+    }
+    
+    func didRefresh(_ refreshControl: UIRefreshControl) {
+        refreshControl.endRefreshing()
+        if selectedType == 0 {
+            viewModel.loadAllPosts()
+        } else {
+            viewModel.loadMyPosts()
+        }
     }
 }
 
@@ -197,13 +214,12 @@ extension MyPostsViewController: MyPostsTableViewCellDelegate {
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, playVideo item: String){
         guard let videoURL = URL(string:  item) else { return }
         let video = AVPlayer(url: videoURL)
-            let videoPlayer = AVPlayerViewController()
-            videoPlayer.player = video
-            videoPlayer.modalPresentationStyle = .overFullScreen
-            videoPlayer.modalTransitionStyle = .crossDissolve
-            self.present(videoPlayer, animated: true, completion: {
-                video.play()
-            })
-       
+        let videoPlayer = AVPlayerViewController()
+        videoPlayer.player = video
+        videoPlayer.modalPresentationStyle = .overFullScreen
+        videoPlayer.modalTransitionStyle = .crossDissolve
+        self.present(videoPlayer, animated: true, completion: {
+            video.play()
+        })
     }
 }

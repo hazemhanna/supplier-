@@ -106,10 +106,12 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 6 colors.
+  /// This `R.color` struct is generated, and contains static references to 9 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
+    /// Color `AcceptedStatus`.
+    static let acceptedStatus = Rswift.ColorResource(bundle: R.hostingBundle, name: "AcceptedStatus")
     /// Color `DarkBlue`.
     static let darkBlue = Rswift.ColorResource(bundle: R.hostingBundle, name: "DarkBlue")
     /// Color `IceBlue`.
@@ -118,6 +120,10 @@ struct R: Rswift.Validatable {
     static let lightBlue = Rswift.ColorResource(bundle: R.hostingBundle, name: "LightBlue")
     /// Color `LightRed`.
     static let lightRed = Rswift.ColorResource(bundle: R.hostingBundle, name: "LightRed")
+    /// Color `PendingStatus`.
+    static let pendingStatus = Rswift.ColorResource(bundle: R.hostingBundle, name: "PendingStatus")
+    /// Color `RejectedStatus`.
+    static let rejectedStatus = Rswift.ColorResource(bundle: R.hostingBundle, name: "RejectedStatus")
     /// Color `SteelGrey`.
     static let steelGrey = Rswift.ColorResource(bundle: R.hostingBundle, name: "SteelGrey")
 
@@ -127,6 +133,15 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func accentColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.accentColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "AcceptedStatus", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func acceptedStatus(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.acceptedStatus, compatibleWith: traitCollection)
     }
     #endif
 
@@ -167,6 +182,24 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "PendingStatus", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func pendingStatus(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.pendingStatus, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "RejectedStatus", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func rejectedStatus(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.rejectedStatus, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIColor(named: "SteelGrey", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
@@ -180,6 +213,14 @@ struct R: Rswift.Validatable {
     @available(watchOSApplicationExtension 4.0, *)
     static func accentColor(_: Void = ()) -> UIKit.UIColor? {
       return UIKit.UIColor(named: R.color.accentColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "AcceptedStatus", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func acceptedStatus(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.acceptedStatus.name)
     }
     #endif
 
@@ -212,6 +253,22 @@ struct R: Rswift.Validatable {
     @available(watchOSApplicationExtension 4.0, *)
     static func lightRed(_: Void = ()) -> UIKit.UIColor? {
       return UIKit.UIColor(named: R.color.lightRed.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "PendingStatus", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func pendingStatus(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.pendingStatus.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "RejectedStatus", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func rejectedStatus(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.rejectedStatus.name)
     }
     #endif
 
@@ -369,7 +426,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 82 images.
+  /// This `R.image` struct is generated, and contains static references to 83 images.
   struct image {
     /// Image `Call`.
     static let call = Rswift.ImageResource(bundle: R.hostingBundle, name: "Call")
@@ -475,6 +532,8 @@ struct R: Rswift.Validatable {
     static let no_orders = Rswift.ImageResource(bundle: R.hostingBundle, name: "no_orders")
     /// Image `no_payments`.
     static let no_payments = Rswift.ImageResource(bundle: R.hostingBundle, name: "no_payments")
+    /// Image `no_post`.
+    static let no_post = Rswift.ImageResource(bundle: R.hostingBundle, name: "no_post")
     /// Image `no_tendrs`.
     static let no_tendrs = Rswift.ImageResource(bundle: R.hostingBundle, name: "no_tendrs")
     /// Image `notifications`.
@@ -901,6 +960,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "no_post", bundle: ..., traitCollection: ...)`
+    static func no_post(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.no_post, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "no_tendrs", bundle: ..., traitCollection: ...)`
     static func no_tendrs(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.no_tendrs, compatibleWith: traitCollection)
@@ -1141,6 +1207,8 @@ struct R: Rswift.Validatable {
     static let chooseAddressViewController = _R.nib._ChooseAddressViewController()
     /// Nib `ChoosePaymentWayViewController`.
     static let choosePaymentWayViewController = _R.nib._ChoosePaymentWayViewController()
+    /// Nib `CommentTableViewCell`.
+    static let commentTableViewCell = _R.nib._CommentTableViewCell()
     /// Nib `DetailsImageCollectionCell`.
     static let detailsImageCollectionCell = _R.nib._DetailsImageCollectionCell()
     /// Nib `EditProfileViewController`.
@@ -1237,8 +1305,6 @@ struct R: Rswift.Validatable {
     static let postsMediaCollectionViewCell = _R.nib._PostsMediaCollectionViewCell()
     /// Nib `PostsMediaViewController`.
     static let postsMediaViewController = _R.nib._PostsMediaViewController()
-    /// Nib `PostsViewController`.
-    static let postsViewController = _R.nib._PostsViewController()
     /// Nib `PriceRequestTableViewCell`.
     static let priceRequestTableViewCell = _R.nib._PriceRequestTableViewCell()
     /// Nib `ProductDetailsViewController`.
@@ -1383,6 +1449,14 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.choosePaymentWayViewController) instead")
     static func choosePaymentWayViewController(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.choosePaymentWayViewController)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "CommentTableViewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.commentTableViewCell) instead")
+    static func commentTableViewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.commentTableViewCell)
     }
     #endif
 
@@ -1771,14 +1845,6 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UINib(name: "PostsViewController", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.postsViewController) instead")
-    static func postsViewController(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.postsViewController)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UINib(name: "PriceRequestTableViewCell", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.priceRequestTableViewCell) instead")
     static func priceRequestTableViewCell(_: Void = ()) -> UIKit.UINib {
@@ -1998,6 +2064,10 @@ struct R: Rswift.Validatable {
       return R.nib.choosePaymentWayViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
+    static func commentTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CommentTableViewCell? {
+      return R.nib.commentTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CommentTableViewCell
+    }
+
     static func detailsImageCollectionCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> DetailsImageCollectionCell? {
       return R.nib.detailsImageCollectionCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? DetailsImageCollectionCell
     }
@@ -2188,10 +2258,6 @@ struct R: Rswift.Validatable {
 
     static func postsMediaViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.postsMediaViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
-    }
-
-    static func postsViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
-      return R.nib.postsViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
     static func priceRequestTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> PriceRequestTableViewCell? {
@@ -2557,6 +2623,17 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
 
+    struct _CommentTableViewCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "CommentTableViewCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CommentTableViewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CommentTableViewCell
+      }
+
+      fileprivate init() {}
+    }
+
     struct _DetailsImageCollectionCell: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "DetailsImageCollectionCell"
@@ -2682,7 +2759,7 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
-        if UIKit.UIImage(named: "cart no item", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'cart no item' is used in nib 'EmptyPostsView', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "no_post", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'no_post' is used in nib 'EmptyPostsView', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }
@@ -3331,17 +3408,6 @@ struct _R: Rswift.Validatable {
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "IceBlue", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'IceBlue' is used in nib 'PostsMediaViewController', but couldn't be loaded.") }
         }
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _PostsViewController: Rswift.NibResourceType {
-      let bundle = R.hostingBundle
-      let name = "PostsViewController"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
       }
 
       fileprivate init() {}

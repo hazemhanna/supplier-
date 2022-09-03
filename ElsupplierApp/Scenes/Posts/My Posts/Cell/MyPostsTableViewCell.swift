@@ -28,7 +28,11 @@ class MyPostsTableViewCell: UITableViewCell {
     @IBOutlet weak var userType: UILabel!
     @IBOutlet weak var addCommentTF: UITextField!
     @IBOutlet weak var likeBtn: UIButton!
-
+    @IBOutlet weak var userActionsStackView: UIStackView!
+    @IBOutlet weak var commentsTableView: UITableView!
+    @IBOutlet weak var commentsTableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var aboveTableViewLine: UIView!
+    
     weak var delegate: MyPostsTableViewCellDelegate?
     
     var post: PostModel! {
@@ -38,18 +42,21 @@ class MyPostsTableViewCell: UITableViewCell {
             bostBody.text = post.body
             dateLbl.text = post.postDate
             userType.text = post.postOwnerRole
+            likeBtn.isSelected = post.isLiked == 1
+
+            collectionViewHeight.constant = post.media.isEmpty ? 0 : 100
             collectionView.reloadData()
-            if post.media.count > 0 {
-                collectionViewHeight.constant = 100
-            } else {
-                collectionViewHeight.constant = 0
-            }
-            likeBtn.isSelected = post.isLiked == 1 //.setImage(post.isLiked == 1 ? R.image.liked() : R.image.like(), for: .normal)
+            
+            commentsTableViewHeight.constant = CGFloat(post.comments.count * 100)
+            commentsTableView.isHidden = post.comments.isEmpty
+            aboveTableViewLine.isHidden = post.comments.isEmpty
+            commentsTableView.reloadData()
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        commentsTableView.registerCell(ofType: CommentTableViewCell.self)
         collectionView.registerCell(ofType: ImageCollectionViewCell.self)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         collectionView.delegate = self
@@ -109,6 +116,7 @@ extension MyPostsTableViewCell: UICollectionViewDelegate,
         cell.playImage.isHidden = !post.media[indexPath.row].isVideo
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: (collectionView.frame.width / 3.5) , height: 100)
     }
@@ -119,6 +127,18 @@ extension MyPostsTableViewCell: UICollectionViewDelegate,
      }else{
         delegate?.myPostsTableViewCell(self, selectMedia: post, index: indexPath.row)
       }
+    }
+}
+
+extension MyPostsTableViewCell: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { post.comments.count }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 100 }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: CommentTableViewCell = tableView.dequeueReusableCell()!
+        cell.comment = post.comments[indexPath.row]
+        return cell
     }
 }
 

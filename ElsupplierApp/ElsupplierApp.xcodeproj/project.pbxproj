@@ -45,8 +45,6 @@
 		0609A818280AD5EA00806081 /* CartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0609A816280AD5EA00806081 /* CartViewController.xib */; };
 		0609A81B280AD65500806081 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609A819280AD65500806081 /* FavoritesViewController.swift */; };
 		0609A81C280AD65500806081 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0609A81A280AD65500806081 /* FavoritesViewController.xib */; };
-		0609A81F280AD71D00806081 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609A81D280AD71D00806081 /* PostsViewController.swift */; };
-		0609A820280AD71D00806081 /* PostsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0609A81E280AD71D00806081 /* PostsViewController.xib */; };
 		0609A823280AD76A00806081 /* TendersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609A821280AD76A00806081 /* TendersViewController.swift */; };
 		0609A824280AD76A00806081 /* TendersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0609A822280AD76A00806081 /* TendersViewController.xib */; };
 		062456EF28541CBC00521B1C /* SupplierDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062456ED28541CBC00521B1C /* SupplierDetailsViewController.swift */; };
@@ -64,6 +62,8 @@
 		062CA8C728302D5200EFAC19 /* SearchFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 062CA8C528302D5200EFAC19 /* SearchFilterViewController.xib */; };
 		062CA8C92830482700EFAC19 /* SearchFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062CA8C82830482700EFAC19 /* SearchFilterViewModel.swift */; };
 		064EC72B285FD5DD00973AB7 /* SupplierDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064EC72A285FD5DD00973AB7 /* SupplierDetailsModel.swift */; };
+		06563A6A28C360610091AFF8 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06563A6828C360610091AFF8 /* CommentTableViewCell.swift */; };
+		06563A6B28C360610091AFF8 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06563A6928C360610091AFF8 /* CommentTableViewCell.xib */; };
 		065A4BF328414180004B0188 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065A4BF228414180004B0188 /* ProductViewModel.swift */; };
 		0664E00528099B0E0095AC42 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0664E00428099B0E0095AC42 /* ProfileViewModel.swift */; };
 		0664E00828099D9D0095AC42 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0664E00628099D9C0095AC42 /* EditProfileViewController.swift */; };
@@ -319,8 +319,6 @@
 		0609A816280AD5EA00806081 /* CartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartViewController.xib; sourceTree = "<group>"; };
 		0609A819280AD65500806081 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		0609A81A280AD65500806081 /* FavoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
-		0609A81D280AD71D00806081 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
-		0609A81E280AD71D00806081 /* PostsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostsViewController.xib; sourceTree = "<group>"; };
 		0609A821280AD76A00806081 /* TendersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TendersViewController.swift; sourceTree = "<group>"; };
 		0609A822280AD76A00806081 /* TendersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TendersViewController.xib; sourceTree = "<group>"; };
 		062456ED28541CBC00521B1C /* SupplierDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierDetailsViewController.swift; sourceTree = "<group>"; };
@@ -338,6 +336,8 @@
 		062CA8C528302D5200EFAC19 /* SearchFilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchFilterViewController.xib; sourceTree = "<group>"; };
 		062CA8C82830482700EFAC19 /* SearchFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterViewModel.swift; sourceTree = "<group>"; };
 		064EC72A285FD5DD00973AB7 /* SupplierDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierDetailsModel.swift; sourceTree = "<group>"; };
+		06563A6828C360610091AFF8 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		06563A6928C360610091AFF8 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		065A4BF228414180004B0188 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 		0664E00428099B0E0095AC42 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		0664E00628099D9C0095AC42 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -650,6 +650,8 @@
 				048F4610285A237D00E0EE6F /* Cell */,
 				048F460B285A1A3D00E0EE6F /* MyPostsViewController.swift */,
 				048F460C285A1A3D00E0EE6F /* MyPostsViewController.xib */,
+				06563A6828C360610091AFF8 /* CommentTableViewCell.swift */,
+				06563A6928C360610091AFF8 /* CommentTableViewCell.xib */,
 			);
 			path = "My Posts";
 			sourceTree = "<group>";
@@ -672,15 +674,6 @@
 				0414907D285A3F940088E68A /* ImageCollectionViewCell.xib */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		0609A811280AD57000806081 /* Posts */ = {
-			isa = PBXGroup;
-			children = (
-				0609A81D280AD71D00806081 /* PostsViewController.swift */,
-				0609A81E280AD71D00806081 /* PostsViewController.xib */,
-			);
-			path = Posts;
 			sourceTree = "<group>";
 		};
 		0609A812280AD57600806081 /* Favorites */ = {
@@ -1028,7 +1021,6 @@
 				0609A814280AD59600806081 /* Tenders */,
 				0609A813280AD58600806081 /* Cart */,
 				0609A812280AD57600806081 /* Favorites */,
-				0609A811280AD57000806081 /* Posts */,
 				06DECF1C2832F9B100BE5959 /* Search */,
 				06D0881E284B93BC008F9F3F /* Product Details */,
 			);
@@ -1311,7 +1303,6 @@
 				047FA0C92858F428009EFFBB /* OffersViewController.xib in Resources */,
 				06B9B5372842B46F00A2C7CC /* ChooseAddressViewController.xib in Resources */,
 				067269C8285513AA00906BA5 /* SupplierProductsViewController.xib in Resources */,
-				0609A820280AD71D00806081 /* PostsViewController.xib in Resources */,
 				06F3831B283926850073438C /* FilterSelectionTableCell.xib in Resources */,
 				0438A55528596BCC00502F73 /* MessagesDetailsViewController.xib in Resources */,
 				0672472C287261780027B79E /* EmptyOrdersView.xib in Resources */,
@@ -1326,6 +1317,7 @@
 				067269D028552DAB00906BA5 /* SupplierPostsViewController.xib in Resources */,
 				06ECB375280A297D0056B8FF /* FavProductsViewController.xib in Resources */,
 				068C805F28403B4A00951E95 /* ProductDetailsViewController.xib in Resources */,
+				06563A6B28C360610091AFF8 /* CommentTableViewCell.xib in Resources */,
 				048F4614285A239C00E0EE6F /* MyPostsTableViewCell.xib in Resources */,
 				06C2CD48284B6C9600C73828 /* OrderSummaryViewController.xib in Resources */,
 				06D0882D284BACFE008F9F3F /* OrderDetailsViewController.xib in Resources */,
@@ -1477,6 +1469,7 @@
 				06F3831A283926850073438C /* FilterSelectionTableCell.swift in Sources */,
 				067F4633280080C5004C403F /* MapExtentions.swift in Sources */,
 				067F4636280080C5004C403F /* DictionaryExtenions.swift in Sources */,
+				06563A6A28C360610091AFF8 /* CommentTableViewCell.swift in Sources */,
 				06C2CD47284B6C9600C73828 /* OrderSummaryViewController.swift in Sources */,
 				06282A1A285004DB00BE199E /* TenderTableViewCell.swift in Sources */,
 				067F4639280080C5004C403F /* UICollectionViewExtensions.swift in Sources */,
@@ -1502,7 +1495,6 @@
 				067F4630280080C5004C403F /* CGRectExtensions.swift in Sources */,
 				067F4643280080C5004C403F /* UINavigationControllerExtensions.swift in Sources */,
 				06B4279C2873998C0007D74C /* URL+Extension.swift in Sources */,
-				0609A81F280AD71D00806081 /* PostsViewController.swift in Sources */,
 				06282A2928501A1100BE199E /* MessageTableViewCell.swift in Sources */,
 				067F467E280080D9004C403F /* UserModel.swift in Sources */,
 				067F4645280080C5004C403F /* UIViewExtensions.swift in Sources */,
@@ -1796,7 +1788,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = G5KAMXDVUX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Resources/Info.plist;
@@ -1829,7 +1821,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = G5KAMXDVUX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Resources/Info.plist;

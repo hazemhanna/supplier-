@@ -11,9 +11,9 @@ class PriceRequest {
     var productName  = " "
     var productId = 0
     var quantity = 0
-    var completed: Bool {
-        return productId != 0 && quantity != 0
-    }
+
+    var productSelected: Bool { productId != 0 }
+    var quantitySelected: Bool { quantity != 0 }
 }
 
 class SupplierInfoViewController: BaseViewController {
@@ -40,8 +40,9 @@ class SupplierInfoViewController: BaseViewController {
     let viewModel = SupplierViewModel()
     var products = [ProductModel]()
     var productId = 0
-    var selectedProducts = [PriceRequest](){
-        didSet{
+    
+    var selectedProducts = [PriceRequest]() {
+        didSet {
             tableView.reloadData()
             tableViewHeight.constant = CGFloat(200 * selectedProducts.count)
         }
@@ -85,11 +86,7 @@ class SupplierInfoViewController: BaseViewController {
     
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
     }
     
@@ -190,16 +187,21 @@ class SupplierInfoViewController: BaseViewController {
     }
     
     @IBAction func PriceRequestClicked(_ sender: UIButton) {
-        if selectedProducts.filter({ $0.completed }).isEmpty {
-            Alert.show(message: "_select_product")
-            return
+        if selectedProducts.filter({ $0.productSelected }).isEmpty {
+            return Alert.show(message: "_select_product")
+        }
+        if selectedProducts.filter({ $0.quantitySelected }).isEmpty {
+            return Alert.show(message: "_enter_qty")
         }
         let priceRequestModels: [PriceRequestModel] = selectedProducts.map { .init($0) }
         viewModel.requestSupplierPrice(supplierId: supplier.supplier.id, products: priceRequestModels)
     }
     
     @IBAction func addAnotherClicked(_ sender: UIButton) {
-        if let tempPrice = tempPrice, tempPrice.completed, index != -1 {
+        if let tempPrice = tempPrice,
+           tempPrice.productSelected,
+           tempPrice.quantitySelected,
+           index != -1 {
             selectedProducts[index] = tempPrice
             self.tempPrice = nil
             let add = PriceRequest()

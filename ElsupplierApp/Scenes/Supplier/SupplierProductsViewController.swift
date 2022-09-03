@@ -34,8 +34,11 @@ class SupplierProductsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
     // MARK: - Functions
     override func setupView() {
+        bindViewModelToViews()
+        setupCallbacks()
         tableView.registerCell(ofType: FavProductTableViewCell.self)
         collectionView.registerCell(ofType: SupplierProductCategoryCell.self)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
@@ -48,33 +51,34 @@ class SupplierProductsViewController: BaseViewController {
     
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
+        
         profileViewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
     }
     
     override func setupCallbacks() {
-        viewModel.itemAdded.bind { _ in
-//            self?.tableView.reloadData()
+        viewModel.itemAdded.bind { [weak self] _ in
+            self?.tableView.reloadData()
         }.disposed(by: disposeBag)
         
-        viewModel.itemRemoved.bind { _ in
-//            self?.tableView.reloadData()
+        viewModel.itemRemoved.bind { [weak self] _ in
+            self?.tableView.reloadData()
         }.disposed(by: disposeBag)
         
         profileViewModel.favoriteToggledSucceeded.bind { [weak self] _ in
             guard let self = self else { return }
             self.tableView.reloadData()
+        }.disposed(by: disposeBag)
+        
+        viewModel.error.bind {
+            Alert.show(message: $0.localizedDescription)
+        }.disposed(by: disposeBag)
+        
+        profileViewModel.error.bind {
+            Alert.show(message: $0.localizedDescription)
         }.disposed(by: disposeBag)
     }
 
@@ -120,7 +124,6 @@ extension SupplierProductsViewController: UICollectionViewDelegate, UICollection
 }
 
 extension SupplierProductsViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         supplier.categoryProducts.isEmpty ? 0 : supplier.categoryProducts[selectedIndex].products.count
     }
@@ -135,31 +138,29 @@ extension SupplierProductsViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         push(controller: ProductDetailsViewController(product: supplier.categoryProducts[selectedIndex].products[indexPath.row]))
     }
-    
 }
 
 extension SupplierProductsViewController: FavProductTableViewCellDelegate {
     func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapAdd product: ProductModel) {
-       product.addToCart == 1 ? viewModel.removeFromCart(itemId: product.id) : viewModel.addToCart(itemId: product.id, qty: selectedCount)
-        product.inCart = product.inCart == 1 ? 0 : 1
-        cell.addButton.setTitle(product.inCart == 1 ? "Add".localized : "_remove".localized, for: .normal)
-      // viewModel.addToCart(itemId: product.id, qty: selectedCount)
+        product.inCart != nil ? viewModel.removeFromCart(itemId: product.inCart?.id ?? product.id) : viewModel.addToCart(itemId: product.id, qty: selectedCount)
+        product.inCart = .init()
+        cell.addButton.setTitle(product.inCart == nil ? "Add".localized : "_remove".localized, for: .normal)
     }
     
     func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapFav product: ProductModel) {
         profileViewModel.favToggle(productId: product.id)
         product.isFav = product.isFav == 1 ? 0 : 1
         cell.favButton.isSelected = product.isFav == 1
-      }
+    }
     
-    func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapMin product: ProductModel){
+    func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapMin product: ProductModel) {
         if selectedCount == 1 { return }
         selectedCount -= 1
         cell.priceTotalLabel.text = (selectedCount * product.price).string()
         cell.counterLbl.text = selectedCount.string()
     }
     
-    func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapPlus product: ProductModel){
+    func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapPlus product: ProductModel) {
         selectedCount += 1
         cell.priceTotalLabel.text = (selectedCount * product.price).string()
         cell.counterLbl.text = selectedCount.string()

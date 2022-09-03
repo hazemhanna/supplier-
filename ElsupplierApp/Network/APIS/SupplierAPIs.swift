@@ -26,10 +26,11 @@ final class SupplierAPIs {
         return NetworkManager.execute(request: request)
     }
     
-    func requestCallBack(supplierId: Int) -> Single<Any> {
+    func requestCallBack(supplierId: Int) -> Single<String> {
         let request = ESNetworkRequest("actions/callBack/request")
         request.method = .post
         request.parameters = ["supplierId": supplierId]
+        request.selections = [.key("message")]
         return NetworkManager.execute(request: request)
     }
     

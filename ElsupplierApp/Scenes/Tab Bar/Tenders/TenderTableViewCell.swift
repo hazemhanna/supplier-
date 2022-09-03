@@ -19,10 +19,11 @@ class TenderTableViewCell: UITableViewCell {
     // MARK: - Variables
     var tender: TenderModel! {
         didSet {
-            categoryName.text = tender.category
-            productName.text = tender.product
+            categoryName.text = tender.subCategory
+            productName.text = tender.product + "\n" + tender.message
             dateLabel.text = tender.date
-            statusLabel.text = tender.status
+            statusLabel.text = tender.status.rawValue
+            statusView.backgroundColor = tender.color
         }
     }
     

@@ -33,10 +33,10 @@ class RegisterViewModel: BaseViewModel {
             error.accept(NSError.init(error: "Please enter valid mobile no", code: 0))
             return false
         }
-        if companyType.value.isEmpty {
-            error.accept(NSError.init(error: "Please enter company type", code: 0))
-            return false
-        }
+//        if companyType.value.isEmpty {
+//            error.accept(NSError.init(error: "Please enter company type", code: 0))
+//            return false
+//        }
         if companyName.value.isEmpty {
             error.accept(NSError.init(error: "Please enter company name", code: 0))
             return false

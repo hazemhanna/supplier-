@@ -17,8 +17,18 @@ class AddPostsViewController: BaseViewController {
     let viewModel = PostsViewModel()
     var attachments: [Attachment] = []
     var imagesAndThumbnails: [UIImage] = []
+    var postAdded: () -> Void
 
     // MARK: - Life Cycle
+    init(_ postAdded: @escaping () -> Void) {
+        self.postAdded = postAdded
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -40,18 +50,15 @@ class AddPostsViewController: BaseViewController {
     
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
     }
     
     override func setupCallbacks() {
         viewModel.succeeded.bind {
-            Alert.show(title: $0, message: nil, cancelTitle: "Ok", otherTitles: []) { _ in
-                self.pop()
+            Alert.show(title: $0, message: nil, cancelTitle: "Ok", otherTitles: []) { [weak self] _ in
+                self?.postAdded()
+                self?.pop()
             }
         }.disposed(by: disposeBag)
         

@@ -38,7 +38,7 @@ class CategorySuppliersViewController: HomeViewController {
     // MARK: - Functions
     override func setupView() {
         super.setupView()
-        viewModel.loadCategorySuppliers(categoryId: category.id, page: suppliers.nextPage)
+        viewModel.loadCategorySuppliers(categoryId: category.name, page: suppliers.nextPage)
         categoryOffersLabel.text = "offers ".localized + category.name
         CategorySuppliers.text = "suppliers ".localized + category.name
     }

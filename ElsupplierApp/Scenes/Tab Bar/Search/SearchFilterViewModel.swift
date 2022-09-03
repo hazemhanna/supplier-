@@ -69,8 +69,8 @@ class SearchFilterViewModel: BaseViewModel {
         isPromotion: Int,
         page: Int,
         keyword: String? = nil,
-        parentCategoryId: Int? = nil,
-        categoryId: Int? = nil,
+        parentCategoryId: String? = nil,
+        categoryId: String? = nil,
         areaId: Int?,
         priceFrom: Int? = nil,
         priceTo: Int? = nil
@@ -90,14 +90,23 @@ class SearchFilterViewModel: BaseViewModel {
         isPromotion: Int,
         page: Int,
         keyword: String? = nil,
-        parentCategoryId: Int? = nil,
-        categoryId: Int? = nil,
+        parentCategoryId: String? = nil,
+        categoryId: String? = nil,
         areaId: Int?,
         priceFrom: Int? = nil,
         priceTo: Int? = nil
     ) {
         isLoading.accept(true)
-        homeApis.filterProducts(isPromotion: isPromotion, page: page, keyword: keyword, parentCategoryId: parentCategoryId, categoryId: categoryId, areaId: areaId, priceFrom: priceFrom, priceTo: priceTo).subscribe { [weak self] response in
+        homeApis.filterProducts(
+            isPromotion: isPromotion,
+            page: page,
+            keyword: keyword,
+            parentCategoryId: parentCategoryId,
+            categoryId: categoryId,
+            areaId: areaId,
+            priceFrom: priceFrom,
+            priceTo: priceTo
+        ).subscribe { [weak self] response in
             self?.isLoading.accept(false)
             self?.productsSearchModel.accept(response)
         } onError: { [weak self] error in

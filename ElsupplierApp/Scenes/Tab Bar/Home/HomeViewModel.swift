@@ -40,9 +40,13 @@ final class HomeViewModel: BaseViewModel {
         }.disposed(by: disposeBag)
     }
     
-    func loadCategorySuppliers(categoryId: Int, page: Int) {
+    func loadCategorySuppliers(categoryId: String, page: Int) {
         isLoading.accept(true)
-        homeApis.filterSuppliers(isPromotion: 0, page: page, categoryId: categoryId).subscribe { [weak self] response in
+        homeApis.filterSuppliers(
+            isPromotion: 0,
+            page: page,
+            categoryId: categoryId
+        ).subscribe { [weak self] response in
             self?.isLoading.accept(false)
             self?.suppliers.accept(response)
         } onError: { [weak self] in

@@ -14,7 +14,7 @@ final class ProductModel: BaseObject {
     var categoryName = ""
     var price = 0
     var isFav = 0
-    var inCart = 0
+    var inCart: InCart? = nil
     var groupPrice: [GroupPriceModel] = []
     var rank = 0
     var views = 0

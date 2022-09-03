@@ -31,9 +31,7 @@ class RegisterViewController: BaseViewController {
         activityTypeTF.delegate = self
     }
     
-    override func shouldShowTopView() -> Bool {
-        false
-    }
+    override func shouldShowTopView() -> Bool { false }
     
     func showActivities(activities: [UserTypeModel]) {
         ActionSheet.show(title: "Select Activity", cancelTitle: "Cancel", otherTitles: activities.map({ $0.name }), sender: activityTypeTF) {[weak self] index in
@@ -56,10 +54,10 @@ class RegisterViewController: BaseViewController {
             .bind(to: viewModel.mobileNo)
             .disposed(by: disposeBag)
         
-        companyTypeTF.rx.text
-            .orEmpty
-            .bind(to: viewModel.companyType)
-            .disposed(by: disposeBag)
+//        companyTypeTF.rx.text
+//            .orEmpty
+//            .bind(to: viewModel.companyType)
+//            .disposed(by: disposeBag)
         
         companyNameTF.rx.text
             .orEmpty
@@ -69,11 +67,7 @@ class RegisterViewController: BaseViewController {
     
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
     }
     
@@ -92,9 +86,7 @@ class RegisterViewController: BaseViewController {
         }.disposed(by: disposeBag)
     }
     
-    override func shouldShowNavigation() -> Bool {
-        false
-    }
+    override func shouldShowNavigation() -> Bool { false }
     
     // MARK: - Actions
     @IBAction func termsOfUseClicked(_ sender: UIButton) {

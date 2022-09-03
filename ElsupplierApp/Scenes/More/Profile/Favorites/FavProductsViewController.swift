@@ -32,11 +32,7 @@ class FavProductsViewController: BaseViewController {
     
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
     }
     
@@ -50,8 +46,16 @@ class FavProductsViewController: BaseViewController {
             Alert.show(message: $0.localizedDescription)
         }.disposed(by: disposeBag)
         
-        viewModel.favoriteToggledSucceeded.bind { _ in
-            self.viewModel.listFavorites()
+        viewModel.favoriteToggledSucceeded.bind { [weak self] _ in
+            self?.viewModel.listFavorites()
+        }.disposed(by: disposeBag)
+        
+        viewModel.itemAdded.bind { [weak self] _ in
+            self?.viewModel.listFavorites()
+        }.disposed(by: disposeBag)
+        
+        viewModel.itemRemoved.bind { [weak self] _ in
+            self?.viewModel.listFavorites()
         }.disposed(by: disposeBag)
     }
     
@@ -85,10 +89,7 @@ extension FavProductsViewController: UITableViewDelegate, TableViewDataSource {
 extension FavProductsViewController: FavProductTableViewCellDelegate {
     
     func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapAdd product: ProductModel) {
-           product.addToCart == 1 ? viewModel.removeFromCart(itemId: product.id) : viewModel.addToCart(itemId: product.id, qty: selectedCount)
-            product.inCart = product.inCart == 1 ? 0 : 1
-            cell.addButton.setTitle(product.inCart == 1 ? "Add".localized : "_remove".localized, for: .normal)
-            
+        product.inCart == nil ? viewModel.addToCart(itemId: product.id, qty: selectedCount) : viewModel.removeFromCart(itemId: product.inCart?.id ?? product.id)
     }
     
     func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapFav product: ProductModel) {

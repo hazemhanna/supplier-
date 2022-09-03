@@ -32,7 +32,8 @@ class AddTenderViewController: BaseTabBarViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tabBarController?.navigationController?.isNavigationBarHidden = false
+        title = "_new_tender".localized
+        tabBarController?.navigationController?.isNavigationBarHidden = !isFromTabbar
     }
     
     override func shouldShowNavigation() -> Bool { true }
@@ -40,7 +41,6 @@ class AddTenderViewController: BaseTabBarViewController {
     // MARK: - Functions
     override func setupView() {
         super.setupView()
-        title = "_new_tender".localized //"Tender".localized
     }
     
     override func tabBarItemTitle() -> String? { "Tender".localized }
@@ -53,25 +53,19 @@ class AddTenderViewController: BaseTabBarViewController {
     
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
+        
         searchFilterViewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
     }
     
     override func bindViewsToViewModel() {
         tenderDetailsTV.rx.text
             .orEmpty
-            .bind(to: viewModel.tenderDetails).disposed(by: disposeBag)
+            .bind(to: viewModel.tenderDetails)
+            .disposed(by: disposeBag)
     }
     
     override func setupCallbacks() {

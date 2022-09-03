@@ -12,10 +12,20 @@ class MessagesDetailsViewController: BaseViewController {
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     var message = [MessagesModel]()
+    
     // MARK: - Variables
     let viewModel = ProfileViewModel()
-    
+    let supplierId: Int
     // MARK: - Life Cycle
+    init(_ supplierId: Int) {
+        self.supplierId = supplierId
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -23,29 +33,17 @@ class MessagesDetailsViewController: BaseViewController {
     // MARK: - Functions
     override func setupView() {
         super.setupView()
-//        self.message.append(Message(date: "منذ يومين", message: "هذا الكلام سخيف جدااا", receiverFlag: false))
-//        self.message.append(Message(date: "منذ يومين", message: " هذا الكلام سخيف جدااا الكلامالكلامالكلام الكلامالكلام الكلام الكلام الكلام الكلام الكلام الكلام الكلام الكلامالكلام الكلام الكلام الكلام الكلام الكلام الكلامالكلام الكلام الكلام الكلام الكلام الكلام الكلام الكلام الكلام الكلام الكلام الكلامالكلام الكلام الكلام الكلام الكلام الكلام الكلام", receiverFlag: true))
-//        self.message.append(Message(date: "منذ يومين", message: "هذا الكلام سخيف جدااا", receiverFlag: false))
-//        self.message.append(Message(date: "منذ يومين", message: "هذا الكلام سخيف جدااا", receiverFlag: true))
-//        self.message.append(Message(date: "منذ دقيقة", message: "اجل", receiverFlag: false))
-//        self.message.append(Message(date: "الان", message: "اجل", receiverFlag: true))
-//
         title = "_messages".localized
         tableView.registerCell(ofType: MessagesReceverTableViewCell.self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
         
-        viewModel.listChats(supplierId: 1)
-
+        viewModel.listChats(supplierId: supplierId)
     }
     
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
     }
     
@@ -71,8 +69,11 @@ extension MessagesDetailsViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MessagesReceverTableViewCell = tableView.dequeueReusableCell()!
-       // cell.config(date: message[indexPath.row].date ?? "" , Message:  message[indexPath.row].message ?? "", ReceiverFlag:  message[indexPath.row].receiverFlag ?? false)
-        
+        cell.config(
+            date: message[indexPath.row].date,
+            Message: message[indexPath.row].body,
+            ReceiverFlag: message[indexPath.row].supplier.id != UserModel.current?.id
+        )
         return cell
     }
 }

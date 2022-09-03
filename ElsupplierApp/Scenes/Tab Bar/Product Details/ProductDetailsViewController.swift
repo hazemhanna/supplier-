@@ -92,7 +92,7 @@ class ProductDetailsViewController: BaseViewController {
         productName.text = product.name
         priceLabel.text = product.price.string()
         priceTotalLabel.text = product.price.string()
-        addToCartButton.setTitle(product.inCart == 1 ? "_remove_from_cart" : "_add_to_cart", for: .normal)
+        addToCartButton.setTitle(product.inCart == nil ? "_remove_from_cart" : "_add_to_cart", for: .normal)
         productDesc.text = product.desc
         supplierName.text = product.supplierName
         supplierImageView.setImageWith(stringUrl: product.supplier.logo)
@@ -102,6 +102,12 @@ class ProductDetailsViewController: BaseViewController {
         locationLabel.text = product.supplier.address
         titleLabel.text = product.name
         relatedCollectionView.semanticContentAttribute = .forceLeftToRight
+        
+        if product.price == 0 {
+            priceLabel.removeFromSuperview()
+            addToCartButton.setTitle("_request_price".localized, for: .normal)
+        }
+        
         if Language.isArabic {
             relatedCollectionView.transform = CGAffineTransform(scaleX: -1, y: 1)
         }
@@ -109,18 +115,15 @@ class ProductDetailsViewController: BaseViewController {
     
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
+        
         profileViewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
+        }.disposed(by: disposeBag)
+        
+        supplierViewModel.isLoading.bind {
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
     }
     
@@ -147,6 +150,14 @@ class ProductDetailsViewController: BaseViewController {
             self?.relatedProducts = $0
             self?.relatedCollectionView.reloadData()
         }.disposed(by: disposeBag)
+        
+        supplierViewModel.priceRequested.bind { _ in
+            Alert.show(message: "_product_price_sent")
+        }.disposed(by: disposeBag)
+        
+        supplierViewModel.error.bind {
+            Alert.show(message: $0.localizedDescription)
+        }.disposed(by: disposeBag )
     }
     
     // MARK: - Actions
@@ -161,11 +172,18 @@ class ProductDetailsViewController: BaseViewController {
     @IBAction func minusClicked(_ sender: UIButton) {
         if selectedCount == 1 { return }
         selectedCount -= 1
-        
     }
     
     @IBAction func addToCartClicked(_ sender: UIButton) {
-      viewModel.addToCart(itemId: product.id, qty: selectedCount)
+        if product.price == 0 {
+            supplierViewModel.requestProductPrice(
+                supplierId: product.supplier.id,
+                productId: product.id,
+                quantity: selectedCount
+            )
+            return
+        }
+        viewModel.addToCart(itemId: product.id, qty: selectedCount)
     }
     
     @IBAction func showInfoClicked(_ sender: UIButton) {
@@ -191,8 +209,11 @@ class ProductDetailsViewController: BaseViewController {
     }
     
     @IBAction func requestPriceClicked(_ sender: UIButton) {
-        #warning("check quantity")
-        supplierViewModel.requestProductPrice(supplierId: product.supplier.id, productId: product.id, quantity: 1)
+        supplierViewModel.requestProductPrice(
+            supplierId: product.supplier.id,
+            productId: product.id,
+            quantity: selectedCount
+        )
     }
     
     @IBAction func phoneClicked(_ sender: UIButton) {
@@ -222,7 +243,6 @@ class ProductDetailsViewController: BaseViewController {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
-
 }
 
 extension ProductDetailsViewController: UICollectionViewDelegate,

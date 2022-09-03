@@ -36,7 +36,7 @@ class FavProductTableViewCell: UITableViewCell {
             piecesNo.text = "-"
             favButton.isSelected = product.isFav == 1
             piecesNo.text = product.measurmentUnit
-            addButton.setTitle(product.inCart == 1 ? "_remove".localized : "Add".localized, for: .normal)
+            addButton.setTitle(product.inCart != nil ? "_remove".localized : "Add".localized, for: .normal)
             priceLabel.text = product.price.string()
             priceTotalLabel.text = product.price.string()
 

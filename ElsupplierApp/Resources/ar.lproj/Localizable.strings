@@ -202,7 +202,7 @@
 "_preparing_orders" = "قيد التجهيز";
 "_onRoute_orders" = "علي الطريق";
 "_cancelled_orders" = "ملغاة";
-
-
-
-
+"_empty_posts" = "لا يوجد منشورات حتى الان";
+"_enter_qty" = "من فضلك ادخل كمية";
+"_no_products_found" = "لم يتم العثور على منتجات";
+"_no_suppliers_found" = "لم يتم العثور على موردين";

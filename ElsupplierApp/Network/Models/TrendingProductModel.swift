@@ -16,7 +16,7 @@ final class TrendingProductModel: BaseObject {
     var subCategoryName = ""
     var price = 0
     var isFav = 0
-    var inCart = 0
+    var inCart: InCart? = nil
     var groupsPrices: [GroupPriceModel] = []
     var rank = 0
     var views = 0

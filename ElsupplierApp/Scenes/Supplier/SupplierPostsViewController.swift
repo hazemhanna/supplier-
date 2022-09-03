@@ -37,16 +37,13 @@ class SupplierPostsViewController: BaseViewController {
     
     // MARK: - Functions
     override func setupView() {
+        setupCallbacks()
         tableView.registerCell(ofType: MyPostsTableViewCell.self)
     }
     
     override func setupCallbacks() {
         viewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
         
         viewModel.succeeded.bind { str in
@@ -54,15 +51,11 @@ class SupplierPostsViewController: BaseViewController {
         }.disposed(by: disposeBag)
         
         supplierViewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
         
-        supplierViewModel.callbackRequested.bind { _ in
-            Alert.show(message: "_request_call_succeed")
+        supplierViewModel.callbackRequested.bind {
+            Alert.show(message: $0)
         }.disposed(by: disposeBag)
     }
     
@@ -108,12 +101,12 @@ extension SupplierPostsViewController: MyPostsTableViewCellDelegate {
     func myPostsTableViewCell(_ cell: MyPostsTableViewCell, playVideo item: String) {
         guard let videoURL = URL(string:  item) else { return }
         let video = AVPlayer(url: videoURL)
-            let videoPlayer = AVPlayerViewController()
-            videoPlayer.player = video
-            videoPlayer.modalPresentationStyle = .overFullScreen
-            videoPlayer.modalTransitionStyle = .crossDissolve
-            self.present(videoPlayer, animated: true, completion: {
-                video.play()
-            })
-      }
+        let videoPlayer = AVPlayerViewController()
+        videoPlayer.player = video
+        videoPlayer.modalPresentationStyle = .overFullScreen
+        videoPlayer.modalTransitionStyle = .crossDissolve
+        self.present(videoPlayer, animated: true, completion: {
+            video.play()
+        })
+    }
 }

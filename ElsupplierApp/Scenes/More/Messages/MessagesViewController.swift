@@ -30,11 +30,7 @@ class MessagesViewController: BaseViewController {
     
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
     }
     
@@ -63,7 +59,7 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        push(controller: MessagesDetailsViewController())
+        push(controller: MessagesDetailsViewController(list[indexPath.row].supplier.id))
     }
     
 }

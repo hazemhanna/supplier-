@@ -8,13 +8,12 @@
 import ObjectMapper
 
 final class PromotionModel: BaseObject {
-    
     var route = ""
     var name = ""
     var supplierName = ""
     var price = 0
     var isFav = 0
-    var inCart = 0
+    var inCart: InCart? = nil
     var groupsPrices: [GroupPriceModel] = []
     var rank = 0
     var views = 0
@@ -55,5 +54,21 @@ final class PromotionModel: BaseObject {
         productSpecs <- map["product_specs"]
         subCategoryName <- map[Language.isArabic ? "subCategoryArName" : "subCategoryEnName"]
     }
+}
+
+class InCart: BaseObject {
+    var quantity = "0"
+    var productId = 0
+    var price = 0
+    var productName = ""
+    var image = ""
     
+    override func mapping(map: Map) {
+        super.mapping(map: map)
+        quantity <- map["quantity"]
+        productId <- map["productId"]
+        price <- map["price"]
+        productName <- map["productName"]
+        image <- map["image"]
+    }
 }

@@ -56,11 +56,7 @@ class FilterSelectionViewController: PresentingViewController {
     
     func setupCallbacks() {
         viewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
         
         viewModel.filterItems.bind {[weak self] in

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -16,6 +16,7 @@
                 <outlet property="collectionView" destination="dOe-rf-sHg" id="bdt-9q-SbZ"/>
                 <outlet property="deptsLabel" destination="4lk-HD-Saf" id="BG4-EG-FZt"/>
                 <outlet property="keywordForSearch" destination="WQw-Qm-DZK" id="jlK-O7-zLd"/>
+                <outlet property="noProductsLabel" destination="m0L-cw-Vbo" id="TFT-e2-YWh"/>
                 <outlet property="priceLabel" destination="I69-gY-uos" id="M0g-L7-zUE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -216,6 +217,12 @@
                         <outlet property="delegate" destination="-1" id="g7S-yR-4jm"/>
                     </connections>
                 </collectionView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_no_products_found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0L-cw-Vbo">
+                    <rect key="frame" x="127.5" y="438" width="159.5" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -226,7 +233,9 @@
                 <constraint firstItem="Z7B-dW-GR6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="18" id="CgK-za-d5X"/>
                 <constraint firstItem="Z7B-dW-GR6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Fqb-Gf-6mb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MLi-9D-czO" secondAttribute="trailing" constant="38" id="Gsi-0O-Cg4"/>
+                <constraint firstItem="m0L-cw-Vbo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QXu-JV-Bgx"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="dOe-rf-sHg" secondAttribute="bottom" id="STg-Pb-62s"/>
+                <constraint firstItem="m0L-cw-Vbo" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Ydt-Wk-0Fp"/>
                 <constraint firstItem="dOe-rf-sHg" firstAttribute="top" secondItem="MLi-9D-czO" secondAttribute="bottom" constant="14" id="b3W-E5-DMM"/>
                 <constraint firstItem="MLi-9D-czO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="38" id="eY1-Je-p0a"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dOe-rf-sHg" secondAttribute="trailing" constant="30" id="izN-yH-I17"/>

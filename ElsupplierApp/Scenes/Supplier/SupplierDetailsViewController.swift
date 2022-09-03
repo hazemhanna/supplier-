@@ -60,25 +60,17 @@ class SupplierDetailsViewController: BaseViewController {
     }
     
     override func bindViewModelToViews() {
-
         profileViewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
     }
     
-    
     override func setupCallbacks() {
-        
         profileViewModel.favoriteToggledSucceeded.bind { [weak self] _ in
             guard let self = self else { return }
-            self.supplier.isFav = self.supplier.isFav == true ? false : true
-            self.favButton.isSelected = self.supplier.isFav == true
+            self.supplier.isFav = !self.supplier.isFav
+            self.favButton.isSelected = self.supplier.isFav
         }.disposed(by: disposeBag)
-        
     }
     
     func addToContrainer(_ controller: UIViewController) {
@@ -94,17 +86,12 @@ class SupplierDetailsViewController: BaseViewController {
     // MARK: - Actions
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        case 0:
-            addToContrainer(SupplierProductsViewController(supplier: supplier))
-            break
-        case 1:
-            addToContrainer(SupplierPostsViewController(supplier: supplier.supplier, posts: supplier.posts))
-            break
-        case 2:
-            addToContrainer(SupplierInfoViewController(supplier: supplier))
-            break
-        default:
-            break
+        case 0: addToContrainer(SupplierProductsViewController(supplier: supplier))
+
+        case 1: addToContrainer(SupplierPostsViewController(supplier: supplier.supplier, posts: supplier.posts))
+
+        case 2: addToContrainer(SupplierInfoViewController(supplier: supplier))
+        default: break
         }
     }
     

@@ -14,6 +14,8 @@ final class CommentModel: BaseObject {
     var comment = ""
     var createdAt = ""
     var updatedAt = ""
+    var userImage = ""
+    var userName = ""
     
     override func mapping(map: Map) {
         super.mapping(map: map)
@@ -22,6 +24,8 @@ final class CommentModel: BaseObject {
         comment <- map["comment"]
         createdAt <- map["created_at"]
         updatedAt <- map["updated_at"]
+        userImage <- map["user_image"]
+        userName <- map["user_name"]
     }
     
 }

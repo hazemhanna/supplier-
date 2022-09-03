@@ -41,8 +41,8 @@ final class AuthAPIs: AuthAPIsProtocol {
             "name": name,
             "phone": phone,
             "company_name": companyName,
-            "userTypeId": userTypeId,
-            "company_type": company_type
+            "userTypeId": userTypeId//,
+//            "company_type": company_type
         ]
         return NetworkManager.execute(request: request)
     }

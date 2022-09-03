@@ -20,14 +20,19 @@ class ProductsSearchResultsViewController: BaseViewController {
     let viewModel = SearchFilterViewModel()
     var model = PagedObject<ProductModel>()
     var keyword: String?
-    var selectedCategory: Int?
-    var selectedParentCategory: Int?
+    var selectedCategory: String?
+    var selectedParentCategory: String?
     var priceFrom: Int?
     var priceTo: Int?
     var areaId: Int?
-
+    @IBOutlet weak var noProductsLabel: UILabel!
+    
     // MARK: - Life Cycle
-    init(keyword: String?, selectedCategory: Int?, selectedParentCategory: Int?) {
+    init(
+        keyword: String?,
+        selectedCategory: String?,
+        selectedParentCategory: String?
+    ) {
         self.keyword = keyword
         self.selectedCategory = selectedCategory
         self.selectedParentCategory = selectedParentCategory
@@ -48,49 +53,35 @@ class ProductsSearchResultsViewController: BaseViewController {
         title = "_search_results".localized
         keywordForSearch.text = keyword ?? ""
         collectionView.registerCell(ofType: OfferCollectionViewCell.self)
-        viewModel.filterProducts(isPromotion: 0,
-                                 page: model.nextPage,
-                                 keyword: keyword,
-                                 parentCategoryId: selectedParentCategory,
-                                 categoryId: selectedCategory,
-                                 areaId: areaId,
-                                 priceFrom: priceFrom,
-                                 priceTo: priceTo)
+        
+        viewModel.filterProducts(
+            isPromotion: 0,
+            page: model.nextPage,
+            keyword: keyword,
+            parentCategoryId: selectedParentCategory,
+            categoryId: selectedCategory,
+            areaId: areaId,
+            priceFrom: priceFrom,
+            priceTo: priceTo
+        )
     }
     
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
-        
-//        viewModel2.isLoading.bind {
-//            if $0 {
-//                Hud.show()
-//            } else {
-//                Hud.hide()
-//            }
-//        }.disposed(by: disposeBag)
     }
     
     override func setupCallbacks() {
         viewModel.productsSearchModel.bind {[weak self] in
             self?.model.append($0)
             self?.collectionView.reloadData()
+            self?.noProductsLabel.isHidden = !(self?.model.items.isEmpty ?? true)
         }.disposed(by: disposeBag)
+        
         viewModel.error.bind {
             Alert.show(message: $0.localizedDescription)
         }.disposed(by: disposeBag)
-        
-//        viewModel2.supplierDetails.bind { [weak self] in
-//            self?.push(controller: SupplierDetailsViewController(supplier: $0))
-//        }.disposed(by: disposeBag)
-//        viewModel2.error.bind {
-//            Alert.show(message: $0.localizedDescription)
-//        }.disposed(by: disposeBag)
     }
     
     // MARK: - Actions
@@ -126,7 +117,16 @@ extension ProductsSearchResultsViewController: UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if model.hasNext(indexPath) {
-            viewModel.filterProducts(isPromotion: 0, page: model.nextPage, keyword: keyword, parentCategoryId: selectedParentCategory, categoryId: selectedCategory, areaId: areaId, priceFrom: priceFrom, priceTo: priceTo)
+            viewModel.filterProducts(
+                isPromotion: 0,
+                page: model.nextPage,
+                keyword: keyword,
+                parentCategoryId: selectedParentCategory,
+                categoryId: selectedCategory,
+                areaId: areaId,
+                priceFrom: priceFrom,
+                priceTo: priceTo
+            )
         }
     }
     
@@ -149,14 +149,35 @@ extension ProductsSearchResultsViewController: FilterSelectionViewControllerDele
         areasLabel.text = area.name
         model.items.removeAll()
         collectionView.reloadData()
-        viewModel.filterSuppliers(isPromotion: 0, page: model.nextPage, keyword: keyword, parentCategoryId: selectedParentCategory, categoryId: selectedCategory, areaId: areaId, priceFrom: priceFrom, priceTo: priceTo)
+        
+        viewModel.filterProducts(
+            isPromotion: 0,
+            page: model.nextPage,
+            keyword: keyword,
+            parentCategoryId: selectedParentCategory,
+            categoryId: selectedCategory,
+            areaId: areaId,
+            priceFrom: priceFrom,
+            priceTo: priceTo
+        )
     }
+    
     func didSelectDipartment(dept: PickerModel) {
-        selectedCategory = dept.id
+        selectedCategory = dept.name
         deptsLabel.text = dept.name
         model.items.removeAll()
         collectionView.reloadData()
-        viewModel.filterSuppliers(isPromotion: 0, page: model.nextPage, keyword: keyword, parentCategoryId: selectedParentCategory, categoryId: selectedCategory, areaId: areaId, priceFrom: priceFrom, priceTo: priceTo)
+        
+        viewModel.filterProducts(
+            isPromotion: 0,
+            page: model.nextPage,
+            keyword: keyword,
+            parentCategoryId: selectedParentCategory,
+            categoryId: selectedCategory,
+            areaId: areaId,
+            priceFrom: priceFrom,
+            priceTo: priceTo
+        )
     }
 }
 
@@ -166,6 +187,16 @@ extension ProductsSearchResultsViewController: FilterByPriceViewControllerDelega
         self.priceTo = priceTo
         model.items.removeAll()
         collectionView.reloadData()
-        viewModel.filterSuppliers(isPromotion: 0, page: model.nextPage, keyword: keyword, parentCategoryId: selectedParentCategory, categoryId: selectedCategory, areaId: areaId, priceFrom: priceFrom, priceTo: priceTo)
+        
+        viewModel.filterProducts(
+            isPromotion: 0,
+            page: model.nextPage,
+            keyword: keyword,
+            parentCategoryId: selectedParentCategory,
+            categoryId: selectedCategory,
+            areaId: areaId,
+            priceFrom: priceFrom,
+            priceTo: priceTo
+        )
     }
 }

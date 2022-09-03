@@ -62,34 +62,34 @@ class EditProfileViewController: BaseViewController {
     
     override func bindViewModelToViews() {
         viewModel.isLoading.bind {
-            if $0 {
-                Hud.show()
-            } else {
-                Hud.hide()
-            }
+            Hud.showDismiss($0)
         }.disposed(by: disposeBag)
     }
     
     override func setupCallbacks() {
-        viewModel.user.bind { data in
+        viewModel.user.bind { [weak self] data in
+            guard let self = self else { return }
             self.setupUI(data: data)
         }.disposed(by: disposeBag)
         
-        viewModel.updatedSuccessfully.bind { _ in
+        viewModel.updatedSuccessfully.bind { [weak self] _ in
+            guard let self = self else { return }
             Alert.show(title: nil, message: "Updated successfully", cancelTitle: "Ok", otherTitles: []) { index in
                 self.pop()
             }
         }.disposed(by: disposeBag)
         
-        viewModel.error.bind { error in
-            Alert.show(message: error.localizedDescription)
+        viewModel.error.bind {
+            Alert.show(message: $0.localizedDescription)
         }.disposed(by: disposeBag)
         
-        viewModel.areas.bind { areas in
+        viewModel.areas.bind { [weak self] areas in
+            guard let self = self else { return }
             self.showAreas(areas: areas)
         }.disposed(by: disposeBag)
         
-        viewModel.activities.bind { activities in
+        viewModel.activities.bind { [weak self] activities in
+            guard let self = self else { return }
             self.showActivities(activities: activities)
         }.disposed(by: disposeBag)
     }
@@ -107,7 +107,7 @@ class EditProfileViewController: BaseViewController {
     }
     
     func showActivities(activities: [UserTypeModel]) {
-        ActionSheet.show(title: "Select Activity", cancelTitle: "Cancel", otherTitles: activities.map({ $0.name }), sender: activityTypeTF) {[weak self] index in
+        ActionSheet.show(title: "Select Activity", cancelTitle: "Cancel", otherTitles: activities.map({ $0.name }), sender: activityTypeTF) { [weak self] index in
             guard let self = self else { return }
             if index != 0 {
                 self.activityTypeTF.text = activities[index - 1].name
@@ -118,7 +118,7 @@ class EditProfileViewController: BaseViewController {
     }
     
     func showAreas(areas: [PickerModel]) {
-        ActionSheet.show(title: "_select_area", cancelTitle: "Cancel", otherTitles: areas.map({ $0.name }), sender: cityTF) {[weak self] index in
+        ActionSheet.show(title: "_select_area", cancelTitle: "Cancel", otherTitles: areas.map({ $0.name }), sender: cityTF) { [weak self] index in
             guard let self = self else { return }
             if index != 0 {
                 self.cityTF.text = areas[index - 1].name
