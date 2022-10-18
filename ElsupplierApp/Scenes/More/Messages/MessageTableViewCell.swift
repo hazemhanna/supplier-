@@ -20,7 +20,6 @@ class MessageTableViewCell: UITableViewCell {
             supplierImageView.setImageWith(stringUrl: list.supplier.logo)
             messageContent.text = list.body
             datLbl.text = list.date
-
         }
     }
     override func awakeFromNib() {

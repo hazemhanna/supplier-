@@ -113,6 +113,7 @@
 "_request_call" = "طلب اتصال";
 "_request_product_price" = "طلب عرض سعر المنتج";
 "_request_price" = "طلب عرض سعر";
+"_request_price_done" = "تم ارسال طلب سعر";
 "_follow_us_on" = "تابعنا على";
 "_related_products" = "منتجات متعلقة";
 "_remove_from_cart" = "حذف من العربة";
@@ -121,6 +122,7 @@
 "_supplier_name" = "المورد : ";
 "_pieces_count" = "عدد : ";
 "_continue_purchase" = "متابعة الشراء";
+"_continue_order" = "استكمال الشراء";
 "_shopping_cart" = "عربة التسوق";
 "_choose_address" = "اختر عنوان";
 "_choose_payment_type" = "اختر طريقة الدفع";
@@ -206,3 +208,7 @@
 "_enter_qty" = "من فضلك ادخل كمية";
 "_no_products_found" = "لم يتم العثور على منتجات";
 "_no_suppliers_found" = "لم يتم العثور على موردين";
+"_min_amount_order" = " طلبك اقل من الحد الادنى";
+
+
+

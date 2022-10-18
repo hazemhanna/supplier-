@@ -101,7 +101,7 @@ class ProfileViewModel: BaseViewModel {
                                   email: email.value,
                                   phone: mobileNo.value,
                                   companyName: companyName.value,
-                                  companyType: companyType.value,
+                                  companyType: activityTypeSelected.value,
                                   areaId: areaId.value,
                                   image: image.value).subscribe { [weak self] in
             guard let self = self else { return }

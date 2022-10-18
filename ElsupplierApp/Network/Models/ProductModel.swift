@@ -32,7 +32,7 @@ final class ProductModel: BaseObject {
     var addToCart = 0
     var orderMinAmount = 0
     var promotions: [ProductPromotionModel] = []
-    var rfqSend = false
+    var rfqSend = 0
     var productSpecs: [[String: String]] = []
     
     override func mapping(map: Map) {

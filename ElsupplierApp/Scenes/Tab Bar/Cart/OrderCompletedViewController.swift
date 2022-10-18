@@ -27,10 +27,12 @@ class OrderCompletedViewController: BaseViewController {
     
     // MARK: - Actions
     @IBAction func ordersClicked(_ sender: UIButton) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CartPointsUpdated"), object: nil)
         push(controller: MyOrdersViewController(isFromOrderCreated: true))
     }
     
     @IBAction func homeClicked(_ sender: UIButton) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CartPointsUpdated"), object: nil)
         Cache.shouldSelectHomeTab = true
         UIApplication.initWindow()
     }

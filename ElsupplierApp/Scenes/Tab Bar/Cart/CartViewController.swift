@@ -13,7 +13,8 @@ class CartViewController: BaseTabBarViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var purchaseView: UIView!
-    
+    @IBOutlet weak var continueButton: UIButton!
+
     // MARK: - Variables
     let viewModel = CartViewModel()
     var cartModel = CartModel()
@@ -53,13 +54,22 @@ class CartViewController: BaseTabBarViewController {
     override func setupCallbacks() {
         viewModel.cartModel.bind { [weak self] in
             self?.cartModel = $0
-            self?.totalLabel.text = $0.totals.string() + " LE"
+            self?.totalLabel.text = $0.totals.string() + " LE".localized
             self?.purchaseView.isHidden = $0.items.isEmpty
+            if  $0.total < $0.minAmount {
+                self?.continueButton.setTitle("_continue_order".localized, for: .normal)
+                self?.continueButton.tag = 0
+            } else {
+                self?.continueButton.setTitle("_continue_purchase".localized, for: .normal)
+                self?.continueButton.tag = 1
+            }
+            
             self?.tableView.reloadData()
         }.disposed(by: disposeBag)
         
         viewModel.itemRemoved.bind { [weak self] _ in
-            self?.viewModel.loadCart()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CartPointsUpdated"), object: nil)
+        self?.viewModel.loadCart()
         }.disposed(by: disposeBag)
     }
     
@@ -76,9 +86,14 @@ class CartViewController: BaseTabBarViewController {
     // MARK: - Actions
     @IBAction func continueClicked(_ sender: UIButton) {
         if cartModel.items.isEmpty { return }
-        push(controller: ChooseAddressViewController(cartModel: cartModel))
+        if sender.tag == 0 {
+            Alert.show(title: "_min_amount_order".localized, message: nil, cancelTitle: "Ok", otherTitles: []) { _ in
+                UIApplication.initWindow()
+            }
+        }else{
+            push(controller: ChooseAddressViewController(cartModel: cartModel))
+        }
     }
-    
 }
 
 extension CartViewController: UITableViewDelegate, TableViewDataSource, CartTableCellDelegate {

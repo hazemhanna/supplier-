@@ -22,8 +22,9 @@ class PriceRequestTableViewCell: UITableViewCell ,UITextFieldDelegate{
     var price:PriceRequest!{
         didSet{
             selectedProductLabel.text = price.productName
+            if price.quantity != 0 {
             ProductCount.text = "\(price.quantity)"
-          
+            }
         }
     }
     

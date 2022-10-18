@@ -90,10 +90,8 @@ class ProductDetailsViewController: BaseViewController {
         piecesNo.text = product.measurmentUnit
         favButton.isSelected = product.isFav == 1
         productName.text = product.name
-        priceLabel.text = product.price.string()
-        priceTotalLabel.text = product.price.string()
-        addToCartButton.setTitle(product.inCart == nil ? "_remove_from_cart" : "_add_to_cart", for: .normal)
-        productDesc.text = product.desc
+        addToCartButton.setTitle(product.inCart == nil ? "_add_to_cart" : "_remove_from_cart" , for: .normal)
+        productDesc.text = product.desc.html2String
         supplierName.text = product.supplierName
         supplierImageView.setImageWith(stringUrl: product.supplier.logo)
         phoneNoButton.setTitle(product.supplier.phone, for: .normal)
@@ -102,10 +100,20 @@ class ProductDetailsViewController: BaseViewController {
         locationLabel.text = product.supplier.address
         titleLabel.text = product.name
         relatedCollectionView.semanticContentAttribute = .forceLeftToRight
-        
+
         if product.price == 0 {
+            if product.rfqSend == 0{
             priceLabel.removeFromSuperview()
             addToCartButton.setTitle("_request_price".localized, for: .normal)
+            }else{
+                addToCartButton.isEnabled = false
+                priceLabel.removeFromSuperview()
+                addToCartButton.setTitle("_request_price_done".localized, for: .normal)
+                addToCartButton.backgroundColor = UIColor(red: 0/255, green: 178/255, blue: 243/255, alpha: 1)
+            }
+        }else{
+            priceLabel.text = product.price.string() + " LE".localized
+            priceTotalLabel.text = product.price.string() +  " LE".localized
         }
         
         if Language.isArabic {
@@ -129,10 +137,12 @@ class ProductDetailsViewController: BaseViewController {
     
     override func setupCallbacks() {
         viewModel.itemAdded.bind { [weak self] _ in
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CartPointsUpdated"), object: nil)
             self?.addToCartButton.setTitle("_remove_from_cart", for: .normal)
         }.disposed(by: disposeBag)
         
         viewModel.itemRemoved.bind { [weak self] _ in
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CartPointsUpdated"), object: nil)
             self?.addToCartButton.setTitle("_add_to_cart", for: .normal)
         }.disposed(by: disposeBag)
         

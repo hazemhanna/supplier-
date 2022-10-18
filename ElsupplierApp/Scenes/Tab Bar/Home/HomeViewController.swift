@@ -17,6 +17,8 @@ class HomeViewController: BaseTabBarViewController {
     
     // MARK: - Variables
     let viewModel = HomeViewModel()
+    let cartViewModel = CartViewModel()
+
     var homeModel = HomeModel()
     
     var isHome: Bool { true }
@@ -36,7 +38,6 @@ class HomeViewController: BaseTabBarViewController {
             userView.userPic.setImageWith(stringUrl: user.image, placeholder: R.image.appLogo())
         }
     }
-    
     // MARK: - Functions
     override func setupView() {
         super.setupView()
@@ -46,8 +47,12 @@ class HomeViewController: BaseTabBarViewController {
         deptCollectionViewHeight.constant = ((10.0 / 3.0).rounded(.up) * 180.0)
         navigationController?.navigationBar.isHidden = true
         tabBarController?.navigationController?.navigationBar.isHidden = true
+        registerForCartPointsUpdate()
+
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CartPointsUpdated"), object: nil)
+
     }
-    
+
     override func shouldShowNavigation() -> Bool {
         false
     }
@@ -83,6 +88,15 @@ class HomeViewController: BaseTabBarViewController {
                 self.deptCollectionViewHeight.constant = CGFloat(((Double($0.categories.count) / 3.0).rounded(.up)) * 180)
             }.disposed(by: disposeBag)
         
+        
+        cartViewModel.cartModel.bind { [weak self] in
+            if let tabItems = self?.tabBarController?.tabBar.items {
+                let tabItem = tabItems[0]
+                 let cartItems = $0.items
+                tabItem.badgeValue = "\(cartItems.count)"
+            }
+        }.disposed(by: disposeBag)
+        
         viewModel.error.bind {
             Alert.show(message: $0.localizedDescription)
         }.disposed(by: disposeBag)
@@ -93,7 +107,17 @@ class HomeViewController: BaseTabBarViewController {
     }
     
     // MARK: - Actions
+    private func registerForCartPointsUpdate() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.pointsUpdated),
+                                               name: NSNotification.Name(rawValue: "CartPointsUpdated"),
+                                               object: nil)
 
+    }
+    
+    @objc private func pointsUpdated() {
+        cartViewModel.loadCart()
+    }
 }
 
 extension HomeViewController: UserSectionViewDelegate {

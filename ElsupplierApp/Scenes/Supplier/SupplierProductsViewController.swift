@@ -61,10 +61,12 @@ class SupplierProductsViewController: BaseViewController {
     
     override func setupCallbacks() {
         viewModel.itemAdded.bind { [weak self] _ in
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CartPointsUpdated"), object: nil)
             self?.tableView.reloadData()
         }.disposed(by: disposeBag)
         
         viewModel.itemRemoved.bind { [weak self] _ in
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CartPointsUpdated"), object: nil)
             self?.tableView.reloadData()
         }.disposed(by: disposeBag)
         

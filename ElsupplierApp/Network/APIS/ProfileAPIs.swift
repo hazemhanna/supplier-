@@ -34,7 +34,7 @@ final class ProfileAPIs {
         email: String,
         phone: String,
         companyName: String,
-        companyType: String,
+        companyType: Int,
         areaId: Int,
         image: UIImage?
     ) -> Single<UserModel> {
@@ -45,7 +45,7 @@ final class ProfileAPIs {
             "email": email,
             "phone": phone,
             "company_name": companyName,
-//            "company_type": companyType,
+            "company_type": companyType,
             "area_id": areaId
         ]
         request.selections = [.key("data"), .key("user_profile")]

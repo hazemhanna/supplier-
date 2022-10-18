@@ -51,10 +51,12 @@ class FavProductsViewController: BaseViewController {
         }.disposed(by: disposeBag)
         
         viewModel.itemAdded.bind { [weak self] _ in
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CartPointsUpdated"), object: nil)
             self?.viewModel.listFavorites()
         }.disposed(by: disposeBag)
         
         viewModel.itemRemoved.bind { [weak self] _ in
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CartPointsUpdated"), object: nil)
             self?.viewModel.listFavorites()
         }.disposed(by: disposeBag)
     }

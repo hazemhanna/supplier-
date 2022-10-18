@@ -70,7 +70,6 @@ class SupplierInfoViewController: BaseViewController {
         bindViewModelToViews()
         setupCallbacks()
         selectedProducts.append(PriceRequest())
-
         tableView.registerCell(ofType: PriceRequestTableViewCell.self)
         mobileNoButton.setTitle(supplier.supplier.phone, for: .normal)
         emailButton.setTitle(supplier.supplier.email, for: .normal)
