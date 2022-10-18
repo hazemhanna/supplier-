@@ -18,7 +18,8 @@ class SupplierProductsViewController: BaseViewController {
     var selectedIndex = 0
     var viewModel = CartViewModel()
     let profileViewModel = ProfileViewModel()
-    
+    let supplierViewModel = SupplierViewModel()
+
     var selectedCount: Int = 1
     
     // MARK: - Life Cycle
@@ -57,6 +58,11 @@ class SupplierProductsViewController: BaseViewController {
         profileViewModel.isLoading.bind {
             Hud.showDismiss($0)
         }.disposed(by: disposeBag)
+        
+         supplierViewModel.isLoading.bind {
+            Hud.showDismiss($0)
+         }.disposed(by: disposeBag)
+        
     }
     
     override func setupCallbacks() {
@@ -82,6 +88,15 @@ class SupplierProductsViewController: BaseViewController {
         profileViewModel.error.bind {
             Alert.show(message: $0.localizedDescription)
         }.disposed(by: disposeBag)
+        
+        supplierViewModel.priceRequested.bind { _ in
+            Alert.show(message: "_product_price_sent")
+        }.disposed(by: disposeBag)
+        
+        supplierViewModel.error.bind {
+            Alert.show(message: $0.localizedDescription)
+        }.disposed(by: disposeBag)
+
     }
 
     // MARK: - Actions
@@ -168,4 +183,14 @@ extension SupplierProductsViewController: FavProductTableViewCellDelegate {
         cell.counterLbl.text = selectedCount.string()
     }
     
+    func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapPriceRequest product: ProductModel) {
+        supplierViewModel.requestProductPrice(
+            supplierId: product.supplier.id,
+            productId: product.id,
+            quantity: 1
+        )
+        cell.addButton.isEnabled = false
+        cell.addButton.setTitle("_request_price_done".localized, for: .normal)
+        cell.addButton.backgroundColor = UIColor(red: 0/255, green: 178/255, blue: 243/255, alpha: 1)
+    }
 }

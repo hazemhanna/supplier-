@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -200,7 +200,9 @@
                 <outlet property="addButton" destination="gwP-sq-Ism" id="gLc-Ek-DcL"/>
                 <outlet property="counterLbl" destination="myU-fn-1IG" id="cmP-sr-Koq"/>
                 <outlet property="favButton" destination="0Ub-er-Jwo" id="JP8-Pt-26l"/>
+                <outlet property="minusButton" destination="Khe-cc-XgS" id="UPk-YL-Tsc"/>
                 <outlet property="piecesNo" destination="sZy-5f-Liv" id="yWT-cv-svp"/>
+                <outlet property="plusButton" destination="jyE-To-irp" id="Vnu-mm-seJ"/>
                 <outlet property="priceLabel" destination="Y3a-fj-lun" id="0oj-cU-5re"/>
                 <outlet property="priceTotalLabel" destination="T7T-Mr-KpT" id="GiC-sl-hsR"/>
                 <outlet property="productImageView" destination="40b-Ee-aXl" id="YCX-AV-AIy"/>

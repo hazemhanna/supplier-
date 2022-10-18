@@ -14,6 +14,8 @@ class FavProductsViewController: BaseViewController {
     
     // MARK: - Variables
     let viewModel = ProfileViewModel()
+    let supplierViewModel = SupplierViewModel()
+
     var favorites: [ProductModel] = []
     var selectedCount: Int = 1
 
@@ -34,6 +36,11 @@ class FavProductsViewController: BaseViewController {
         viewModel.isLoading.bind {
             Hud.showDismiss($0)
         }.disposed(by: disposeBag)
+        
+        supplierViewModel.isLoading.bind {
+            Hud.showDismiss($0)
+        }.disposed(by: disposeBag)
+        
     }
     
     override func setupCallbacks() {
@@ -58,6 +65,15 @@ class FavProductsViewController: BaseViewController {
         viewModel.itemRemoved.bind { [weak self] _ in
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CartPointsUpdated"), object: nil)
             self?.viewModel.listFavorites()
+        }.disposed(by: disposeBag)
+        
+        
+        supplierViewModel.priceRequested.bind { _ in
+            Alert.show(message: "_product_price_sent")
+        }.disposed(by: disposeBag)
+        
+        supplierViewModel.error.bind {
+            Alert.show(message: $0.localizedDescription)
         }.disposed(by: disposeBag)
     }
     
@@ -110,5 +126,13 @@ extension FavProductsViewController: FavProductTableViewCellDelegate {
         cell.priceTotalLabel.text = (selectedCount * product.price).string()
         cell.counterLbl.text = selectedCount.string()
     }
+    
+    
+       func favProductTableViewCell(_ cell: FavProductTableViewCell, didTapPriceRequest product: ProductModel) {
+           supplierViewModel.requestProductPrice(supplierId: product.supplier.id,productId: product.id,quantity: 1)
+           cell.addButton.isEnabled = false
+           cell.addButton.setTitle("_request_price_done".localized, for: .normal)
+           cell.addButton.backgroundColor = UIColor(red: 0/255, green: 178/255, blue: 243/255, alpha: 1)
+       }
     
 }

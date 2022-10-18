@@ -20,10 +20,12 @@
                 <outlet property="imagesCollectionView" destination="BFh-nh-dgs" id="yfm-Xe-zPZ"/>
                 <outlet property="infoView" destination="n6O-9R-gLz" id="dZL-xp-pdv"/>
                 <outlet property="locationLabel" destination="yPk-MB-geP" id="iJH-ja-7de"/>
+                <outlet property="minusButton" destination="0Vv-Tf-OdK" id="BpF-3m-dbU"/>
                 <outlet property="phoneNoButton" destination="eGc-vL-Nqm" id="eZ5-yE-tXY"/>
                 <outlet property="phoneNoImage" destination="a6T-H9-Gxl" id="Alt-qY-t0p"/>
                 <outlet property="piecesNo" destination="TVW-lJ-YeO" id="bsb-hI-IeD"/>
                 <outlet property="piecesView" destination="4FI-OB-zBq" id="fgL-c9-yiC"/>
+                <outlet property="plusButton" destination="mPn-Wh-R1U" id="FR5-8F-oh0"/>
                 <outlet property="priceLabel" destination="fdp-7l-Syv" id="crQ-CQ-teq"/>
                 <outlet property="priceTotalLabel" destination="w3e-aq-EAT" id="brc-Gc-Dm3"/>
                 <outlet property="productDesc" destination="gz1-JR-hB6" id="KBw-nV-2xe"/>

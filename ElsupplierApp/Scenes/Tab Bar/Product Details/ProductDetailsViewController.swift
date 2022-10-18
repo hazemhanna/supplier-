@@ -32,6 +32,8 @@ class ProductDetailsViewController: BaseViewController {
     @IBOutlet weak var relatedCollectionView: UICollectionView!
     @IBOutlet weak var piecesView: UIView!
     @IBOutlet weak var counterLbl : UILabel!
+    @IBOutlet weak var plusButton: UIButton!
+     @IBOutlet weak var minusButton: UIButton!
     
     // MARK: - Variables
     let product: ProductModel
@@ -100,8 +102,15 @@ class ProductDetailsViewController: BaseViewController {
         locationLabel.text = product.supplier.address
         titleLabel.text = product.name
         relatedCollectionView.semanticContentAttribute = .forceLeftToRight
-
+        priceLabel.text = product.price.string() + " LE".localized
+        priceTotalLabel.text = product.price.string() +  " LE".localized
+        
         if product.price == 0 {
+            minusButton.isHidden = true
+            plusButton.isHidden = true
+            counterLbl.isHidden = true
+            priceLabel.isHidden = true
+            priceTotalLabel.isHidden = true
             if product.rfqSend == 0{
             priceLabel.removeFromSuperview()
             addToCartButton.setTitle("_request_price".localized, for: .normal)
@@ -111,9 +120,6 @@ class ProductDetailsViewController: BaseViewController {
                 addToCartButton.setTitle("_request_price_done".localized, for: .normal)
                 addToCartButton.backgroundColor = UIColor(red: 0/255, green: 178/255, blue: 243/255, alpha: 1)
             }
-        }else{
-            priceLabel.text = product.price.string() + " LE".localized
-            priceTotalLabel.text = product.price.string() +  " LE".localized
         }
         
         if Language.isArabic {
