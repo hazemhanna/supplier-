@@ -17,11 +17,18 @@ class OrderSummaryTableCell: UITableViewCell {
     
     var product: CartItem! {
         didSet {
+            
+            
+            
+            
+            
+            
+            
+            
             productImageView.setImageWith(stringUrl: product.product.mainImage)
             productName.text = product.product.name
             priceLabel.text = product.product.price.string() + " LE".localized
             piecesNo.text = "_pieces: ".localized + product.quantity.string()
-            
         }
     }
     
