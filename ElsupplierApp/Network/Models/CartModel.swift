@@ -48,14 +48,15 @@ final class CartModel: BaseObject {
 
 final class CartItem: BaseObject {
     
-    var quantity = ""
+    var quantity = 0
     var productId = 0
     var price = 0
     var promotion_price = 0
     var productName = ""
     var image = ""
     var total = 0
-    
+    var product = ProductModel()
+
     override func mapping(map: Map) {
         super.mapping(map: map)
         quantity <- map["quantity"]
@@ -65,6 +66,8 @@ final class CartItem: BaseObject {
         productName <- map["productName", "product_name"]
         image <- map["image"]
         total <- map["total"]
+        product <- map["product"]
+
     }
     
 }

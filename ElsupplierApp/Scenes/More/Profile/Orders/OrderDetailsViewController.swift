@@ -45,9 +45,9 @@ class OrderDetailsViewController: BaseViewController {
         addressLabel.text = order.address
         paymentType.text = order.paymentType
         mobileNo.text = order.userPhone
-        subTotalLabel.text = order.subtotal.string()
-        shippingFeesLabel.text = order.deliveryFees.string()
-        totalLabel.text = order.totalAmount.string()
+        subTotalLabel.text = order.subtotal.string() + " LE".localized
+        shippingFeesLabel.text = order.deliveryFees.string() + " LE".localized
+        totalLabel.text = order.totalAmount.string() + " LE".localized
     }
     
     // MARK: - Actions

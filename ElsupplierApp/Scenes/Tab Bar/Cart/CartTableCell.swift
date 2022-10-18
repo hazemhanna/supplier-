@@ -25,7 +25,7 @@ class CartTableCell: UITableViewCell {
             productImageView.setImageWith(stringUrl: item.image)
             productName.text = item.productName
             productPrice.text = item.price.string() + " LE"
-            piecesCount.text = "_pieces_count".localized + item.quantity
+            piecesCount.text = "_pieces_count".localized + item.quantity.string()
         }
     }
 
