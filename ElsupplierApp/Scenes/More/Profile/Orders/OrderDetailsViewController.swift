@@ -49,9 +49,7 @@ class OrderDetailsViewController: BaseViewController {
         shippingFeesLabel.text = order.deliveryFees.string() + " LE".localized
         totalLabel.text = order.totalAmount.string() + " LE".localized
     }
-    
     // MARK: - Actions
-
 }
 
 extension OrderDetailsViewController: UITableViewDelegate, UITableViewDataSource {
