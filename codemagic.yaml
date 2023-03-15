@@ -5,7 +5,16 @@ workflows:
     instance_type: mac_mini_m1
     integrations:
       app_store_connect: codemagic
-    environment:     
+    environment:
+    ios_signing:
+        distribution_type: app_store
+        bundle_identifier: io.codemagic.sample.iosnative
+      vars:
+        BUNDLE_ID: "com.HML.ElsupplierApp"
+        XCODE_WORKSPACE: "ElsupplierApp.xcworkspace"
+        XCODE_SCHEME: "ElsupplierApp"
+      xcode: latest
+      cocoapods: default
     scripts:
     publishing:
     
