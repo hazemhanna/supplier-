@@ -16,6 +16,7 @@
 		0438A55928596D7200502F73 /* MessagesReceverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438A55728596D7200502F73 /* MessagesReceverTableViewCell.swift */; };
 		0438A55A28596D7200502F73 /* MessagesReceverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0438A55828596D7200502F73 /* MessagesReceverTableViewCell.xib */; };
 		0440E23B2876E09500109A6F /* MessagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440E23A2876E09500109A6F /* MessagesModel.swift */; };
+		044DC83529C18A130014D0B7 /* codemagic.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 044DC83429C18A130014D0B7 /* codemagic.yaml */; };
 		0477899828730C6C003A9B23 /* SendMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0477899628730C6C003A9B23 /* SendMessageViewController.swift */; };
 		0477899928730C6C003A9B23 /* SendMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0477899728730C6C003A9B23 /* SendMessageViewController.xib */; };
 		0477899D28731D72003A9B23 /* PostsMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0477899B28731D72003A9B23 /* PostsMediaViewController.swift */; };
@@ -291,6 +292,7 @@
 		0438A55728596D7200502F73 /* MessagesReceverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesReceverTableViewCell.swift; sourceTree = "<group>"; };
 		0438A55828596D7200502F73 /* MessagesReceverTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessagesReceverTableViewCell.xib; sourceTree = "<group>"; };
 		0440E23A2876E09500109A6F /* MessagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesModel.swift; sourceTree = "<group>"; };
+		044DC83429C18A130014D0B7 /* codemagic.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = codemagic.yaml; sourceTree = "<group>"; };
 		0477899628730C6C003A9B23 /* SendMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewController.swift; sourceTree = "<group>"; };
 		0477899728730C6C003A9B23 /* SendMessageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendMessageViewController.xib; sourceTree = "<group>"; };
 		0477899B28731D72003A9B23 /* PostsMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsMediaViewController.swift; sourceTree = "<group>"; };
@@ -759,6 +761,7 @@
 		067F45F028007FDB004C403F = {
 			isa = PBXGroup;
 			children = (
+				044DC83429C18A130014D0B7 /* codemagic.yaml */,
 				067F461028008012004C403F /* AppDelegate */,
 				067F4612280080C5004C403F /* Extenstions */,
 				067F464B280080D0004C403F /* Helpers */,
@@ -1359,6 +1362,7 @@
 				0609A818280AD5EA00806081 /* CartViewController.xib in Resources */,
 				062CA8C728302D5200EFAC19 /* SearchFilterViewController.xib in Resources */,
 				0477899E28731D72003A9B23 /* PostsMediaViewController.xib in Resources */,
+				044DC83529C18A130014D0B7 /* codemagic.yaml in Resources */,
 				06282A1B285004DB00BE199E /* TenderTableViewCell.xib in Resources */,
 				067F460628007FDE004C403F /* Assets.xcassets in Resources */,
 				06ED3EA22800855B00AA6D55 /* Cairo-Black.ttf in Resources */,
