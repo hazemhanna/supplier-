@@ -29,12 +29,10 @@ class DateTextField: UITextField {
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = .wheels
         }
+        self.setPlaceHolderColor(color: R.color.acceptedStatus() ?? .green)
     }
 
     @objc private func didSelectDate(_ sender: UIDatePicker) {
         date = sender.date
     }
-    
-    
 }
-

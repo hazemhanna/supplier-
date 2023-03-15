@@ -10,7 +10,7 @@ final class Cache {
     private static func archiveUserInfo(info : Any) -> Data {
         return NSKeyedArchiver.archivedData(withRootObject: info)
     }
-    
+        
     static func object(key: String) -> Any? {
         if let unarchivedObject:  Data = UserDefaults.standard.object(forKey: key) as? Data{
             return NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject)

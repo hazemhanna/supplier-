@@ -12,7 +12,7 @@ class LoaderView: UIView {
     
     lazy var activityIndicatorView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView.init(style: .large)
-        view.color = R.color.darkBlue()
+        //view.color = R.color.darkBlue()
         view.startAnimating()
         return view
     }()
